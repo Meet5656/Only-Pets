@@ -130,7 +130,7 @@ class _onboardingscreenState extends State<onboardingscreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 27.h,bottom: 2.h),
+                        padding: EdgeInsets.only(left: 27.h, bottom: 2.h),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
@@ -140,7 +140,11 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                       BorderRadius.all(Radius.circular(1.w))),
                               backgroundColor: Colors.transparent),
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => loginscreen(),));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => loginscreen(),
+                                ));
                             // controller.nextPage(
                             //     duration: Duration(milliseconds: 800),
                             //     curve: Curves.easeIn);

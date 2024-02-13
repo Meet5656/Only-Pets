@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:get/get.dart';
 import 'package:only_pets/Screen/SplashScreen.dart';
 
 void main() {
@@ -13,14 +14,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterSizer(builder: (context, orientation, screenType) {
-      return MaterialApp(
+      return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
         home: SplashScreen(),
+        builder: (context, child) {
+          return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: child!);
+        },
       );
     });
   }
