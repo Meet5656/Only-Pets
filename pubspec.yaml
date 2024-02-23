@@ -41,7 +41,8 @@ dependencies:
   carousel_slider: ^4.2.1
   pinput: ^3.0.1
   get: ^4.6.6
-
+  animate_do: ^3.3.3
+  smooth_page_indicator: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,9 +68,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - asset/all pets/
-  
-  
-  #   - images/a_dot_ham.jpeg
+    - asset/Brand_image/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

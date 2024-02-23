@@ -1,37 +1,37 @@
-class Homemodel1 {
+class ViewCategorysmodel {
   String name;
   String image;
 
-  Homemodel1(
+  ViewCategorysmodel(
       {
       // required this.title,
       required this.image,
       required this.name});
 }
 
-List<Homemodel1> face = [
-  Homemodel1(
+List<ViewCategorysmodel> viewCategorys = [
+  ViewCategorysmodel(
     image: 'asset/all pets/dogface1.jpg',
     name: 'Dog',
   ),
-  Homemodel1(
+  ViewCategorysmodel(
     image: 'asset/all pets/OIP.jpg',
     name: 'Cat',
   ),
-  Homemodel1(
+  ViewCategorysmodel(
     image: 'asset/all pets/R.jpg',
     name: 'Rabbit',
   ),
-  Homemodel1(
+  ViewCategorysmodel(
     image: 'asset/all pets/clothes.jpg',
     name: 'Clothes',
   ),
-  Homemodel1(
+  ViewCategorysmodel(
     image: 'asset/all pets/toy.jpg',
     name: 'Toy',
   ),
-  // Homemodel1(
-  //   image: 'asset/all pets/food.jpg',
-  //   name: 'Food',
-  // )
+  ViewCategorysmodel(
+    image: 'asset/all pets/food.jpg',
+    name: 'Food',
+  )
 ];

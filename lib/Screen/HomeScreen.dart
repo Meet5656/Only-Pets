@@ -1,215 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/model/HomeModel..dart/HomeModel1.dart';
-import 'package:only_pets/model/HomeModel..dart/HomeModel2.dart';
-import 'package:only_pets/util/Color.dart';
+import 'package:only_pets/Screen/dashboard.dart';
 
 class homescreen extends StatefulWidget {
-  const homescreen({super.key});
+  const homescreen({
+    super.key,
+  });
 
   @override
   State<homescreen> createState() => _homescreenState();
 }
 
 class _homescreenState extends State<homescreen> {
-  int _currentIndex = 0;
+  int activeindex = 0;
+  int selectedIndex = 0;
+  //size
+  int SizeIndex = 0;
+  //build dot page
+  int currentpage = 0;
+  
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(left: 3.w, top: 1.h, right: 3.w),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              AppBar(
-                leading: Image.asset(
-                  "asset/all pets/avatarman.jpg",
-                ),
-                centerTitle: true,
-                title: Text(
-                  "Meet",
-                  style:
-                      TextStyle(fontWeight: FontWeight.w500, fontSize: 22.dp),
-                ),
-                actions: [
-                  Icon(
-                    Icons.search,
-                    size: 7.w,
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 4.h,
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.w),
-                      child: Text(
-                        "Hi Meet",
-                        style: TextStyle(
-                          fontSize: 25.dp,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.w),
-                      child: Text(
-                        "Good Morning!",
-                        style: TextStyle(
-                            fontSize: 28.dp, fontWeight: FontWeight.w300),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 2.h,
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(3.w)),
-                    child: Image.asset(
-                      "asset/all pets/banner.jpg",
-                      width: 89.w,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 2.h,
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.w),
-                      child: Text(
-                        "Categorys",
-                        style: TextStyle(
-                            fontSize: 25.dp, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 2.h,
-                  ),
-                  Container(
-                    height: 13.h,
-                    child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      // shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: face.length,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(right: 11.w, left: 3.w),
-                              child: CircleAvatar(
-                                radius: 10.w,
-                                child: ClipOval(
-                                  child: Image.asset(
-                                    face[index].image,
-                                    width: 16.w,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 8.w),
-                              child: Text(face[index].name,
-                                  style: TextStyle(fontSize: 20.dp)),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                  // Stack(
-                  //   children: [
-                  //     GridView.builder(
-                  //         shrinkWrap: true,
-                  //         physics: NeverScrollableScrollPhysics(),
-                  //         itemCount: 4,
-                  //         // scrollDirection: Axis.vertical,
-                  //         gridDelegate:
-                  //             SliverGridDelegateWithFixedCrossAxisCount(
-                  //           crossAxisCount: 2,
-                  //           // mainAxisExtent: 2,
-                  //           childAspectRatio: 1.5 / 2,
-                  //         ),
-                  //         itemBuilder: (context, index) {
-                  //           return Column(
-                  //             children: [
-                  //               Container(
-                  //                 child: Padding(
-                  //                   padding: EdgeInsets.only(
-                  //                     right: 2.w,
-                  //                     left: 2.w,
-                  //                   ),
-                  //                   child: Container(
-                  //                     height: 27.h,
-                  //                     width: 45.w,
-                  //                     decoration: BoxDecoration(
-                  //                         color: Color(0xff5b78ee),
-                  //                         // color: CustomColors.maincolor,
-                  //                         borderRadius: BorderRadius.all(
-                  //                             Radius.circular(5.w))),
-                  //                     child: Padding(
-                  //                       padding: EdgeInsets.only(
-                  //                         top: 1.5.h,
-                  //                         bottom: 8.h,
-                  //                         right: 3.w,
-                  //                         left: 3.w,
-                  //                       ),
-                  //                       child: Container(
-                  //                         decoration: BoxDecoration(
-                  //                             color: Color(0xffffe5e4),
-                  //                             borderRadius: BorderRadius.all(
-                  //                                 Radius.circular(5.w))),
-                  //                         // height: 13.h,
-                  //                         // width: 20.w,
-                  //                         child: ClipRRect(
-                  //                           borderRadius: BorderRadius.all(
-                  //                               Radius.circular(3.w)),
-                  //                           child: Image.asset(
-                  //                             image[index].image,
-                  //                             fit: BoxFit.cover,
-                  //                           ),
-                  //                         ),
-                  //                       ),
-                  //                     ),
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //             ],
-                  //           );
-                  //         }),
-                  //   ],
-                  // ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+      body: widgets.elementAt(selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        
         type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        backgroundColor: Colors.white,
-        selectedItemColor: CustomColors.maincolor,
+        currentIndex: selectedIndex,
+        // backgroundColor: Color(0xfffde2cf),
+        selectedItemColor: Colors.green,
         unselectedItemColor: Colors.black,
         selectedLabelStyle: TextStyle(color: Colors.white),
         unselectedLabelStyle: TextStyle(color: Colors.green),
         onTap: (value) {
           // Respond to item press.
-          setState(() => _currentIndex = value);
+          setState(() => selectedIndex = value);
         },
         items: [
           BottomNavigationBarItem(
@@ -232,4 +56,251 @@ class _homescreenState extends State<homescreen> {
       ),
     );
   }
+
+
+
+  List<Widget> widgets = [DashboardScreen()];
 }
+
+// class Datasearch extends SearchDelegate {
+//   List<String> Searchitem = [
+//     "apple",
+//     "banana",
+//     "mango",
+//     "orange",
+//   ];
+//   List<Widget>? buildActions(BuildContext context) {
+//     return [
+//       IconButton(
+//           onPressed: () {
+//             query = "";
+//           },
+//           icon: Icon(Icons.clear))
+//     ];
+//   }
+
+//   @override
+//   Widget? buildLeading(BuildContext context) {
+//     return IconButton(
+//         onPressed: () {
+//           close(context, null);
+//         },
+//         icon: Icon(Icons.arrow_back));
+//   }
+
+//   @override
+//   Widget buildResults(BuildContext context) {
+//     List<String> matchquery = [];
+//     for (var fruit in Searchitem) {
+//       if (fruit.toLowerCase().contains(query.toLowerCase())) ;
+//       {
+//         matchquery.add(fruit);
+//       }
+//     }
+//     return ListView.builder(
+//       itemBuilder: (context, index) {
+//         var result = matchquery[index];
+//         return ListTile(
+//           title: Text(result),
+//         );
+//       },
+//       itemCount: matchquery.length,
+//     );
+//   }
+
+//   @override
+//   Widget buildSuggestions(BuildContext context) {
+//     List<String> matchquery = [];
+//     for (var fruit in Searchitem) {
+//       if (fruit.toLowerCase().contains(query.toLowerCase())) ;
+//       {
+//         matchquery.add(fruit);
+//       }
+//     }
+//     return ListView.builder(
+//       itemBuilder: (context, index) {
+//         var result = matchquery[index];
+//         return ListTile(
+//           title: Text(result),
+//         );
+//       },
+//       itemCount: matchquery.length,
+//     );
+//   }
+// }
+
+//size code
+//  Row(
+//                                         children: [
+//                                           Padding(
+//                                             padding: EdgeInsets.only(left: 1.w),
+//                                             child: InkWell(
+//                                               onTap: () {
+//                                                 setState(() {
+//                                                   SizeIndex = 0;
+//                                                 });
+//                                               },
+//                                               child: Container(
+//                                                 height: 3.5.h,
+//                                                 width: 8.w,
+//                                                 decoration: BoxDecoration(
+//                                                     border: SizeIndex == 0
+//                                                         ? Border.all(
+//                                                             width: 0.4.w)
+//                                                         : Border.all(
+//                                                             width: 0.2.w),
+//                                                     borderRadius:
+//                                                         BorderRadius.all(
+//                                                             Radius.circular(
+//                                                                 4.w))),
+//                                                 child: Padding(
+//                                                   padding:
+//                                                       EdgeInsets.only(top: 1.w),
+//                                                   child: Text(
+//                                                     textAlign: TextAlign.center,
+//                                                     "S",
+//                                                     style: TextStyle(
+//                                                         fontSize: 14.dp),
+//                                                   ),
+//                                                 ),
+//                                               ),
+//                                             ),
+//                                           ),
+//                                           Padding(
+//                                             padding: EdgeInsets.only(left: 1.w),
+//                                             child: InkWell(
+//                                               onTap: () {
+//                                                 setState(() {
+//                                                   SizeIndex = 1;
+//                                                 });
+//                                               },
+//                                               child: Container(
+//                                                 height: 3.5.h,
+//                                                 width: 8.w,
+//                                                 decoration: BoxDecoration(
+//                                                     border: SizeIndex == 1
+//                                                         ? Border.all(
+//                                                             width: 0.4.w)
+//                                                         : Border.all(
+//                                                             width: 0.2.w),
+//                                                     borderRadius:
+//                                                         BorderRadius.all(
+//                                                             Radius.circular(
+//                                                                 4.w))),
+//                                                 child: Padding(
+//                                                   padding:
+//                                                       EdgeInsets.only(top: 1.w),
+//                                                   child: Text(
+//                                                     textAlign: TextAlign.center,
+//                                                     "M",
+//                                                     style: TextStyle(
+//                                                         fontSize: 14.dp),
+//                                                   ),
+//                                                 ),
+//                                               ),
+//                                             ),
+//                                           ),
+//                                           Padding(
+//                                             padding: EdgeInsets.only(left: 1.w),
+//                                             child: InkWell(
+//                                               onTap: () {
+//                                                 setState(() {
+//                                                   SizeIndex = 2;
+//                                                 });
+//                                               },
+//                                               child: Container(
+//                                                 height: 3.5.h,
+//                                                 width: 8.w,
+//                                                 decoration: BoxDecoration(
+//                                                     border: SizeIndex == 2
+//                                                         ? Border.all(
+//                                                             width: 0.4.w)
+//                                                         : Border.all(
+//                                                             width: 0.2.w),
+//                                                     borderRadius:
+//                                                         BorderRadius.all(
+//                                                             Radius.circular(
+//                                                                 4.w))),
+//                                                 child: Padding(
+//                                                   padding:
+//                                                       EdgeInsets.only(top: 1.w),
+//                                                   child: Text(
+//                                                     textAlign: TextAlign.center,
+//                                                     "L",
+//                                                     style: TextStyle(
+//                                                         fontSize: 14.dp),
+//                                                   ),
+//                                                 ),
+//                                               ),
+//                                             ),
+//                                           ),
+//                                           Padding(
+//                                             padding: EdgeInsets.only(left: 1.w),
+//                                             child: InkWell(
+//                                               onTap: () {
+//                                                 setState(() {
+//                                                   SizeIndex = 3;
+//                                                 });
+//                                               },
+//                                               child: Container(
+//                                                 height: 3.5.h,
+//                                                 width: 8.w,
+//                                                 decoration: BoxDecoration(
+//                                                     border: SizeIndex == 3
+//                                                         ? Border.all(
+//                                                             width: 0.4.w)
+//                                                         : Border.all(
+//                                                             width: 0.2.w),
+//                                                     borderRadius:
+//                                                         BorderRadius.all(
+//                                                             Radius.circular(
+//                                                                 4.w))),
+//                                                 child: Padding(
+//                                                   padding:
+//                                                       EdgeInsets.only(top: 1.w),
+//                                                   child: Text(
+//                                                     textAlign: TextAlign.center,
+//                                                     "XL",
+//                                                     style: TextStyle(
+//                                                         fontSize: 14.dp),
+//                                                   ),
+//                                                 ),
+//                                               ),
+//                                             ),
+//                                           ),
+//                                           Padding(
+//                                             padding: EdgeInsets.only(left: 1.w),
+//                                             child: InkWell(
+//                                               onTap: () {
+//                                                 setState(() {
+//                                                   SizeIndex = 4;
+//                                                 });
+//                                               },
+//                                               child: Container(
+//                                                 height: 3.5.h,
+//                                                 width: 8.w,
+//                                                 decoration: BoxDecoration(
+//                                                     border: SizeIndex == 4
+//                                                         ? Border.all(
+//                                                             width: 0.4.w)
+//                                                         : Border.all(
+//                                                             width: 0.2.w),
+//                                                     borderRadius:
+//                                                         BorderRadius.all(
+//                                                             Radius.circular(
+//                                                                 4.w))),
+//                                                 child: Padding(
+//                                                   padding:
+//                                                       EdgeInsets.only(top: 1.w),
+//                                                   child: Text(
+//                                                     textAlign: TextAlign.center,
+//                                                     "XXL",
+//                                                     style: TextStyle(
+//                                                         fontSize: 14.dp),
+//                                                   ),
+//                                                 ),
+//                                               ),
+//                                             ),
+//                                           ),
+//                                         ],
+//                                       )

@@ -210,9 +210,9 @@ class _loginscreenState extends State<loginscreen> {
                                           builder: (context) => homescreen(),
                                         ));
                                   }
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog());
+                                  // showDialog(
+                                  //     context: context,
+                                  //     builder: (context) => AlertDialog());
                                 },
                                 child: Text(
                                   "LOGIN",

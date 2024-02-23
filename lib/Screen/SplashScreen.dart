@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:only_pets/Screen/HomeScreen.dart';
+import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:only_pets/Screen/Onboardingscreen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,13 +17,13 @@ class _SplashScreenState extends State<SplashScreen> {
     splash();
     super.initState();
   }
-
+  
   splash() async {
     await Future.delayed(Duration(seconds: 5), () {});
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => homescreen(),
+          builder: (context) => loginscreen(),
         ));
   }
 
