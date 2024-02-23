@@ -43,6 +43,7 @@ dependencies:
   get: ^4.6.6
   animate_do: ^3.3.3
   smooth_page_indicator: ^1.1.0
+  image_picker: ^0.8.4+4
 dev_dependencies:
   flutter_test:
     sdk: flutter
