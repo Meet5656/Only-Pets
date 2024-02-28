@@ -12,7 +12,7 @@ class DogsCategoryScreen extends StatefulWidget {
   State<DogsCategoryScreen> createState() => _DogsCategoryScreenState();
 }
 
-var currentIndex = 0;
+var currentIndex = 0; 
 
 class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
   @override
@@ -21,7 +21,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
     ));
-    return Scaffold(
+    return Scaffold( 
       body: Padding(
         padding: EdgeInsets.only(top: 3.5.h),
         child: SingleChildScrollView(
