@@ -317,6 +317,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(10.h)),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.h) ,
+                      child: Image.asset('asset/Logopic.png',fit: BoxFit.cover,)),
               ),
             ),
           ),
