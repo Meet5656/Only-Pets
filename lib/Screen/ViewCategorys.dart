@@ -1,8 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/model/ViewCategoryModel.dart';
+import 'package:marquee/marquee.dart';
+import 'package:only_pets/model/HomeModel..dart/Category/ViewCategoryModel.dart';
 
 class ViewCategorys extends StatefulWidget {
   const ViewCategorys({super.key});
@@ -13,76 +15,97 @@ class ViewCategorys extends StatefulWidget {
 
 class _ViewCategorysState extends State<ViewCategorys> {
   @override
+  // bool _isPasswordValid = false;
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-      backgroundColor: Color(0xffF4C2C2),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           FadeInDown(
-            duration: Duration(milliseconds: 1800),
+            duration: Duration(
+              milliseconds: 1000,
+            ),
             child: AppBar(
+              elevation: 0,
               leadingWidth: 13.w,
-              backgroundColor: Color(0xffF4C2C2),
-              leading: Padding(
-                padding: EdgeInsets.only(left: 3.w),
-                child: Image.asset(
-                  "asset/all pets/avatarman.png",
-                  // "asset/all pets/company_logo.png",
-                ),
-              ),
+              backgroundColor: Colors.white,
               centerTitle: true,
               title: Text(
-                "View Category",
+                "Category",
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22.dp),
               ),
-              actions: [
-                Icon(
-                  CupertinoIcons.search,
-                  size: 6.w,
-                ),
-                SizedBox(
-                  width: 3.w,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 3.w),
-                  child: Icon(
-                    CupertinoIcons.cart,
-                    size: 6.w,
-                  ),
-                ),
-              ],
             ),
+          ),
+          SizedBox(
+            height: 1.h,
           ),
           FadeInRightBig(
             duration: Duration(
-              milliseconds: 1800,
+              milliseconds: 1000,
             ),
-            child: GridView.builder(
-              shrinkWrap: true,
-              itemCount: viewCategorys.length,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        right: 3.w,
-                        left: 3.w,
-                      ),
-                      child: CircleAvatar(
-                        radius: 11.w,
-                        backgroundImage: AssetImage(
-                          viewCategorys[index].image,
+            child: FadeInRight(
+              child: Expanded(
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: viewCategorys.length,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (context, index) {
+                    final categoryName = viewCategorys[index].name;
+                    final bool isLongText = categoryName.length > 15;
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: 3.w,
+                            left: 3.w,
+                          ),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 11.w,
+                            backgroundImage: AssetImage(
+                              viewCategorys[index].image,
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors
+                                      .grey, // Adjust border color as needed
+                                  width: 0.2, // Adjust border width as needed
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Text(viewCategorys[index].name,
-                        style: TextStyle(fontSize: 20.dp)),
-                  ],
-                );
-              },
+                        isLongText
+                            ? Container(
+                                height: 3.h,
+                                child: Marquee(
+                                  text: categoryName,
+                                  // scrollAxis: Axis.horizontal,
+                                  // crossAxisAlignment: CrossAxisAlignment.start,
+                                  blankSpace: 10.0,
+                                  // velocity: 100.0,
+                                  pauseAfterRound: Duration(milliseconds: 1),
+                                  showFadingOnlyWhenScrolling: true,
+                                  fadingEdgeStartFraction: 0.1,
+                                  fadingEdgeEndFraction: 0.1,
+                                  style: TextStyle(fontSize: 20.dp),
+                                ),
+                              )
+                            : Text(
+                                categoryName,
+                                style: TextStyle(fontSize: 20.dp),
+                              ),
+                      ],
+                    );
+                  },
+                ),
+              ),
             ),
           ),
         ],

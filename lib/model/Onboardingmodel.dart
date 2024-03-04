@@ -12,17 +12,18 @@ class Onboardingmodel {
 
 List<Onboardingmodel> contents = [
   Onboardingmodel(
-      image: 'asset/all pets/160644791168cc41be2d8e6713d1a42fe57dcdbbb9_thumbnail_720x.jpg',
-      title: 'Convenient use',
-      description: 'Everything for comfortable\nreading  of favorite\nbooks'),
+      image:
+          'asset/all pets/160644791168cc41be2d8e6713d1a42fe57dcdbbb9_thumbnail_720x.jpg',
+      title: 'Welcome to our app ',
+      description: 'With our app you make life of our\n funny friends happier'),
   Onboardingmodel(
       image: 'asset/all pets/karsten-winegeart-Y0nU6dqDCbY-unsplash.jpg',
-      title: 'Online listening',
+      title: 'Social for your pet',
       description:
-          'Different formats for listening\nto books with labels and\nsubtitles'),
+          'Pawsitively together pet owners and \n animal lovers from all over the country!'),
   Onboardingmodel(
       image: 'asset/all pets/karsten-winegeart-YzxeHEzBZ6I-unsplash.jpg',
-      title: 'Search',
+      title: 'Find and buy attractive items',
       description:
-          'Easy search by all\ncategories and authors from\nall over the world')
+          'Will help you order the needed \n items as soon as you are at home')
 ];

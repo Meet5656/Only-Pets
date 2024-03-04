@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/Screen/HomeScreen.dart';
 import 'package:only_pets/Screen/ResertPassword.dart';
+import 'package:only_pets/Screen/dashboard.dart';
 
 import '../util/Color.dart';
 
@@ -25,8 +26,10 @@ class _signinscreenState extends State<signinscreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-      backgroundColor:  CustomColors.maincolor,
+      backgroundColor: CustomColors.maincolor,
       body: Form(
         key: _formkey,
         child: GestureDetector(
@@ -38,7 +41,7 @@ class _signinscreenState extends State<signinscreen> {
                 left: 0,
                 right: 0,
                 child: Container(
-                   height: 20.h,
+                  height: 20.h,
                   width: double.infinity,
                   child: Image.asset(
                     "asset/hand-drawn-paw-prints-background_23-2151132904.jpg",
@@ -77,7 +80,7 @@ class _signinscreenState extends State<signinscreen> {
                             Padding(
                               padding: EdgeInsets.only(top: 4.h, left: 7.w),
                               child: Text(
-                                "Welcome Back!",
+                                "SIGN UP!",
                                 style: TextStyle(fontSize: 30.dp),
                               ),
                             ),
@@ -110,7 +113,7 @@ class _signinscreenState extends State<signinscreen> {
                                 ),
                                 hintText: 'Email',
                               ),
-                               validator: (value) {
+                              validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Enter Email id";
                                 }
@@ -152,7 +155,7 @@ class _signinscreenState extends State<signinscreen> {
                                 ),
                                 hintText: 'Passsword',
                               ),
-                               validator: (value) {
+                              validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Enter Password";
                                 } else {
@@ -188,7 +191,7 @@ class _signinscreenState extends State<signinscreen> {
                                   },
                                 ),
                               ),
-                               validator: (value) {
+                              validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Enter Password";
                                 } else {
@@ -227,30 +230,43 @@ class _signinscreenState extends State<signinscreen> {
                           padding: EdgeInsets.only(
                             left: 7.w,
                           ),
-                          child: Container(
-                            height: 5.5.h,
-                            width: 87.w,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.w))),
-                                    backgroundColor: Color(0xffc64d4c)),
-                                onPressed: () {
-                                final isValid =
-                                      _formkey.currentState!.validate();
-                                      if(!isValid){
-                                        return;
-                                      }
-                                      else{
-                                        Navigator.push(context, MaterialPageRoute(builder:(context) => homescreen(),));
-                                      }
-                                },
+                          child: InkWell(
+                            onTap: () {
+                              final isValid = _formkey.currentState!.validate();
+                              if (!isValid) {
+                                return;
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DashboardScreen(),
+                                    ));
+                              }
+                            },
+                            child: Container(
+                              height: 5.5.h,
+                              width: 87.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5.w),
+                                ),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.topLeft,
+                                  colors: [
+                                    CustomColors.maincolor,
+                                    Colors.black.withOpacity(0.6),
+                                  ],
+                                ),
+                              ),
+                              child: Center(
                                 child: Text(
                                   "SIGN UP",
                                   style: TextStyle(
                                       fontSize: 15.dp, color: Colors.white),
-                                )),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -260,13 +276,13 @@ class _signinscreenState extends State<signinscreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Don't have an account?",
+                              "have an account?",
                               style: TextStyle(
                                 fontSize: 18.dp,
                               ),
                             ),
                             Text(
-                              " Sign up",
+                              "Log in",
                               style: TextStyle(
                                   fontSize: 18.dp,
                                   color: CustomColors.maincolor),

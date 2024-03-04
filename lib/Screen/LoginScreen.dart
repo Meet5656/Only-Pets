@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/Screen/HomeScreen.dart';
 import 'package:only_pets/Screen/ResertPassword.dart';
 import 'package:only_pets/Screen/SigninScreen.dart';
+import 'package:only_pets/Screen/dashboard.dart';
 import 'package:only_pets/util/Color.dart';
 
 class loginscreen extends StatefulWidget {
@@ -189,36 +189,43 @@ class _loginscreenState extends State<loginscreen> {
                           padding: EdgeInsets.only(
                             left: 7.w,
                           ),
-                          child: Container(
-                            height: 5.5.h,
-                            width: 87.w,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.w))),
-                                    backgroundColor: Color(0xffc64d4c)),
-                                onPressed: () {
-                                  final isValid =
-                                      _formkey.currentState!.validate();
-                                  if (!isValid) {
-                                    return;
-                                  } else {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => homescreen(),
-                                        ));
-                                  }
-                                  // showDialog(
-                                  //     context: context,
-                                  //     builder: (context) => AlertDialog());
-                                },
+                          child: InkWell(
+                            onTap: () {
+                              final isValid = _formkey.currentState!.validate();
+                              if (!isValid) {
+                                return;
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DashboardScreen(),
+                                    ));
+                              }
+                            },
+                            child: Container(
+                              height: 5.5.h,
+                              width: 87.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5.w),
+                                ),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.topLeft,
+                                  colors: [
+                                    CustomColors.maincolor,
+                                    Colors.black.withOpacity(0.6),
+                                  ],
+                                ),
+                              ),
+                              child: Center(
                                 child: Text(
-                                  "LOGIN",
+                                  "LOG IN",
                                   style: TextStyle(
                                       fontSize: 15.dp, color: Colors.white),
-                                )),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
