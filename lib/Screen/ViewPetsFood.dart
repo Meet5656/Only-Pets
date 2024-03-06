@@ -14,9 +14,9 @@ class viewpetfood extends StatefulWidget {
 }
 
 class _viewpetfoodState extends State<viewpetfood> {
+  List<bool> LikedList = List.generate(view_food.length, (index) => false);
   @override
   Widget build(BuildContext context) {
-    List<bool> LikedList = List.generate(view_food.length, (index) => false);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -196,10 +196,9 @@ class _viewpetfoodState extends State<viewpetfood> {
                                       padding: EdgeInsets.only(right: 1.w),
                                       child: IconButton(
                                         onPressed: () {
-                                          setState(() {
-                                            LikedList[index] =
-                                                !LikedList[index];
-                                          });
+                                          LikedList[index] = !LikedList[index];
+                                          setState(() {});
+                                          print(LikedList[index].toString());
                                         },
                                         // style: ButtonStyle(backgroundColor: Color),
                                         color: LikedList[index]

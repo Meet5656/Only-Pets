@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/Screen/CartScreen.dart';
+import 'package:only_pets/Screen/CartScreen/CartScreen.dart';
 import 'package:only_pets/Screen/SearchScreen.dart';
 import 'package:only_pets/Screen/ViewClothesBrand.dart';
 import 'package:only_pets/Screen/ViewCategorys.dart';
