@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:only_pets/Screen/CartScreen.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/CatCategory.dart';
 import 'package:only_pets/Screen/DogsCategory.dart';
