@@ -2,7 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/Screen/dashboard.dart';
 import 'package:only_pets/model/HomeModel..dart/Treading/ViewTrendingModel.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -24,17 +23,12 @@ class _ViewTrendingState extends State<ViewTrending> {
             FadeInDown(
               duration: Duration(milliseconds: 1200),
               child: Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 2.w, top: 1.h),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DashboardScreen(),
-                            ));
+                        Navigator.of(context).pop();
                       },
                       child: Icon(
                         Icons.arrow_back,
@@ -58,7 +52,6 @@ class _ViewTrendingState extends State<ViewTrending> {
             ),
             Expanded(
               child: Container(
-                // height: 30.h,
                 child: FadeInRight(
                   duration: Duration(milliseconds: 1200),
                   child: GridView.builder(
@@ -74,7 +67,6 @@ class _ViewTrendingState extends State<ViewTrending> {
                             padding: EdgeInsets.only(
                               left: 2.w,
                               right: 2.w,
-                              // top: 1.5.h,
                             ),
                             child: Container(
                               height: 32.5.h,

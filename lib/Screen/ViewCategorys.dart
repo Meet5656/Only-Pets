@@ -29,6 +29,12 @@ class _ViewCategorysState extends State<ViewCategorys> {
             ),
             child: AppBar(
               elevation: 0,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
               leadingWidth: 13.w,
               backgroundColor: Colors.white,
               centerTitle: true,

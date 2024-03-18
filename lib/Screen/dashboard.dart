@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:only_pets/Screen/CartScreen/CartScreen.dart';
+import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/Screen/SearchScreen.dart';
 import 'package:only_pets/Screen/ViewClothesBrand.dart';
 import 'package:only_pets/Screen/ViewCategorys.dart';
@@ -69,7 +70,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Spacer(),
                     InkWell(
                       onTap: () {
-                        showSearch(context: context, delegate: searchscreen());
+                        // showSearch(context: context, delegate: Searchscreen());
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Searchscreen(),
+                            ));
                       },
                       child: Icon(
                         CupertinoIcons.search,
@@ -187,19 +193,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               ),
                             ),
                           ),
-                          // FadeInUp(
-                          //   child: AnimatedSmoothIndicator(
-                          //     activeIndex: activeindex,
-                          //     count: banner.length,
-                          //     effect: ExpandingDotsEffect(
-                          //         dotHeight: 1.6.h,
-                          //         dotWidth: 3.5.w,
-
-                          //         // strokeWidth: 1.h,
-                          //         activeDotColor: Colors.brown,
-                          //         dotColor: Colors.black12),
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
@@ -244,6 +237,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     MaterialPageRoute(
                                       builder: (context) => ViewCategorys(),
                                     ));
+                                //  Navigator.pop(context);
                               },
                               child: Text(
                                 "View All",
@@ -315,7 +309,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   width: 2.0,
                                 ))),
                                 child: Text(
-                                  "Trending ",
+                                  "Trending",
                                   style: TextStyle(
                                     fontSize: 25.dp,
                                     fontWeight: FontWeight.w400,
@@ -370,136 +364,167 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     right: 3.w,
                                     top: 1.5.h,
                                   ),
-                                  child: Container(
-                                    height: 28.h,
-                                    width: 38.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(3.w)),
-                                        border: Border.all(
-                                            width: 0.7, color: Colors.grey)),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: double.infinity,
-                                          alignment: Alignment.topCenter,
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(10.w))),
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(3.w),
-                                                topRight: Radius.circular(3.w)),
-                                            child: Image.asset(
-                                              Trending[index].image,
-                                              height: 15.h,
-                                              width: double.infinity,
-                                              fit: BoxFit.cover,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  detailscreen(
+                                                    userdata:Trending[index]
+                                                  )));
+                                    },
+                                    child: Container(
+                                      height: 28.h,
+                                      width: 38.w,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(3.w)),
+                                          border: Border.all(
+                                              width: 0.7, color: Colors.grey)),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: double.infinity,
+                                            alignment: Alignment.topCenter,
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.w))),
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(3.w),
+                                                  topRight:
+                                                      Radius.circular(3.w)),
+                                              child: Image.asset(
+                                                Trending[index].image.first,
+                                                height: 15.h,
+                                                width: double.infinity,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 0.5.h,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 1.w),
-                                          child: Text(
-                                            Trending[index].name,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14.dp),
+                                          SizedBox(
+                                            height: 0.5.h,
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 0.5.h,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsets.only(left: 1.w),
-                                                child: Text(
-                                                  Trending[index].Prise,
-                                                  style: TextStyle(
-                                                      fontSize: 20.dp,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: Colors.red),
-                                                ),
-                                              ),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 1.w),
+                                            child: Text(
+                                              Trending[index].name,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14.dp),
                                             ),
-                                            Spacer(),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: 0.1.h),
-                                              child: Icon(
-                                                CupertinoIcons.star_fill,
-                                                size: 4.w,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 0.5.w,
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(right: 1.5.w),
-                                              child: Text(
-                                                Trending[index].Rate,
-                                                style:
-                                                    TextStyle(fontSize: 16.dp),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 0.5.w,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(top: 0.7.h),
-                                              child: Container(
-                                                height: 3.h,
-                                                width: 30.w,
-                                                decoration: BoxDecoration(
-                                                    gradient: LinearGradient(
-                                                      begin: Alignment.topRight,
-                                                      end: Alignment.bottomLeft,
-                                                      colors: [
-                                                        // Colors.brown.shade300,
-                                                        Colors.black
-                                                            .withOpacity(0.6),
-                                                        CustomColors.maincolor,
-                                                      ],
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                1.w))),
+                                          ),
+                                          SizedBox(
+                                            height: 0.5.h,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Align(
+                                                alignment: Alignment.topLeft,
                                                 child: Padding(
                                                   padding: EdgeInsets.only(
-                                                      top: 0.7.w),
+                                                      left: 1.w),
                                                   child: Text(
-                                                    textAlign: TextAlign.center,
-                                                    "Add Cart",
+                                                    Trending[index].Prise,
                                                     style: TextStyle(
-                                                        fontSize: 15.dp,
-                                                        color: Colors.white),
+                                                        fontSize: 20.dp,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.red),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                              Spacer(),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: 0.1.h),
+                                                child: Icon(
+                                                  CupertinoIcons.star_fill,
+                                                  size: 4.w,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 0.5.w,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    right: 1.5.w),
+                                                child: Text(
+                                                  Trending[index].Rate,
+                                                  style: TextStyle(
+                                                      fontSize: 16.dp),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 0.5.w,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    EdgeInsets.only(top: 0.7.h),
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              detailscreen(
+                                                            userdata: Trending[index]
+                                                          ),
+                                                        ));
+                                                  },
+                                                  child: Container(
+                                                    height: 3.h,
+                                                    width: 30.w,
+                                                    decoration: BoxDecoration(
+                                                        gradient:
+                                                            LinearGradient(
+                                                          begin: Alignment
+                                                              .topRight,
+                                                          end: Alignment
+                                                              .bottomLeft,
+                                                          colors: [
+                                                            // Colors.brown.shade300,
+                                                            Colors.black
+                                                                .withOpacity(
+                                                                    0.6),
+                                                            CustomColors
+                                                                .maincolor,
+                                                          ],
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    1.w))),
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: 0.7.w),
+                                                      child: Text(
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        "Add Cart",
+                                                        style: TextStyle(
+                                                            fontSize: 15.dp,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -822,7 +847,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       height: 2.5.h,
                     ),
 
-                    // ----------------------------------------
                     Container(
                       height: 28.h,
                       child: Stack(
@@ -1020,10 +1044,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
       width: activeindex == index ? 6.w : 3.w,
       margin: EdgeInsets.only(right: 8),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: activeindex == index
-              ? CustomColors.maincolor
-              : Color(0xffF9DDDE)),
+        borderRadius: BorderRadius.circular(20),
+        color: activeindex == index
+            // ? CustomColors.maincolor
+            ? Colors.black
+            // : Color(0xffF9DDDE)
+            : Colors.black26,
+      ),
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/Screen/dashboard.dart';
 import 'package:only_pets/model/HomeModel..dart/Pets_Food/ViewPetsFoodModel.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -30,11 +29,7 @@ class _viewpetfoodState extends State<viewpetfood> {
                     padding: EdgeInsets.only(left: 2.w, top: 1.h),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DashboardScreen(),
-                            ));
+                        Navigator.of(context).pop();
                       },
                       child: Icon(
                         Icons.arrow_back,

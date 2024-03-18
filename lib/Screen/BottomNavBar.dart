@@ -12,31 +12,43 @@ class Bottomnavigatorbar extends StatefulWidget {
 
 class _BottomnavigatorbarState extends State<Bottomnavigatorbar> {
   Color IconColor = Colors.white;
-  int selectedIndex = 0;
-  // GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    DashboardScreen(),
+    Text("Category"),
+    Text("Home"),
+    Text("Profile"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.white,
-          color: Colors.pink.shade50,
-          animationDuration: Duration(milliseconds: 300),
-          buttonBackgroundColor: Colors.pink.shade50,
-          items: [
-            Icon(
-              CupertinoIcons.home,
-            ),
-            Icon(
-              CupertinoIcons.square_grid_2x2,
-            ),
-            Icon(
-              CupertinoIcons.heart,
-            ),
-            Icon(
-              CupertinoIcons.person,
-            ),
-          ]),
-      body: DashboardScreen(),
+        index: _selectedIndex,
+        backgroundColor: Colors.white,
+        color: Colors.pink.shade50,
+        animationDuration: Duration(milliseconds: 300),
+        buttonBackgroundColor: Colors.pink.shade50,
+        items: [
+          Icon(
+            CupertinoIcons.home,
+          ),
+          Icon(
+            CupertinoIcons.square_grid_2x2,
+          ),
+          Icon(
+            CupertinoIcons.heart,
+          ),
+          Icon(
+            CupertinoIcons.person,
+          ),
+        ],
+        onTap: (index) => setState(() {
+          _selectedIndex = index;
+        }),
+      ),
+      body: _pages[_selectedIndex],
     );
   }
 
