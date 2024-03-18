@@ -11,16 +11,19 @@ class Data {
 
 List<Data> datas = [
   Data(
-    image: 'asset/dogs_banner_pic1.jpeg',
+    image: 'asset/Dog_Category_pic/bannerpic1.jpg',
   ),
   Data(
-    image: 'asset/dogs_banner_pic2.jpg',
+    image: 'asset/Dog_Category_pic/bannerpic2.webp',
   ),
   Data(
-    image: 'asset/dogs_banner_pic3.jpg',
+    image: 'asset/Dog_Category_pic/bannerpic3.jpg',
   ),
   Data(
-    image: 'asset/dogs_banner_pic4.jpeg',
+    image: 'asset/Dog_Category_pic/bannerpic4.webp',
+  ),
+   Data(
+    image: 'asset/Dog_Category_pic/bannerpic5.png',
   ),
 ];
 
@@ -39,33 +42,33 @@ class Data2 {
 
 List<Data2> datas2 = [
   Data2(
-      image: 'asset\Foodpic.jpg',
-      gradientStartColor: Color.fromARGB(255, 173, 200, 194).withOpacity(0.8),
+      image: 'asset/all pets/clothes-removebg-preview.png',
+      gradientStartColor: Color(0xfffaedcb),
       gradientEndColor: Colors.white,
       title: 'Clothing &\nAccessories'),
   Data2(
-      image: 'asset\Toyspic.webp',
-      gradientStartColor: Color(0xff4ac1e1).withOpacity(0.6),
+      image: 'asset/Food_Brand/drools.png',
+      gradientStartColor: Color(0xffc9e4de),
       gradientEndColor: Colors.white,
       title: 'Food'),
   Data2(
-      image: '',
-      gradientStartColor: Color(0xffffe5d4).withOpacity(0.6),
+      image: 'asset/all pets/toy.jpg',
+      gradientStartColor: Color(0xffc6def1),
       gradientEndColor: Colors.white,
       title: 'Toys'),
   Data2(
-      image: '',
-      gradientStartColor: Color.fromARGB(255, 254, 237, 0).withOpacity(0.6),
+      image: 'asset/all pets/category7.png',
+      gradientStartColor: Color(0xffdbcdf0),
       gradientEndColor: Colors.white,
       title: 'Grooming'),
   Data2(
-      image: '',
-      gradientStartColor: Color(0xff4ac1e1).withOpacity(0.6),
+      image: 'asset/all pets/Crates.png',
+      gradientStartColor: Color(0xfff2c6de),
       gradientEndColor: Colors.white,
       title: 'Crates\n& Beds'),
   Data2(
-      image: '',
-      gradientStartColor: Color.fromARGB(255, 254, 237, 0).withOpacity(0.6),
+      image: 'asset/all pets/leash,collar,harness.png',
+      gradientStartColor: Color(0xfff7d9c4),
       gradientEndColor: Colors.white,
       title: 'Leash,Collar\n&Accessories'),
 ];
@@ -118,20 +121,20 @@ class Data4 {
 
 List<Data4> datas4 = [
   Data4(
-      image: 'asset/Dog_Category_pic/Dog_Cartun_pic1.jpeg',
-      color: Color(0xff5054fe),
+      image: 'asset/Dog_Category_pic/dog_cartoon_pic2.avif',
+      color: Color.fromARGB(255, 149, 150, 241),
       title: 'Unlees new adventures\nwith our toy range!',
       title2: 'Discover toys'),
   Data4(
-      image: 'asset/Dog_Category_pic/dog_cartoon_pic3.jpeg',
-      color: Colors.amberAccent,
-      title: 'Pick the seasons\n fresh style!',
+      image: 'asset/Dog_Category_pic/dog_cartoon_pic4.png',
+      color: Color.fromARGB(255, 235, 212, 129),
+      title: 'Pick the seasons\nfresh style!',
       title2: 'Discover accessories'),
   Data4(
-      image: 'asset/Dog_Category_pic/dog_cartoon_pic1.jpeg',
-      color: Colors.pinkAccent,
+      image: 'asset/Dog_Category_pic/dog_cartoon_pic1.jpg',
+      color: const Color.fromARGB(255, 210, 134, 159),
       title: 'Find what is new\nin the Daggo world!',
-      title2: 'Discover'),
+      title2: 'Discover food'),
 ];
 
 class Data5 {

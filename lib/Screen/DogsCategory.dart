@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/model/HomeModel..dart/BrandModel.dart';
 import 'package:only_pets/model/HomeModel..dart/DogsCategoryList.dart';
 import 'package:only_pets/util/Color.dart';
+
+import '../model/HomeModel..dart/Clothes_Brand/ClothesBrandModel.dart';
 
 class DogsCategoryScreen extends StatefulWidget {
   const DogsCategoryScreen({super.key});
@@ -39,7 +40,10 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_back_ios)),
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        size: 7.w,
+                      )),
                 ),
                 Center(
                   child: CarouselSlider(
@@ -116,7 +120,9 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                       itemCount: 6,
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3, mainAxisExtent: 21.h),
+                          crossAxisCount: 3,
+                          mainAxisExtent: 21.h,
+                          crossAxisSpacing: 1.w),
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
@@ -136,16 +142,20 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                             datas2[index].gradientEndColor,
                                           ],
                                         ),
+                                        border: Border.all(
+                                            width: 0.1.w, color: Colors.grey),
                                         borderRadius:
-                                            BorderRadius.circular(5.w)),
+                                            BorderRadius.circular(6.5.w)),
                                     child: Image.asset(
-                                      "asset/Foodpic.jpg",
+                                      datas2[index].image,
                                     ),
                                   ),
                                   Text(
                                     datas2[index].title,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 13.dp),
+                                    style: TextStyle(
+                                        fontSize: 15.dp,
+                                        fontWeight: FontWeight.w500),
                                   )
                                 ],
                               ),
@@ -189,13 +199,15 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                       return Stack(
                         children: [
                           Container(
-                            height: 15.h,
+                            height: 20.h,
                             width: double.infinity,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20.w),
                                   topRight: Radius.circular(20.w),
                                 ),
+                                border: Border.all(
+                                    width: 0.0.w, color: Colors.grey),
                                 color: Color(0xffe3efff)),
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
@@ -203,13 +215,12 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                   topRight: Radius.circular(20.w)),
                               child: Image.asset(
                                 datas3[index].image,
-                                height: 2.h,
-                                fit: BoxFit.cover,
+                                height: 1.h,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 12.h),
+                            padding: EdgeInsets.only(top: 13.8.h),
                             child: Container(
                               height: 3.h,
                               width: double.infinity,
@@ -240,80 +251,113 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                 height: 5.h,
               ),
               Center(
-                child: CarouselSlider(
-                  items: datas4.map((data) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            child: Container(
-                              height: 5.h,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4.w),
-                                color: data.color,
-                              ),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(4.w),
-                                          bottomLeft: Radius.circular(4.w)),
-                                      child: Image.asset(data.image)),
-                                  SizedBox(
-                                    width: 5.w,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        data.title,
-                                        style: TextStyle(
-                                          fontSize: 17.dp,
-                                          fontWeight: FontWeight.w500,
+                child: Container(
+                  height: 14.h,
+                  color: Colors.white,
+                  child: CarouselSlider(
+                    items: datas4.map((data) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: 12.h,
+                            child: Stack(children: [
+                              Positioned(
+                                top: 3.5.h,
+                                child: Container(
+                                    height: 8.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    // margin:
+                                    //  EdgeInsets.symmetric(horizontal: 1.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(4.w),
+                                        color: data.color,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 10.w),
+                                        child: Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  data.title,
+                                                  style: TextStyle(
+                                                      fontSize: 15.dp,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Colors.white),
+                                                ),
+                                                SizedBox(
+                                                  height: 0.5.h,
+                                                ),
+                                                Container(
+                                                  height: 1.5.h,
+                                                  width: 25.w,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.w),
+                                                      color: Colors.white),
+                                                  child: Center(
+                                                    child: Text(
+                                                      data.title2,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize: 2.w),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
                                         ),
                                       ),
-                                      Container(
-                                        height: 2.h,
-                                        width: 20.w,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10.w),
-                                            color: Colors.white),
-                                        child: Text(
-                                          data.title2,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
+                                    )),
                               ),
-                            ));
+                              Positioned(
+                                left: 52.w,
+                                top: 0,
+                                child: Container(
+                                    height: 15.h,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(4.w)),
+                                    child: Image.asset(
+                                      data.image,
+                                      height: 50.h,
+                                    )),
+                              )
+                            ]),
+                          );
+                        },
+                      );
+                    }).toList(),
+                    options: CarouselOptions(
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          currentIndex2 = index;
+                        });
                       },
-                    );
-                  }).toList(),
-                  options: CarouselOptions(
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        currentIndex2 = index;
-                      });
-                    },
-                    height: 9.h,
-                    aspectRatio: 16 / 9,
-                    viewportFraction: 0.8,
-                    initialPage: 0,
-                    enableInfiniteScroll: true,
-                    reverse: false,
-                    autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 3),
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enlargeCenterPage: true,
-                    scrollDirection: Axis.horizontal,
+                      height: 14.h,
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 0.8,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+                    ),
                   ),
                 ),
               ),
@@ -326,6 +370,15 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                   children: List.generate(
                       datas4.length, (index) => buildDot2(index, context)),
                 ),
+              ),
+              SizedBox(
+                height: 1.5.h,
+              ),
+              Divider(
+                color: Colors.black,
+                thickness: 0.1.w,
+                indent: 6.w,
+                endIndent: 6.w,
               ),
               SizedBox(
                 height: 1.5.h,
@@ -378,51 +431,15 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                   },
                 ),
               ),
-              Stack(children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 3.5.w, right: 3.5.w),
-                  child: Container(
-                    height: 40.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xfff27597),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 5.w, top: 5.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Gentel care for all the",
-                              style: TextStyle(
-                                  fontSize: 21.dp, color: Colors.white)),
-                          Text("VIPs(VERY IMPORTANT POOCHES)",
-                              style: TextStyle(
-                                  fontSize: 22.dp,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w800)),
-                          // Image.asset(""),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Container(
-                            height: 2.h,
-                            width: 20.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
-                            ),
-                            child: Text("Book Now",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 13.dp, color: Color(0xfff27597))),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ]),
+              SizedBox(
+                height: 1.5.h,
+              ),
+              Divider(
+                color: Colors.black,
+                thickness: 0.1.w,
+                indent: 6.w,
+                endIndent: 6.w,
+              ),
               SizedBox(
                 height: 1.5.h,
               ),
@@ -450,13 +467,10 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                             height: 18.h,
                             width: 42.w,
                             decoration: BoxDecoration(
-                                // color: Color(0xfff0edeb),
-                                // color: Colors.deepOrange.shade400,
                                 gradient: LinearGradient(
                                   begin: Alignment.topRight,
                                   end: Alignment.bottomLeft,
                                   colors: [
-                                    // Colors.brown.shade300,
                                     Colors.black.withOpacity(0.6),
                                     CustomColors.maincolor,
                                   ],
@@ -489,7 +503,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                 ),
               ),
               SizedBox(
-                height: 10.h,
+                height: 4.h,
               ),
               Padding(
                 padding: EdgeInsets.only(left: 10.w),
@@ -507,14 +521,44 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 15.h,
-              ),
               Container(
-                height: 15.h,
-                width: double.infinity,
-                color: Color(0xff22409a),
-              )
+                height: 25.h,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      bottom: 0,
+                      child: Container(
+                        height: 10.h,
+                        width: double.infinity,
+                        color: Color(0xff22409a),
+                      ),
+                    ),
+                    Positioned(
+                      left: 10.w,
+                      bottom: 1.h,
+                      child: Container(
+                          height: 35.h,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4.w)),
+                          child: Image.asset(
+                            'asset/Dog_Category_pic/dog_pic.png',
+                            height: 20.h,
+                          )),
+                    ),
+                    Positioned(
+                      right: 50.w,
+                      child: Container(
+                          height: 20.h,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4.w)),
+                          child: Image.asset(
+                            'asset/Dog_Category_pic/food_pic.png',
+                            height: 20.h,
+                          )),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
