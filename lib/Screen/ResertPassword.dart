@@ -145,7 +145,7 @@ class _resertpasswordState extends State<resertpassword> {
                                 ),
                                 hintText: 'Confirm Password',
                               ),
-                               validator: (value) {
+                              validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Enter New Password";
                                 } else {
@@ -158,29 +158,67 @@ class _resertpasswordState extends State<resertpassword> {
                         SizedBox(
                           height: 4.h,
                         ),
-                        Container(
-                          height: 5.5.h,
-                          width: 87.w,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.w))),
-                                  backgroundColor: Color(0xffc64d4c)),
-                              onPressed: () {
-                                final isValid =
-                                    _formkey.currentState!.validate();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => otpscreen(),
-                                    ));
-                              },
+                        // Container(
+                        //   height: 5.5.h,
+                        //   width: 87.w,
+                        //   child: ElevatedButton(
+                        //       style: ElevatedButton.styleFrom(
+                        //           shape: RoundedRectangleBorder(
+                        //               borderRadius: BorderRadius.all(
+                        //                   Radius.circular(2.w))),
+                        //           backgroundColor: Color(0xffc64d4c)),
+                        //       onPressed: () {
+                        //         final isValid =
+                        //             _formkey.currentState!.validate();
+                        //         Navigator.push(
+                        //             context,
+                        //             MaterialPageRoute(
+                        //               builder: (context) => otpscreen(),
+                        //             ));
+                        //       },
+                        //       child: Text(
+                        //         "CHANGE PASSWORD",
+                        //         style: TextStyle(
+                        //             fontSize: 15.dp, color: Colors.white),
+                        //       )),
+                        // ),
+                        InkWell(
+                          onTap: () {
+                            final isValid = _formkey.currentState!.validate();
+                            if (!isValid) {
+                              return;
+                            } else {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => otpscreen(),
+                                  ));
+                            }
+                          },
+                          child: Container(
+                            height: 5.5.h,
+                            width: 87.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5.w),
+                              ),
+                              gradient: LinearGradient(
+                                begin: Alignment.topRight,
+                                end: Alignment.topLeft,
+                                colors: [
+                                  CustomColors.maincolor,
+                                  Colors.black.withOpacity(0.6),
+                                ],
+                              ),
+                            ),
+                            child: Center(
                               child: Text(
                                 "CHANGE PASSWORD",
                                 style: TextStyle(
                                     fontSize: 15.dp, color: Colors.white),
-                              )),
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),

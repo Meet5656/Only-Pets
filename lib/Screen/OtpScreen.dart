@@ -12,8 +12,11 @@ class otpscreen extends StatefulWidget {
 }
 
 class _otpscreenState extends State<otpscreen> {
+  
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
         backgroundColor: CustomColors.maincolor,
         body: GestureDetector(
@@ -118,8 +121,38 @@ class _otpscreenState extends State<otpscreen> {
                                       style: TextStyle(
                                         fontSize: 18.dp,
                                       )),
-                          
                                 ],
+                              ),
+                              SizedBox(
+                                height: 5.h,
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  height: 5.5.h,
+                                  width: 87.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(5.w),
+                                    ),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      end: Alignment.topLeft,
+                                      colors: [
+                                        CustomColors.maincolor,
+                                        Colors.black.withOpacity(0.6),
+                                      ],
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "SUBMIT",
+                                      style: TextStyle(
+                                          fontSize: 15.dp,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ],
                           ),

@@ -4,8 +4,9 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:only_pets/Screen/DogsCategory.dart';
 import 'package:only_pets/Screen/EditProfileScreen.dart';
-import 'package:only_pets/Screen/HomeScreen.dart';
 import 'package:only_pets/Screen/ProfileScreen.dart';
+import 'package:get/get.dart';
+import 'package:only_pets/Screen/BottomNavBar.dart';
 
 void main() {
   runApp(const MyApp());

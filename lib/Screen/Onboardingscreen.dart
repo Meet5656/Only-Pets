@@ -90,7 +90,7 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                   Text(
                                     contents[i].title,
                                     style: TextStyle(
-                                        fontSize: 22.dp,
+                                        fontSize: 23.dp,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -103,7 +103,7 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                       contents[i].description,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontSize: 25.dp,
+                                        fontSize: 22.dp,
                                         color: Colors.white,
                                       ),
                                     ),

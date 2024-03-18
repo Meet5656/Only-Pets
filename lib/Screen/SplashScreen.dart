@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:lottie/lottie.dart';
-import 'package:only_pets/Screen/HomeScreen.dart';
-import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:only_pets/Screen/Onboardingscreen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,26 +17,45 @@ class _SplashScreenState extends State<SplashScreen> {
     splash();
     super.initState();
   }
-  
+
   splash() async {
     await Future.delayed(Duration(seconds: 5), () {});
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => loginscreen(),
+          builder: (context) => onboardingscreen(),
         ));
   }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
         backgroundColor: Colors.white,
         body: Container(
+            decoration: BoxDecoration(
+                // gradient: LinearGradient(
+                //   begin: Alignment.topRight,
+                //   end: Alignment.bottomLeft,
+                //   colors: [
+                //     // Colors.black,
+                //     // Colors.brown.shade300,
+                //     // Colors.white.withOpacity(0.6),
+                //     // CustomColors.maincolor,
+                //   ],
+                // ),
+                ),
             child: Center(
+              child: ColorFiltered(
+                colorFilter: ColorFilter.mode(Colors.black,
+                    BlendMode.srcIn), // Set the desired color here
                 child: Lottie.asset(
-          "asset/Animation - 1706447955741.json",
-          height: 200,
-          width: 200,
-        ))));
+                  "asset/Splash_Screen_animation.json",
+                  height: 30.h,
+                  width: 40.w,
+                ),
+              ),
+            )));
   }
 }

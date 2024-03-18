@@ -33,5 +33,14 @@ List<ViewCategorysmodel> viewCategorys = [
   ViewCategorysmodel(
     image: 'asset/all pets/food.jpg',
     name: 'Food',
-  )
+  ),
+  ViewCategorysmodel(
+    image: 'asset/all pets/category7.png',
+    name: 'Grooming',
+  ),
+  ViewCategorysmodel(
+      image: "asset/all pets/leash,collar,harness.png",
+      name: "leash,collar,harness"),
+  ViewCategorysmodel(
+      image: "asset/all pets/beds2jpg.jpg", name: "Crates & Beds")
 ];
