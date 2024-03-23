@@ -3,12 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
-import 'package:only_pets/Screen/CatCategory.dart';
-import 'package:only_pets/Screen/DogsCategory.dart';
-import 'package:only_pets/Screen/SplashScreen.dart';
+import 'package:only_pets/Screen/CheckoutScreen.dart';
+import 'package:only_pets/Screen/OrderScreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp()); 
 }
 
 class MyApp extends StatelessWidget {
@@ -28,12 +27,13 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:  DogsCategoryScreen(),
+       
         builder: (context, child) {
           return MediaQuery(
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
               child: child!);
         },
+        home: checkoutscreen()
       );
     });
   }

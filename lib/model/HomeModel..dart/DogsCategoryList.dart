@@ -11,19 +11,19 @@ class Data {
 
 List<Data> datas = [
   Data(
-    image: 'asset/Dog_Category_pic/bannerpic1.jpg',
+    image: 'asset/Dog_Category_pic/Banner_pic/bannerpic1.jpg',
   ),
   Data(
-    image: 'asset/Dog_Category_pic/bannerpic2.webp',
+    image: 'asset/Dog_Category_pic/Banner_pic/bannerpic2.webp',
   ),
   Data(
-    image: 'asset/Dog_Category_pic/bannerpic3.jpg',
+    image: 'asset/Dog_Category_pic/Banner_pic/bannerpic3.jpg',
   ),
   Data(
-    image: 'asset/Dog_Category_pic/bannerpic4.webp',
+    image: 'asset/Dog_Category_pic/Banner_pic/bannerpic4.webp',
   ),
    Data(
-    image: 'asset/Dog_Category_pic/bannerpic5.png',
+    image: 'asset/Dog_Category_pic/Banner_pic/bannerpic5.png',
   ),
 ];
 
@@ -116,7 +116,7 @@ class Data4 {
       {required this.image,
       required this.color,
       required this.title,
-      required this.title2});
+      required this.title2}); 
 }
 
 List<Data4> datas4 = [
@@ -149,23 +149,23 @@ class Data5 {
 
 List<Data5> datas5 = [
   Data5(
-    image: 'asset/Dog_Category_pic/labrador_dog_pic.webp',
+    image: 'asset/Dog_Category_pic/Breeds_pic/labrador_dog_pic.webp',
     title: 'Labrador retriever',
   ),
   Data5(
-    image: 'asset/Dog_Category_pic/Beagle_dog_pic.webp',
+    image: 'asset/Dog_Category_pic/Breeds_pic/Beagle_dog_pic.webp',
     title: 'Beagle',
   ),
   Data5(
-    image: 'asset/Dog_Category_pic/Siberian huskiy_pic.webp',
+    image: 'asset/Dog_Category_pic/Breeds_pic/Siberian huskiy_pic.webp',
     title: 'Siberian husky',
   ),
   Data5(
-    image: 'asset/Dog_Category_pic/germanDog_pic.jpg',
+    image: 'asset/Dog_Category_pic/Breeds_pic/germanDog_pic.jpg',
     title: 'German shepherd',
   ),
   Data5(
-    image: 'asset/Dog_Category_pic/GoldenRitrieverpic.jpeg',
+    image: 'asset/Dog_Category_pic/Breeds_pic/GoldenRitrieverpic.jpeg',
     title: 'Golden retriever',
   ),
 ];

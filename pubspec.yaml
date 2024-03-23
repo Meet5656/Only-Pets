@@ -50,6 +50,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   like_button: ^2.0.5
   curved_navigation_bar: ^1.0.3
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -75,15 +76,24 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - asset/
     - asset/all pets/
     - asset/Brand_image/
     - asset/Dog_Category_pic/
-    - asset/
+    - asset/Dog_Category_pic/Banner_pic/
+    - asset/Dog_Category_pic/Breeds_pic/
     - asset/Food_Brand/
     - asset/Cat_Category_pic/
+    - asset/Cat_Category_pic/Banners_pic/
+    - asset/Cat_Category_pic/Brands_pic/
+    - asset/Cat_Category_pic/Breeds_pic/
     - asset/Pets_Food/
     - asset/Trending_View/
     - asset/Trending_View/Multi_Image/
+    - asset/Rabbit_Category_pic/
+    - asset/Rabbit_Category_pic/Brand/
+    - asset/Rabbit_Category_pic/breeds/
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

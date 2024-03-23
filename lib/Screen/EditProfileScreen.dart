@@ -26,7 +26,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Uint8? _image;
   File? selectedImage;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,22 +64,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             ).image,
                           ),
                         )
-                      //  Container(
-                      //   height: 5.h,
-                      //   width: 22.w,
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(10.w),
-                      //   ),
-                      //   child: Image.file(selectedImage!,fit: BoxFit.cover,),
-                      //  )
                       : CircleAvatar(
                           backgroundColor: Color.fromARGB(255, 255, 255, 255),
                           radius: profileHeight / 2,
                           child: CircleAvatar(
                             radius: profileHeight / 2 - 5,
-                            backgroundImage: Image.asset(
-                                    'asset/hand-drawn-paw-prints-background_23-2151132904.jpg')
-                                .image,
+                            backgroundImage:
+                                Image.asset('asset/paw-print_882909-3.jpg')
+                                    .image,
                           ),
                         ),
                   Padding(
@@ -95,10 +86,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             onPressed: () {
                               shwoImagePickerOption(context);
                             },
-                            icon: Icon(
-                              Icons.add_a_photo_outlined,
-                              size: 4.w,
-                              color: Colors.white,
+                            icon: Center(
+                              child: Icon(
+                                Icons.edit,
+                                size: 3.5.w,
+                                color: Colors.white,
+                              ),
                             ))),
                   )
                 ]),
@@ -111,7 +104,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Name',
+                        'Firts Name',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontSize: 18.dp, fontWeight: FontWeight.w400),
@@ -121,17 +114,25 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       Container(
                         child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.name,
+                            validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Please enter Frist Name';
+                                    }
+                                    return null;
+                                  },
                           decoration: InputDecoration(
+                             contentPadding: EdgeInsets.symmetric(
+                                horizontal: 5.w, vertical: 4.w),
                             border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2.w)),
+                                  BorderRadius.all(Radius.circular(7.w)),
                             ),
-                            hintText: 'Enter Name',
+                            hintText: 'Enter Firts Name',
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Color(0xffc64d4c), width: 0.2.h),
-                              borderRadius: BorderRadius.circular(2.w),
+                              borderRadius: BorderRadius.circular(7.w),
                             ),
                           ),
                         ),
@@ -140,7 +141,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         height: 3.h,
                       ),
                       Text(
-                        'Lastname',
+                        'Last Name',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontSize: 18.dp, fontWeight: FontWeight.w400),
@@ -150,17 +151,25 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       Container(
                         child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.name,
+                            validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Please enter Last Name';
+                                    }
+                                    return null;
+                                  },
                           decoration: InputDecoration(
+                             contentPadding: EdgeInsets.symmetric(
+                                horizontal: 5.w, vertical: 4.w),
                             border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2.w)),
+                                  BorderRadius.all(Radius.circular(7.w)),
                             ),
-                            hintText: 'Enter Lastname',
+                            hintText: 'Enter Last Name',
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Color(0xffc64d4c), width: 0.2.h),
-                              borderRadius: BorderRadius.circular(2.w),
+                              borderRadius: BorderRadius.circular(4.w),
                             ),
                           ),
                         ),
@@ -179,31 +188,30 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       Container(
                         child: TextFormField(
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Enter Email id";
-                            }
-                            bool isValid =
-                                RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
-                                    .hasMatch(value);
-
-                            if (!isValid) {
-                              return 'Enter a valid email address';
+                          keyboardType: TextInputType.emailAddress,
+                           validator: (value) {
+                            String pattern =
+                                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+                            RegExp regExp = new RegExp(pattern);
+                            if (value!.isEmpty) {
+                              return 'Please enter Email';
+                            } else if (!regExp.hasMatch(value)) {
+                              return 'Please enter a valid Email';
                             }
                             return null;
                           },
-                          controller: email,
-                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
+                             contentPadding: EdgeInsets.symmetric(
+                                horizontal: 5.w, vertical: 4.w),
                             border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2.w)),
+                                  BorderRadius.all(Radius.circular(7.w)),
                             ),
                             hintText: 'Enter Email ',
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Color(0xffc64d4c), width: 0.2.h),
-                              borderRadius: BorderRadius.circular(2.w),
+                              borderRadius: BorderRadius.circular(7.w),
                             ),
                           ),
                         ),
@@ -222,17 +230,29 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       Container(
                         child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.number,
+                           validator: (value) {
+                            String pattern = r'^(?:[+0]9)?[0-9]{10}$';
+                            RegExp regExp = new RegExp(pattern);
+                            if (value!.isEmpty) {
+                              return 'Please enter Phone no.';
+                            } else if (!regExp.hasMatch(value)) {
+                              return 'Please enter a valid Phone no.';
+                            }
+                            return null;
+                          },
                           decoration: InputDecoration(
+                             contentPadding: EdgeInsets.symmetric(
+                                horizontal: 5.w, vertical: 4.w),
                             border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2.w)),
+                                  BorderRadius.all(Radius.circular(7.w)),
                             ),
                             hintText: 'Enter Phone no.',
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Color(0xffc64d4c), width: 0.2.h),
-                              borderRadius: BorderRadius.circular(2.w),
+                              borderRadius: BorderRadius.circular(7.w),
                             ),
                           ),
                         ),
@@ -241,27 +261,29 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         height: 10.5.h,
                       ),
                       InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ProfileScreen(),
-                              ));
+                         onTap: () {
+                          if ( formkey.currentState!.validate()) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProfileScreen(),
+                                ));
+                          }
                         },
                         child: Container(
                           height: 5.7.h,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular((3.w)),
-                             gradient: LinearGradient(
-                                                begin: Alignment.topRight,
-                                                end: Alignment.bottomLeft,
-                                                colors: [
-                                                  // Colors.brown.shade300,
-                                                  Colors.black.withOpacity(0.6),
-                                                  CustomColors.maincolor,
-                                                ],
-                                              ),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                // Colors.brown.shade300,
+                                Colors.black.withOpacity(0.6),
+                                CustomColors.maincolor,
+                              ],
+                            ),
                           ),
                           child: Center(
                             child: Text(
@@ -296,7 +318,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             padding: EdgeInsets.all(10.w),
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 12,
+              height: MediaQuery.of(context).size.height / 11,
               child: Row(
                 children: [
                   Expanded(
