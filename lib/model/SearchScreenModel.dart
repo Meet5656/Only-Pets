@@ -32,14 +32,14 @@ List<SearchScreenModel> Search_Data = [
       Prise: "₹930",
       Rate: "4.5"),
   SearchScreenModel(
-      image: "asset/all pets/catfirst.jpg",
-      name: "PETSIN Checkered Print Pet Hoodie",
+      image:   "asset/all pets/618q5cVCIpL._SX679_.jpg",
+      name: "Lulala Pet Shirts Printed Puppy Shirts Cute cat",
       size: "",
       Prise: "₹630",
       Rate: "4.5"),
   SearchScreenModel(
-      image: "asset/all pets/catfore.jpg",
-      name: "Himalayan Checkered Pet Sweater",
+      image: "asset/all pets/il_794xN.3596101936_2yof.avif",
+      name: "Cat Clothes | Cat Surgery Recovery Suit After Surgery",
       size: "",
       Prise: "₹250",
       Rate: "4.5"),

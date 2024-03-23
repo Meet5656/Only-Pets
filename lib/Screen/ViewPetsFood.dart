@@ -42,7 +42,9 @@ class _viewpetfoodState extends State<viewpetfood> {
                     child: Text(
                       "Pets Food",
                       style: TextStyle(
-                          fontWeight: FontWeight.w500, fontSize: 22.dp),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 22.dp,
+                          fontFamily: "Alegreya"),
                     ),
                   ),
                 ],
@@ -68,12 +70,21 @@ class _viewpetfoodState extends State<viewpetfood> {
                           ),
                           child: Container(
                             height: 30.5.h,
-                            width: 45.w,
+                            width: 44.w,
                             decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(3.w)),
-                                border:
-                                    Border.all(width: 0.7, color: Colors.grey)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(3.w),
+                              ),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey, // Shadow color
+                                  spreadRadius: 0.1.w, // Spread radius
+                                  blurRadius: 0.4.w, // Blur radius
+                                  offset: Offset(0, 1.3),
+                                ),
+                              ],
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -89,7 +100,7 @@ class _viewpetfoodState extends State<viewpetfood> {
                                           topLeft: Radius.circular(3.w),
                                           topRight: Radius.circular(3.w)),
                                       child: Image.asset(
-                                        view_food[index].image,
+                                        view_food[index].image[index],
                                         height: 15.h,
                                         // width: double.infinity,
                                         fit: BoxFit.cover,
@@ -108,8 +119,9 @@ class _viewpetfoodState extends State<viewpetfood> {
                                     softWrap: false,
                                     view_food[index].name,
                                     style: TextStyle(
+                                        fontFamily: "medium",
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 14.dp),
+                                        fontSize: 16.dp),
                                   ),
                                 ),
                                 SizedBox(
@@ -124,7 +136,8 @@ class _viewpetfoodState extends State<viewpetfood> {
                                         child: Text(
                                           view_food[index].Prise,
                                           style: TextStyle(
-                                              fontSize: 20.dp,
+                                              fontFamily: "medium",
+                                              fontSize: 21.dp,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.red),
                                         ),
@@ -146,13 +159,16 @@ class _viewpetfoodState extends State<viewpetfood> {
                                       padding: EdgeInsets.only(right: 1.5.w),
                                       child: Text(
                                         view_food[index].Rate,
-                                        style: TextStyle(fontSize: 16.dp),
+                                        style: TextStyle(
+                                          fontSize: 18.dp,
+                                          fontFamily: "medium",
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 2.w,
+                                  height: 1.w,
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -181,6 +197,7 @@ class _viewpetfoodState extends State<viewpetfood> {
                                             textAlign: TextAlign.center,
                                             "Add Cart",
                                             style: TextStyle(
+                                                fontFamily: "medium",
                                                 fontSize: 15.dp,
                                                 color: Colors.white),
                                           ),

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:image_picker/image_picker.dart';
@@ -25,7 +24,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final double profileHeight = 144;
   Uint8? _image;
   File? selectedImage;
-
 
   @override
   Widget build(BuildContext context) {
@@ -253,15 +251,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular((3.w)),
-                             gradient: LinearGradient(
-                                                begin: Alignment.topRight,
-                                                end: Alignment.bottomLeft,
-                                                colors: [
-                                                  // Colors.brown.shade300,
-                                                  Colors.black.withOpacity(0.6),
-                                                  CustomColors.maincolor,
-                                                ],
-                                              ),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                // Colors.brown.shade300,
+                                Colors.black.withOpacity(0.6),
+                                CustomColors.maincolor,
+                              ],
+                            ),
                           ),
                           child: Center(
                             child: Text(

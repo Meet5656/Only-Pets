@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/model/HomeModel..dart/Treading/ViewTrendingModel.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -39,9 +40,12 @@ class _ViewTrendingState extends State<ViewTrending> {
                   Padding(
                     padding: EdgeInsets.only(left: 27.5.w, top: 1.h),
                     child: Text(
-                      "HomeScreen",
+                      "Trending Screen",
                       style: TextStyle(
-                          fontWeight: FontWeight.w500, fontSize: 22.dp),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 22.dp,
+                        fontFamily: "Alegreya",
+                      ),
                     ),
                   ),
                 ],
@@ -59,7 +63,7 @@ class _ViewTrendingState extends State<ViewTrending> {
                     scrollDirection: Axis.vertical,
                     itemCount: viewTrending.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, childAspectRatio: 5 / 7.5),
+                        crossAxisCount: 2, childAspectRatio: 5 / 6.9),
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
@@ -69,34 +73,53 @@ class _ViewTrendingState extends State<ViewTrending> {
                               right: 2.w,
                             ),
                             child: Container(
-                              height: 32.5.h,
+                              height: 29.5.h,
                               width: 45.w,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.w)),
-                                  border: Border.all(
-                                      width: 0.7, color: Colors.grey)),
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(3.w)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey, // Shadow color
+                                    spreadRadius: 0.1.w, // Spread radius
+                                    blurRadius: 0.4.w, // Blur radius
+                                    offset: Offset(0, 1.3),
+                                  ),
+                                ],
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(9.0),
-                                    child: Container(
-                                      height: 17.h,
-                                      // width: double.infinity,
-                                      alignment: Alignment.topCenter,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10.w))),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(3.w),
-                                            topRight: Radius.circular(3.w)),
-                                        child: Image.asset(
-                                          viewTrending[index].image,
-                                          // height: 17.h,
-                                          width: double.infinity,
-                                          // fit: BoxFit.cover,
+                                    padding: EdgeInsets.all(1.w),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  detailscreen(
+                                                      userdata:
+                                                          viewTrending[index]),
+                                            ));
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        alignment: Alignment.topCenter,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10.w))),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(3.w),
+                                              topRight: Radius.circular(3.w)),
+                                          child: Image.asset(
+                                            viewTrending[index].image.first,
+                                            height: 15.h,
+                                            width: double.infinity,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),

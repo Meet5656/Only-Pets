@@ -23,7 +23,7 @@ List<Homemodel1> face = [
     name: 'Rabbit',
   ),
   Homemodel1(
-    image: 'asset/all pets/clothes.jpg',
+    image: 'asset/all pets/clothes-removebg-preview (2).png',
     name: 'Clothes',
   ),
   Homemodel1(

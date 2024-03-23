@@ -522,7 +522,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                 ),
               ),
               Container(
-                height: 25.h,
+                height: 30.h,
                 child: Stack(
                   children: [
                     Positioned(

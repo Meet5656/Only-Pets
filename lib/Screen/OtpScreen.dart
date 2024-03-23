@@ -12,7 +12,6 @@ class otpscreen extends StatefulWidget {
 }
 
 class _otpscreenState extends State<otpscreen> {
-  
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -66,8 +65,9 @@ class _otpscreenState extends State<otpscreen> {
                                     child: Text(
                                       "Verification Code",
                                       style: TextStyle(
-                                          fontSize: 23.dp,
-                                          fontWeight: FontWeight.w500),
+                                        fontSize: 30.dp,
+                                        fontFamily: "Alegreya",
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -80,8 +80,9 @@ class _otpscreenState extends State<otpscreen> {
                                   child: Text(
                                     "Type the Verification code\nwe've sent you",
                                     style: TextStyle(
-                                        fontSize: 16.dp,
-                                        fontWeight: FontWeight.w400),
+                                        fontSize: 18.dp,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "Alegreya"),
                                   ),
                                 ),
                               ),
@@ -97,8 +98,9 @@ class _otpscreenState extends State<otpscreen> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   defaultPinTheme: PinTheme(
                                       textStyle: TextStyle(
-                                          fontSize: 19.dp,
-                                          fontWeight: FontWeight.w500),
+                                          fontSize: 21.dp,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: "Alegreya"),
                                       height: 6.h,
                                       width: 6.h,
                                       decoration: BoxDecoration(
@@ -119,8 +121,8 @@ class _otpscreenState extends State<otpscreen> {
                                 children: [
                                   Text("Didn't you receive any code",
                                       style: TextStyle(
-                                        fontSize: 18.dp,
-                                      )),
+                                          fontSize: 18.dp,
+                                          fontFamily: "Alegreya")),
                                 ],
                               ),
                               SizedBox(
@@ -148,8 +150,9 @@ class _otpscreenState extends State<otpscreen> {
                                     child: Text(
                                       "SUBMIT",
                                       style: TextStyle(
-                                          fontSize: 15.dp,
-                                          color: Colors.white),
+                                          fontSize: 17.dp,
+                                          color: Colors.white,
+                                          fontFamily: "Alegreya"),
                                     ),
                                   ),
                                 ),

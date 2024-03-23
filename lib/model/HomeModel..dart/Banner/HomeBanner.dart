@@ -18,7 +18,6 @@ List<HomeBanner> banner = [
     image: 'asset/all pets/banner3.jpg',
   ),
   HomeBanner(
-    image:
-        'asset/all pets/banner4jpg.jpg',
+    image: 'asset/all pets/banner4jpg.jpg',
   )
 ];

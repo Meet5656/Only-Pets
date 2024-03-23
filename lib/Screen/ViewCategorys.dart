@@ -39,17 +39,20 @@ class _ViewCategorysState extends State<ViewCategorys> {
               backgroundColor: Colors.white,
               centerTitle: true,
               title: Text(
-                "Category",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22.dp),
+                "Category Screen",
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22.dp,
+                    fontFamily: "Alegreya"),
               ),
             ),
           ),
           SizedBox(
             height: 1.h,
           ),
-          FadeInRightBig(
+          FadeInRight(
             duration: Duration(
-              milliseconds: 1000,
+              milliseconds: 1200,
             ),
             child: FadeInRight(
               child: Expanded(
@@ -65,23 +68,28 @@ class _ViewCategorysState extends State<ViewCategorys> {
                     return Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(
-                            right: 3.w,
-                            left: 3.w,
-                          ),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 11.w,
-                            backgroundImage: AssetImage(
-                              viewCategorys[index].image,
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Colors
-                                      .grey, // Adjust border color as needed
-                                  width: 0.2, // Adjust border width as needed
+                          padding: EdgeInsets.only(left: 3.w, right: 2.w),
+                          child: Container(
+                            height: 11.h,
+                            width: 24.w,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.w)),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    blurRadius: 0.3.w,
+                                    // spreadRadius: 0.1.w
+                                  ),
+                                ]),
+                            child: Padding(
+                              padding: EdgeInsets.all(0.5.w),
+                              child: CircleAvatar(
+                                // radius: 8.w,s
+                                backgroundColor: Colors.white,
+                                backgroundImage: AssetImage(
+                                  viewCategorys[index].image,
                                 ),
                               ),
                             ),
@@ -100,12 +108,18 @@ class _ViewCategorysState extends State<ViewCategorys> {
                                   showFadingOnlyWhenScrolling: true,
                                   fadingEdgeStartFraction: 0.1,
                                   fadingEdgeEndFraction: 0.1,
-                                  style: TextStyle(fontSize: 20.dp),
+                                  style: TextStyle(
+                                      fontSize: 20.dp,
+                                      fontFamily: "Alegreya",
+                                      fontWeight: FontWeight.w600),
                                 ),
                               )
                             : Text(
                                 categoryName,
-                                style: TextStyle(fontSize: 20.dp),
+                                style: TextStyle(
+                                    fontSize: 20.dp,
+                                    fontFamily: "medium",
+                                    fontWeight: FontWeight.w600),
                               ),
                       ],
                     );

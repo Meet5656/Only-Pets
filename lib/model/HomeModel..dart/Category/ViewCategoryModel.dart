@@ -23,7 +23,7 @@ List<ViewCategorysmodel> viewCategorys = [
     name: 'Rabbit',
   ),
   ViewCategorysmodel(
-    image: 'asset/all pets/clothes.jpg',
+    image: 'asset/all pets/clothes-removebg-preview (2).png',
     name: 'Clothes',
   ),
   ViewCategorysmodel(

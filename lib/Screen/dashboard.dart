@@ -8,8 +8,8 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:only_pets/Screen/CartScreen/CartScreen.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/Screen/SearchScreen.dart';
-import 'package:only_pets/Screen/ViewClothesBrand.dart';
 import 'package:only_pets/Screen/ViewCategorys.dart';
+import 'package:only_pets/Screen/ViewClothesBrand.dart';
 import 'package:only_pets/Screen/ViewFoodBrand.dart';
 import 'package:only_pets/Screen/ViewPetsFood.dart';
 import 'package:only_pets/Screen/ViewTrending.dart';
@@ -17,8 +17,8 @@ import 'package:only_pets/model/HomeModel..dart/Banner/HomeBanner.dart';
 import 'package:only_pets/model/HomeModel..dart/Category/CategorysModel.dart';
 import 'package:only_pets/model/HomeModel..dart/Clothes_Brand/ClothesBrandModel.dart';
 import 'package:only_pets/model/HomeModel..dart/Food_Brand/FoodBrand.dart';
-import 'package:only_pets/model/HomeModel..dart/Pets_Food/PertsFoodModel.dart';
-import 'package:only_pets/model/HomeModel..dart/Treading/TrendingModel.dart';
+import 'package:only_pets/model/HomeModel..dart/Pets_Food/ViewPetsFoodModel.dart';
+import 'package:only_pets/model/HomeModel..dart/Treading/ViewTrendingModel.dart';
 import 'package:only_pets/util/Color.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -47,24 +47,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Column(
           children: [
             FadeInDown(
-              duration: Duration(milliseconds: 1800),
+              duration: Duration(milliseconds: 1200),
               child: Container(
-                height: 5.h,
+                height: 6.h,
                 child: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 3.w),
+                      padding: EdgeInsets.only(
+                        left: 2.w,
+                      ),
                       child: Image.asset(
-                        "asset/all pets/avatarman.png",
-                        height: 4.5.h,
+                        "asset/all pets/mylogo.png",
+                        height: 10.h,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 22.w),
+                      padding: EdgeInsets.only(left: 20.w),
                       child: Text(
-                        "HomeScreen",
+                        "Home Screen",
                         style: TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 22.dp),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 23.dp,
+                            fontFamily: "Alegreya"),
                       ),
                     ),
                     Spacer(),
@@ -113,8 +117,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     SizedBox(
                       height: 1.h,
                     ),
-                    FadeInRight(
-                      duration: Duration(milliseconds: 1800),
+                    FadeInDown(
+                      duration: Duration(milliseconds: 1200),
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
@@ -122,15 +126,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           child: Text(
                             "Hi Meet",
                             style: TextStyle(
-                              fontSize: 25.dp,
-                              fontWeight: FontWeight.w500,
-                            ),
+                                fontSize: 25.dp,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Alegreya"),
                           ),
                         ),
                       ),
                     ),
-                    FadeInRight(
-                      duration: Duration(milliseconds: 1800),
+                    FadeInDown(
+                      duration: Duration(milliseconds: 1200),
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
@@ -138,7 +142,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           child: Text(
                             "Good Morning!",
                             style: TextStyle(
-                                fontSize: 28.dp, fontWeight: FontWeight.w300),
+                                fontSize: 28.dp,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: "medium"),
                           ),
                         ),
                       ),
@@ -178,13 +184,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 1.5.h,
+                            height: 1.h,
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 0.5.h),
                             child: Container(
                               child: FadeInRight(
-                                duration: Duration(milliseconds: 1800),
+                                duration: Duration(milliseconds: 1200),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: List.generate(banner.length,
@@ -197,37 +203,46 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 1.h,
+                      height: 0.5.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         FadeInRight(
-                          duration: Duration(milliseconds: 1800),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 3.w),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                  color: Colors.black,
-                                  width: 2.0,
-                                ))),
-                                child: Text(
-                                  "Categorys",
-                                  style: TextStyle(
-                                    fontSize: 25.dp,
-                                    fontWeight: FontWeight.w400,
-                                    decorationThickness: 1,
+                          duration: Duration(milliseconds: 1200),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 3.w),
+                                  child: Text(
+                                    "Categories",
+                                    style: TextStyle(
+                                      fontFamily: "medium",
+                                      fontSize: 28.dp,
+                                      fontWeight: FontWeight.w400,
+                                      decorationThickness: 1,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.w),
+                                child: Container(
+                                  width: 16.w,
+                                  height: 0.3.h,
+                                  decoration: BoxDecoration(
+                                      color: Colors.brown,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(9.w))),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         FadeInRight(
+                          duration: Duration(milliseconds: 1200),
                           child: Padding(
                             padding: EdgeInsets.only(right: 1.w),
                             child: TextButton(
@@ -242,8 +257,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               child: Text(
                                 "View All",
                                 style: TextStyle(
+                                  fontFamily: "medium",
                                   color: Colors.black,
-                                  fontSize: 18.dp,
+                                  fontSize: 20.dp,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -256,105 +272,135 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       height: 2.h,
                     ),
                     FadeInDown(
-                      duration: Duration(
-                        milliseconds: 1800,
-                      ),
-                      child: Container(
-                        height: 14.h,
-                        child: ListView.builder(
-                          physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: face.length,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      EdgeInsets.only(left: 3.w, right: 2.w),
-                                  child: CircleAvatar(
-                                    radius: 11.w,
-                                    backgroundImage: AssetImage(
-                                      face[index].image,
-                                    ),
+                        duration: Duration(
+                          milliseconds: 1200,
+                        ),
+                        child: Container(
+                          height: 15.h,
+                          child: ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: face.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 3.w, right: 2.w),
                                     child: Container(
+                                      height: 11.h,
+                                      width: 24.w,
                                       decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              width: 0.w, color: Colors.grey)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20.w)),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey, // Shadow color
+                                            spreadRadius:
+                                                0.1.w, // Spread radius
+                                            blurRadius: 0.4.w, // Blur radius
+                                            offset: Offset(0, 1.3),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(0.5.w),
+                                        child: CircleAvatar(
+                                          // radius: 8.w,s
+                                          backgroundColor: Colors.white,
+                                          backgroundImage: AssetImage(
+                                            face[index].image,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Text(face[index].name,
-                                    style: TextStyle(fontSize: 20.dp)),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                    ),
+                                  Text(face[index].name,
+                                      style: TextStyle(
+                                          fontSize: 20.dp,
+                                          fontFamily: "medium")),
+                                ],
+                              );
+                            },
+                          ),
+                        )),
                     FadeInRight(
-                      duration: Duration(milliseconds: 1800),
+                      duration: Duration(milliseconds: 1200),
                       child: Align(
                         alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 3.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                  color: Colors.black,
-                                  width: 2.0,
-                                ))),
-                                child: Text(
-                                  "Trending",
-                                  style: TextStyle(
-                                    fontSize: 25.dp,
-                                    fontWeight: FontWeight.w400,
-                                    //  decorationThickness: 2.0,
-                                  ),
-                                ),
-                              ),
-                              FadeInRight(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 1.w),
-                                  child: TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ViewTrending()));
-                                    },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 3.w),
                                     child: Text(
-                                      "View All",
+                                      "Trending",
                                       style: TextStyle(
-                                        fontSize: 18.dp,
+                                        fontFamily: "medium",
+                                        fontSize: 28.dp,
                                         fontWeight: FontWeight.w400,
-                                        color: Colors.black,
+                                        decorationThickness: 1,
                                       ),
                                     ),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 4.w),
+                                  child: Container(
+                                    width: 16.w,
+                                    height: 0.3.h,
+                                    decoration: BoxDecoration(
+                                        color: Colors.brown,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(9.w))),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            FadeInRight(
+                              duration: Duration(milliseconds: 1200),
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 1.w),
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ViewTrending()));
+                                  },
+                                  child: Text(
+                                    "View All",
+                                    style: TextStyle(
+                                      fontFamily: "medium",
+                                      fontSize: 18.dp,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
                     SizedBox(
                       height: 1.h,
                     ),
-                    Container(
-                      height: 31.h,
-                      child: FadeInUpBig(
-                        duration: Duration(milliseconds: 1800),
+                    FadeInUp(
+                      duration: Duration(milliseconds: 1200),
+                      child: Container(
+                        height: 31.h,
                         child: ListView.builder(
+                          itemCount: 6,
                           scrollDirection: Axis.horizontal,
                           physics: BouncingScrollPhysics(),
-                          itemCount: Trending.length,
                           itemBuilder: (context, index) {
                             return Column(
                               children: [
@@ -369,39 +415,51 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  detailscreen(
-                                                    userdata:Trending[index]
-                                                  )));
+                                            builder: (context) => detailscreen(
+                                              userdata: viewTrending[index],
+                                            ),
+                                          ));
                                     },
                                     child: Container(
-                                      height: 28.h,
+                                      height: 28.5.h,
                                       width: 38.w,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(3.w)),
-                                          border: Border.all(
-                                              width: 0.7, color: Colors.grey)),
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(3.w),
+                                        ),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey, // Shadow color
+                                            spreadRadius: 0.1.w, // Spread radius
+                                            blurRadius: 0.4.w, // Blur radius
+                                            offset: Offset(0, 1.3),
+                                          ),
+                                        ],
+                                      ),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Container(
-                                            width: double.infinity,
-                                            alignment: Alignment.topCenter,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(10.w))),
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(3.w),
-                                                  topRight:
-                                                      Radius.circular(3.w)),
-                                              child: Image.asset(
-                                                Trending[index].image.first,
-                                                height: 15.h,
-                                                width: double.infinity,
-                                                fit: BoxFit.cover,
+                                          Padding(
+                                            padding: EdgeInsets.all(1.w),
+                                            child: Container(
+                                              width: double.infinity,
+                                              alignment: Alignment.topCenter,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(10.w))),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(3.w),
+                                                    topRight:
+                                                        Radius.circular(3.w)),
+                                                child: Image.asset(
+                                                  viewTrending[index].image.first,
+                                                  height: 15.h,
+                                                  width: double.infinity,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -411,10 +469,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                           Padding(
                                             padding: EdgeInsets.only(left: 1.w),
                                             child: Text(
-                                              Trending[index].name,
+                                              viewTrending[index].name,
+                                              maxLines: 2,
                                               style: TextStyle(
+                                                  fontFamily: "medium",
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 14.dp),
+                                                  fontSize: 15.dp),
                                             ),
                                           ),
                                           SizedBox(
@@ -425,11 +485,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               Align(
                                                 alignment: Alignment.topLeft,
                                                 child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 1.w),
+                                                  padding:
+                                                      EdgeInsets.only(left: 1.w),
                                                   child: Text(
-                                                    Trending[index].Prise,
+                                                    viewTrending[index].Prise,
                                                     style: TextStyle(
+                                                        fontFamily: "medium",
                                                         fontSize: 20.dp,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -451,18 +512,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                 width: 0.5.w,
                                               ),
                                               Padding(
-                                                padding: EdgeInsets.only(
-                                                    right: 1.5.w),
+                                                padding:
+                                                    EdgeInsets.only(right: 1.5.w),
                                                 child: Text(
-                                                  Trending[index].Rate,
+                                                  viewTrending[index].Rate,
                                                   style: TextStyle(
-                                                      fontSize: 16.dp),
+                                                    fontSize: 16.dp,
+                                                    fontFamily: "medium",
+                                                  ),
                                                 ),
                                               ),
                                             ],
-                                          ),
-                                          SizedBox(
-                                            height: 0.5.w,
                                           ),
                                           Row(
                                             mainAxisAlignment:
@@ -470,7 +530,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                             children: [
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(top: 0.7.h),
+                                                    EdgeInsets.only(top: 0.3.h),
                                                 child: InkWell(
                                                   onTap: () {
                                                     Navigator.push(
@@ -478,7 +538,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                         MaterialPageRoute(
                                                           builder: (context) =>
                                                               detailscreen(
-                                                            userdata: Trending[index]
+                                                            userdata:
+                                                                viewTrending[
+                                                                    index],
                                                           ),
                                                         ));
                                                   },
@@ -486,17 +548,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                     height: 3.h,
                                                     width: 30.w,
                                                     decoration: BoxDecoration(
-                                                        gradient:
-                                                            LinearGradient(
-                                                          begin: Alignment
-                                                              .topRight,
+                                                        gradient: LinearGradient(
+                                                          begin:
+                                                              Alignment.topRight,
                                                           end: Alignment
                                                               .bottomLeft,
                                                           colors: [
                                                             // Colors.brown.shade300,
                                                             Colors.black
-                                                                .withOpacity(
-                                                                    0.6),
+                                                                .withOpacity(0.6),
                                                             CustomColors
                                                                 .maincolor,
                                                           ],
@@ -513,9 +573,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                             TextAlign.center,
                                                         "Add Cart",
                                                         style: TextStyle(
+                                                            fontFamily: "medium",
                                                             fontSize: 15.dp,
-                                                            color:
-                                                                Colors.white),
+                                                            color: Colors.white),
                                                       ),
                                                     ),
                                                   ),
@@ -541,51 +601,63 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       duration: Duration(milliseconds: 1800),
                       child: Align(
                         alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 3.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                  color: Colors.black,
-                                  width: 2.0,
-                                ))),
-                                child: Text(
-                                  "Clothes Brand ",
-                                  style: TextStyle(
-                                    fontSize: 25.dp,
-                                    fontWeight: FontWeight.w400,
-                                    //  decorationThickness: 2.0,
-                                  ),
-                                ),
-                              ),
-                              FadeInRight(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 1.w),
-                                  child: TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  viewclothesbrand()));
-                                    },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 3.w),
                                     child: Text(
-                                      "View All",
+                                      "Clothes Brand",
                                       style: TextStyle(
-                                        fontSize: 18.dp,
+                                        fontFamily: "medium",
+                                        fontSize: 28.dp,
                                         fontWeight: FontWeight.w400,
-                                        color: Colors.black,
+                                        decorationThickness: 1,
                                       ),
                                     ),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 17.w),
+                                  child: Container(
+                                    width: 16.w,
+                                    height: 0.3.h,
+                                    decoration: BoxDecoration(
+                                        color: Colors.brown,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(9.w))),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            FadeInRight(
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 1.w),
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                viewclothesbrand()));
+                                  },
+                                  child: Text(
+                                    "View All",
+                                    style: TextStyle(
+                                      fontFamily: "medium",
+                                      fontSize: 18.dp,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
@@ -595,7 +667,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       height: 1.h,
                       indent: 0.3.h,
                       endIndent: 0.3.h,
-                      thickness: 0.2,
+                      thickness: 0.3,
                     ),
                     SizedBox(
                       height: 2.h,
@@ -603,10 +675,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     FadeInUp(
                       duration: Duration(milliseconds: 1800),
                       child: Container(
-                        // color: Color(0xfffde2cf),
-                        // color: Color(0xfffde2cf),
-                        // color: Color(0xffe0cdfb),
-                        height: 40.h,
+                        height: 42.h,
                         child: GridView.builder(
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: Brandname.length,
@@ -625,42 +694,66 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     height: 18.h,
                                     width: 42.w,
                                     decoration: BoxDecoration(
-                                        // color: Color(0xfff0edeb),
-                                        // color: Colors.deepOrange.shade400,
-                                        // color: Color(0xffc7ebe1),
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topRight,
-                                          end: Alignment.bottomLeft,
-                                          colors: [
-                                            Colors.black.withOpacity(0.8),
-                                            CustomColors.maincolor,
-                                            // CustomColors.maincolor,
-                                          ],
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20.w),
+                                        topRight: Radius.circular(20.w),
+                                      ),
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey,
+                                          spreadRadius: 1,
+                                          blurRadius: 3,
+                                          // offset: Offset(0, 3),
                                         ),
-                                        color: Color.fromARGB(255, 42, 41, 41),
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20.w),
-                                          topRight: Radius.circular(20.w),
-                                        )),
+                                      ],
+                                    ),
                                     child: Padding(
-                                      padding: EdgeInsets.only(
-                                          top: 1.5.h,
-                                          right: 3.w,
-                                          left: 3.w,
-                                          bottom: 3.h),
+                                      padding: EdgeInsets.all(1.w),
                                       child: Container(
+                                        height: 18.h,
+                                        width: 42.w,
                                         decoration: BoxDecoration(
-                                            color: Colors.white,
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topRight,
+                                              end: Alignment.bottomLeft,
+                                              colors: [
+                                                Colors.black.withOpacity(0.8),
+                                                CustomColors.maincolor,
+                                                // CustomColors.maincolor,
+                                              ],
+                                            ),
+                                            color:
+                                                Color.fromARGB(255, 42, 41, 41),
                                             borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(18.w),
-                                              topRight: Radius.circular(18.w),
-                                              bottomLeft: Radius.circular(6.w),
-                                              bottomRight: Radius.circular(6.w),
+                                              topLeft: Radius.circular(20.w),
+                                              topRight: Radius.circular(20.w),
                                             )),
                                         child: Padding(
-                                          padding: EdgeInsets.all(1.h),
-                                          child: Image.asset(
-                                              Brandname[index].image),
+                                          padding: EdgeInsets.only(
+                                              top: 1.5.h,
+                                              right: 3.w,
+                                              left: 3.w,
+                                              bottom: 3.h),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(18.w),
+                                                  topRight:
+                                                      Radius.circular(18.w),
+                                                  bottomLeft:
+                                                      Radius.circular(6.w),
+                                                  bottomRight:
+                                                      Radius.circular(6.w),
+                                                )),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(1.h),
+                                              child: Image.asset(
+                                                  Brandname[index].image),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -672,15 +765,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
+
                     Divider(
                       color: Colors.grey,
                       height: 1.h,
                       indent: 0.3.h,
                       endIndent: 0.3.h,
-                      thickness: 0.2,
+                      thickness: 0.3,
                     ),
                     SizedBox(
                       height: 1.h,
@@ -690,27 +781,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       children: [
                         FadeInRight(
                           duration: Duration(milliseconds: 1800),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 3.w),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                  color: Colors.black,
-                                  width: 2.0,
-                                ))),
-                                child: Text(
-                                  "Food Brand",
-                                  style: TextStyle(
-                                    fontSize: 25.dp,
-                                    fontWeight: FontWeight.w400,
-                                    //  decorationThickness: 2.0,
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 3.w),
+                                  child: Text(
+                                    "Food Brand",
+                                    style: TextStyle(
+                                      fontFamily: "medium",
+                                      fontSize: 28.dp,
+                                      fontWeight: FontWeight.w400,
+                                      decorationThickness: 1,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 10.w),
+                                child: Container(
+                                  width: 16.w,
+                                  height: 0.3.h,
+                                  decoration: BoxDecoration(
+                                      color: Colors.brown,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(9.w))),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         FadeInRight(
@@ -727,6 +826,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               child: Text(
                                 "View All",
                                 style: TextStyle(
+                                  fontFamily: "medium",
                                   fontSize: 18.dp,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black,
@@ -751,34 +851,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             padding: EdgeInsets.only(left: 3.w, right: 2.w),
                             child: Column(
                               children: [
-                                ClipPath(
-                                  clipper: DiagonalRoundedEdgesMessageClipper(
-                                    MessageType.receive,
-                                    // bubbleRadius:,
-                                    // position: 90,
-                                    // holeRadius: 40,
-                                  ),
-                                  child: Container(
-                                    height: 16.h,
-                                    width: 35.w,
-                                    decoration: BoxDecoration(
-                                      color: CustomColors.maincolor,
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topRight,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          // Color(0xff14919B).withOpacity(0.6),
-                                          // Color(0xff0B6477).withOpacity(0.2)
-                                          // ----------------------------------
-                                          // Color(0xff213A57).withOpacity(0.5),
-                                          Color(0xff0AD1C8),
-                                          Color(0xff213A57),
-                                          // CustomColors.maincolor,
-                                        ],
-                                      ),
+                                Container(
+                                  child: ClipPath(
+                                    clipper: DiagonalRoundedEdgesMessageClipper(
+                                      MessageType.receive,
+                                      // bubbleRadius:,
+                                      // position: 90,
+                                      // holeRadius: 40,
                                     ),
-                                    child: Image.asset(
-                                      food[index].image,
+                                    child: Container(
+                                      height: 16.h,
+                                      width: 35.w,
+                                      decoration: BoxDecoration(
+                                        color: CustomColors.maincolor,
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topRight,
+                                          end: Alignment.bottomRight,
+                                          colors: [
+                                            Color(0xff0AD1C8),
+                                            Color(0xff213A57),
+                                            // CustomColors.maincolor,
+                                          ],
+                                        ),
+                                      ),
+                                      child: Image.asset(
+                                        food[index].image,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -798,24 +896,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           duration: Duration(milliseconds: 1800),
                           child: Align(
                             alignment: Alignment.topLeft,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 3.w),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                  color: Colors.black,
-                                  width: 2.0,
-                                ))),
-                                child: Text(
-                                  "Pets Foods",
-                                  style: TextStyle(
-                                    fontSize: 25.dp,
-                                    fontWeight: FontWeight.w400,
-                                    //  decorationThickness: 2.0,
+                            child: Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 3.w),
+                                    child: Text(
+                                      "Pets Foods",
+                                      style: TextStyle(
+                                        fontFamily: "medium",
+                                        fontSize: 28.dp,
+                                        fontWeight: FontWeight.w400,
+                                        decorationThickness: 1,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 7.w),
+                                  child: Container(
+                                    width: 16.w,
+                                    height: 0.3.h,
+                                    decoration: BoxDecoration(
+                                        color: Colors.brown,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(9.w))),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -833,6 +942,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               child: Text(
                                 "View All",
                                 style: TextStyle(
+                                  fontFamily: "medium",
                                   fontSize: 18.dp,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black,
@@ -844,11 +954,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 2.5.h,
+                      height: 1.h,
                     ),
-
                     Container(
-                      height: 28.h,
+                      height: 30.h,
                       child: Stack(
                         children: [
                           FadeInUpBig(
@@ -856,127 +965,153 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               physics: BouncingScrollPhysics(),
-                              itemCount: foodpets.length,
+                              itemCount: 6,
                               itemBuilder: (context, index) {
                                 return Column(
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(
-                                        left: 3.w,
-                                        right: 3.w,
-                                      ),
-                                      child: Container(
-                                        height: 27.h,
-                                        width: 38.w,
-                                        decoration: BoxDecoration(
+                                          left: 3.w, right: 3.w, top: 1.5.h),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    detailscreen(
+                                                        userdata: view_food[
+                                                            index]),
+                                              ));
+                                        },
+                                        child: Container(
+                                          height: 26.h,
+                                          width: 38.w,
+                                          decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(3.w)),
-                                            border: Border.all(
-                                                width: 0.7,
-                                                color: Colors.grey)),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(top: 1.h),
-                                              child: Container(
-                                                width: double.infinity,
-                                                alignment: Alignment.topCenter,
-                                                decoration: BoxDecoration(
+                                              Radius.circular(3.w),
+                                            ),
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color:
+                                                    Colors.grey, // Shadow color
+                                                spreadRadius:
+                                                    0.1.w, // Spread radius
+                                                blurRadius:
+                                                    0.4.w, // Blur radius
+                                                offset: Offset(0, 1.3),
+                                              ),
+                                            ],
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    EdgeInsets.only(top: 1.h),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  alignment:
+                                                      Alignment.topCenter,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10.w))),
+                                                  child: ClipRRect(
                                                     borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                10.w))),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  3.w),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  3.w)),
-                                                  child: Image.asset(
-                                                    foodpets[index].image,
-                                                    height: 12.h,
-                                                    // width: double.infinity,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 0.5.h,
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 1.w),
-                                              child: Text(
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                foodpets[index].name,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14.dp),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 0.5.h,
-                                            ),
-                                            Row(
-                                              children: [
-                                                Align(
-                                                  alignment: Alignment.topLeft,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 1.w),
-                                                    child: Text(
-                                                      foodpets[index].Prise,
-                                                      style: TextStyle(
-                                                          fontSize: 20.dp,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.red),
+                                                        BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    3.w),
+                                                            topRight: Radius
+                                                                .circular(3.w)),
+                                                    child: Image.asset(
+                                                      view_food[index]
+                                                          .image.first,
+                                                      height: 12.h,
+
+                                                      // width: double.infinity,
+                                                      fit: BoxFit.cover,
                                                     ),
                                                   ),
                                                 ),
-                                                Spacer(),
-                                                Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 0.1.h),
-                                                  child: Icon(
-                                                    CupertinoIcons.star_fill,
-                                                    size: 4.w,
-                                                    color: Colors.grey,
+                                              ),
+                                              SizedBox(
+                                                height: 0.5.h,
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    EdgeInsets.only(left: 1.w),
+                                                child: Text(
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  view_food[index].name,
+                                                  style: TextStyle(
+                                                      fontFamily: "medium",
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 15.dp),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 0.5.h,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.topLeft,
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 1.w),
+                                                      child: Text(
+                                                        view_food[index].Prise,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "medium",
+                                                            fontSize: 20.dp,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: Colors.red),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 0.5.w,
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.only(
-                                                      right: 1.5.w),
-                                                  child: Text(
-                                                    foodpets[index].Rate,
-                                                    style: TextStyle(
-                                                        fontSize: 16.dp),
+                                                  Spacer(),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        bottom: 0.1.h),
+                                                    child: Icon(
+                                                      CupertinoIcons.star_fill,
+                                                      size: 4.w,
+                                                      color: Colors.grey,
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: 2.w,
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 0.7.h),
-                                                  child: Container(
+                                                  SizedBox(
+                                                    width: 0.5.w,
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        right: 1.5.w),
+                                                    child: Text(
+                                                      view_food[index].Rate,
+                                                      style: TextStyle(
+                                                          fontFamily: "medium",
+                                                          fontSize: 16.dp),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 1.w,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
                                                     height: 3.h,
                                                     width: 30.w,
                                                     decoration: BoxDecoration(
@@ -1007,16 +1142,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                             TextAlign.center,
                                                         "Add Cart",
                                                         style: TextStyle(
+                                                            fontFamily:
+                                                                "medium",
                                                             fontSize: 15.dp,
                                                             color:
                                                                 Colors.white),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -1040,16 +1177,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   buildDot(int index, BuildContext context) {
     return Container(
-      height: 1.5.h,
-      width: activeindex == index ? 6.w : 3.w,
+      height: 1.2.h,
+      width: activeindex == index ? 4.3.w : 2.5.w,
       margin: EdgeInsets.only(right: 8),
       decoration: BoxDecoration(
+        border: activeindex == index
+            ? Border.all(
+                color: Colors.black,
+              )
+            : Border.all(
+                color: Colors.black,
+              ),
+        color: activeindex == index ? Colors.black : Colors.transparent,
         borderRadius: BorderRadius.circular(20),
-        color: activeindex == index
-            // ? CustomColors.maincolor
-            ? Colors.black
-            // : Color(0xffF9DDDE)
-            : Colors.black26,
       ),
     );
   }
