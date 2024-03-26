@@ -60,7 +60,7 @@ class _cartscreenState extends State<cartscreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 22.dp,
-                      fontFamily: "medium",
+                      fontFamily: "Alegreya",
                     ),
                   ),
                 ),
@@ -154,6 +154,7 @@ class _cartscreenState extends State<cartscreen> {
                                       child: Icon(
                                         CupertinoIcons.delete,
                                         size: 5.w,
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),
@@ -252,122 +253,106 @@ class _cartscreenState extends State<cartscreen> {
                 ),
               ),
               child: Column(
-                // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
-                      Container(
-                          child: Padding(
-                        padding: EdgeInsets.only(top: 1.h, left: 3.h),
-                        child: InkWell(
-                          onTap: () {
-                            showDialog(
+                      InkWell(
+                        onTap: () {
+                          showDialog(
                               context: context,
                               builder: (context) {
-                                return AlertDialog(
-                                  content: Container(
-                                    width: 70.w,
-                                    height: 18.h,
-                                    decoration: BoxDecoration(),
-                                    child: Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 2.h,
+                                return CupertinoAlertDialog(
+                                  content: Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          "Samll acts, big impact",
+                                          style: TextStyle(
+                                              fontSize: 20.dp,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w600,
+                                              fontFamily: "mdium"),
                                         ),
-                                        Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Text(
-                                            "Samll acts, big impact",
-                                            style: TextStyle(
-                                                fontSize: 20.dp,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600,
-                                                fontFamily: "mdium"),
-                                          ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          "Your donation matters.",
+                                          style: TextStyle(
+                                              fontSize: 18.dp,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: "Alegreya"),
                                         ),
-                                        Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Text(
-                                            "Your donation matters.",
-                                            style: TextStyle(
-                                                fontSize: 18.dp,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: "Alegreya"),
-                                          ),
+                                      ),
+                                      SizedBox(
+                                        height: 3.h,
+                                      ),
+                                      Container(
+                                        height: 6.h,
+                                        child: ListView.builder(
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          scrollDirection: Axis.horizontal,
+                                          itemCount: popup.length,
+                                          itemBuilder: (context, index) {
+                                            return Padding(
+                                              padding: EdgeInsets.only(
+                                                left: 2.w,
+                                              ),
+                                              child: Container(
+                                                // height: 2.h,
+                                                width: 15.w,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                3.w)),
+                                                    color: Colors.white,
+                                                    border: Border.all(
+                                                        width: 0.2.w,
+                                                        color: Colors.black)),
+                                                child: Center(
+                                                    child: Text(
+                                                        popup[index].donate)),
+                                              ),
+                                            );
+                                          },
                                         ),
-                                        SizedBox(
-                                          height: 3.h,
-                                        ),
-                                        Container(
-                                          height: 6.h,
-                                          child: ListView.builder(
-                                            physics:
-                                                NeverScrollableScrollPhysics(),
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount: popup.length,
-                                            itemBuilder: (context, index) {
-                                              return Padding(
-                                                padding: EdgeInsets.only(
-                                                  left: 2.w,
-                                                ),
-                                                child: Container(
-                                                  // height: 2.h,
-                                                  width: 15.w,
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  3.w)),
-                                                      color: Colors.white,
-                                                      border: Border.all(
-                                                          width: 0.2.w,
-                                                          color: Colors.black)),
-                                                  child: Center(
-                                                      child: Text(
-                                                          popup[index].donate)),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        )
-                                      ],
-                                    ),
+                                      )
+                                    ],
                                   ),
-                                  actions: [
+                                  actions: <Widget>[
                                     TextButton(
                                         onPressed: () {
-                                          Navigator.pop(context);
+                                          //action code for "Yes" button
                                         },
-                                        child: Text(
-                                          "Cancle",
-                                          style: TextStyle(fontSize: 15.dp),
-                                        )),
+                                        child: Text('Yes')),
                                     TextButton(
-                                        onPressed: () {},
-                                        child: Text(
-                                          "Ok",
-                                          style: TextStyle(fontSize: 15.dp),
-                                        ))
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('Close'),
+                                    )
                                   ],
                                 );
-                              },
-                            );
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.only(bottom: 0.5.h),
-                            child: Text(
-                              "#Support Only Pets Welfare Amount",
-                              style: TextStyle(
-                                  fontSize: 18.dp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
-                                  fontFamily: "medium"),
-                            ),
+                              });
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              bottom: 0.5.h, top: 1.h, left: 3.h),
+                          child: Text(
+                            "#Support Only Pets Welfare Amount",
+                            style: TextStyle(
+                                fontSize: 18.dp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontFamily: "medium"),
                           ),
                         ),
-                      )),
+                      ),
                       Padding(
                         padding: EdgeInsets.only(top: 1.h, left: 9.h),
                         child: InkWell(

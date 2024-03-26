@@ -3,18 +3,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
-import 'package:only_pets/model/HomeModel..dart/Pets_Food/ViewPetsFoodModel.dart';
+import 'package:only_pets/model/HomeModel..dart/Category/ViewCategoryModel.dart';
+import 'package:only_pets/model/HomeModel..dart/ToyesModel/Toyes.dart';
+import 'package:only_pets/model/HomeModel..dart/Treading/ViewTrendingModel.dart';
 import 'package:only_pets/util/Color.dart';
 
-class viewpetfood extends StatefulWidget {
-  const viewpetfood({super.key});
-
+// ignore: must_be_immutable
+class toysscreen extends StatefulWidget {
+  toysscreen({super.key, required this.userdatas});
+  ViewCategorysmodel userdatas;
   @override
-  State<viewpetfood> createState() => _viewpetfoodState();
+  State<toysscreen> createState() => _toysscreenState();
 }
 
-class _viewpetfoodState extends State<viewpetfood> {
-  List<bool> LikedList = List.generate(view_food.length, (index) => false);
+class _toysscreenState extends State<toysscreen> {
+  List<bool> isLikedList = List.generate(viewTrending.length, (index) => false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,6 @@ class _viewpetfoodState extends State<viewpetfood> {
             FadeInDown(
               duration: Duration(milliseconds: 1200),
               child: Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 2.w, top: 1.h),
@@ -41,11 +43,12 @@ class _viewpetfoodState extends State<viewpetfood> {
                   Padding(
                     padding: EdgeInsets.only(left: 27.5.w, top: 1.h),
                     child: Text(
-                      "Pets Food",
+                      "Toys Screen",
                       style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 22.dp,
-                          fontFamily: "Alegreya"),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 22.dp,
+                        fontFamily: "Alegreya",
+                      ),
                     ),
                   ),
                 ],
@@ -55,37 +58,30 @@ class _viewpetfoodState extends State<viewpetfood> {
               height: 1.h,
             ),
             Expanded(
-              child: FadeInRight(
-                duration: Duration(milliseconds: 1200),
-                child: GridView.builder(
-                  itemCount: view_food.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, childAspectRatio: 5 / 7.0),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 3.w,
-                            right: 3.w,
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => detailscreen(
-                                        userdata: view_food[index]),
-                                  ));
-                            },
+              child: Container(
+                child: FadeInRight(
+                  duration: Duration(milliseconds: 1200),
+                  child: GridView.builder(
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: toys.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, childAspectRatio: 5 / 6.9),
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: 2.w,
+                              right: 2.w,
+                            ),
                             child: Container(
-                              height: 30.5.h,
-                              width: 44.w,
+                              height: 29.5.h,
+                              width: 45.w,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(3.w),
-                                ),
                                 color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(3.w)),
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey, // Shadow color
@@ -99,21 +95,33 @@ class _viewpetfoodState extends State<viewpetfood> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(top: 1.h),
-                                    child: Container(
-                                      alignment: Alignment.topCenter,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10.w))),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(3.w),
-                                            topRight: Radius.circular(3.w)),
-                                        child: Image.asset(
-                                          view_food[index].image[0],
-                                          height: 15.h,
-                                          // width: double.infinity,
-                                          fit: BoxFit.cover,
+                                    padding: EdgeInsets.all(1.w),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  detailscreen(
+                                                      userdata: toys[index]),
+                                            ));
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        alignment: Alignment.topCenter,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10.w))),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(3.w),
+                                              topRight: Radius.circular(3.w)),
+                                          child: Image.asset(
+                                            toys[index].image.first,
+                                            height: 15.h,
+                                            width: double.infinity,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -122,16 +130,15 @@ class _viewpetfoodState extends State<viewpetfood> {
                                     height: 0.5.h,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 1.w),
+                                    padding: EdgeInsets.only(left: 2.w),
                                     child: Text(
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                       softWrap: false,
-                                      view_food[index].name,
+                                      toys[index].name,
                                       style: TextStyle(
-                                          fontFamily: "medium",
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 16.dp),
+                                          fontSize: 14.dp),
                                     ),
                                   ),
                                   SizedBox(
@@ -142,12 +149,11 @@ class _viewpetfoodState extends State<viewpetfood> {
                                       Align(
                                         alignment: Alignment.topLeft,
                                         child: Padding(
-                                          padding: EdgeInsets.only(left: 1.w),
+                                          padding: EdgeInsets.only(left: 2.w),
                                           child: Text(
-                                            view_food[index].Prise,
+                                            toys[index].Prise,
                                             style: TextStyle(
-                                                fontFamily: "medium",
-                                                fontSize: 21.dp,
+                                                fontSize: 20.dp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.red),
                                           ),
@@ -166,19 +172,16 @@ class _viewpetfoodState extends State<viewpetfood> {
                                         width: 0.5.w,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(right: 1.5.w),
+                                        padding: EdgeInsets.only(right: 2.w),
                                         child: Text(
-                                          view_food[index].Rate,
-                                          style: TextStyle(
-                                            fontSize: 18.dp,
-                                            fontFamily: "medium",
-                                          ),
+                                          toys[index].Rate,
+                                          style: TextStyle(fontSize: 16.dp),
                                         ),
                                       ),
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 1.w,
+                                    height: 0.5.w,
                                   ),
                                   Row(
                                     mainAxisAlignment:
@@ -208,7 +211,6 @@ class _viewpetfoodState extends State<viewpetfood> {
                                               textAlign: TextAlign.center,
                                               "Add Cart",
                                               style: TextStyle(
-                                                  fontFamily: "medium",
                                                   fontSize: 15.dp,
                                                   color: Colors.white),
                                             ),
@@ -219,13 +221,13 @@ class _viewpetfoodState extends State<viewpetfood> {
                                         padding: EdgeInsets.only(right: 1.w),
                                         child: IconButton(
                                           onPressed: () {
-                                            LikedList[index] =
-                                                !LikedList[index];
-                                            setState(() {});
-                                            print(LikedList[index].toString());
+                                            setState(() {
+                                              isLikedList[index] =
+                                                  !isLikedList[index];
+                                            });
                                           },
                                           // style: ButtonStyle(backgroundColor: Color),
-                                          color: LikedList[index]
+                                          color: isLikedList[index]
                                               ? Colors.red
                                               : Colors.black38,
                                           iconSize: 6.5.w,
@@ -240,10 +242,10 @@ class _viewpetfoodState extends State<viewpetfood> {
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
+                        ],
+                      );
+                    },
+                  ),
                 ),
               ),
             )

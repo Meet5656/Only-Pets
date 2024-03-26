@@ -32,7 +32,7 @@ class _ViewCategorysState extends State<ViewCategorys> {
               leading: IconButton(
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.pop(context);
                 },
               ),
               leadingWidth: 13.w,

@@ -90,13 +90,12 @@ flutter:
     - asset/Cat_Category_pic/Breeds_pic/
     - asset/Pets_Food/
     - asset/Trending_View/
-    - asset/Trending_View/Multi_Image/
     - asset/Rabbit_Category_pic/
     - asset/Rabbit_Category_pic/Brand/
     - asset/Rabbit_Category_pic/breeds/
-    
     - asset/trending_multi_image/
     - asset/Pets_food_multi_image/
+    - asset/Toys/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

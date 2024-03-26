@@ -5,7 +5,6 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:only_pets/Screen/BottomNavBar.dart';
 import 'package:only_pets/Screen/ResertPassword.dart';
 import 'package:only_pets/Screen/SigninScreen.dart';
-import 'package:only_pets/Screen/dashboard.dart';
 import 'package:only_pets/util/Color.dart';
 
 class loginscreen extends StatefulWidget {
@@ -107,7 +106,8 @@ class _loginscreenState extends State<loginscreen> {
                             padding: EdgeInsets.only(left: 7.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
-                                style: TextStyle(fontFamily: "Alegreya",fontSize: 17.dp),
+                                style: TextStyle(
+                                    fontFamily: "Alegreya", fontSize: 17.dp),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return "Enter Email id";
@@ -145,7 +145,8 @@ class _loginscreenState extends State<loginscreen> {
                             padding: EdgeInsets.only(left: 7.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
-                                  style: TextStyle(fontFamily: "Alegreya",fontSize: 17.dp),
+                                style: TextStyle(
+                                    fontFamily: "Alegreya", fontSize: 17.dp),
                                 controller: passwrod,
                                 obscureText: _isHidden,
                                 keyboardType: TextInputType.text,
@@ -218,7 +219,8 @@ class _loginscreenState extends State<loginscreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => Bottomnavigatorbar(),
+                                        builder: (context) =>
+                                            Bottomnavigatorbar(),
                                       ));
                                 }
                               },

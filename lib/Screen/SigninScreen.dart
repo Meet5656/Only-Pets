@@ -305,12 +305,17 @@ class _signinscreenState extends State<signinscreen> {
                                 style: TextStyle(
                                     fontSize: 20.dp, fontFamily: "Alegreya"),
                               ),
-                              Text(
-                                "Log in",
-                                style: TextStyle(
-                                    fontSize: 20.dp,
-                                    fontFamily: "Alegreya",
-                                    color: CustomColors.maincolor),
+                              InkWell(
+                                onTap: () {
+                              Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Log in",
+                                  style: TextStyle(
+                                      fontSize: 20.dp,
+                                      fontFamily: "Alegreya",
+                                      color: CustomColors.maincolor),
+                                ),
                               )
                             ],
                           ),

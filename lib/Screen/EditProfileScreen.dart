@@ -114,14 +114,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       Container(
                         child: TextFormField(
                           keyboardType: TextInputType.name,
-                            validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Please enter Frist Name';
-                                    }
-                                    return null;
-                                  },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Please enter Frist Name';
+                            }
+                            return null;
+                          },
                           decoration: InputDecoration(
-                             contentPadding: EdgeInsets.symmetric(
+                            contentPadding: EdgeInsets.symmetric(
                                 horizontal: 5.w, vertical: 4.w),
                             border: OutlineInputBorder(
                               borderRadius:
@@ -151,14 +151,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       Container(
                         child: TextFormField(
                           keyboardType: TextInputType.name,
-                            validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Please enter Last Name';
-                                    }
-                                    return null;
-                                  },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Please enter Last Name';
+                            }
+                            return null;
+                          },
                           decoration: InputDecoration(
-                             contentPadding: EdgeInsets.symmetric(
+                            contentPadding: EdgeInsets.symmetric(
                                 horizontal: 5.w, vertical: 4.w),
                             border: OutlineInputBorder(
                               borderRadius:
@@ -188,7 +188,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       Container(
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
-                           validator: (value) {
+                          validator: (value) {
                             String pattern =
                                 r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
                             RegExp regExp = new RegExp(pattern);
@@ -200,7 +200,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             return null;
                           },
                           decoration: InputDecoration(
-                             contentPadding: EdgeInsets.symmetric(
+                            contentPadding: EdgeInsets.symmetric(
                                 horizontal: 5.w, vertical: 4.w),
                             border: OutlineInputBorder(
                               borderRadius:
@@ -230,7 +230,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       Container(
                         child: TextFormField(
                           keyboardType: TextInputType.number,
-                           validator: (value) {
+                          validator: (value) {
                             String pattern = r'^(?:[+0]9)?[0-9]{10}$';
                             RegExp regExp = new RegExp(pattern);
                             if (value!.isEmpty) {
@@ -241,7 +241,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             return null;
                           },
                           decoration: InputDecoration(
-                             contentPadding: EdgeInsets.symmetric(
+                            contentPadding: EdgeInsets.symmetric(
                                 horizontal: 5.w, vertical: 4.w),
                             border: OutlineInputBorder(
                               borderRadius:
@@ -260,8 +260,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         height: 10.5.h,
                       ),
                       InkWell(
-                         onTap: () {
-                          if ( formkey.currentState!.validate()) {
+                        onTap: () {
+                          if (formkey.currentState!.validate()) {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

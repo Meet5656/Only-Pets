@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:only_pets/Screen/EditProfileScreen.dart';
-import 'package:only_pets/util/Color.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

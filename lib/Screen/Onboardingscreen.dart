@@ -131,8 +131,9 @@ class _onboardingscreenState extends State<onboardingscreen> {
                           child: builddot(index),
                         ),
                       ),
+                      Spacer(),
                       Padding(
-                        padding: EdgeInsets.only(left: 27.h, bottom: 2.h),
+                        padding: EdgeInsets.only(left: 20.w, bottom: 2.h,right: 5.w),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
@@ -150,7 +151,7 @@ class _onboardingscreenState extends State<onboardingscreen> {
                           },
                           child: Text(
                             'Start',
-                            style: TextStyle(color: Colors.white,fontFamily: "Alegreya",fontSize: 15.dp),
+                            style: TextStyle(color: Colors.white,fontFamily: "Alegreya",fontSize: 12.dp),
                           ),
                         ),
                       ),

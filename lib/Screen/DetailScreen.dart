@@ -323,14 +323,6 @@ class _detailscreenState extends State<detailscreen> {
                                         border: Border.all(width: 0.4.w),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(3.w)),
-                                        // boxShadow: [
-                                        //   BoxShadow(
-                                        //     color: Colors.black
-                                        //         .withOpacity(0.2), // Shadow color
-                                        //     spreadRadius: 2, // Spread radius
-                                        //     blurRadius: 5, // Blur radius
-                                        //   ),
-                                        // ],
                                       ),
                                       child: Column(
                                         children: [
