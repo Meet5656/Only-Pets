@@ -42,7 +42,7 @@ class Data2 {
 
 List<Data2> datas2 = [
   Data2(
-      image: 'asset/all pets/clothes-removebg-preview.png',
+      image: 'asset/all pets/clothes-removebg-preview (2).png',
       gradientStartColor: Color(0xfffaedcb),
       gradientEndColor: Colors.white,
       title: 'Clothing &\nAccessories'),

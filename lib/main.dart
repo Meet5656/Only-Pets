@@ -4,10 +4,11 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/CheckoutScreen.dart';
-import 'package:only_pets/Screen/OrderScreen.dart';
+import 'package:only_pets/Screen/ProfileScreen.dart';
+import 'package:only_pets/Screen/Rabbit_Category.dart';
 
 void main() {
-  runApp(const MyApp()); 
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,19 +22,17 @@ class MyApp extends StatelessWidget {
         systemNavigationBarColor: Colors.black));
     return FlutterSizer(builder: (context, orientation, screenType) {
       return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-       
-        builder: (context, child) {
-          return MediaQuery(
-              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-              child: child!);
-        },
-        home: checkoutscreen()
-      );
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          builder: (context, child) {
+            return MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: child!);
+          },
+          home: checkoutscreen());
     });
   }
 }

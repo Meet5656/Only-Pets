@@ -431,7 +431,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         boxShadow: [
                                           BoxShadow(
                                             color: Colors.grey, // Shadow color
-                                            spreadRadius: 0.1.w, // Spread radius
+                                            spreadRadius:
+                                                0.1.w, // Spread radius
                                             blurRadius: 0.4.w, // Blur radius
                                             offset: Offset(0, 1.3),
                                           ),
@@ -447,15 +448,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               width: double.infinity,
                                               alignment: Alignment.topCenter,
                                               decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(10.w))),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              10.w))),
                                               child: ClipRRect(
                                                 borderRadius: BorderRadius.only(
-                                                    topLeft: Radius.circular(3.w),
+                                                    topLeft:
+                                                        Radius.circular(3.w),
                                                     topRight:
                                                         Radius.circular(3.w)),
                                                 child: Image.asset(
-                                                  viewTrending[index].image.first,
+                                                  viewTrending[index]
+                                                      .image
+                                                      .first,
                                                   height: 15.h,
                                                   width: double.infinity,
                                                   fit: BoxFit.cover,
@@ -485,8 +491,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               Align(
                                                 alignment: Alignment.topLeft,
                                                 child: Padding(
-                                                  padding:
-                                                      EdgeInsets.only(left: 1.w),
+                                                  padding: EdgeInsets.only(
+                                                      left: 1.w),
                                                   child: Text(
                                                     viewTrending[index].Prise,
                                                     style: TextStyle(
@@ -512,8 +518,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                 width: 0.5.w,
                                               ),
                                               Padding(
-                                                padding:
-                                                    EdgeInsets.only(right: 1.5.w),
+                                                padding: EdgeInsets.only(
+                                                    right: 1.5.w),
                                                 child: Text(
                                                   viewTrending[index].Rate,
                                                   style: TextStyle(
@@ -548,15 +554,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                     height: 3.h,
                                                     width: 30.w,
                                                     decoration: BoxDecoration(
-                                                        gradient: LinearGradient(
-                                                          begin:
-                                                              Alignment.topRight,
+                                                        gradient:
+                                                            LinearGradient(
+                                                          begin: Alignment
+                                                              .topRight,
                                                           end: Alignment
                                                               .bottomLeft,
                                                           colors: [
                                                             // Colors.brown.shade300,
                                                             Colors.black
-                                                                .withOpacity(0.6),
+                                                                .withOpacity(
+                                                                    0.6),
                                                             CustomColors
                                                                 .maincolor,
                                                           ],
@@ -573,9 +581,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                             TextAlign.center,
                                                         "Add Cart",
                                                         style: TextStyle(
-                                                            fontFamily: "medium",
+                                                            fontFamily:
+                                                                "medium",
                                                             fontSize: 15.dp,
-                                                            color: Colors.white),
+                                                            color:
+                                                                Colors.white),
                                                       ),
                                                     ),
                                                   ),
@@ -704,7 +714,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                           color: Colors.grey,
                                           spreadRadius: 1,
                                           blurRadius: 3,
-                                          // offset: Offset(0, 3),
                                         ),
                                       ],
                                     ),
@@ -979,8 +988,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     detailscreen(
-                                                        userdata: view_food[
-                                                            index]),
+                                                        userdata:
+                                                            view_food[index]),
                                               ));
                                         },
                                         child: Container(
@@ -1029,7 +1038,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                                 .circular(3.w)),
                                                     child: Image.asset(
                                                       view_food[index]
-                                                          .image.first,
+                                                          .image
+                                                          .first,
                                                       height: 12.h,
 
                                                       // width: double.infinity,

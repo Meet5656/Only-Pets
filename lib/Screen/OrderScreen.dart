@@ -21,34 +21,40 @@ class _OrderScreenState extends State<OrderScreen> {
       body: SafeArea(
           child: Column(
         children: [
-          Column(
-            children: [
-              FadeInDown(
-                duration: Duration(milliseconds: 1800),
-                child: Container(
-                  height: 3.h,
-                  child: Row(
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.only(left: 5.w),
-                          child: Icon(
-                            Icons.arrow_back,
-                            size: 7.w,
-                          )),
-                      Padding(
-                        padding: EdgeInsets.only(left: 30.w),
-                        child: Text(
-                          "Orders",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 22.dp),
-                        ),
+         Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                  child: FadeInDown(
+                    duration: Duration(milliseconds: 1800),
+                    child: Container(
+                      height: 4.h,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
+                              Icons.arrow_back,
+                              size: 30.dp,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 29.5.w,top: 1.h),
+                            child: Text(
+                              "Orders",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 22.dp,fontFamily: "Alegreya"),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
           SizedBox(
             height: 2.h,
           ),
@@ -63,9 +69,9 @@ class _OrderScreenState extends State<OrderScreen> {
                       physics: BouncingScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
-                          padding:  EdgeInsets.only(top:2.h),
+                          padding: EdgeInsets.only(top: 2.h),
                           child: Padding(
-                            padding:  EdgeInsets.only(left: 3.5.w,right: 3.5.w),
+                            padding: EdgeInsets.only(left: 4.5.w, right: 4.5.w),
                             child: Container(
                               width: double.infinity,
                               height: 18.h,
@@ -110,7 +116,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           children: [
@@ -124,10 +131,11 @@ class _OrderScreenState extends State<OrderScreen> {
                                             ),
                                             Text(
                                               "Delivered",
-                                              style: TextStyle(
+                                              style: TextStyle( fontFamily: "medium",
                                                   fontSize: 17.dp,
                                                   fontWeight: FontWeight.w500,
-                                                  color: CustomColors.maincolor),
+                                                  color:
+                                                      CustomColors.maincolor),
                                             )
                                           ],
                                         ),
@@ -138,14 +146,14 @@ class _OrderScreenState extends State<OrderScreen> {
                                           children: [
                                             Text(
                                               "Order Id : ",
-                                              style: TextStyle(
+                                              style: TextStyle( fontFamily: "medium",
                                                 fontSize: 15.dp,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
                                             Text(
                                               "1C54584C",
-                                              style: TextStyle(
+                                              style: TextStyle( fontFamily: "medium",
                                                 fontSize: 15.dp,
                                                 fontWeight: FontWeight.w400,
                                               ),
@@ -154,7 +162,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                         ),
                                         Text(
                                           "Product Name",
-                                          style: TextStyle(
+                                          style: TextStyle( fontFamily: "medium",
                                               fontWeight: FontWeight.w600,
                                               fontSize: 18.dp),
                                         ),
@@ -171,8 +179,9 @@ class _OrderScreenState extends State<OrderScreen> {
                                               children: [
                                                 Text(
                                                   "₹ 0",
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w600,
+                                                  style: TextStyle( fontFamily: "medium",
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize: 20.dp),
                                                 ),
                                                 Row(
@@ -181,14 +190,15 @@ class _OrderScreenState extends State<OrderScreen> {
                                                       itemSize: 20,
                                                       initialRating: 0,
                                                       minRating: 0,
-                                                      direction: Axis.horizontal,
+                                                      direction:
+                                                          Axis.horizontal,
                                                       allowHalfRating: true,
                                                       itemCount: 5,
                                                       itemPadding:
                                                           EdgeInsets.symmetric(
                                                               horizontal: 1.0),
-                                                      itemBuilder: (context, _) =>
-                                                          Icon(
+                                                      itemBuilder:
+                                                          (context, _) => Icon(
                                                         Icons.star,
                                                         color: Colors.amber,
                                                         size: 1000,
@@ -202,28 +212,30 @@ class _OrderScreenState extends State<OrderScreen> {
                                               ],
                                             ),
                                             SizedBox(
-                                              width: 1.5.h,
+                                              width: 5.2.w,
                                             ),
                                             InkWell(
-                                               onTap: () {
-                                                 Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => OrderDetailsScreen(),
-                                ));
-                                               }, 
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          OrderDetailsScreen(),
+                                                    ));
+                                              },
                                               child: Container(
-                                                height: 4.2.h,
-                                                width: 25.w,
+                                                height: 3.8.h,
+                                                width: 22.w,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
-                                                      BorderRadius.circular(10.w),
+                                                      BorderRadius.circular(
+                                                          10.w),
                                                   gradient: LinearGradient(
                                                     begin: Alignment.topRight,
                                                     end: Alignment.bottomLeft,
                                                     colors: [
-                                                      // Colors.brown.shade300,
-                                                      Colors.black.withOpacity(0.6),
+                                                      Colors.black
+                                                          .withOpacity(0.6),
                                                       CustomColors.maincolor,
                                                     ],
                                                   ),
@@ -234,8 +246,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                                   children: [
                                                     Text(
                                                       "View Details",
-                                                      style: TextStyle(
-                                                          fontSize: 15.dp,
+                                                      style: TextStyle( fontFamily: "medium",
+                                                          fontSize: 12.dp,
                                                           color: Colors.white,
                                                           fontWeight:
                                                               FontWeight.w600),

@@ -29,34 +29,40 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
           children: [
             Column(
               children: [
-                FadeInDown(
-                  duration: Duration(milliseconds: 1800),
-                  child: Container(
-                    height: 3.h,
-                    child: Row(
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.only(left: 5.w),
-                            child: Icon(
+                Padding(
+                  padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                  child: FadeInDown(
+                    duration: Duration(milliseconds: 1800),
+                    child: Container(
+                      height: 4.h,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
                               Icons.arrow_back,
-                              size: 7.w,
-                            )),
-                        Padding(
-                          padding: EdgeInsets.only(left: 25.5.w),
-                          child: Text(
-                            "ONLYPETS",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 22.dp),
+                              size: 30.dp,
+                            ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.only(left: 24.w,top: 1.h),
+                            child: Text(
+                              "Cat Category",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 22.dp,fontFamily: "Alegreya"),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: 2.h,
+              height: 4.h,
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -132,9 +138,9 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                     Text(
                       "Shop by Category",
                       style: TextStyle(
-                          fontSize: 25.dp, fontWeight: FontWeight.w400),
+                          fontSize: 25.dp, fontWeight: FontWeight.w400,fontFamily: "medium"),
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: 2.h,
                     ),
                     Padding(
@@ -142,7 +148,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                         child: Container(
                           child: GridView.builder(
                             physics: NeverScrollableScrollPhysics(),
-                            itemCount: 6,
+                            itemCount: datas7.length,
                             shrinkWrap: true,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
@@ -185,7 +191,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: 15.dp,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,fontFamily: "medium"),
                                         )
                                       ],
                                     ),
@@ -210,13 +216,13 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                     Text(
                       "Shop by Life Stage",
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                          TextStyle(fontSize: 25.dp, fontWeight: FontWeight.w400,fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 3.5.w, right: 3.5.w),
+                      padding: EdgeInsets.only(left: 4.5.w, right: 4.5.w),
                       child: Container(
                         height: 25.h,
                         child: GridView.builder(
@@ -238,8 +244,6 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                         topLeft: Radius.circular(20.w),
                                         topRight: Radius.circular(20.w),
                                       ),
-                                      // border: Border.all(
-                                      //     width: 0.0.w, color: Colors.grey),
                                       color: Color(0xffffe7c7)),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.only(
@@ -268,7 +272,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 16.dp,
-                                            fontWeight: FontWeight.w600),
+                                            fontWeight: FontWeight.w600,fontFamily: "medium"),
                                       ),
                                     ),
                                   ),
@@ -328,7 +332,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             color:
-                                                                Colors.white),
+                                                                Colors.white,fontFamily: "medium"),
                                                       ),
                                                       SizedBox(
                                                         height: 0.5.h,
@@ -349,7 +353,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: TextStyle(
-                                                                fontSize: 2.w),
+                                                                fontSize: 10.dp,fontFamily: "medium"),
                                                           ),
                                                         ),
                                                       )
@@ -426,7 +430,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                     Text(
                       "Shop by Breed",
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                          TextStyle(fontSize: 25.dp, fontWeight: FontWeight.w400,fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -441,14 +445,13 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                           return Column(
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsets.only(left: 3.w, right: 2.w),
+                                padding: EdgeInsets.only(left: 3.w, right: 2.w),
                                 child: Container(
                                   height: 11.h,
                                   width: 24.w,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(20.w)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20.w)),
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
@@ -477,7 +480,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                   style: TextStyle(
                                       fontSize: 13.dp,
                                       fontWeight: FontWeight.w600,
-                                      fontFamily: "medium")),
+                                      fontFamily: "medium",)),
                             ],
                           );
                         },
@@ -495,73 +498,96 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                     Text(
                       "Shop by brands",
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                          TextStyle(fontSize: 25.dp, fontWeight: FontWeight.w400,fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
                     ),
-                    FadeInUp(
-                      duration: Duration(milliseconds: 1800),
-                      child: Container(
-                        height: 20.h,
-                        child: GridView.builder(
-                          //physics: NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: datas11.length,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 1, mainAxisExtent: 21.h),
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    right: 3.w,
-                                    left: 3.w,
+                    Container(
+                      height: 22.h,
+                      child: GridView.builder(
+                        // physics: NeverScrollableScrollPhysics(),
+                        itemCount: datas11.length,
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1, mainAxisExtent: 21.h),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  right: 3.w,
+                                  left: 3.w,
+                                ),
+                                child: Container(
+                                  height: 18.h,
+                                  width: 42.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.w),
+                                      topRight: Radius.circular(20.w),
+                                    ),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 1,
+                                        blurRadius: 3,
+                                      ),
+                                    ],
                                   ),
-                                  child: Container(
-                                    height: 15.h,
-                                    width: 42.w,
-                                    decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topRight,
-                                          end: Alignment.bottomLeft,
-                                          colors: [
-                                            Colors.black.withOpacity(0.8),
-                                            CustomColors.maincolor,
-                                          ],
-                                        ),
-                                        color: Color.fromARGB(255, 42, 41, 41),
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20.w),
-                                          topRight: Radius.circular(20.w),
-                                        )),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          top: 1.5.h,
-                                          right: 3.w,
-                                          left: 3.w,
-                                          bottom: 3.h),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(18.w),
-                                              topRight: Radius.circular(18.w),
-                                              bottomLeft: Radius.circular(6.w),
-                                              bottomRight: Radius.circular(6.w),
-                                            )),
-                                        child: Image.asset(
-                                          datas11[index].image,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(1.w),
+                                    child: Container(
+                                      height: 18.h,
+                                      width: 42.w,
+                                      decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topRight,
+                                            end: Alignment.bottomLeft,
+                                            colors: [
+                                              Colors.black.withOpacity(0.8),
+                                              CustomColors.maincolor,
+                                              // CustomColors.maincolor,
+                                            ],
+                                          ),
+                                          color:
+                                              Color.fromARGB(255, 42, 41, 41),
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20.w),
+                                            topRight: Radius.circular(20.w),
+                                          )),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 1.5.h,
+                                            right: 3.w,
+                                            left: 3.w,
+                                            bottom: 3.h),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(18.w),
+                                                topRight: Radius.circular(18.w),
+                                                bottomLeft:
+                                                    Radius.circular(6.w),
+                                                bottomRight:
+                                                    Radius.circular(6.w),
+                                              )),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(1.h),
+                                            child: Image.asset(
+                                                datas11[index].image),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            );
-                          },
-                        ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
                     ),
                     Padding(
@@ -573,9 +599,9 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                             "Build your new pet's\nForever home! 🐱",
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                                fontSize: 7.w,
+                                fontSize: 25.dp,
                                 color: Color(0xffc3c3c3),
-                                fontWeight: FontWeight.w600),
+                                fontWeight: FontWeight.w600,fontFamily: "medium"),
                           ),
                         ],
                       ),

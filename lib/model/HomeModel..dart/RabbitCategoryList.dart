@@ -39,7 +39,7 @@ class Data13 {
 
 List<Data13> datas13 = [
   Data13(
-      image: 'asset/all pets/clothes-removebg-preview.png',
+      image: 'asset/all pets/clothes-removebg-preview (2).png',
       gradientStartColor: Color(0xfffaedcb),
       gradientEndColor: Colors.white,
       title: 'Clothing &\nAccessories'),

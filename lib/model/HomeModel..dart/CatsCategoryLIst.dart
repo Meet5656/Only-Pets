@@ -39,7 +39,7 @@ class Data7 {
 
 List<Data7> datas7 = [
   Data7(
-      image: 'asset/all pets/clothes-removebg-preview.png',
+      image: 'asset/all pets/clothes-removebg-preview (2).png',
       gradientStartColor: Color(0xfffaedcb),
       gradientEndColor: Colors.white,
       title: 'Clothing &\nAccessories'),

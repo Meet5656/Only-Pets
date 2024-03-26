@@ -33,34 +33,43 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
           children: [
             Column(
               children: [
-                FadeInDown(
-                  duration: Duration(milliseconds: 1800),
-                  child: Container(
-                    height: 3.h,
-                    child: Row(
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.only(left: 5.w),
-                            child: Icon(
+                Padding(
+                  padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                  child: FadeInDown(
+                    duration: Duration(milliseconds: 1800),
+                    child: Container(
+                      height: 4.h,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
                               Icons.arrow_back,
-                              size: 7.w,
-                            )),
-                        Padding(
-                          padding: EdgeInsets.only(left: 25.5.w),
-                          child: Text(
-                            "ONLYPETS",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 22.dp),
+                              size: 30.dp,
+                            ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.only(left: 22.5.w,top: 1.h),
+                            child: Text(
+                              "Dog Category",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22.dp,
+                                  fontFamily: "Alegreya"),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: 2.h,
+              height: 4.h,
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -136,7 +145,9 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                     Text(
                       "Shop by Category",
                       style: TextStyle(
-                          fontSize: 25.dp, fontWeight: FontWeight.w400),
+                          fontSize: 25.dp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -146,7 +157,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                         child: Container(
                           child: GridView.builder(
                             physics: NeverScrollableScrollPhysics(),
-                            itemCount: 6,
+                            itemCount: datas2.length,
                             shrinkWrap: true,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
@@ -189,7 +200,8 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: 15.dp,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: "medium"),
                                         )
                                       ],
                                     ),
@@ -213,8 +225,10 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                     ),
                     Text(
                       "Shop by Life Stage",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 25.dp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -272,7 +286,8 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 16.dp,
-                                            fontWeight: FontWeight.w600),
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: "medium"),
                                       ),
                                     ),
                                   ),
@@ -331,8 +346,9 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                                             fontSize: 15.dp,
                                                             fontWeight:
                                                                 FontWeight.w500,
-                                                            color:
-                                                                Colors.white),
+                                                            color: Colors.white,
+                                                            fontFamily:
+                                                                "medium"),
                                                       ),
                                                       SizedBox(
                                                         height: 0.5.h,
@@ -353,7 +369,9 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: TextStyle(
-                                                                fontSize: 2.w),
+                                                                fontSize: 10.dp,
+                                                                fontFamily:
+                                                                    "medium"),
                                                           ),
                                                         ),
                                                       )
@@ -429,8 +447,10 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                     ),
                     Text(
                       "Shop by Breed",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 25.dp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -445,14 +465,13 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                           return Column(
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsets.only(left: 3.w, right: 2.w),
+                                padding: EdgeInsets.only(left: 3.w, right: 2.w),
                                 child: Container(
                                   height: 11.h,
                                   width: 24.w,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(20.w)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20.w)),
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
@@ -498,21 +517,22 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                     ),
                     Text(
                       "Shop by brands",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 25.dp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
                     ),
                     Container(
-                      height: 20.h,
+                      height: 22.h,
                       child: GridView.builder(
-                        //physics: NeverScrollableScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
+                        // physics: NeverScrollableScrollPhysics(),
                         itemCount: Brandname.length,
-                        gridDelegate:
-                            SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 1, mainAxisExtent: 21.h),
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1, mainAxisExtent: 21.h),
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
@@ -522,40 +542,66 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                   left: 3.w,
                                 ),
                                 child: Container(
-                                  height: 15.h,
+                                  height: 18.h,
                                   width: 42.w,
                                   decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topRight,
-                                        end: Alignment.bottomLeft,
-                                        colors: [
-                                          Colors.black.withOpacity(0.8),
-                                          CustomColors.maincolor,
-                                        ],
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.w),
+                                      topRight: Radius.circular(20.w),
+                                    ),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 1,
+                                        blurRadius: 3,
                                       ),
-                                      color: Color.fromARGB(255, 42, 41, 41),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20.w),
-                                        topRight: Radius.circular(20.w),
-                                      )),
+                                    ],
+                                  ),
                                   child: Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 1.5.h,
-                                        right: 3.w,
-                                        left: 3.w,
-                                        bottom: 3.h),
+                                    padding: EdgeInsets.all(1.w),
                                     child: Container(
+                                      height: 18.h,
+                                      width: 42.w,
                                       decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topRight,
+                                            end: Alignment.bottomLeft,
+                                            colors: [
+                                              Colors.black.withOpacity(0.8),
+                                              CustomColors.maincolor,
+                                              // CustomColors.maincolor,
+                                            ],
+                                          ),
+                                          color:
+                                              Color.fromARGB(255, 42, 41, 41),
                                           borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(18.w),
-                                            topRight: Radius.circular(18.w),
-                                            bottomLeft: Radius.circular(6.w),
-                                            bottomRight: Radius.circular(6.w),
+                                            topLeft: Radius.circular(20.w),
+                                            topRight: Radius.circular(20.w),
                                           )),
-                                      child: Image.asset(
-                                        Brandname[index].image,
-                                        height: 1.h,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 1.5.h,
+                                            right: 3.w,
+                                            left: 3.w,
+                                            bottom: 3.h),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(18.w),
+                                                topRight: Radius.circular(18.w),
+                                                bottomLeft:
+                                                    Radius.circular(6.w),
+                                                bottomRight:
+                                                    Radius.circular(6.w),
+                                              )),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(1.h),
+                                            child: Image.asset(
+                                                Brandname[index].image),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -575,9 +621,11 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                             "Find everything your\npet could dream of! 🐶",
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                                fontSize: 7.w,
-                                color: Color(0xffc3c3c3),
-                                fontWeight: FontWeight.w600),
+                              fontSize: 30.dp,
+                              color: Color(0xffc3c3c3),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "medium"
+                            ),
                           ),
                         ],
                       ),
