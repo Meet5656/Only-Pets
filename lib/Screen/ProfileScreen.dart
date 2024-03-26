@@ -1,7 +1,11 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:only_pets/Screen/EditProfileScreen.dart';
+import 'package:only_pets/util/Color.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -18,281 +22,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
       statusBarIconBrightness: Brightness.dark,
     ));
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      extendBody: true,
-      backgroundColor: Color(0xffc64d4c),
-      body: Stack(children: [
-        Container(
-          height: double.infinity,
-          width: double.infinity,
-          child: Image.asset(
-            'asset/hand-drawn-paw-prints-background_23-2151132904.jpg',
-            fit: BoxFit.cover,
-          ),
-        ),
-        Positioned(
-          top: 25.h,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(2.h),
-                    topRight: Radius.circular(2.h)),
-                color: Colors.white),
-            child: Padding(
-              padding:  EdgeInsets.only(top: 7.h),
-              child: Column(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.only(left: 3.5.w, right: 3.5.w),
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 2.h,
-                  ),
-                  Text(
-                    "User Name",
-                    style: TextStyle(
-                        fontSize: 25.sp,
-                        color: Colors.blueGrey,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  SizedBox(
-                    height: 4.h,
-                  ),
-                  Container(
-                    height: 6.5.h,
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.5.w, right: 7.w),
+                  FadeInDown(
+                    duration: Duration(milliseconds: 1800),
+                    child: Container(
+                      height: 3.h,
                       child: Row(
                         children: [
-                          Icon(
-                            Icons.location_on_outlined,
-                            size: 3.h,
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
                           Padding(
-                            padding: EdgeInsets.only(top: 0.5.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Delivery address",
-                                  style: TextStyle(
-                                      fontSize: 5.w, fontWeight: FontWeight.w500),
-                                ),
-                                Text(
-                                  "User Data",
-                                  style: TextStyle(
-                                      fontSize: 3.5.w,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Spacer(),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 2.8.h,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 6.5.h,
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.5.w, right: 7.w),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.payment_outlined,
-                            size: 3.h,
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
+                              padding: EdgeInsets.only(left: 2.w),
+                              child: Icon(
+                                Icons.arrow_back,
+                                size: 7.w,
+                              )),
                           Padding(
-                            padding: EdgeInsets.only(top: 0.5.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Payment Method",
-                                  style: TextStyle(
-                                      fontSize: 5.w, fontWeight: FontWeight.w500),
-                                ),
-                                Text(
-                                  "User Data",
-                                  style: TextStyle(
-                                      fontSize: 3.5.w,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ],
+                            padding: EdgeInsets.only(left: 30.w),
+                            child: Text(
+                              "Profile",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 22.dp),
                             ),
-                          ),
-                          Spacer(),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 2.8.h,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 6.5.h,
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.5.w, right: 7.w),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.language_sharp,
-                            size: 3.h,
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 0.5.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Language",
-                                  style: TextStyle(
-                                      fontSize: 5.w, fontWeight: FontWeight.w500),
-                                ),
-                                Text(
-                                  "User Data",
-                                  style: TextStyle(
-                                      fontSize: 3.5.w,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Spacer(),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 2.8.h,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 6.5.h,
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.5.w, right: 7.w),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.notifications_outlined,
-                            size: 3.h,
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
-                          Text(
-                            "Notification",
-                            style: TextStyle(
-                                fontSize: 5.w, fontWeight: FontWeight.w500),
-                          ),
-                          Spacer(),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 2.8.h,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 6.5.h,
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.5.w, right: 7.w),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.local_offer_outlined,
-                            size: 3.h,
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 0.5.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Promo",
-                                  style: TextStyle(
-                                      fontSize: 5.w, fontWeight: FontWeight.w500),
-                                ),
-                                Text(
-                                  "User Data",
-                                  style: TextStyle(
-                                      fontSize: 3.5.w,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xffffca61)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 6.5.h,
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.5.w, right: 7.w),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.list_alt_outlined,
-                            size: 3.h,
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
-                          Text(
-                            "Terms and coditions",
-                            style: TextStyle(
-                                fontSize: 5.w, fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 6.5.h,
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3.5.w, right: 7.w),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.security_update_warning,
-                            size: 3.h,
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
-                          Text(
-                            "About app",
-                            style: TextStyle(
-                                fontSize: 5.w, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
@@ -300,31 +56,268 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
-            ),
-          ),
-        ),
-
-        Positioned(
-          top: 19.h,
-          left: 0,
-          right: 0,
-          child: Container(
-            width: double.infinity,
-            child: Center(
-              child: Container(
-                height: 12.h,
-                width: 25.5.w,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10.h)),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.h) ,
-                      child: Image.asset('asset/Logopic.png',fit: BoxFit.cover,)),
+              SizedBox(
+                height: 4.h,
               ),
-            ),
+              Container(
+                width: double.infinity,
+                height: 12.h,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(3.w),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 3,
+                      blurRadius: 4,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 3.w),
+                  child: Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            height: 8.h,
+                            width: 18.w,
+                            decoration: BoxDecoration(
+                                color: Colors.amber,
+                                borderRadius: BorderRadius.circular(13.w)),
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(13.w),
+                                child: Image.asset(
+                                  'asset/hand-drawn-paw-prints-background_23-2151132904.jpg',
+                                  fit: BoxFit.cover,
+                                )),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 3.w,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'User Name',
+                            style: TextStyle(
+                              fontSize: 23.dp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          InkWell(
+                              onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditProfileScreen(),
+                              ));
+                        },
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Edit Profile',
+                                  style: TextStyle(
+                                      fontSize: 16.dp, color: Color(0xffc64d4c)),
+                                ),
+                                SizedBox(
+                                  width: 0.5.w,
+                                ),
+                                Icon(
+                                  Icons.edit,
+                                  color: Color(0xffc64d4c),
+                                  size: 15.dp,
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 3.h,
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 2.w),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 7.h,
+                      width: double.infinity,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 2.w),
+                        child: Row(
+                          children: [
+                            Icon(CupertinoIcons.phone_circle_fill,
+                                size: 30.dp, color: Color(0xffc64d4c)),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(2.w),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Mobile',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16.dp,
+                                        color: Color(0xffc64d4c)),
+                                  ),
+                                  Text(
+                                    'User Mobile',
+                                    style: TextStyle(
+                                        fontSize: 15.dp, color: Colors.black),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black,
+                      thickness: 0.1.w,
+                      indent: 2.w,
+                      endIndent: 2.w,
+                    ),
+                    Container(
+                      height: 7.h,
+                      width: double.infinity,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 2.w),
+                        child: Row(
+                          children: [
+                            Icon(Icons.email,
+                                size: 30.dp, color: Color(0xffc64d4c)),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(2.w),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'E-Mail',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16.dp,
+                                        color: Color(0xffc64d4c)),
+                                  ),
+                                  Text(
+                                    'User E-mail',
+                                    style: TextStyle(
+                                        fontSize: 15.dp, color: Colors.black),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black,
+                      thickness: 0.1.w,
+                      indent: 2.w,
+                      endIndent: 2.w,
+                    ),
+                    Container(
+                      height: 7.h,
+                      width: double.infinity,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 2.w),
+                        child: Row(
+                          children: [
+                            Icon(CupertinoIcons.gift_fill,
+                                size: 30.dp, color: Color(0xffc64d4c)),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(2.w),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Orders',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16.dp,
+                                        color: Color(0xffc64d4c)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Spacer(),
+                            Icon(Icons.arrow_right,
+                                size: 35.dp, color: Color(0xffc64d4c))
+                          ],
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black,
+                      thickness: 0.1.w,
+                      indent: 2.w,
+                      endIndent: 2.w,
+                    ),
+                    Container(
+                      height: 7.h,
+                      width: double.infinity,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 2.w),
+                        child: Row(
+                          children: [
+                            Icon(Icons.logout_outlined,
+                                size: 30.dp, color: Color(0xffc64d4c)),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(2.w),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Sign out',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16.dp,
+                                        color: Color(0xffc64d4c)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black,
+                      thickness: 0.1.w,
+                      indent: 2.w,
+                      endIndent: 2.w,
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
-      ]),
+      ),
     );
   }
 }

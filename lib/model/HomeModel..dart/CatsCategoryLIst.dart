@@ -11,16 +11,16 @@ class Data6 {
 
 List<Data6> datas6 = [
   Data6(
-    image: 'asset/Cat_Category_pic/bannerpic5.jpg',
+    image: 'asset/Cat_Category_pic/Banners_pic/bannerpic1.avif',
   ),
   Data6(
-    image: 'asset/Cat_Category_pic/bannerpic3.jpg',
+    image: 'asset/Cat_Category_pic/Banners_pic/bannerpic2.webp',
   ),
   Data6(
-    image: 'asset/Cat_Category_pic/bannerpic2.webp',
+    image: 'asset/Cat_Category_pic/Banners_pic/bannerpic3.jpg',
   ),
   Data6(
-    image: 'asset/Cat_Category_pic/bannerpic4.jpg',
+    image: 'asset/Cat_Category_pic/Banners_pic/bannerpic5.jpg',
   ),
 ];
 
@@ -44,7 +44,7 @@ List<Data7> datas7 = [
       gradientEndColor: Colors.white,
       title: 'Clothing &\nAccessories'),
   Data7(
-      image: 'asset/Food_Brand/drools.png',
+      image: 'asset/Cat_Category_pic/catfoodpic.png',
       gradientStartColor: Color(0xffc9e4de),
       gradientEndColor: Colors.white,
       title: 'Food'),
@@ -54,7 +54,7 @@ List<Data7> datas7 = [
       gradientEndColor: Colors.white,
       title: 'Toys'),
   Data7(
-      image: 'asset/all pets/category7.png',
+      image: 'asset/Cat_Category_pic/catgroomigpic.png',
       gradientStartColor: Color(0xffdbcdf0),
       gradientEndColor: Colors.white,
       title: 'Grooming'),
@@ -85,22 +85,17 @@ class Data8 {
 
 List<Data8> datas8 = [
   Data8(
-    image: 'asset/Dog_Category_pic/smallerDogpic.jpeg',
-    title: 'Stater',
+    image: 'asset/Cat_Category_pic/Kitten.png',
+    title: 'Kitten',
     color1: Colors.blue,
     color2: Colors.red,
   ),
   Data8(
-    image: 'asset/Dog_Category_pic/MidsizeDogpic.jpeg',
-    title: 'Mid',
+    image: 'asset/Cat_Category_pic/Adult.png',
+    title: 'Adult',
     color1: Colors.yellow,
     color2: Colors.blue,
   ),
-  Data8(
-      image: 'asset/Dog_Category_pic/AdultDogpic.jpeg',
-      title: 'Adult',
-      color1: Colors.grey,
-      color2: Colors.pink),
 ];
 
 class Data9 {
@@ -111,24 +106,24 @@ class Data9 {
 
   Data9(
       {required this.image,
-      required this.color,
+      required this.color, 
       required this.title,
       required this.title2});
 }
 
 List<Data9> datas9 = [
   Data9(
-      image: 'asset/Dog_Category_pic/dog_cartoon_pic2.avif',
+      image: 'asset/Cat_Category_pic/cattoy.png',
       color: Color.fromARGB(255, 149, 150, 241),
       title: 'Unlees new adventures\nwith our toy range!',
       title2: 'Discover toys'),
   Data9(
-      image: 'asset/Dog_Category_pic/dog_cartoon_pic4.png',
+      image: 'asset/Cat_Category_pic/cat_accessories.png',
       color: Color.fromARGB(255, 235, 212, 129),
       title: 'Pick the seasons\nfresh style!',
       title2: 'Discover accessories'),
   Data9(
-      image: 'asset/Dog_Category_pic/dog_cartoon_pic1.jpg',
+      image: 'asset/Cat_Category_pic/cat_food.png',
       color: const Color.fromARGB(255, 210, 134, 159),
       title: 'Find what is new\nin the Daggo world!',
       title2: 'Discover food'),
@@ -146,23 +141,46 @@ class Data10 {
 
 List<Data10> datas10 = [
   Data10(
-    image: 'asset/Dog_Category_pic/labrador_dog_pic.webp',
-    title: 'Labrador retriever',
+    image: 'asset/Cat_Category_pic/Breeds_pic/Persianbreed.png',
+    title: 'Persian',
   ),
   Data10(
-    image: 'asset/Dog_Category_pic/Beagle_dog_pic.webp',
-    title: 'Beagle',
+    image: 'asset/Cat_Category_pic/Breeds_pic/Ragdollbreed.png',
+    title: 'Ragdoll',
   ),
   Data10(
-    image: 'asset/Dog_Category_pic/Siberian huskiy_pic.webp',
-    title: 'Siberian husky',
+    image: 'asset/Cat_Category_pic/Breeds_pic/Maincoonbreed.png',
+    title: 'Main coon',
   ),
   Data10(
-    image: 'asset/Dog_Category_pic/germanDog_pic.jpg',
-    title: 'German shepherd',
+    image: 'asset/Cat_Category_pic/Breeds_pic/Britishshorthairbreed.png',
+    title: 'British short hair',
   ),
   Data10(
-    image: 'asset/Dog_Category_pic/GoldenRitrieverpic.jpeg',
-    title: 'Golden retriever',
+    image: 'asset/Cat_Category_pic/Breeds_pic/Himalayanbreed.png',
+    title: 'Himalayan',
+  ),
+];
+
+class Data11 {
+  final String image;
+
+  Data11({
+    required this.image,
+  });
+}
+
+List<Data11> datas11 = [
+  Data11(
+    image: 'asset/Brand_image/brand5.png',
+  ),
+  Data11(
+    image: 'asset/Cat_Category_pic/Brands_pic/Cat_brand_1.png',
+  ),
+  Data11(
+    image: 'asset/Cat_Category_pic/Brands_pic/Cat_brand_2.png',
+  ),
+  Data11(
+    image: 'asset/Cat_Category_pic/Brands_pic/Cat_brand_3.png',
   ),
 ];

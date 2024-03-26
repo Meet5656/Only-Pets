@@ -9,7 +9,7 @@ import 'package:only_pets/Screen/SplashScreen.dart';
 import 'package:only_pets/Screen/dashboard.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp()); 
 }
 
 class MyApp extends StatelessWidget {
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
               child: child!);
         },
+        home: checkoutscreen()
       );
     });
   }
