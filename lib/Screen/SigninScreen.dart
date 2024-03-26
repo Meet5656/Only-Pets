@@ -88,7 +88,8 @@ class _signinscreenState extends State<signinscreen> {
                                 padding: EdgeInsets.only(top: 4.h, left: 7.w),
                                 child: Text(
                                   "SIGN UP!",
-                                  style: TextStyle(fontSize: 30.dp),
+                                  style: TextStyle(
+                                      fontSize: 30.dp, fontFamily: "Alegreya"),
                                 ),
                               ),
                               SizedBox(
@@ -101,7 +102,8 @@ class _signinscreenState extends State<signinscreen> {
                             child: Text(
                               "Welcome to Only pets get started with us and begin the journey",
                               style: TextStyle(
-                                fontSize: 15.dp,
+                                fontFamily: "Alegreya",
+                                fontSize: 18.dp,
                               ),
                             ),
                           ),
@@ -112,11 +114,15 @@ class _signinscreenState extends State<signinscreen> {
                             padding: EdgeInsets.only(left: 7.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
+                                style: TextStyle(
+                                    fontFamily: "medium", fontSize: 17.dp),
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 4.w, horizontal: 5.w),
                                   border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(2.w)),
+                                        BorderRadius.all(Radius.circular(10.w)),
                                   ),
                                   hintText: 'Email',
                                 ),
@@ -127,7 +133,7 @@ class _signinscreenState extends State<signinscreen> {
                                   bool isValid = RegExp(
                                           r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
                                       .hasMatch(value);
-                
+
                                   if (!isValid) {
                                     return 'Enter a valid email address';
                                   }
@@ -143,12 +149,16 @@ class _signinscreenState extends State<signinscreen> {
                             padding: EdgeInsets.only(left: 7.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
+                                style: TextStyle(
+                                    fontFamily: "medium", fontSize: 17.dp),
                                 obscureText: _isHidden,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 4.w, horizontal: 5.w),
                                   border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(2.w)),
+                                        BorderRadius.all(Radius.circular(10.w)),
                                   ),
                                   suffixIcon: IconButton(
                                     icon: _isHidden
@@ -179,12 +189,16 @@ class _signinscreenState extends State<signinscreen> {
                             padding: EdgeInsets.only(left: 7.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
+                                style: TextStyle(
+                                    fontFamily: "medium", fontSize: 17.dp),
                                 obscureText: _confirmpassword,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 4.w, horizontal: 5.w),
                                   border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(2.w)),
+                                        BorderRadius.all(Radius.circular(10.w)),
                                   ),
                                   hintText: 'Confirm Password',
                                   suffixIcon: IconButton(
@@ -225,7 +239,8 @@ class _signinscreenState extends State<signinscreen> {
                                 },
                                 child: Text(
                                   "Forget password?",
-                                  style: TextStyle(fontSize: 17.dp),
+                                  style: TextStyle(
+                                      fontSize: 18.dp, fontFamily: "Alegreya"),
                                 ),
                               ),
                             ),
@@ -239,7 +254,8 @@ class _signinscreenState extends State<signinscreen> {
                             ),
                             child: InkWell(
                               onTap: () {
-                                final isValid = _formkey.currentState!.validate();
+                                final isValid =
+                                    _formkey.currentState!.validate();
                                 if (!isValid) {
                                   return;
                                 } else {
@@ -270,7 +286,9 @@ class _signinscreenState extends State<signinscreen> {
                                   child: Text(
                                     "SIGN UP",
                                     style: TextStyle(
-                                        fontSize: 15.dp, color: Colors.white),
+                                        fontSize: 17.dp,
+                                        color: Colors.white,
+                                        fontFamily: "Alegreya"),
                                   ),
                                 ),
                               ),
@@ -285,13 +303,13 @@ class _signinscreenState extends State<signinscreen> {
                               Text(
                                 "have an account?",
                                 style: TextStyle(
-                                  fontSize: 18.dp,
-                                ),
+                                    fontSize: 20.dp, fontFamily: "Alegreya"),
                               ),
                               Text(
                                 "Log in",
                                 style: TextStyle(
-                                    fontSize: 18.dp,
+                                    fontSize: 20.dp,
+                                    fontFamily: "Alegreya",
                                     color: CustomColors.maincolor),
                               )
                             ],

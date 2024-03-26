@@ -90,8 +90,9 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                   Text(
                                     contents[i].title,
                                     style: TextStyle(
-                                        fontSize: 23.dp,
-                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "Alegreya",
+                                        fontSize: 25.dp,
+                                        // fontWeight: FontWeight.w100,
                                         color: Colors.white),
                                   ),
                                   SizedBox(
@@ -103,7 +104,8 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                       contents[i].description,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontSize: 22.dp,
+                                        fontFamily: "Alegreya",
+                                        fontSize: 23.dp,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -145,13 +147,10 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                 MaterialPageRoute(
                                   builder: (context) => loginscreen(),
                                 ));
-                            // controller.nextPage(
-                            //     duration: Duration(milliseconds: 800),
-                            //     curve: Curves.easeIn);
                           },
                           child: Text(
                             'Start',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white,fontFamily: "Alegreya",fontSize: 15.dp),
                           ),
                         ),
                       ),
@@ -160,32 +159,6 @@ class _onboardingscreenState extends State<onboardingscreen> {
                 )
               ],
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.end,
-            //   children: [
-            //     Padding(
-            //       padding: EdgeInsets.only(right: 1.5.h, top: 4.h),
-            //       child: ElevatedButton(
-            //         style: ElevatedButton.styleFrom(
-            //             shape: RoundedRectangleBorder(
-            //                 side: BorderSide(color: Colors.white, width: 0.2.w),
-            //                 borderRadius:
-            //                     BorderRadius.all(Radius.circular(1.w))),
-            //             backgroundColor: Colors.transparent),
-            //         onPressed: () {
-            //           controller.jumpToPage(3);
-            //           // controller.nextPage(
-            //           //     duration: Duration(milliseconds: 800),
-            //           //     curve: Curves.easeIn);
-            //         },
-            //         child: Text(
-            //           'Skip',
-            //           style: TextStyle(color: Colors.white),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ],
         ));
   }

@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:only_pets/Screen/BottomNavBar.dart';
 import 'package:only_pets/Screen/ResertPassword.dart';
 import 'package:only_pets/Screen/SigninScreen.dart';
 import 'package:only_pets/Screen/dashboard.dart';
@@ -80,7 +81,8 @@ class _loginscreenState extends State<loginscreen> {
                                 padding: EdgeInsets.only(top: 4.h, left: 7.w),
                                 child: Text(
                                   "Welcome Back!",
-                                  style: TextStyle(fontSize: 30.dp),
+                                  style: TextStyle(
+                                      fontSize: 30.dp, fontFamily: "Alegreya"),
                                 ),
                               ),
                               SizedBox(
@@ -93,7 +95,8 @@ class _loginscreenState extends State<loginscreen> {
                             child: Text(
                               "Welcome to Only pets get started with us and begin the journey",
                               style: TextStyle(
-                                fontSize: 15.dp,
+                                fontFamily: "Alegreya",
+                                fontSize: 18.dp,
                               ),
                             ),
                           ),
@@ -104,6 +107,7 @@ class _loginscreenState extends State<loginscreen> {
                             padding: EdgeInsets.only(left: 7.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
+                                style: TextStyle(fontFamily: "Alegreya",fontSize: 17.dp),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return "Enter Email id";
@@ -111,7 +115,7 @@ class _loginscreenState extends State<loginscreen> {
                                   bool isValid = RegExp(
                                           r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
                                       .hasMatch(value);
-                
+
                                   if (!isValid) {
                                     return 'Enter a valid email address';
                                   }
@@ -120,12 +124,17 @@ class _loginscreenState extends State<loginscreen> {
                                 controller: email,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(2.w)),
-                                  ),
-                                  hintText: 'Email',
-                                ),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 4.w, horizontal: 5.w),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.w)),
+                                    ),
+                                    hintText: 'Email',
+                                    hintStyle: TextStyle(
+                                        fontFamily: "medium",
+                                        fontSize: 16.dp,
+                                        fontWeight: FontWeight.w600)),
                               ),
                             ),
                           ),
@@ -136,26 +145,29 @@ class _loginscreenState extends State<loginscreen> {
                             padding: EdgeInsets.only(left: 7.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
+                                  style: TextStyle(fontFamily: "Alegreya",fontSize: 17.dp),
                                 controller: passwrod,
                                 obscureText: _isHidden,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(2.w)),
-                                  ),
-                                  suffixIcon: IconButton(
-                                    icon: _isHidden
-                                        ? Icon(Icons.visibility)
-                                        : Icon(Icons.visibility_off),
-                                    onPressed: () {
-                                      setState(() {
-                                        _isHidden = !_isHidden;
-                                      });
-                                    },
-                                  ),
-                                  hintText: 'Passsword',
-                                ),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 4.w, horizontal: 5.w),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(7.w)),
+                                    ),
+                                    suffixIcon: IconButton(
+                                      icon: _isHidden
+                                          ? Icon(Icons.visibility)
+                                          : Icon(Icons.visibility_off),
+                                      onPressed: () {
+                                        setState(() {
+                                          _isHidden = !_isHidden;
+                                        });
+                                      },
+                                    ),
+                                    hintText: 'Passsword',
+                                    hintStyle: TextStyle(fontFamily: "medium")),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return "Enter Password";
@@ -167,7 +179,7 @@ class _loginscreenState extends State<loginscreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 2.h,
+                            height: 1.h,
                           ),
                           Padding(
                             padding: EdgeInsets.only(right: 6.w),
@@ -183,7 +195,8 @@ class _loginscreenState extends State<loginscreen> {
                                 },
                                 child: Text(
                                   "Forget password?",
-                                  style: TextStyle(fontSize: 17.dp),
+                                  style: TextStyle(
+                                      fontSize: 18.dp, fontFamily: "Alegreya"),
                                 ),
                               ),
                             ),
@@ -197,14 +210,15 @@ class _loginscreenState extends State<loginscreen> {
                             ),
                             child: InkWell(
                               onTap: () {
-                                final isValid = _formkey.currentState!.validate();
+                                final isValid =
+                                    _formkey.currentState!.validate();
                                 if (!isValid) {
                                   return;
                                 } else {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => DashboardScreen(),
+                                        builder: (context) => Bottomnavigatorbar(),
                                       ));
                                 }
                               },
@@ -228,7 +242,9 @@ class _loginscreenState extends State<loginscreen> {
                                   child: Text(
                                     "LOG IN",
                                     style: TextStyle(
-                                        fontSize: 15.dp, color: Colors.white),
+                                        fontSize: 17.dp,
+                                        color: Colors.white,
+                                        fontFamily: "Alegreya"),
                                   ),
                                 ),
                               ),
@@ -243,8 +259,7 @@ class _loginscreenState extends State<loginscreen> {
                               Text(
                                 "Don't have an account?",
                                 style: TextStyle(
-                                  fontSize: 18.dp,
-                                ),
+                                    fontSize: 20.dp, fontFamily: "Alegreya"),
                               ),
                               InkWell(
                                 onTap: () {
@@ -257,7 +272,8 @@ class _loginscreenState extends State<loginscreen> {
                                 child: Text(
                                   " Sign up",
                                   style: TextStyle(
-                                      fontSize: 18.dp,
+                                      fontSize: 20.dp,
+                                      fontFamily: "Alegreya",
                                       color: CustomColors.maincolor),
                                 ),
                               )

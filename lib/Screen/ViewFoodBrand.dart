@@ -29,8 +29,10 @@ class _viewfoodbrandState extends State<viewfoodbrand> {
                 centerTitle: true,
                 title: Text(
                   "Food Brand",
-                  style:
-                      TextStyle(fontWeight: FontWeight.w500, fontSize: 22.dp),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 22.dp,
+                      fontFamily: "Alegreya"),
                 ),
               ),
             ),

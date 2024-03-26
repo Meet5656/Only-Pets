@@ -51,6 +51,7 @@ dependencies:
   like_button: ^2.0.5
   curved_navigation_bar: ^1.0.3
   flutter_rating_bar: ^4.0.1
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -89,11 +90,8 @@ flutter:
     - asset/Cat_Category_pic/Breeds_pic/
     - asset/Pets_Food/
     - asset/Trending_View/
-    - asset/Trending_View/Multi_Image/
-    - asset/Rabbit_Category_pic/
-    - asset/Rabbit_Category_pic/Brand/
-    - asset/Rabbit_Category_pic/breeds/
-    
+    - asset/trending_multi_image/
+    - asset/Pets_food_multi_image/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -105,12 +103,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Alegreya
+      fonts:
+        - asset: asset/font/Alegreya-Regular.ttf
+    - family: medium
+      fonts:
+        - asset: asset/font/Alegreya-Medium.ttf
+        # - asset: fonts/Schyler-Italic.ttf
+          # style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

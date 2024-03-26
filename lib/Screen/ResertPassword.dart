@@ -81,8 +81,9 @@ class _resertpasswordState extends State<resertpassword> {
                                 child: Text(
                                   "Reset Password",
                                   style: TextStyle(
-                                      fontSize: 23.dp,
-                                      fontWeight: FontWeight.w500),
+                                    fontSize: 30.dp,
+                                    fontFamily: "Alegreya",
+                                  ),
                                 ),
                               ),
                             ),
@@ -94,8 +95,9 @@ class _resertpasswordState extends State<resertpassword> {
                               child: Text(
                                 "Entera new password",
                                 style: TextStyle(
-                                    fontSize: 16.dp,
-                                    fontWeight: FontWeight.w400),
+                                    fontSize: 18.dp,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: "Alegreya"),
                               ),
                             ),
                           ),
@@ -106,12 +108,16 @@ class _resertpasswordState extends State<resertpassword> {
                             padding: EdgeInsets.only(left: 6.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
+                                style: TextStyle(
+                                    fontFamily: "medium", fontSize: 17.dp),
                                 obscureText: confirmpassword,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 4.w, horizontal: 5.w),
                                   border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(2.w)),
+                                        BorderRadius.all(Radius.circular(10.w)),
                                   ),
                                   suffixIcon: IconButton(
                                     icon: confirmpassword
@@ -142,12 +148,16 @@ class _resertpasswordState extends State<resertpassword> {
                             padding: EdgeInsets.only(left: 6.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
+                                style: TextStyle(
+                                    fontFamily: "medium", fontSize: 17.dp),
                                 obscureText: _isHidden,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 4.w, horizontal: 5.w),
                                   border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(2.w)),
+                                        BorderRadius.all(Radius.circular(10.w)),
                                   ),
                                   suffixIcon: IconButton(
                                     icon: _isHidden
@@ -207,7 +217,9 @@ class _resertpasswordState extends State<resertpassword> {
                                 child: Text(
                                   "CHANGE PASSWORD",
                                   style: TextStyle(
-                                      fontSize: 15.dp, color: Colors.white),
+                                      fontSize: 17.dp,
+                                      color: Colors.white,
+                                      fontFamily: "Alegreya"),
                                 ),
                               ),
                             ),
