@@ -10,7 +10,7 @@ import 'package:only_pets/util/log.dart';
 class HomeScreenController extends GetxController {
   RxInt currentTreeView = 2.obs;
   RxBool isExpanded = false.obs;
-  RxBool isTreeModeVertical = true.obs; 
+  RxBool isTreeModeVertical = true.obs;
   RxBool accessToDrawer = false.obs;
   Rx<ScreenState> state = ScreenState.apiLoading.obs;
   RxString message = "".obs;

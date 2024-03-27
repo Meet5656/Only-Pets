@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:get/get.dart';
 import 'package:only_pets/Screen/CartScreen/CartScreen.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/Screen/SearchScreen.dart';
@@ -14,6 +15,7 @@ import 'package:only_pets/Screen/ViewClothesBrand.dart';
 import 'package:only_pets/Screen/ViewFoodBrand.dart';
 import 'package:only_pets/Screen/ViewPetsFood.dart';
 import 'package:only_pets/Screen/ViewTrending.dart';
+import 'package:only_pets/controller/HomeScreenController.dart';
 import 'package:only_pets/model/HomeModel..dart/Banner/HomeBanner.dart';
 import 'package:only_pets/model/HomeModel..dart/Category/ViewCategoryModel.dart';
 import 'package:only_pets/model/HomeModel..dart/Clothes_Brand/ClothesBrandModel.dart';
@@ -30,12 +32,14 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  var controller = Get.put(HomeScreenController());
   int activeindex = 0;
   //size
   int SizeIndex = 0;
   //build dot page
   int currentpage = 0;
   // int currentIndex = 0;
+  
 
   @override
   Widget build(BuildContext context) {
