@@ -39,7 +39,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   //build dot page
   int currentpage = 0;
   // int currentIndex = 0;
-  
 
   @override
   Widget build(BuildContext context) {
