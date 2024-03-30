@@ -12,6 +12,8 @@ class OrderDetailsScreen extends StatefulWidget {
 }
 
 class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
+  bool isVisible = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,38 +21,39 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
           child: Column(
         children: [
           Column(
-            children: [
-              FadeInDown(
-                duration: Duration(milliseconds: 1800),
-                child: Container(
-                  height: 3.h,
-                  child: Row(
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.only(left: 5.w),
-                          child: IconButton(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                  child: FadeInDown(
+                    duration: Duration(milliseconds: 1800),
+                    child: Container(
+                      height: 4.h,
+                      child: Row(
+                        children: [
+                          IconButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
                             icon: Icon(
                               Icons.arrow_back,
-                              size: 7.w,
+                              size: 30.dp,
                             ),
-                          )),
-                      Padding(
-                        padding: EdgeInsets.only(left: 22.7.w),
-                        child: Text(
-                          "Orders Details",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 22.dp),
-                        ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 24.w,top: 1.h),
+                            child: Text(
+                              "Order Details ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 22.dp,fontFamily: "Alegreya"),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
           SizedBox(
             height: 3.h,
           ),
@@ -68,7 +71,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
               Text(
                 "Product Name",
                 maxLines: 3,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.dp),
+                style: TextStyle(fontFamily: "medium",fontWeight: FontWeight.w600, fontSize: 20.dp),
               ),
               SizedBox(
                 height: 1.5.h,
@@ -79,12 +82,12 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   Text(
                     "Quantity : ",
                     style:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 15.dp),
+                        TextStyle(fontFamily: "medium",fontWeight: FontWeight.w400, fontSize: 15.dp),
                   ),
                   Text(
                     "01",
                     style:
-                        TextStyle(fontWeight: FontWeight.w300, fontSize: 15.dp),
+                        TextStyle(fontFamily: "medium",fontWeight: FontWeight.w300, fontSize: 15.dp),
                   ),
                 ],
               ),
@@ -97,12 +100,12 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   Text(
                     "Order Id : ",
                     style:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 15.dp),
+                        TextStyle(fontFamily: "medium",fontWeight: FontWeight.w400, fontSize: 15.dp),
                   ),
                   Text(
                     "1DV54D8C",
                     style:
-                        TextStyle(fontWeight: FontWeight.w300, fontSize: 15.dp),
+                        TextStyle(fontFamily: "medium",fontWeight: FontWeight.w300, fontSize: 15.dp),
                   ),
                 ],
               ),
@@ -119,7 +122,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     end: Alignment.bottomLeft,
                     colors: [
                       Colors.black.withOpacity(0.6),
-                      CustomColors.primaryColor,
+                      CustomColors.maincolor,
                     ],
                   ),
                 ),
@@ -136,7 +139,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     ),
                     Text(
                       "Delivered",
-                      style: TextStyle(
+                      style: TextStyle(fontFamily: "medium",
                           fontWeight: FontWeight.w600,
                           fontSize: 15.dp,
                           color: Colors.white),
@@ -146,7 +149,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     ),
                     Text(
                       "01 Aug 2024",
-                      style: TextStyle(
+                      style: TextStyle(fontFamily: "medium",
                           fontWeight: FontWeight.w400,
                           fontSize: 15.dp,
                           color: Colors.white),
@@ -178,7 +181,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     children: [
                       Text(
                         'Name',
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: "medium",
                             fontSize: 18.dp,
                             fontWeight: FontWeight.w700,
                             color: Colors.black),
@@ -189,7 +192,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       Text(
                         'User name',
                         maxLines: 3,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: "medium",
                             fontSize: 13.dp,
                             fontWeight: FontWeight.w300,
                             color: Colors.black),
@@ -199,7 +202,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       ),
                       Text(
                         'Mobile',
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: "medium",
                             fontSize: 18.dp,
                             fontWeight: FontWeight.w700,
                             color: Colors.black),
@@ -210,7 +213,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       Text(
                         '+91 94xx xxxx xx',
                         maxLines: 3,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: "medium",
                             fontSize: 13.dp,
                             fontWeight: FontWeight.w300,
                             color: Colors.black),
@@ -220,7 +223,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       ),
                       Text(
                         'Delivery Address',
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: "medium",
                             fontSize: 18.dp,
                             fontWeight: FontWeight.w700,
                             color: Colors.black),
@@ -231,7 +234,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       Text(
                         'A-11, Satava Icon, Vastral, SP Ring Road, Ahmedabad - 382415',
                         maxLines: 3,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: "medium",
                             fontSize: 13.dp,
                             fontWeight: FontWeight.w300,
                             color: Colors.black),
@@ -241,70 +244,79 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                 ),
               ),
               SizedBox(
-                height: 11.67.h,
+                height: 10.17.h,
               ),
               InkWell(
                 onTap: () {
+                  setState(() {
+                    isVisible = !isVisible;
+                  });
                   showpricelist(context);
                 },
-                child: Container(
-                  height: 8.h,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Colors.black.withOpacity(0.6),
-                          CustomColors.primaryColor,
-                        ],
-                      ),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(6.w),
-                          topRight: Radius.circular(6.w))),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 6.w, right: 6.w, top: 1.h),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              "Price Details",
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              width: 2.w,
-                            ),
-                            Text(
-                              "(1 Item)",
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            Spacer(),
-                            Text(
-                              "₹100.00",
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600),
-                            )
+                child: Visibility(
+                  visible: isVisible,
+                  maintainSize: true,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  child: Container(
+                    height: 8.h,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Colors.black.withOpacity(0.6),
+                            CustomColors.maincolor,
                           ],
                         ),
-                        SizedBox(
-                          height: 1.h,
-                        ),
-                        Divider(
-                          color: Colors.white,
-                          thickness: 0.1.w,
-                          indent: 1.w,
-                          endIndent: 1.w,
-                        ),
-                      ],
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(6.w),
+                            topRight: Radius.circular(6.w))),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 6.w, right: 6.w, top: 1.h),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Price Details",
+                                style: TextStyle(fontFamily: "medium",
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              SizedBox(
+                                width: 2.w,
+                              ),
+                              Text(
+                                "(1 Item)",
+                                style: TextStyle(fontFamily: "medium",
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              Spacer(),
+                              Text(
+                                "₹100.00",
+                                style: TextStyle(fontFamily: "medium",
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 1.h,
+                          ),
+                          Divider(
+                            color: Colors.white,
+                            thickness: 0.1.w,
+                            indent: 1.w,
+                            endIndent: 1.w,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -315,159 +327,163 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       )),
     );
   }
-}
 
-void showpricelist(BuildContext context) {
-  showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (builder) {
-        return Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 3.5,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  Colors.black.withOpacity(0.6),
-                  CustomColors.primaryColor,
-                ],
-              ),
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(5.w),
-                  topRight: Radius.circular(5.w))),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 6.w, right: 6.w, top: 2.h),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Price Details",
-                          style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        SizedBox(
-                          width: 2.w,
-                        ),
-                        Text(
-                          "(1 Item)",
-                          style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Divider(
-                      color: Colors.white,
-                      thickness: 0.1.w,
-                      indent: 1.w,
-                      endIndent: 1.w,
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Total MRP",
-                          style: TextStyle(
-                              fontSize: 17.dp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Spacer(),
-                        Text("₹100.00",
-                            style: TextStyle(
-                                fontSize: 17.dp,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500))
-                      ],
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Total MRP",
-                          style: TextStyle(
-                              fontSize: 17.dp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Spacer(),
-                        Text("₹20.00",
-                            style: TextStyle(
-                                fontSize: 17.dp,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500))
-                      ],
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Shipping Charge",
-                          style: TextStyle(
-                              fontSize: 17.dp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Spacer(),
-                        Text("Free",
-                            style: TextStyle(
-                                fontSize: 17.dp,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500))
-                      ],
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Divider(
-                      color: Colors.white,
-                      thickness: 0.1.w,
-                      indent: 1.w,
-                      endIndent: 1.w,
-                    ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Total Amount",
-                          style: TextStyle(
-                              fontSize: 19.dp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        Spacer(),
-                        Text("₹120",
-                            style: TextStyle(
-                                fontSize: 19.dp,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700))
-                      ],
-                    ),
+  void showpricelist(BuildContext context) {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (builder) {
+          return Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 3.5,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.black.withOpacity(0.6),
+                    CustomColors.maincolor,
                   ],
                 ),
-              ),
-            ],
-          ),
-        );
-      }).then((value) {});
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(5.w),
+                    topRight: Radius.circular(5.w))),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 6.w, right: 6.w, top: 2.h),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Price Details",
+                            style: TextStyle(fontFamily: "medium",
+                                fontSize: 22,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: 2.w,
+                          ),
+                          Text(
+                            "(1 Item)",
+                            style: TextStyle(fontFamily: "medium",
+                                fontSize: 22,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Divider(
+                        color: Colors.white,
+                        thickness: 0.1.w,
+                        indent: 1.w,
+                        endIndent: 1.w,
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Total MRP",
+                            style: TextStyle(fontFamily: "medium",
+                                fontSize: 17.dp,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          Spacer(),
+                          Text("₹100.00",
+                              style: TextStyle(fontFamily: "medium",
+                                  fontSize: 17.dp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Total MRP",
+                            style: TextStyle(fontFamily: "medium",
+                                fontSize: 17.dp,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          Spacer(),
+                          Text("₹20.00",
+                              style: TextStyle(fontFamily: "medium",
+                                  fontSize: 17.dp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Shipping Charge",
+                            style: TextStyle(fontFamily: "medium",
+                                fontSize: 17.dp,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          Spacer(),
+                          Text("Free",
+                              style: TextStyle(fontFamily: "medium",
+                                  fontSize: 17.dp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Divider(
+                        color: Colors.white,
+                        thickness: 0.1.w,
+                        indent: 1.w,
+                        endIndent: 1.w,
+                      ),
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Total Amount",
+                            style: TextStyle(fontFamily: "medium",
+                                fontSize: 19.dp,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Spacer(),
+                          Text("₹120",
+                              style: TextStyle(fontFamily: "medium",
+                                  fontSize: 19.dp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700))
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        }).then((value) {
+      setState(() {
+        isVisible = true;
+      });
+    });
+  }
 }

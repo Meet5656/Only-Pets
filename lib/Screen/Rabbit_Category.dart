@@ -25,27 +25,35 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
           children: [
             Column(
               children: [
-                FadeInDown(
-                  duration: Duration(milliseconds: 1800),
-                  child: Container(
-                    height: 3.h,
-                    child: Row(
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.only(left: 5.w),
-                            child: Icon(
+                Padding(
+                  padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                  child: FadeInDown(
+                    duration: Duration(milliseconds: 1800),
+                    child: Container(
+                      height: 4.h,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
                               Icons.arrow_back,
-                              size: 7.w,
-                            )),
-                        Padding(
-                          padding: EdgeInsets.only(left: 25.5.w),
-                          child: Text(
-                            "ONLYPETS",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 22.dp),
+                              size: 30.dp,
+                            ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.only(left: 22.w, top: 1.h),
+                            child: Text(
+                              "Rabbit Category",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22.dp,
+                                  fontFamily: "Alegreya"),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -128,7 +136,9 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                     Text(
                       "Shop by Category",
                       style: TextStyle(
-                          fontSize: 25.dp, fontWeight: FontWeight.w400),
+                          fontSize: 25.dp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -181,7 +191,8 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: 15.dp,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: "medium"),
                                         )
                                       ],
                                     ),
@@ -205,8 +216,10 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                     ),
                     Text(
                       "Shop by Life Stage",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -262,6 +275,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                                       child: Text(
                                         datas14[index].title,
                                         style: TextStyle(
+                                            fontFamily: "medium",
                                             color: Colors.white,
                                             fontSize: 16.dp,
                                             fontWeight: FontWeight.w600),
@@ -319,7 +333,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                                                     children: [
                                                       Text(
                                                         data.title,
-                                                        style: TextStyle(
+                                                        style: TextStyle(fontFamily: "medium",
                                                             fontSize: 15.dp,
                                                             fontWeight:
                                                                 FontWeight.w500,
@@ -344,7 +358,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                                                             data.title2,
                                                             textAlign: TextAlign
                                                                 .center,
-                                                            style: TextStyle(
+                                                            style: TextStyle(fontFamily: "medium",
                                                                 fontSize: 2.w),
                                                           ),
                                                         ),
@@ -422,7 +436,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                     Text(
                       "Shop by Breed",
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                          TextStyle(fontFamily: "medium",fontSize: 25, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -493,75 +507,96 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                     Text(
                       "Shop by brands",
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                          TextStyle(fontFamily: "medium",fontSize: 25, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
                       height: 2.h,
                     ),
-                    FadeInUp(
-                      duration: Duration(milliseconds: 1800),
-                      child: Container(
-                        height: 20.h,
-                        child: GridView.builder(
-                          //physics: NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: datas17.length,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 1, mainAxisExtent: 21.h),
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    right: 3.w,
-                                    left: 3.w,
+                    Container(
+                      height: 22.h,
+                      child: GridView.builder(
+                        // physics: NeverScrollableScrollPhysics(),
+                        itemCount: datas17.length,
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1, mainAxisExtent: 21.h),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  right: 3.w,
+                                  left: 3.w,
+                                ),
+                                child: Container(
+                                  height: 18.h,
+                                  width: 42.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.w),
+                                      topRight: Radius.circular(20.w),
+                                    ),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 1,
+                                        blurRadius: 3,
+                                      ),
+                                    ],
                                   ),
-                                  child: Container(
-                                    height: 15.h,
-                                    width: 42.w,
-                                    decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topRight,
-                                          end: Alignment.bottomLeft,
-                                          colors: [
-                                            Colors.black.withOpacity(0.8),
-                                            CustomColors.primaryColor,
-                                          ],
-                                        ),
-                                        color: Color.fromARGB(255, 42, 41, 41),
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20.w),
-                                          topRight: Radius.circular(20.w),
-                                        )),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          top: 1.5.h,
-                                          right: 3.w,
-                                          left: 3.w,
-                                          bottom: 3.h),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(18.w),
-                                              topRight: Radius.circular(18.w),
-                                              bottomLeft: Radius.circular(6.w),
-                                              bottomRight: Radius.circular(6.w),
-                                            )),
-                                        child: Image.asset(
-                                          datas17[index].image,
-                                          //fit: BoxFit.cover,
-                                          height: 1.h,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(1.w),
+                                    child: Container(
+                                      height: 18.h,
+                                      width: 42.w,
+                                      decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topRight,
+                                            end: Alignment.bottomLeft,
+                                            colors: [
+                                              Colors.black.withOpacity(0.8),
+                                              CustomColors.maincolor,
+                                              // CustomColors.maincolor,
+                                            ],
+                                          ),
+                                          color:
+                                              Color.fromARGB(255, 42, 41, 41),
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20.w),
+                                            topRight: Radius.circular(20.w),
+                                          )),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 1.5.h,
+                                            right: 3.w,
+                                            left: 3.w,
+                                            bottom: 3.h),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(18.w),
+                                                topRight: Radius.circular(18.w),
+                                                bottomLeft:
+                                                    Radius.circular(6.w),
+                                                bottomRight:
+                                                    Radius.circular(6.w),
+                                              )),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(1.h),
+                                            child: Image.asset(
+                                                datas17[index].image),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            );
-                          },
-                        ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
                     ),
                     Padding(
@@ -572,8 +607,8 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                           Text(
                             "Rabbits are tiny and furry animals\npopularly known as bunnies! 🐰",
                             textAlign: TextAlign.start,
-                            style: TextStyle(
-                                fontSize: 5.5.w,
+                            style: TextStyle(fontFamily: "medium",
+                                fontSize: 23.dp,
                                 color: Color(0xffc3c3c3),
                                 fontWeight: FontWeight.w600),
                           ),

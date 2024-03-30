@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:only_pets/Screen/EditProfileScreen.dart';
+import 'package:only_pets/Screen/LoginScreen.dart';
+import 'package:only_pets/Screen/OrderScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -23,33 +25,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 3.5.w, right: 3.5.w),
+          padding: EdgeInsets.only(left: 4.5.w, right: 4.5.w, top: 0.5.h),
           child: Column(
             children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FadeInDown(
-                    duration: Duration(milliseconds: 1800),
-                    child: Container(
-                      height: 3.h,
-                      child: Row(
-                        children: [
-                          Padding(
-                              padding: EdgeInsets.only(left: 2.w),
-                              child: Icon(
+                  Padding(
+                    padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                    child: FadeInDown(
+                      duration: Duration(milliseconds: 1800),
+                      child: Container(
+                        height: 4.h,
+                        child: Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: Icon(
                                 Icons.arrow_back,
-                                size: 7.w,
-                              )),
-                          Padding(
-                            padding: EdgeInsets.only(left: 30.w),
-                            child: Text(
-                              "Profile",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 22.dp),
+                                size: 30.dp,
+                              ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: EdgeInsets.only(left: 25.5.w, top: 1.h),
+                              child: Text(
+                                "Profile",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 22.dp,
+                                    fontFamily: "Alegreya"),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -104,24 +113,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Text(
                             'User Name',
                             style: TextStyle(
+                              fontFamily: "medium",
                               fontSize: 23.dp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           InkWell(
-                              onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => EditProfileScreen(),
-                              ));
-                        },
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => EditProfileScreen(),
+                                  ));
+                            },
                             child: Row(
                               children: [
                                 Text(
                                   'Edit Profile',
                                   style: TextStyle(
-                                      fontSize: 16.dp, color: Color(0xffc64d4c)),
+                                      fontFamily: "medium",
+                                      fontSize: 16.dp,
+                                      color: Color(0xffc64d4c)),
                                 ),
                                 SizedBox(
                                   width: 0.5.w,
@@ -167,6 +179,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   Text(
                                     'Mobile',
                                     style: TextStyle(
+                                        fontFamily: "medium",
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16.dp,
                                         color: Color(0xffc64d4c)),
@@ -174,7 +187,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   Text(
                                     'User Mobile',
                                     style: TextStyle(
-                                        fontSize: 15.dp, color: Colors.black),
+                                        fontFamily: "medium",
+                                        fontSize: 15.dp,
+                                        color: Colors.black),
                                   )
                                 ],
                               ),
@@ -209,6 +224,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   Text(
                                     'E-Mail',
                                     style: TextStyle(
+                                        fontFamily: "medium",
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16.dp,
                                         color: Color(0xffc64d4c)),
@@ -216,7 +232,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   Text(
                                     'User E-mail',
                                     style: TextStyle(
-                                        fontSize: 15.dp, color: Colors.black),
+                                        fontFamily: "medium",
+                                        fontSize: 15.dp,
+                                        color: Colors.black),
                                   )
                                 ],
                               ),
@@ -231,38 +249,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       indent: 2.w,
                       endIndent: 2.w,
                     ),
-                    Container(
-                      height: 7.h,
-                      width: double.infinity,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 2.w),
-                        child: Row(
-                          children: [
-                            Icon(CupertinoIcons.gift_fill,
-                                size: 30.dp, color: Color(0xffc64d4c)),
-                            SizedBox(
-                              width: 2.w,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.w),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Orders',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16.dp,
-                                        color: Color(0xffc64d4c)),
-                                  ),
-                                ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OrderScreen(),
+                            ));
+                      },
+                      child: Container(
+                        height: 7.h,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 2.w),
+                          child: Row(
+                            children: [
+                              Icon(CupertinoIcons.gift_fill,
+                                  size: 30.dp, color: Color(0xffc64d4c)),
+                              SizedBox(
+                                width: 2.w,
                               ),
-                            ),
-                            Spacer(),
-                            Icon(Icons.arrow_right,
-                                size: 35.dp, color: Color(0xffc64d4c))
-                          ],
+                              Padding(
+                                padding: EdgeInsets.all(2.w),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Orders',
+                                      style: TextStyle(
+                                          fontFamily: "medium",
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16.dp,
+                                          color: Color(0xffc64d4c)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Spacer(),
+                              Icon(Icons.arrow_right,
+                                  size: 35.dp, color: Color(0xffc64d4c))
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -272,35 +300,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       indent: 2.w,
                       endIndent: 2.w,
                     ),
-                    Container(
-                      height: 7.h,
-                      width: double.infinity,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 2.w),
-                        child: Row(
-                          children: [
-                            Icon(Icons.logout_outlined,
-                                size: 30.dp, color: Color(0xffc64d4c)),
-                            SizedBox(
-                              width: 2.w,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.w),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Sign out',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16.dp,
-                                        color: Color(0xffc64d4c)),
-                                  ),
-                                ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => loginscreen(),
+                            ));
+                      },
+                      child: Container(
+                        height: 7.h,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 2.w),
+                          child: Row(
+                            children: [
+                              Icon(Icons.logout_outlined,
+                                  size: 30.dp, color: Color(0xffc64d4c)),
+                              SizedBox(
+                                width: 2.w,
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: EdgeInsets.all(2.w),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Sign out',
+                                      style: TextStyle(
+                                          fontFamily: "medium",
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16.dp,
+                                          color: Color(0xffc64d4c)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
