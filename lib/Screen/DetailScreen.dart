@@ -1,43 +1,60 @@
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:only_pets/api_handle/CommonApiStructure.dart';
+import 'package:only_pets/config/apicall_constant.dart';
+import 'package:only_pets/config/assets_constant.dart';
+import 'package:only_pets/config/colors_constant.dart';
+import 'package:only_pets/config/string_constant.dart';
+import 'package:only_pets/controller/productDetailController.dart';
+import 'package:only_pets/model/UpdateDashboardModel.dart';
 import 'package:sizer/sizer.dart';
 import 'package:only_pets/model/DetailScreenSizeModel.dart';
-import 'package:only_pets/model/HomeModel..dart/Treading/ViewTrendingModel.dart';
 import 'package:only_pets/util/Color.dart';
 import 'package:readmore/readmore.dart';
 
 // ignore: must_be_immutable
 class detailscreen extends StatefulWidget {
   detailscreen({super.key, required this.userdata, this.isFromnTrending});
-  ViewTrendingModel? userdata;
+  // ViewTrendingModel? userdata;
   bool? isFromnTrending;
+
+  CommonProductList userdata;
 
   @override
   State<detailscreen> createState() => _detailscreenState();
 }
 
 class _detailscreenState extends State<detailscreen> {
+  var controller = Get.put(ProductDetailScreenController());
   int activeindex = 0;
   int _counter = 1; // Initialize counter variable
   int currentindex = 0;
-  late PageController controller;
+  late PageController controllers;
   Timer? timer;
 
   void initState() {
-    controller = PageController(initialPage: 0);
+    controllers = PageController(initialPage: 0);
     startTimer();
+    Future.delayed(Duration.zero, () {
+      controller.getRecentFav(
+          context, int.parse(widget.userdata.innerSubcategoryId));
+    });
     super.initState();
   }
 
   @override
   void dispose() {
     timer?.cancel();
-    controller.dispose();
+    controllers.dispose();
     super.dispose();
   }
 
@@ -58,12 +75,12 @@ class _detailscreenState extends State<detailscreen> {
   void startTimer() {
     // Change page every 3 seconds
     timer = Timer.periodic(Duration(seconds: 3), (timer) {
-      if (activeindex < widget.userdata!.image.length - 1) {
+      if (activeindex < widget.userdata.images.length - 1) {
         activeindex++;
       } else {
         activeindex = 0;
       }
-      controller.animateToPage(
+      controllers.animateToPage(
         activeindex,
         duration: Duration(milliseconds: 500),
         curve: Curves.easeIn,
@@ -119,15 +136,33 @@ class _detailscreenState extends State<detailscreen> {
                 child: Column(
                   children: [
                     CarouselSlider.builder(
-                      itemCount: widget.userdata!.image.length,
+                      itemCount: widget.userdata.images.length,
                       itemBuilder: (context, index, realIndex) => Container(
                         margin: EdgeInsets.symmetric(horizontal: 12),
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(3.w)),
-                          child: Image.asset(
-                            widget.userdata!.image[index],
+                          child: CachedNetworkImage(
                             fit: BoxFit.cover,
-                            // width: 80.w,
+                            height: 13.h,
+                            width: SizerUtil.width,
+                            imageUrl:
+                                ApiUrl.imageUrl + widget.userdata.images[index],
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(
+                                  color: primaryColor),
+                            ),
+                            errorWidget: (context, url, error) => Image.asset(
+                              Asset.productPlaceholder,
+                              height: 13.h,
+                              width: 13.5.h,
+                              fit: BoxFit.contain,
+                            ),
+                            imageBuilder: (context, imageProvider) => Image(
+                              image: imageProvider,
+                              height: 13.h,
+                              width: 13.h,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -156,7 +191,7 @@ class _detailscreenState extends State<detailscreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: List.generate(
-                                    widget.userdata!.image.length,
+                                    widget.userdata.images.length,
                                     (index) => buildDot(index, context)),
                               ),
                             ),
@@ -194,35 +229,60 @@ class _detailscreenState extends State<detailscreen> {
                             Padding(
                               padding: EdgeInsets.only(top: 0.5.w),
                               child: Text(
-                                widget.userdata!.Rate,
+                                "0.0",
                                 style: TextStyle(
                                     fontSize: 19.sp, fontFamily: "medium"),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 47.w),
-                              child: Container(
-                                height: 5.h,
-                                width: 10.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.2),
-                                      spreadRadius: 1,
-                                      blurRadius: 3,
-                                      // offset: Offset(0, 3),
-                                    ),
-                                  ],
+                            GestureDetector(
+                              onTap: () {
+                                addFavouriteAPI(
+                                    context,
+                                    widget.userdata.id.toString(),
+                                    '1',
+                                    ProductDetailScreenConstant.title);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 47.w),
+                                child: Container(
+                                  height: 5.h,
+                                  width: 10.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        spreadRadius: 1,
+                                        blurRadius: 3,
+                                        // offset: Offset(0, 3),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Obx(
+                                    () {
+                                      return Container(
+                                          padding: EdgeInsets.all(
+                                              SizerUtil.deviceType ==
+                                                      DeviceType.mobile
+                                                  ? 5
+                                                  : 0),
+                                          child: Icon(
+                                              controller.isLiked!.value == true
+                                                  ? Icons.favorite_rounded
+                                                  : Icons.favorite_border,
+                                              color: Colors.red,
+                                              size: 3.5.h));
+                                    },
+                                  ),
+                                  // IconButton(
+                                  //     onPressed: () {},
+                                  //     icon: Icon(
+                                  //       CupertinoIcons.heart_fill,
+                                  //       color: Colors.red,
+                                  //       size: 6.w,
+                                  //     )),
                                 ),
-                                child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      CupertinoIcons.heart_fill,
-                                      color: Colors.red,
-                                      size: 6.w,
-                                    )),
                               ),
                             ),
                           ],
@@ -236,7 +296,7 @@ class _detailscreenState extends State<detailscreen> {
                         child: Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            widget.userdata!.name,
+                            widget.userdata.name,
                             style: TextStyle(
                                 fontSize: 20.sp,
                                 fontWeight: FontWeight.w500,
@@ -264,7 +324,7 @@ class _detailscreenState extends State<detailscreen> {
                             child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  widget.userdata!.Prise,
+                                  widget.userdata.price,
                                   style: TextStyle(
                                       fontSize: 30.sp,
                                       color: Colors.red,
@@ -384,7 +444,7 @@ class _detailscreenState extends State<detailscreen> {
                       child: Padding(
                         padding: EdgeInsets.only(left: 3.w),
                         child: ReadMoreText(
-                          widget.userdata!.des,
+                          widget.userdata.description,
                           trimLines: 3,
                           trimMode: TrimMode.Line,
                           lessStyle: TextStyle(

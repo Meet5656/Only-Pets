@@ -72,12 +72,12 @@ class _viewpetfoodState extends State<viewpetfood> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => detailscreen(
-                                        userdata: view_food[index]),
-                                  ));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) => detailscreen(
+                              //           userdata: view_food[index]),
+                              //     ));
                             },
                             child: Container(
                               height: 30.5.h,
@@ -204,7 +204,6 @@ class _viewpetfoodState extends State<viewpetfood> {
                                                 EdgeInsets.only(top: 0.2.w),
                                             child: Center(
                                               child: Text(
-                                              
                                                 "Add Cart",
                                                 style: TextStyle(
                                                     fontFamily: "medium",

@@ -144,34 +144,33 @@ class CategoryList {
 class CommonProductList {
   int id;
   String name;
-  int categoryId;
-  int productId;
-  int subcategoryId;
-  int innerSubcategoryId;
-  int brandId;
-  int sku;
+  String categoryId;
+  String productId;
+  String subcategoryId;
+  String innerSubcategoryId;
+  String brandId;
   String qty;
   List<String> images;
   List<String> thumbnailUrl;
-  int isActive;
+  String isActive;
   String tags;
-  int price;
-  int discount;
+  String price;
+  String discount;
   String discountUnit;
-  int instockQty;
+  String instockQty;
   String description;
-  int? minQty;
-  int isFreeShipping;
-  int isReturnPolicy;
-  int returnPolicyDays;
-  int shippingCharge;
+  String? minQty;
+  String isFreeShipping;
+  String isReturnPolicy;
+  String returnPolicyDays;
+  String shippingCharge;
   String? shippingChargeUnit;
-  int isFeatured;
-  int isTrending;
-  int isHotDeals;
-  int? tax;
+  String isFeatured;
+  String isTrending;
+  String isHotDeals;
+  String? tax;
   String? taxUnit;
-  int isVariations;
+  String isVariations;
   String productCategoryName;
   String productCategoryThumbnailUrl;
   String productSubCategoryName;
@@ -180,7 +179,7 @@ class CommonProductList {
   String productInnerSubCategoryThumbnailUrl;
   String brandName;
   String brandThumbnailUrl;
-  double? averageRating;
+  //String? averageRating;
   RxInt? quantity;
   RxBool? isInCart;
 
@@ -192,7 +191,6 @@ class CommonProductList {
       required this.subcategoryId,
       required this.innerSubcategoryId,
       required this.brandId,
-      required this.sku,
       required this.qty,
       required this.images,
       required this.thumbnailUrl,
@@ -223,7 +221,7 @@ class CommonProductList {
       required this.productInnerSubCategoryThumbnailUrl,
       required this.brandName,
       required this.brandThumbnailUrl,
-      required this.averageRating,
+      // required this.averageRating,
       int quantity = 0,
       bool isInCart = false})
       : quantity = RxInt(quantity),
@@ -233,34 +231,33 @@ class CommonProductList {
       CommonProductList(
         id: json["id"],
         name: json["name"] ?? '',
-        productId: json["product_id"] ?? 0,
-        categoryId: json["category_id"],
-        subcategoryId: json["subcategory_id"],
-        innerSubcategoryId: json["inner_subcategory_id"],
-        brandId: json["brand_id"],
-        sku: json["sku"] ?? 0,
+        productId: json["product_id"] ?? '',
+        categoryId: json["category_id"] ?? '',
+        subcategoryId: json["subcategory_id"] ?? '',
+        innerSubcategoryId: json["inner_subcategory_id"] ?? '',
+        brandId: json["brand_id"] ?? '',
         qty: json["qty"] ?? '',
         images: List<String>.from(json["images"].map((x) => x) ?? ''),
         thumbnailUrl: List<String>.from(json["thumbnail_url"].map((x) => x)),
-        isActive: json["is_active"],
+        isActive: json["is_active"] ?? '',
         tags: json["tags"] ?? '',
-        price: json["price"],
-        discount: json["discount"],
+        price: json["price"] ?? '',
+        discount: json["discount"] ?? '',
         discountUnit: json["discount_unit"] ?? '',
-        instockQty: json["instock_qty"],
+        instockQty: json["instock_qty"] ?? '',
         description: json["description"] ?? '',
-        minQty: json["min_qty"],
-        isFreeShipping: json["is_free_shipping"],
-        isReturnPolicy: json["is_return_policy"],
-        returnPolicyDays: json["return_policy_days"],
-        shippingCharge: json["shipping_charge"],
+        minQty: json["min_qty"] ?? '',
+        isFreeShipping: json["is_free_shipping"] ?? '',
+        isReturnPolicy: json["is_return_policy"] ?? '',
+        returnPolicyDays: json["return_policy_days"] ?? '',
+        shippingCharge: json["shipping_charge"] ?? '',
         shippingChargeUnit: json["shipping_charge_unit"] ?? '',
-        isFeatured: json["is_featured"],
-        isTrending: json["is_trending"],
-        isHotDeals: json["is_hot_deals"],
-        tax: json["tax"],
+        isFeatured: json["is_featured"] ?? '',
+        isTrending: json["is_trending"] ?? '',
+        isHotDeals: json["is_hot_deals"] ?? '',
+        tax: json["tax"] ?? '',
         taxUnit: json["tax_unit"] ?? '',
-        isVariations: json["is_variations"],
+        isVariations: json["is_variations"] ?? '',
         productCategoryName: json["product_category_name"] ?? '',
         productCategoryThumbnailUrl:
             json["product_category_thumbnail_url"] ?? '',
@@ -273,7 +270,9 @@ class CommonProductList {
             json["product_inner_sub_category_thumbnail_url"] ?? '',
         brandName: json["brand_name"] ?? '',
         brandThumbnailUrl: json["brand_thumbnail_url"] ?? '',
-        averageRating: json["average_rating"]?.toDouble(),
+        // averageRating: json["average_rating"].toString() != null
+        //     ? json["average_rating"]
+        //     : "0.0",
         quantity: json["quantity"] ?? 0,
       );
 
@@ -285,7 +284,6 @@ class CommonProductList {
         "subcategory_id": subcategoryId,
         "inner_subcategory_id": innerSubcategoryId,
         "brand_id": brandId,
-        "sku": sku,
         "qty": qty,
         "images": List<dynamic>.from(images.map((x) => x)),
         "thumbnail_url": List<dynamic>.from(thumbnailUrl.map((x) => x)),
@@ -317,7 +315,7 @@ class CommonProductList {
             productInnerSubCategoryThumbnailUrl,
         "brand_name": brandName,
         "brand_thumbnail_url": brandThumbnailUrl,
-        "average_rating": averageRating,
+        // "average_rating": averageRating,
         "quantity": quantity?.value, // Convert RxInt to plain Dart int
         "is_in_cart": isInCart?.value,
       };
@@ -325,34 +323,33 @@ class CommonProductList {
   CommonProductList copyWith({
     int? id,
     String? name,
-    int? productId,
-    int? categoryId,
-    int? subcategoryId,
-    int? innerSubcategoryId,
-    int? brandId,
-    int? sku,
+    String? productId,
+    String? categoryId,
+    String? subcategoryId,
+    String? innerSubcategoryId,
+    String? brandId,
     String? qty,
     List<String>? images,
     List<String>? thumbnailUrl,
-    int? isActive,
+    String? isActive,
     String? tags,
-    int? price,
-    int? discount,
+    String? price,
+    String? discount,
     String? discountUnit,
-    int? instockQty,
+    String? instockQty,
     String? description,
-    int? minQty,
-    int? isFreeShipping,
-    int? isReturnPolicy,
-    int? returnPolicyDays,
-    int? shippingCharge,
+    String? minQty,
+    String? isFreeShipping,
+    String? isReturnPolicy,
+    String? returnPolicyDays,
+    String? shippingCharge,
     String? shippingChargeUnit,
-    int? isFeatured,
-    int? isTrending,
-    int? isHotDeals,
-    int? tax,
+    String? isFeatured,
+    String? isTrending,
+    String? isHotDeals,
+    String? tax,
     String? taxUnit,
-    int? isVariations,
+    String? isVariations,
     String? productCategoryName,
     String? productCategoryThumbnailUrl,
     String? productSubCategoryName,
@@ -361,7 +358,7 @@ class CommonProductList {
     String? productInnerSubCategoryThumbnailUrl,
     String? brandName,
     String? brandThumbnailUrl,
-    double? averageRating,
+    //String? averageRating,
     int? quantity,
     bool? isInCart,
   }) {
@@ -373,7 +370,6 @@ class CommonProductList {
         subcategoryId: subcategoryId ?? this.subcategoryId,
         innerSubcategoryId: innerSubcategoryId ?? this.innerSubcategoryId,
         brandId: brandId ?? this.brandId,
-        sku: sku ?? this.sku,
         qty: qty ?? this.qty,
         images: images ?? this.images,
         thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
@@ -407,7 +403,7 @@ class CommonProductList {
         shippingChargeUnit: shippingChargeUnit ?? this.shippingChargeUnit,
         isTrending: isTrending ?? this.isTrending,
         isHotDeals: isHotDeals ?? this.isHotDeals,
-        averageRating: averageRating ?? this.averageRating,
+        //averageRating: averageRating.toString() ?? this.averageRating,
         tax: tax ?? this.tax,
         taxUnit: taxUnit ?? this.taxUnit,
         isVariations: isVariations ?? this.isVariations,
@@ -425,7 +421,11 @@ class CommonProductList {
   }
 
   double getFinalPrice() {
-    return price.toDouble() + shippingCharge.toDouble() - discount.toDouble();
+    // Convert strings to doubles
+    double priceDouble = double.tryParse(price) ?? 0.0;
+    double shippingChargeDouble = double.tryParse(shippingCharge) ?? 0.0;
+    double discountDouble = double.tryParse(discount) ?? 0.0;
+    return priceDouble + shippingChargeDouble - discountDouble;
   }
 
   int getStoredQuantity() {

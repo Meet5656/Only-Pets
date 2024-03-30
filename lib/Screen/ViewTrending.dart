@@ -95,14 +95,14 @@ class _ViewTrendingState extends State<ViewTrending> {
                                     padding: EdgeInsets.all(1.w),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  detailscreen(
-                                                      userdata:
-                                                          viewTrending[index]),
-                                            ));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           detailscreen(
+                                        //               userdata:
+                                        //                   viewTrending[index]),
+                                        //     ));
                                       },
                                       child: Container(
                                         width: double.infinity,
@@ -211,7 +211,7 @@ class _ViewTrendingState extends State<ViewTrending> {
                                               textAlign: TextAlign.center,
                                               "Add Cart",
                                               style: TextStyle(
-                                                fontFamily: "medium",
+                                                  fontFamily: "medium",
                                                   fontSize: 11.sp,
                                                   color: Colors.white),
                                             ),

@@ -86,15 +86,15 @@ styleForBottomTextTwo() {
 
 styleDidtReceiveOTP(context) {
   return TextStyle(
-      fontSize: SizerUtil.deviceType == DeviceType.mobile ? 11.5.sp : 9.sp,
+      fontSize: SizerUtil.deviceType == DeviceType.mobile ? 13.sp : 9.sp,
       fontWeight: FontWeight.w100,
-      fontFamily: fontRegular,
+      fontFamily: alegreya,
       color: labelTextColor);
 }
 
 styleResentButton() {
   return TextStyle(
       fontSize: SizerUtil.deviceType == DeviceType.mobile ? 11.5.sp : 9.sp,
-      fontFamily: fontMedium,
+      fontFamily: alegreya,
       color: secondaryColor);
 }

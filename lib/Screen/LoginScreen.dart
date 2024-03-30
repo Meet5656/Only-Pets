@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:only_pets/Screen/formButton.dart';
 import 'package:only_pets/config/form_input.dart';
 import 'package:only_pets/config/string_constant.dart';
@@ -39,7 +38,7 @@ class _loginscreenState extends State<loginscreen> {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: CustomColors.primaryColor,
       body: Form(
         key: _formkey,

@@ -1,12 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:only_pets/Screen/dashboard.dart';
+import 'package:only_pets/Screen/formButton.dart';
+import 'package:only_pets/config/colors_constant.dart';
+import 'package:only_pets/config/font_constant.dart';
+import 'package:only_pets/config/string_constant.dart';
+import 'package:only_pets/config/style.dart';
+import 'package:only_pets/config/widget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:only_pets/Screen/formButton.dart';
-import 'package:only_pets/config/string_constant.dart';
 import 'package:only_pets/controller/otpController.dart';
 import 'package:only_pets/util/Color.dart';
 import 'package:pinput/pinput.dart';
@@ -60,7 +62,7 @@ class _OtpScreenState extends State<OtpScreen> {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         backgroundColor: CustomColors.primaryColor,
         body: GestureDetector(
           onTap: () {
@@ -137,11 +139,64 @@ class _OtpScreenState extends State<OtpScreen> {
                                 padding: EdgeInsets.symmetric(horizontal: 4.w),
                                 child: Pinput(
                                   length: 4,
-                                  // controller: controller.otpController,
-                                  // focusNode: controller.otpNode,
+                                  controller: controller.otpController,
+                                  focusNode: controller.otpNode,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
+                                  onCompleted: (pin) {
+                                    if (controller.isFormInvalidate.value =
+                                        pin.length == 4) {}
+                                    setState(() => controller.showError =
+                                        // controller.isFormInvalidate.value =
+                                        pin.length != 4);
+                                  },
+                                  onChanged: (value) {
+                                    controller.enableButton(value);
+                                  },
+                                  focusedPinTheme: getPinTheme().copyWith(
+                                    height: SizerUtil.deviceType ==
+                                            DeviceType.mobile
+                                        ? 68.0
+                                        : 80.0,
+                                    width: SizerUtil.deviceType ==
+                                            DeviceType.mobile
+                                        ? 68.0
+                                        : 80.0,
+                                    decoration: getPinTheme()
+                                        .decoration!
+                                        .copyWith(
+                                          border:
+                                              Border.all(color: primaryColor),
+                                        ),
+                                  ),
+                                  submittedPinTheme: getPinTheme().copyWith(
+                                    height: SizerUtil.deviceType ==
+                                            DeviceType.mobile
+                                        ? 58.0
+                                        : 65.0,
+                                    width: SizerUtil.deviceType ==
+                                            DeviceType.mobile
+                                        ? 58.0
+                                        : 65.0,
+                                  ),
+                                  followingPinTheme: getPinTheme().copyWith(
+                                    height: SizerUtil.deviceType ==
+                                            DeviceType.mobile
+                                        ? 58.0
+                                        : 70.0,
+                                    width: SizerUtil.deviceType ==
+                                            DeviceType.mobile
+                                        ? 58.0
+                                        : 70.0,
+                                  ),
+                                  errorPinTheme: getPinTheme().copyWith(
+                                    decoration: BoxDecoration(
+                                      color: const Color.fromRGBO(
+                                          255, 234, 238, 1),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
                                   defaultPinTheme: PinTheme(
                                       textStyle: TextStyle(
                                           fontSize: 21.sp,
@@ -152,58 +207,89 @@ class _OtpScreenState extends State<OtpScreen> {
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(11.sp)),
-                                          color: Colors.white,
+                                          color: white,
                                           border: Border.all(
                                               width: 0.2.h,
-                                              color: Colors.black
-                                                  .withOpacity(0.5)))),
+                                              color: black.withOpacity(0.5)))),
                                 ),
                               ),
                               SizedBox(
                                 height: 3.h,
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Didn't you receive any code",
-                                      style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontFamily: "Alegreya")),
-                                ],
+                              FadeInUp(
+                                child: Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 10.w),
+                                  child: FadeInUp(
+                                    child: Obx(
+                                      () {
+                                        return InkWell(
+                                          canRequestFocus: false,
+                                          onTap: () {
+                                            controller.clearFocuseNode();
+                                          },
+                                          child: controller.countdown.value == 0
+                                              ? GestureDetector(
+                                                  onTap: () {
+                                                    if (widget.isFromSignUp ==
+                                                        true) {
+                                                      controller.getSignUpOtp(
+                                                        context,
+                                                        widget.mobile
+                                                            .toString(),
+                                                      );
+                                                    } else {
+                                                      controller.getForgotOtp(
+                                                          context,
+                                                          widget.mobile
+                                                              .toString()
+                                                              .trim());
+                                                    }
+                                                  },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        VerificationScreen
+                                                            .didtReceivedCode,
+                                                        style:
+                                                            styleDidtReceiveOTP(
+                                                                context),
+                                                      ),
+                                                      Text(
+                                                        VerificationScreen
+                                                            .resend,
+                                                        style:
+                                                            styleResentButton(),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              : Text(
+                                                  'Time remaining: ${controller.countdown} seconds',
+                                                  style: TextStyle(
+                                                      fontSize: SizerUtil
+                                                                  .deviceType ==
+                                                              DeviceType.mobile
+                                                          ? 11.5.sp
+                                                          : 9.sp,
+                                                      fontWeight:
+                                                          FontWeight.w100,
+                                                      fontFamily: alegreya,
+                                                      color: labelTextColor),
+                                                ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
                               ),
                               SizedBox(
                                 height: 5.h,
                               ),
 
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: 8.w,
-                                  right: 8.w,
-                                ),
-                                child: FadeInUp(
-                                  from: 50,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Get.offAll(DashboardScreen());
-                                    },
-                                    child: Container(
-                                      height: 5.h,
-                                      width: 50.w,
-                                      child: Center(
-                                        child: Text(
-                                          "Submit",
-                                          style: TextStyle(
-                                              fontSize: 15.sp,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                      decoration:
-                                          BoxDecoration(color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              //ORL
                               // Container(
                               //   margin: EdgeInsets.only(
                               //     left: 8.w,
@@ -211,30 +297,52 @@ class _OtpScreenState extends State<OtpScreen> {
                               //   ),
                               //   child: FadeInUp(
                               //     from: 50,
-                              //     child: Obx(() {
-                              //       return getSecondaryFormButton(() {
-                              //         if (controller.isFormInvalidate.value ==
-                              //             true) {
-                              //           if (widget.isFromSignUp == true) {
-                              //             controller.getLoginOtpApi(
-                              //                 context,
-                              //                 widget.otp.toString(),
-                              //                 widget.mobile.toString());
-                              //           } else {
-                              //             controller.getOtpApi(
-                              //                 context,
-                              //                 widget.otp.toString(),
-                              //                 widget.mobile.toString());
-                              //           }
-                              //         }
+                              //     child: GestureDetector(
+                              //       onTap: () {
+                              //         Get.offAll(DashboardScreen());
                               //       },
-                              //           isFromCart: true,
-                              //           BottomConstant.buttonLabel,
-                              //           isvalidate:
-                              //               controller.isFormInvalidate.value);
-                              //     }),
+                              //       child: Container(
+                              //         height: 5.h,
+                              //         width: 50.w,
+                              //         child: Center(
+                              //           child: Text(
+                              //             "Submit",
+                              //             style: TextStyle(
+                              //                 fontSize: 15.sp,
+                              //                 color: Colors.white),
+                              //           ),
+                              //         ),
+                              //         decoration:
+                              //             BoxDecoration(color: Colors.black),
+                              //       ),
+                              //     ),
                               //   ),
                               // ),
+                              //ORL
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: 8.w,
+                                  right: 8.w,
+                                ),
+                                child: FadeInUp(
+                                  from: 50,
+                                  child: Obx(() {
+                                    return getSecondaryFormButton(() {
+                                      if (controller.isFormInvalidate.value ==
+                                          true) {
+                                        controller.getLoginOtpApi(
+                                            context,
+                                            widget.otp.toString(),
+                                            widget.mobile.toString());
+                                      }
+                                    },
+                                        isFromCart: true,
+                                        BottomConstant.buttonLabel,
+                                        isvalidate:
+                                            controller.isFormInvalidate.value);
+                                  }),
+                                ),
+                              ),
                               // SizedBox(
                               //   height: 2.0.h,
                               // ),

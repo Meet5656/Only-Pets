@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:only_pets/Screen/ProfileScreen.dart';
+import 'package:only_pets/Screen/SavedScreen/SavedScreen.dart';
 import 'package:only_pets/Screen/ViewCategorys.dart';
 import 'package:only_pets/Screen/dashboard.dart';
 
@@ -16,13 +17,28 @@ class _BottomnavigatorbarState extends State<Bottomnavigatorbar> {
   Color IconColor = Colors.white;
 
   int _selectedIndex = 0;
+  var pageOptions = <Widget>[];
 
-  final List<Widget> _pages = [
-    DashboardScreen(),
-    ViewCategorys(),
-    Text("hello"),
-    ProfileScreen(),
-  ];
+  // final List<Widget> _pages = [
+  //   DashboardScreen(),
+  //   ViewCategorys(),
+  //   SavedScreen(callback),
+  //   ProfileScreen(),
+  // ];
+
+  @override
+  void initState() {
+    setState(() {
+      pageOptions = [
+        DashboardScreen(callback),
+        ViewCategorys(),
+        SavedScreen(),
+        ProfileScreen(),
+      ];
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,9 +66,13 @@ class _BottomnavigatorbarState extends State<Bottomnavigatorbar> {
           _selectedIndex = index;
         }),
       ),
-      body: _pages[_selectedIndex],
+      body: pageOptions[_selectedIndex],
     );
   }
 
-  List<Widget> widgets = [DashboardScreen()];
+  void callback(int index) async {
+    setState(() {
+      _selectedIndex = 1;
+    });
+  }
 }

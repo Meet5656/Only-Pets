@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:only_pets/Screen/BottomNavBar.dart';
 import 'package:only_pets/Screen/dashboard.dart';
 import 'package:only_pets/Screen/dialogs.dart';
 import 'package:only_pets/Screen/loadingIndicator.dart';
@@ -200,7 +202,6 @@ class OtpController extends GetxController {
   void getLoginOtpApi(context, String otp, String mobile) async {
     var loadingIndicator = LoadingProgressDialog();
     loadingIndicator.show(context, '');
-
     try {
       if (networkManager.connectionType == 0) {
         loadingIndicator.hide(context);
@@ -224,13 +225,11 @@ class OtpController extends GetxController {
           UserPreferences().setToken(loginData.user.token);
           UserPreferences().setIsGuestUser(false);
           if (loginData.user.isGuestLogin == "false") {
-            logcat("isGuestLogin-1", loginData.user.isGuestLogin.toString());
             UserPreferences().setIsGuestUserFromApi(false);
           } else {
-            logcat("isGuestLogin-2", loginData.user.isGuestLogin.toString());
             UserPreferences().setIsGuestUserFromApi(true);
           }
-          Get.offAll(const DashboardScreen());
+          Get.offAll(Bottomnavigatorbar());
         } else {
           showDialogForScreen(
               context, VerificationScreen.title, data['message'],
@@ -299,12 +298,11 @@ class OtpController extends GetxController {
     var loadingIndicator = LoadingProgressDialog();
     loadingIndicator.show(context, '');
     try {
-      showDialogForScreen(
-          context, VerificationScreen.title, Connection.noConnection,
-          callback: () {
-        Get.back();
-      });
-
+      // showDialogForScreen(
+      //     context, VerificationScreen.title, Connection.noConnection,
+      //     callback: () {
+      //   Get.back();
+      // });
       var response = await Repository.post({
         "mobile_no": number,
       }, ApiUrl.login, allowHeader: false);

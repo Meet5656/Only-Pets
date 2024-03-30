@@ -44,9 +44,9 @@ class UserData {
   String gender;
   dynamic profilePic;
   String isGuestLogin;
-  int isActive;
-  int isBlock;
-  int isRegister;
+  String isActive;
+  String isBlock;
+  String isRegister;
   dynamic securityToken;
   String createdUser;
   DateTime createdAt;
@@ -96,9 +96,9 @@ class UserData {
         gender: json["gender"] ?? '',
         profilePic: json["profile_pic"],
         isGuestLogin: json["is_guest_login"] ?? '',
-        isActive: json["is_active"],
-        isBlock: json["is_block"],
-        isRegister: json["is_register"],
+        isActive: json["is_active"] ?? '',
+        isBlock: json["is_block"] ?? '',
+        isRegister: json["is_register"].toString() ?? '',
         securityToken: json["security_token"],
         createdUser: json["created_user"] ?? '',
         createdAt: DateTime.parse(json["created_at"]),

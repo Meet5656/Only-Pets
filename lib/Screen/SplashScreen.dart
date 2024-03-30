@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:only_pets/Screen/BottomNavBar.dart';
 import 'package:only_pets/Screen/LoginScreen.dart';
+import 'package:only_pets/config/colors_constant.dart';
 import 'package:sizer/sizer.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => loginscreen(),
+          builder: (context) => Bottomnavigatorbar(),
         ));
   }
 
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: white,
         body: Container(
             child: Center(
           child: ColorFiltered(

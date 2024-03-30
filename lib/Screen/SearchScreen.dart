@@ -118,12 +118,12 @@ class _SearchscreenState extends State<Searchscreen> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => detailscreen(
-                                        userdata: viewTrending[index]),
-                                  ));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) => detailscreen(
+                              //           userdata: viewTrending[index]),
+                              //     ));
                             },
                             child: Container(
                               height: 30.5.h,

@@ -1,6 +1,6 @@
 class ApiUrl {
   static const buildApiUrl = "http://gifthamperz.com/api/";
-  static const imageUrl = 'http://192.168.1.13/qfs_ecommerce/public/storage';
+  static const imageUrl = 'http://gifthamperz.com/public/storage/';
   static const register = 'registration';
   static const login = 'login';
   static const banner = 'banner/list';

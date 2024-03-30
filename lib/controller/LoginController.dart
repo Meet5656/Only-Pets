@@ -97,13 +97,10 @@ class LoginController extends GetxController {
         return;
       }
       loadingIndicator.show(context, '');
-      logcat('loginPassingData', {
-        "mobile_no": int.parse(numberCtr.text)
-        // "password": passwordctr.text.toString().trim()
-      });
+      logcat('loginPassingData', {"mobile_no": int.parse(numberCtr.text)});
 
       var response = await Repository.post({
-        "mobile_no": int.parse(numberCtr.text)
+        "mobile_no": numberCtr.text.toString().trim()
         //"password": passwordctr.text.toString().trim()
       }, ApiUrl.login, allowHeader: true);
       loadingIndicator.hide(context);

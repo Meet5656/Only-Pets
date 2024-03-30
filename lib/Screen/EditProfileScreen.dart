@@ -2,19 +2,17 @@ import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sizer/sizer.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:only_pets/Screen/ProfileScreen.dart';
 import 'package:only_pets/util/Color.dart';
 
-class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
+class EditProfileScreens extends StatefulWidget {
+  const EditProfileScreens(loginData, {super.key});
 
   @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
+  State<EditProfileScreens> createState() => _EditProfileScreensState();
 }
 
 // key
@@ -23,7 +21,7 @@ GlobalKey<FormState> formkey = GlobalKey<FormState>();
 // Controller
 TextEditingController email = TextEditingController();
 
-class _EditProfileScreenState extends State<EditProfileScreen> {
+class _EditProfileScreensState extends State<EditProfileScreens> {
   final double profileHeight = 144;
   Uint8? _image;
   File? selectedImage;

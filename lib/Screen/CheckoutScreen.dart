@@ -1,14 +1,21 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/EditProfileScreen.dart';
 import 'package:only_pets/util/Color.dart';
 
 class checkoutscreen extends StatefulWidget {
-  const checkoutscreen({super.key});
+  checkoutscreen(
+      {this.shipinCharge,
+      this.totaAmount,
+      this.discount,
+      this.isFromBuyNow,
+      this.id,
+      super.key});
+  String? shipinCharge, totaAmount, discount;
+  bool? isFromBuyNow;
+  int? id;
 
   @override
   State<checkoutscreen> createState() => _checkoutscreenState();
@@ -410,11 +417,12 @@ class _checkoutscreenState extends State<checkoutscreen> {
                             InkWell(
                               onTap: () {
                                 if (_formKey.currentState!.validate()) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => EditProfileScreen(),
-                                      ));
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //       builder: (context) =>
+                                  //           EditProfileScreen(),
+                                  //     ));
                                 }
                               },
                               child: Container(
