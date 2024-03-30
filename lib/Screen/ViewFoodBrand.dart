@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:custom_clippers/custom_clippers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/model/HomeModel..dart/Food_Brand/FoodBrandModel.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -20,22 +20,35 @@ class _viewfoodbrandState extends State<viewfoodbrand> {
       body: SafeArea(
         child: Column(
           children: [
-            FadeInDown(
-              duration: Duration(milliseconds: 1200),
-              child: AppBar(
-                elevation: 0,
-                leadingWidth: 13.w,
-                backgroundColor: Colors.white,
-                centerTitle: true,
-                title: Text(
-                  "Food Brand",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 22.dp,
-                      fontFamily: "Alegreya"),
+          FadeInDown(
+            duration: Duration(milliseconds: 1200),
+            child: Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 2.w, top: 1.h),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: 6.w,
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: EdgeInsets.only(left: 27.5.w, top: 1.h),
+                  child: Text(
+                    "Food Brand",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.sp,
+                        fontFamily: "Alegreya"),
+                  ),
+                ),
+              ],
             ),
+          ),
             SizedBox(
               height: 1.h,
             ),

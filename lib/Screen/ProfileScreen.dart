@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/EditProfileScreen.dart';
 import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:only_pets/Screen/OrderScreen.dart';
@@ -44,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               },
                               icon: Icon(
                                 Icons.arrow_back,
-                                size: 30.dp,
+                                size: 30.sp,
                               ),
                             ),
                             Padding(
@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 "Profile",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 22.dp,
+                                    fontSize: 22.sp,
                                     fontFamily: "Alegreya"),
                               ),
                             ),
@@ -114,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             'User Name',
                             style: TextStyle(
                               fontFamily: "medium",
-                              fontSize: 23.dp,
+                              fontSize: 23.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -132,7 +132,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   'Edit Profile',
                                   style: TextStyle(
                                       fontFamily: "medium",
-                                      fontSize: 16.dp,
+                                      fontSize: 16.sp,
                                       color: Color(0xffc64d4c)),
                                 ),
                                 SizedBox(
@@ -141,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 Icon(
                                   Icons.edit,
                                   color: Color(0xffc64d4c),
-                                  size: 15.dp,
+                                  size: 15.sp,
                                 )
                               ],
                             ),
@@ -167,7 +167,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Row(
                           children: [
                             Icon(CupertinoIcons.phone_circle_fill,
-                                size: 30.dp, color: Color(0xffc64d4c)),
+                                size: 30.sp, color: Color(0xffc64d4c)),
                             SizedBox(
                               width: 2.w,
                             ),
@@ -181,14 +181,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     style: TextStyle(
                                         fontFamily: "medium",
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 16.dp,
+                                        fontSize: 16.sp,
                                         color: Color(0xffc64d4c)),
                                   ),
                                   Text(
                                     'User Mobile',
                                     style: TextStyle(
                                         fontFamily: "medium",
-                                        fontSize: 15.dp,
+                                        fontSize: 15.sp,
                                         color: Colors.black),
                                   )
                                 ],
@@ -212,7 +212,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Row(
                           children: [
                             Icon(Icons.email,
-                                size: 30.dp, color: Color(0xffc64d4c)),
+                                size: 30.sp, color: Color(0xffc64d4c)),
                             SizedBox(
                               width: 2.w,
                             ),
@@ -226,14 +226,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     style: TextStyle(
                                         fontFamily: "medium",
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 16.dp,
+                                        fontSize: 16.sp,
                                         color: Color(0xffc64d4c)),
                                   ),
                                   Text(
                                     'User E-mail',
                                     style: TextStyle(
                                         fontFamily: "medium",
-                                        fontSize: 15.dp,
+                                        fontSize: 15.sp,
                                         color: Colors.black),
                                   )
                                 ],
@@ -265,7 +265,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Row(
                             children: [
                               Icon(CupertinoIcons.gift_fill,
-                                  size: 30.dp, color: Color(0xffc64d4c)),
+                                  size: 30.sp, color: Color(0xffc64d4c)),
                               SizedBox(
                                 width: 2.w,
                               ),
@@ -280,7 +280,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       style: TextStyle(
                                           fontFamily: "medium",
                                           fontWeight: FontWeight.w600,
-                                          fontSize: 16.dp,
+                                          fontSize: 16.sp,
                                           color: Color(0xffc64d4c)),
                                     ),
                                   ],
@@ -288,7 +288,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               Spacer(),
                               Icon(Icons.arrow_right,
-                                  size: 35.dp, color: Color(0xffc64d4c))
+                                  size: 35.sp, color: Color(0xffc64d4c))
                             ],
                           ),
                         ),
@@ -316,7 +316,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Row(
                             children: [
                               Icon(Icons.logout_outlined,
-                                  size: 30.dp, color: Color(0xffc64d4c)),
+                                  size: 30.sp, color: Color(0xffc64d4c)),
                               SizedBox(
                                 width: 2.w,
                               ),
@@ -331,7 +331,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       style: TextStyle(
                                           fontFamily: "medium",
                                           fontWeight: FontWeight.w600,
-                                          fontSize: 16.dp,
+                                          fontSize: 16.sp,
                                           color: Color(0xffc64d4c)),
                                     ),
                                   ],

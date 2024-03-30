@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/util/Color.dart';
 
 class sucess extends StatefulWidget {
@@ -32,7 +32,7 @@ class _sucessState extends State<sucess> {
             padding: EdgeInsets.only(left: 5.w),
             child: Text(
               "Your Payment was done Successfully",
-              style: TextStyle(fontSize: 19.dp, fontFamily: "medium"),
+              style: TextStyle(fontSize: 19.sp, fontFamily: "medium"),
             ),
           ),
           SizedBox(
@@ -60,7 +60,7 @@ class _sucessState extends State<sucess> {
                 child: Text(
                   "OK",
                   style: TextStyle(
-                      fontSize: 18.dp,
+                      fontSize: 18.sp,
                       color: Colors.white,
                       fontFamily: "medium"),
                 ),

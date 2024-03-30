@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:lottie/lottie.dart';
-import 'package:only_pets/Screen/Onboardingscreen.dart';
+import 'package:only_pets/Screen/BottomNavBar.dart';
+import 'package:only_pets/Screen/LoginScreen.dart';
+import 'package:sizer/sizer.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => onboardingscreen(),
+          builder: (context) => loginscreen(),
         ));
   }
 

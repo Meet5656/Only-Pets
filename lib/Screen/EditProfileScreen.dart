@@ -5,7 +5,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:only_pets/Screen/ProfileScreen.dart';
 import 'package:only_pets/util/Color.dart';
@@ -54,7 +54,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 },
                                 icon: Icon(
                                   Icons.arrow_back,
-                                  size: 30.dp,
+                                  size: 30.sp,
                                 ),
                               ),
                               Padding(
@@ -64,7 +64,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   "Edit Profile",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 22.dp,
+                                      fontSize: 22.sp,
                                       fontFamily: "Alegreya"),
                                 ),
                               ),
@@ -142,7 +142,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                     fontFamily: "medium",
-                                    fontSize: 18.dp,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -152,7 +152,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 child: TextFormField(
                                   style: TextStyle(
                                     fontFamily: "medium",
-                                    fontSize: 16.dp,
+                                    fontSize: 16.sp,
                                   ),
                                   keyboardType: TextInputType.name,
                                   validator: (value) {
@@ -186,7 +186,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                     fontFamily: "medium",
-                                    fontSize: 18.dp,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -196,7 +196,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 child: TextFormField(
                                   style: TextStyle(
                                     fontFamily: "medium",
-                                    fontSize: 16.dp,
+                                    fontSize: 16.sp,
                                   ),
                                   keyboardType: TextInputType.name,
                                   validator: (value) {
@@ -230,7 +230,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                     fontFamily: "medium",
-                                    fontSize: 18.dp,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -240,7 +240,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 child: TextFormField(
                                   style: TextStyle(
                                     fontFamily: "medium",
-                                    fontSize: 16.dp,
+                                    fontSize: 16.sp,
                                   ),
                                   keyboardType: TextInputType.emailAddress,
                                   validator: (value) {
@@ -279,7 +279,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                     fontFamily: "medium",
-                                    fontSize: 18.dp,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -289,7 +289,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 child: TextFormField(
                                   style: TextStyle(
                                     fontFamily: "medium",
-                                    fontSize: 16.dp,
+                                    fontSize: 16.sp,
                                   ),
                                   keyboardType: TextInputType.number,
                                   validator: (value) {
@@ -342,7 +342,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       end: Alignment.bottomLeft,
                                       colors: [
                                         Colors.black.withOpacity(0.6),
-                                        CustomColors.maincolor,
+                                        CustomColors.primaryColor,
                                       ],
                                     ),
                                   ),
@@ -351,7 +351,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       "Save Details",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontSize: 22.dp,
+                                        fontSize: 22.sp,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.white,
                                       ),
@@ -402,7 +402,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             Text(
                               "Gallery",
                               style: TextStyle(
-                                  color: Color(0xffc64d4c), fontSize: 10.dp),
+                                  color: Color(0xffc64d4c), fontSize: 10.sp),
                             )
                           ],
                         ),
@@ -425,7 +425,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             Text(
                               "Camera",
                               style: TextStyle(
-                                  color: Color(0xffc64d4c), fontSize: 10.dp),
+                                  color: Color(0xffc64d4c), fontSize: 10.sp),
                             )
                           ],
                         ),

@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/model/HomeModel..dart/Treading/ViewTrendingModel.dart';
 import 'package:only_pets/util/Color.dart';
@@ -38,12 +38,12 @@ class _ViewTrendingState extends State<ViewTrending> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 27.5.w, top: 1.h),
+                    padding: EdgeInsets.only(left: 25.w, top: 1.h),
                     child: Text(
                       "Trending Screen",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 22.dp,
+                        fontSize: 16.sp,
                         fontFamily: "Alegreya",
                       ),
                     ),
@@ -73,7 +73,7 @@ class _ViewTrendingState extends State<ViewTrending> {
                               right: 2.w,
                             ),
                             child: Container(
-                              height: 29.5.h,
+                              height: 30.h,
                               width: 45.w,
                               decoration: BoxDecoration(
                                 color: Colors.white,
@@ -136,11 +136,9 @@ class _ViewTrendingState extends State<ViewTrending> {
                                       viewTrending[index].name,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 14.dp),
+                                          fontSize: 11.sp,
+                                          fontFamily: "medium"),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 0.5.h,
                                   ),
                                   Row(
                                     children: [
@@ -151,7 +149,8 @@ class _ViewTrendingState extends State<ViewTrending> {
                                           child: Text(
                                             viewTrending[index].Prise,
                                             style: TextStyle(
-                                                fontSize: 20.dp,
+                                                fontSize: 16.sp,
+                                                fontFamily: "medium",
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.red),
                                           ),
@@ -159,7 +158,7 @@ class _ViewTrendingState extends State<ViewTrending> {
                                       ),
                                       Spacer(),
                                       Padding(
-                                        padding: EdgeInsets.only(bottom: 0.1.h),
+                                        padding: EdgeInsets.only(top: 0.6.w),
                                         child: Icon(
                                           CupertinoIcons.star_fill,
                                           size: 4.w,
@@ -173,14 +172,17 @@ class _ViewTrendingState extends State<ViewTrending> {
                                         padding: EdgeInsets.only(right: 2.w),
                                         child: Text(
                                           viewTrending[index].Rate,
-                                          style: TextStyle(fontSize: 16.dp),
+                                          style: TextStyle(
+                                            fontSize: 16.sp,
+                                            fontFamily: "medium",
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: 0.5.w,
-                                  ),
+                                  // SizedBox(
+                                  //   height: 0.5.w,
+                                  // ),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -209,7 +211,8 @@ class _ViewTrendingState extends State<ViewTrending> {
                                               textAlign: TextAlign.center,
                                               "Add Cart",
                                               style: TextStyle(
-                                                  fontSize: 15.dp,
+                                                fontFamily: "medium",
+                                                  fontSize: 11.sp,
                                                   color: Colors.white),
                                             ),
                                           ),

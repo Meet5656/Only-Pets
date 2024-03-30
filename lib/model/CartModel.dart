@@ -3,8 +3,6 @@ class CartModel {
   String name;
   String prise;
   CartModel({required this.Image, required this.name, required this.prise});
-
-  static void removeAt(int index) {}
 }
 
 List<CartModel> cart = [

@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:marquee/marquee.dart';
 import 'package:only_pets/model/HomeModel..dart/Category/ViewCategoryModel.dart';
 
@@ -30,7 +30,10 @@ class _ViewCategorysState extends State<ViewCategorys> {
             child: AppBar(
               elevation: 0,
               leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: Icon(
+                  Icons.arrow_back,
+                  size: 6.w,
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -42,7 +45,7 @@ class _ViewCategorysState extends State<ViewCategorys> {
                 "Category Screen",
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 22.dp,
+                    fontSize: 16.sp,
                     fontFamily: "Alegreya"),
               ),
             ),
@@ -109,7 +112,7 @@ class _ViewCategorysState extends State<ViewCategorys> {
                                   fadingEdgeStartFraction: 0.1,
                                   fadingEdgeEndFraction: 0.1,
                                   style: TextStyle(
-                                      fontSize: 20.dp,
+                                      fontSize: 15.sp,
                                       fontFamily: "Alegreya",
                                       fontWeight: FontWeight.w600),
                                 ),
@@ -117,7 +120,7 @@ class _ViewCategorysState extends State<ViewCategorys> {
                             : Text(
                                 categoryName,
                                 style: TextStyle(
-                                    fontSize: 20.dp,
+                                    fontSize: 15.sp,
                                     fontFamily: "medium",
                                     fontWeight: FontWeight.w600),
                               ),

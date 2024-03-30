@@ -1,10 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:only_pets/Screen/BottomNavBar.dart';
-import 'package:only_pets/Screen/ResertPassword.dart';
-import 'package:only_pets/Screen/SigninScreen.dart';
+import 'package:sizer/sizer.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:only_pets/Screen/formButton.dart';
+import 'package:only_pets/config/form_input.dart';
+import 'package:only_pets/config/string_constant.dart';
+import 'package:only_pets/controller/LoginController.dart';
 import 'package:only_pets/util/Color.dart';
 
 class loginscreen extends StatefulWidget {
@@ -15,14 +18,20 @@ class loginscreen extends StatefulWidget {
 }
 
 class _loginscreenState extends State<loginscreen> {
-  TextEditingController email = TextEditingController();
-  TextEditingController passwrod = TextEditingController();
+  var controller = Get.put(LoginController());
+
   final _formkey = GlobalKey<FormState>();
-  var _isHidden;
+
   @override
   void initState() {
-    _isHidden = true;
+    controller.numberCtr.text = "";
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.numberCtr.text = "";
+    super.dispose();
   }
 
   @override
@@ -30,6 +39,7 @@ class _loginscreenState extends State<loginscreen> {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: CustomColors.primaryColor,
       body: Form(
         key: _formkey,
@@ -46,7 +56,7 @@ class _loginscreenState extends State<loginscreen> {
                 child: FadeInDown(
                   duration: Duration(milliseconds: 700),
                   child: Container(
-                    height: 20.h,
+                    height: 31.h,
                     width: double.infinity,
                     decoration: BoxDecoration(
                         image: DecorationImage(
@@ -57,7 +67,7 @@ class _loginscreenState extends State<loginscreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 20.h),
+                padding: EdgeInsets.only(top: 30.h),
                 child: FadeInUp(
                   duration: Duration(milliseconds: 700),
                   child: Container(
@@ -74,213 +84,112 @@ class _loginscreenState extends State<loginscreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            // mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 4.h, left: 7.w),
-                                child: Text(
-                                  "Welcome Back!",
-                                  style: TextStyle(
-                                      fontSize: 30.dp, fontFamily: "Alegreya"),
+                              Container(
+                                child: Image.asset(
+                                  "asset/all pets/mylogo.png",
+                                  height: 20.h,
+                                  width: 45.w,
                                 ),
-                              ),
-                              SizedBox(
-                                height: 3.h,
                               ),
                             ],
                           ),
+
+                          Padding(
+                            padding: EdgeInsets.only(left: 7.w),
+                            child: Text(
+                              "Log in!",
+                              style: TextStyle(
+                                  fontSize: 23.sp, fontFamily: "Alegreya"),
+                            ),
+                          ),
+                          // SizedBox(
+                          //   height: 2.h,
+                          // ),
                           Padding(
                             padding: EdgeInsets.only(top: 2.h, left: 7.w),
                             child: Text(
                               "Welcome to Only pets get started with us and begin the journey",
                               style: TextStyle(
                                 fontFamily: "Alegreya",
-                                fontSize: 18.dp,
+                                fontSize: 14.sp,
                               ),
                             ),
                           ),
                           SizedBox(
                             height: 5.h,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 7.w, right: 6.w),
-                            child: Container(
-                              child: TextFormField(
-                                style: TextStyle(
-                                    fontFamily: "Alegreya", fontSize: 17.dp),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return "Enter Email id";
+                          FadeInDown(
+                            child: AnimatedSize(
+                              duration: Duration(milliseconds: 300),
+                              child: Obx(() {
+                                return getReactiveFormField(
+                                    node: controller.numberNode,
+                                    controller: controller.numberCtr,
+                                    hintLabel: LoginConst.number,
+                                    onChanged: (val) {
+                                      controller.validatePhone(val);
+                                    },
+                                    obscuretext: false,
+                                    inputType: TextInputType.number,
+                                    errorText:
+                                        controller.numberModel.value.error);
+                              }),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 3.h,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: 8.w,
+                              right: 8.w,
+                            ),
+                            child: FadeInUp(
+                              from: 50,
+                              child: Obx(() {
+                                return getSecondaryFormButton(() {
+                                  if (controller.isFormInvalidate.value ==
+                                      true) {
+                                    controller.getSignIn(context,
+                                        controller.numberCtr.text.toString());
                                   }
-                                  bool isValid = RegExp(
-                                          r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
-                                      .hasMatch(value);
-
-                                  if (!isValid) {
-                                    return 'Enter a valid email address';
-                                  }
-                                  return null;
-                                },
-                                controller: email,
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                        vertical: 4.w, horizontal: 5.w),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10.w)),
-                                    ),
-                                    hintText: 'Email',
-                                    hintStyle: TextStyle(
-                                        fontFamily: "medium",
-                                        fontSize: 16.dp,
-                                        fontWeight: FontWeight.w600)),
-                              ),
+                                }, LoginConst.buttonLabel,
+                                    isvalidate:
+                                        controller.isFormInvalidate.value);
+                              }),
                             ),
                           ),
                           SizedBox(
                             height: 2.h,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 7.w, right: 6.w),
-                            child: Container(
-                              child: TextFormField(
-                                style: TextStyle(
-                                    fontFamily: "Alegreya", fontSize: 17.dp),
-                                controller: passwrod,
-                                obscureText: _isHidden,
-                                keyboardType: TextInputType.text,
-                                decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                        vertical: 4.w, horizontal: 5.w),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(7.w)),
-                                    ),
-                                    suffixIcon: IconButton(
-                                      icon: _isHidden
-                                          ? Icon(Icons.visibility)
-                                          : Icon(Icons.visibility_off),
-                                      onPressed: () {
-                                        setState(() {
-                                          _isHidden = !_isHidden;
-                                        });
-                                      },
-                                    ),
-                                    hintText: 'Passsword',
-                                    hintStyle: TextStyle(fontFamily: "medium")),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return "Enter Password";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 1.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 6.w),
-                            child: Align(
-                              alignment: Alignment.topRight,
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => resertpassword(),
-                                      ));
-                                },
-                                child: Text(
-                                  "Forget password?",
-                                  style: TextStyle(
-                                      fontSize: 18.dp, fontFamily: "Alegreya"),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              left: 7.w,
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                final isValid =
-                                    _formkey.currentState!.validate();
-                                if (!isValid) {
-                                  return;
-                                } else {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            Bottomnavigatorbar(),
-                                      ));
-                                }
-                              },
-                              child: Container(
-                                height: 5.5.h,
-                                width: 87.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(5.w),
-                                  ),
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topRight,
-                                    end: Alignment.topLeft,
-                                    colors: [
-                                      CustomColors.primaryColor,
-                                      Colors.black.withOpacity(0.6),
-                                    ],
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "LOG IN",
-                                    style: TextStyle(
-                                        fontSize: 17.dp,
-                                        color: Colors.white,
-                                        fontFamily: "Alegreya"),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Don't have an account?",
-                                style: TextStyle(
-                                    fontSize: 20.dp, fontFamily: "Alegreya"),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => signinscreen(),
-                                      ));
-                                },
-                                child: Text(
-                                  " Sign up",
-                                  style: TextStyle(
-                                      fontSize: 20.dp,
-                                      fontFamily: "Alegreya",
-                                      color: CustomColors.primaryColor),
-                                ),
-                              )
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     Text(
+                          //       "Don't have an account?",
+                          //       style: TextStyle(
+                          //           fontSize: 20.sp, fontFamily: "Alegreya"),
+                          //     ),
+                          //     InkWell(
+                          //       onTap: () {
+                          //         Navigator.push(
+                          //             context,
+                          //             MaterialPageRoute(
+                          //               builder: (context) => SignupScreen(),
+                          //             ));
+                          //       },
+                          //       child: Text(
+                          //         " Sign up",
+                          //         style: TextStyle(
+                          //             fontSize: 20.sp,
+                          //             fontFamily: "Alegreya",
+                          //             color: CustomColors.primaryColor),
+                          //       ),
+                          //     )
+                          //   ],
+                          // ),
                         ],
                       ),
                     ),

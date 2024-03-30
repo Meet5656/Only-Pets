@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:lottie/lottie.dart';
 import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:only_pets/util/Color.dart';
@@ -44,7 +44,7 @@ class _firstScreenState extends State<firstScreen> {
                       },
                       child: Text(
                         "Login",
-                        style: TextStyle(fontSize: 17.dp, color: Colors.white),
+                        style: TextStyle(fontSize: 17.sp, color: Colors.white),
                       ))),
             ),
             SizedBox(
@@ -70,7 +70,7 @@ class _firstScreenState extends State<firstScreen> {
                       onPressed: () {},
                       child: Text(
                         "Sign up",
-                        style: TextStyle(fontSize: 17.dp, color: Colors.white),
+                        style: TextStyle(fontSize: 17.sp, color: Colors.white),
                       ))),
             ),
           ],

@@ -4,7 +4,7 @@ import 'package:custom_clippers/custom_clippers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/CartScreen/CartScreen.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
@@ -66,12 +66,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 20.w),
+                      margin: EdgeInsets.only(left: 19.w),
                       child: Text(
                         "Home Screen",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 23.dp,
+                            fontSize: 16.sp,
                             fontFamily: "Alegreya"),
                       ),
                     ),
@@ -130,7 +130,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           child: Text(
                             "Hi Meet",
                             style: TextStyle(
-                                fontSize: 25.dp,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: "Alegreya"),
                           ),
@@ -146,7 +146,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           child: Text(
                             "Good Morning!",
                             style: TextStyle(
-                                fontSize: 28.dp,
+                                fontSize: 21.sp,
                                 fontWeight: FontWeight.w300,
                                 fontFamily: "medium"),
                           ),
@@ -224,7 +224,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     "Categories",
                                     style: TextStyle(
                                       fontFamily: "medium",
-                                      fontSize: 28.dp,
+                                      fontSize: 17.sp,
                                       fontWeight: FontWeight.w400,
                                       decorationThickness: 1,
                                     ),
@@ -232,9 +232,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(right: 8.w),
+                                padding: EdgeInsets.only(right: 5.w),
                                 child: Container(
-                                  width: 16.w,
+                                  width: 17.w,
                                   height: 0.3.h,
                                   decoration: BoxDecoration(
                                       color: Colors.brown,
@@ -259,11 +259,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 //  Navigator.pop(context);
                               },
                               child: Text(
-                                "View All",
+                                "View all",
                                 style: TextStyle(
                                   fontFamily: "medium",
                                   color: Colors.black,
-                                  fontSize: 20.dp,
+                                  fontSize: 17.sp,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -335,7 +335,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   ),
                                   Text(viewCategorys[index].name,
                                       style: TextStyle(
-                                          fontSize: 20.dp,
+                                          fontSize: 15.sp,
                                           fontFamily: "medium")),
                                 ],
                               );
@@ -359,7 +359,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       "Trending",
                                       style: TextStyle(
                                         fontFamily: "medium",
-                                        fontSize: 28.dp,
+                                        fontSize: 17.sp,
                                         fontWeight: FontWeight.w400,
                                         decorationThickness: 1,
                                       ),
@@ -367,7 +367,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(right: 4.w),
+                                  padding: EdgeInsets.only(right: 2.w),
                                   child: Container(
                                     width: 16.w,
                                     height: 0.3.h,
@@ -392,10 +392,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                 ViewTrending()));
                                   },
                                   child: Text(
-                                    "View All",
+                                    "View all",
                                     style: TextStyle(
                                       fontFamily: "medium",
-                                      fontSize: 18.dp,
+                                      fontSize: 17.sp,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.black,
                                     ),
@@ -434,6 +434,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                           MaterialPageRoute(
                                             builder: (context) => detailscreen(
                                               userdata: viewTrending[index],
+                                              isFromnTrending: true,
                                             ),
                                           ));
                                     },
@@ -497,12 +498,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               style: TextStyle(
                                                   fontFamily: "medium",
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 15.dp),
+                                                  fontSize: 11.sp),
                                             ),
                                           ),
-                                          SizedBox(
-                                            height: 0.5.h,
-                                          ),
+                                          // SizedBox(
+                                          //   height: 0.5.h,
+                                          // ),
                                           Row(
                                             children: [
                                               Align(
@@ -514,7 +515,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                     viewTrending[index].Prise,
                                                     style: TextStyle(
                                                         fontFamily: "medium",
-                                                        fontSize: 20.dp,
+                                                        fontSize: 15.sp,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         color: Colors.red),
@@ -523,8 +524,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               ),
                                               Spacer(),
                                               Padding(
-                                                padding: EdgeInsets.only(
-                                                    bottom: 0.1.h),
+                                                padding:
+                                                    EdgeInsets.only(top: 1.w),
                                                 child: Icon(
                                                   CupertinoIcons.star_fill,
                                                   size: 4.w,
@@ -540,7 +541,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                 child: Text(
                                                   viewTrending[index].Rate,
                                                   style: TextStyle(
-                                                    fontSize: 16.dp,
+                                                    fontSize: 15.sp,
                                                     fontFamily: "medium",
                                                   ),
                                                 ),
@@ -592,7 +593,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                                     1.w))),
                                                     child: Padding(
                                                       padding: EdgeInsets.only(
-                                                          top: 0.7.w),
+                                                          top: 0.2.w),
                                                       child: Text(
                                                         textAlign:
                                                             TextAlign.center,
@@ -600,7 +601,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                         style: TextStyle(
                                                             fontFamily:
                                                                 "medium",
-                                                            fontSize: 15.dp,
+                                                            fontSize: 12.sp,
                                                             color:
                                                                 Colors.white),
                                                       ),
@@ -641,7 +642,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       "Clothes Brand",
                                       style: TextStyle(
                                         fontFamily: "medium",
-                                        fontSize: 28.dp,
+                                        fontSize: 17.sp,
                                         fontWeight: FontWeight.w400,
                                         decorationThickness: 1,
                                       ),
@@ -649,7 +650,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(right: 17.w),
+                                  padding: EdgeInsets.only(right: 14.w),
                                   child: Container(
                                     width: 16.w,
                                     height: 0.3.h,
@@ -673,10 +674,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                 viewclothesbrand()));
                                   },
                                   child: Text(
-                                    "View All",
+                                    "View all",
                                     style: TextStyle(
                                       fontFamily: "medium",
-                                      fontSize: 18.dp,
+                                      fontSize: 17.sp,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.black,
                                     ),
@@ -818,7 +819,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     "Food Brand",
                                     style: TextStyle(
                                       fontFamily: "medium",
-                                      fontSize: 28.dp,
+                                      fontSize: 17.sp,
                                       fontWeight: FontWeight.w400,
                                       decorationThickness: 1,
                                     ),
@@ -826,7 +827,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(right: 10.w),
+                                padding: EdgeInsets.only(right: 8.w),
                                 child: Container(
                                   width: 16.w,
                                   height: 0.3.h,
@@ -851,10 +852,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     ));
                               },
                               child: Text(
-                                "View All",
+                                "View all",
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 18.dp,
+                                  fontSize: 17.sp,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black,
                                 ),
@@ -933,7 +934,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       "Pets Foods",
                                       style: TextStyle(
                                         fontFamily: "medium",
-                                        fontSize: 28.dp,
+                                        fontSize: 17.sp,
                                         fontWeight: FontWeight.w400,
                                         decorationThickness: 1,
                                       ),
@@ -941,7 +942,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(right: 7.w),
+                                  padding: EdgeInsets.only(right: 5.w),
                                   child: Container(
                                     width: 16.w,
                                     height: 0.3.h,
@@ -967,10 +968,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     ));
                               },
                               child: Text(
-                                "View All",
+                                "View all",
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 18.dp,
+                                  fontSize: 17.sp,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black,
                                 ),
@@ -1011,7 +1012,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               ));
                                         },
                                         child: Container(
-                                          height: 26.h,
+                                          height: 26.5.h,
                                           width: 38.w,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(
@@ -1081,7 +1082,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                       fontFamily: "medium",
                                                       fontWeight:
                                                           FontWeight.w500,
-                                                      fontSize: 15.dp),
+                                                      fontSize: 11.sp),
                                                 ),
                                               ),
                                               SizedBox(
@@ -1100,7 +1101,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                         style: TextStyle(
                                                             fontFamily:
                                                                 "medium",
-                                                            fontSize: 20.dp,
+                                                            fontSize: 15.sp,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             color: Colors.red),
@@ -1110,7 +1111,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                   Spacer(),
                                                   Padding(
                                                     padding: EdgeInsets.only(
-                                                        bottom: 0.1.h),
+                                                        top: 0.6.w),
                                                     child: Icon(
                                                       CupertinoIcons.star_fill,
                                                       size: 4.w,
@@ -1126,8 +1127,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                     child: Text(
                                                       view_food[index].Rate,
                                                       style: TextStyle(
-                                                          fontFamily: "medium",
-                                                          fontSize: 16.dp),
+                                                        fontFamily: "medium",
+                                                        fontSize: 15.sp,
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -1164,7 +1166,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                                     1.w))),
                                                     child: Padding(
                                                       padding: EdgeInsets.only(
-                                                          top: 0.7.w),
+                                                          top: 0.2.w),
                                                       child: Text(
                                                         textAlign:
                                                             TextAlign.center,
@@ -1172,7 +1174,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                         style: TextStyle(
                                                             fontFamily:
                                                                 "medium",
-                                                            fontSize: 15.dp,
+                                                            fontSize: 12.sp,
                                                             color:
                                                                 Colors.white),
                                                       ),

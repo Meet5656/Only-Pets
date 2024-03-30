@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/util/Color.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
@@ -18,235 +18,259 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
+          child: Stack(
         children: [
           Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
-                  child: FadeInDown(
-                    duration: Duration(milliseconds: 1800),
-                    child: Container(
-                      height: 4.h,
-                      child: Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                              size: 30.dp,
-                            ),
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                child: FadeInDown(
+                  duration: Duration(milliseconds: 1800),
+                  child: Container(
+                    height: 4.h,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            size: 30.sp,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 24.w,top: 1.h),
-                            child: Text(
-                              "Order Details ",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 22.dp,fontFamily: "Alegreya"),
-                            ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 24.w, top: 1.h),
+                          child: Text(
+                            "Order Details",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22.sp,
+                                fontFamily: "Alegreya"),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 3.h,
+              ),
+              Column(
+                children: [
+                  Container(
+                    height: 25.h,
+                    child: Image.asset(
+                      'asset/Pets_Food/petsfood10.jpg',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  Text(
+                    "Product Name",
+                    maxLines: 3,
+                    style: TextStyle(
+                        fontFamily: "medium",
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20.sp),
+                  ),
+                  SizedBox(
+                    height: 1.5.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Quantity : ",
+                        style: TextStyle(
+                            fontFamily: "medium",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15.sp),
+                      ),
+                      Text(
+                        "01",
+                        style: TextStyle(
+                            fontFamily: "medium",
+                            fontWeight: FontWeight.w300,
+                            fontSize: 15.sp),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 1.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Order Id : ",
+                        style: TextStyle(
+                            fontFamily: "medium",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15.sp),
+                      ),
+                      Text(
+                        "1DV54D8C",
+                        style: TextStyle(
+                            fontFamily: "medium",
+                            fontWeight: FontWeight.w300,
+                            fontSize: 15.sp),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  Container(
+                    height: 6.h,
+                    width: 65.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3.w),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.black.withOpacity(0.6),
+                          CustomColors.primaryColor,
+                        ],
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.check_circle_rounded,
+                          size: 25.sp,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          width: 2.w,
+                        ),
+                        Text(
+                          "Delivered",
+                          style: TextStyle(
+                              fontFamily: "medium",
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15.sp,
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                          width: 2.w,
+                        ),
+                        Text(
+                          "01 Aug 2024",
+                          style: TextStyle(
+                              fontFamily: "medium",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15.sp,
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  Container(
+                    height: 24.h,
+                    width: 85.w,
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 3,
+                            blurRadius: 4,
+                            offset: Offset(0, 1),
+                          ),
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(4.w)),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 6.w, top: 1.5.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Name',
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 0.5.h,
+                          ),
+                          Text(
+                            'User name',
+                            maxLines: 3,
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 1.h,
+                          ),
+                          Text(
+                            'Mobile',
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 0.5.h,
+                          ),
+                          Text(
+                            '+91 94xx xxxx xx',
+                            maxLines: 3,
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 1.h,
+                          ),
+                          Text(
+                            'Delivery Address',
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 0.5.h,
+                          ),
+                          Text(
+                            'A-11, Satava Icon, Vastral, SP Ring Road, Ahmedabad - 382415',
+                            maxLines: 3,
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black),
                           ),
                         ],
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          SizedBox(
-            height: 3.h,
+                ],
+              ),
+            ],
           ),
-          Column(
-            children: [
-              Container(
-                height: 25.h,
-                child: Image.asset(
-                  'asset/Pets_Food/petsfood10.jpg',
-                ),
-              ),
-              SizedBox(
-                height: 2.h,
-              ),
-              Text(
-                "Product Name",
-                maxLines: 3,
-                style: TextStyle(fontFamily: "medium",fontWeight: FontWeight.w600, fontSize: 20.dp),
-              ),
-              SizedBox(
-                height: 1.5.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Quantity : ",
-                    style:
-                        TextStyle(fontFamily: "medium",fontWeight: FontWeight.w400, fontSize: 15.dp),
-                  ),
-                  Text(
-                    "01",
-                    style:
-                        TextStyle(fontFamily: "medium",fontWeight: FontWeight.w300, fontSize: 15.dp),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 1.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Order Id : ",
-                    style:
-                        TextStyle(fontFamily: "medium",fontWeight: FontWeight.w400, fontSize: 15.dp),
-                  ),
-                  Text(
-                    "1DV54D8C",
-                    style:
-                        TextStyle(fontFamily: "medium",fontWeight: FontWeight.w300, fontSize: 15.dp),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 2.h,
-              ),
-              Container(
-                height: 6.h,
-                width: 65.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3.w),
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                      Colors.black.withOpacity(0.6),
-                      CustomColors.maincolor,
-                    ],
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.check_circle_rounded,
-                      size: 25.dp,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 2.w,
-                    ),
-                    Text(
-                      "Delivered",
-                      style: TextStyle(fontFamily: "medium",
-                          fontWeight: FontWeight.w600,
-                          fontSize: 15.dp,
-                          color: Colors.white),
-                    ),
-                    SizedBox(
-                      width: 2.w,
-                    ),
-                    Text(
-                      "01 Aug 2024",
-                      style: TextStyle(fontFamily: "medium",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15.dp,
-                          color: Colors.white),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 2.h,
-              ),
-              Container(
-                height: 24.h,
-                width: 85.w,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 4,
-                        offset: Offset(0, 1),
-                      ),
-                    ],
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(4.w)),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 6.w, top: 1.5.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Name',
-                        style: TextStyle(fontFamily: "medium",
-                            fontSize: 18.dp,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black),
-                      ),
-                      SizedBox(
-                        height: 0.5.h,
-                      ),
-                      Text(
-                        'User name',
-                        maxLines: 3,
-                        style: TextStyle(fontFamily: "medium",
-                            fontSize: 13.dp,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.black),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Text(
-                        'Mobile',
-                        style: TextStyle(fontFamily: "medium",
-                            fontSize: 18.dp,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black),
-                      ),
-                      SizedBox(
-                        height: 0.5.h,
-                      ),
-                      Text(
-                        '+91 94xx xxxx xx',
-                        maxLines: 3,
-                        style: TextStyle(fontFamily: "medium",
-                            fontSize: 13.dp,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.black),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Text(
-                        'Delivery Address',
-                        style: TextStyle(fontFamily: "medium",
-                            fontSize: 18.dp,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black),
-                      ),
-                      SizedBox(
-                        height: 0.5.h,
-                      ),
-                      Text(
-                        'A-11, Satava Icon, Vastral, SP Ring Road, Ahmedabad - 382415',
-                        maxLines: 3,
-                        style: TextStyle(fontFamily: "medium",
-                            fontSize: 13.dp,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.17.h,
-              ),
-              InkWell(
+          Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: InkWell(
                 onTap: () {
                   setState(() {
                     isVisible = !isVisible;
@@ -266,7 +290,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           end: Alignment.bottomLeft,
                           colors: [
                             Colors.black.withOpacity(0.6),
-                            CustomColors.maincolor,
+                            CustomColors.primaryColor,
                           ],
                         ),
                         borderRadius: BorderRadius.only(
@@ -281,7 +305,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             children: [
                               Text(
                                 "Price Details",
-                                style: TextStyle(fontFamily: "medium",
+                                style: TextStyle(
+                                    fontFamily: "medium",
                                     fontSize: 22,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600),
@@ -291,7 +316,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                               ),
                               Text(
                                 "(1 Item)",
-                                style: TextStyle(fontFamily: "medium",
+                                style: TextStyle(
+                                    fontFamily: "medium",
                                     fontSize: 22,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600),
@@ -299,7 +325,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                               Spacer(),
                               Text(
                                 "₹100.00",
-                                style: TextStyle(fontFamily: "medium",
+                                style: TextStyle(
+                                    fontFamily: "medium",
                                     fontSize: 22,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600),
@@ -320,9 +347,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     ),
                   ),
                 ),
-              )
-            ],
-          )
+              ))
         ],
       )),
     );
@@ -342,7 +367,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.black.withOpacity(0.6),
-                    CustomColors.maincolor,
+                    CustomColors.primaryColor,
                   ],
                 ),
                 borderRadius: BorderRadius.only(
@@ -359,7 +384,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         children: [
                           Text(
                             "Price Details",
-                            style: TextStyle(fontFamily: "medium",
+                            style: TextStyle(
+                                fontFamily: "medium",
                                 fontSize: 22,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600),
@@ -369,7 +395,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           ),
                           Text(
                             "(1 Item)",
-                            style: TextStyle(fontFamily: "medium",
+                            style: TextStyle(
+                                fontFamily: "medium",
                                 fontSize: 22,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600),
@@ -392,15 +419,17 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         children: [
                           Text(
                             "Total MRP",
-                            style: TextStyle(fontFamily: "medium",
-                                fontSize: 17.dp,
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 17.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),
                           Spacer(),
                           Text("₹100.00",
-                              style: TextStyle(fontFamily: "medium",
-                                  fontSize: 17.dp,
+                              style: TextStyle(
+                                  fontFamily: "medium",
+                                  fontSize: 17.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500))
                         ],
@@ -412,15 +441,17 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         children: [
                           Text(
                             "Total MRP",
-                            style: TextStyle(fontFamily: "medium",
-                                fontSize: 17.dp,
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 17.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),
                           Spacer(),
                           Text("₹20.00",
-                              style: TextStyle(fontFamily: "medium",
-                                  fontSize: 17.dp,
+                              style: TextStyle(
+                                  fontFamily: "medium",
+                                  fontSize: 17.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500))
                         ],
@@ -432,15 +463,17 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         children: [
                           Text(
                             "Shipping Charge",
-                            style: TextStyle(fontFamily: "medium",
-                                fontSize: 17.dp,
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 17.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),
                           Spacer(),
                           Text("Free",
-                              style: TextStyle(fontFamily: "medium",
-                                  fontSize: 17.dp,
+                              style: TextStyle(
+                                  fontFamily: "medium",
+                                  fontSize: 17.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500))
                         ],
@@ -461,15 +494,17 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         children: [
                           Text(
                             "Total Amount",
-                            style: TextStyle(fontFamily: "medium",
-                                fontSize: 19.dp,
+                            style: TextStyle(
+                                fontFamily: "medium",
+                                fontSize: 19.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700),
                           ),
                           Spacer(),
                           Text("₹120",
-                              style: TextStyle(fontFamily: "medium",
-                                  fontSize: 19.dp,
+                              style: TextStyle(
+                                  fontFamily: "medium",
+                                  fontSize: 19.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w700))
                         ],

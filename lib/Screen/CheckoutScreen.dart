@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/EditProfileScreen.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -43,7 +43,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               },
                               icon: Icon(
                                 Icons.arrow_back,
-                                size: 30.dp,
+                                size: 30.sp,
                               ),
                             ),
                             Padding(
@@ -52,7 +52,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                 "Checkout",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 22.dp,
+                                    fontSize: 22.sp,
                                     fontFamily: "Alegreya"),
                               ),
                             ),
@@ -86,7 +86,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           fontFamily: "medium",
-                                          fontSize: 15.dp,
+                                          fontSize: 15.sp,
                                           fontWeight: FontWeight.w400),
                                     ),
                                     SizedBox(
@@ -97,7 +97,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                       child: TextFormField(
                                         style: TextStyle(
                                           fontFamily: "medium",
-                                          fontSize: 16.dp,
+                                          fontSize: 16.sp,
                                         ),
                                         keyboardType: TextInputType.name,
                                         validator: (value) {
@@ -137,7 +137,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           fontFamily: "medium",
-                                          fontSize: 15.dp,
+                                          fontSize: 15.sp,
                                           fontWeight: FontWeight.w400),
                                     ),
                                     SizedBox(
@@ -148,7 +148,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                       child: TextFormField(
                                         style: TextStyle(
                                           fontFamily: "medium",
-                                          fontSize: 16.dp,
+                                          fontSize: 16.sp,
                                         ),
                                         keyboardType: TextInputType.name,
                                         validator: (value) {
@@ -187,7 +187,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.dp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -197,7 +197,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.dp,
+                                  fontSize: 16.sp,
                                 ),
                                 keyboardType: TextInputType.name,
                                 validator: (value) {
@@ -230,7 +230,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.dp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -240,7 +240,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.dp,
+                                  fontSize: 16.sp,
                                 ),
                                 keyboardType: TextInputType.name,
                                 validator: (value) {
@@ -273,7 +273,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.dp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -283,7 +283,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.dp,
+                                  fontSize: 16.sp,
                                 ),
                                 keyboardType: TextInputType.number,
                                 validator: (value) {
@@ -316,7 +316,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.dp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -326,7 +326,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.dp,
+                                  fontSize: 16.sp,
                                 ),
                                 maxLengthEnforcement: MaxLengthEnforcement.none,
                                 keyboardType: TextInputType.number,
@@ -364,7 +364,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.dp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -374,7 +374,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.dp,
+                                  fontSize: 16.sp,
                                 ),
                                 keyboardType: TextInputType.emailAddress,
                                 validator: (value) {
@@ -427,7 +427,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                     end: Alignment.bottomLeft,
                                     colors: [
                                       Colors.black.withOpacity(0.6),
-                                      CustomColors.maincolor,
+                                      CustomColors.primaryColor,
                                     ],
                                   ),
                                 ),
@@ -437,7 +437,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: "medium",
-                                      fontSize: 22.dp,
+                                      fontSize: 22.sp,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white,
                                     ),

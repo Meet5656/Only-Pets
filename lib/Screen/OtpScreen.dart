@@ -1,22 +1,66 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:only_pets/Screen/dashboard.dart';
+import 'package:sizer/sizer.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:only_pets/Screen/formButton.dart';
+import 'package:only_pets/config/string_constant.dart';
+import 'package:only_pets/controller/otpController.dart';
 import 'package:only_pets/util/Color.dart';
 import 'package:pinput/pinput.dart';
 
-class otpscreen extends StatefulWidget {
-  const otpscreen({super.key});
-
+// ignore: must_be_immutable
+class OtpScreen extends StatefulWidget {
+  OtpScreen({
+    this.mobile,
+    this.otp,
+    this.isFromSignUp,
+    this.isFromLogin,
+    Key? key,
+  }) : super(key: key);
+  String? otp;
+  String? mobile;
+  bool? isFromSignUp;
+  bool? isFromLogin;
   @override
-  State<otpscreen> createState() => _otpscreenState();
+  State<OtpScreen> createState() => _OtpScreenState();
 }
 
-class _otpscreenState extends State<otpscreen> {
+class _OtpScreenState extends State<OtpScreen> {
+  var controller = Get.put(OtpController());
+  String deviceType = 'mobile';
+  @override
+  void initState() {
+    controller.clearFocuseNode();
+    controller.fieldOne.text = '';
+    controller.fieldTwo.text = '';
+    controller.fieldThree.text = '';
+    controller.fieldFour.text = '';
+    controller.otpController.text = "";
+    controller.otpController.clear();
+    controller.startTimer();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.timer.cancel();
+    controller.otpController.clear();
+    controller.fieldOne.text = '';
+    controller.fieldTwo.text = '';
+    controller.fieldThree.text = '';
+    controller.fieldFour.text = '';
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: CustomColors.primaryColor,
         body: GestureDetector(
           onTap: () {
@@ -65,7 +109,7 @@ class _otpscreenState extends State<otpscreen> {
                                     child: Text(
                                       "Verification Code",
                                       style: TextStyle(
-                                        fontSize: 30.dp,
+                                        fontSize: 30.sp,
                                         fontFamily: "Alegreya",
                                       ),
                                     ),
@@ -80,7 +124,7 @@ class _otpscreenState extends State<otpscreen> {
                                   child: Text(
                                     "Type the Verification code\nwe've sent you",
                                     style: TextStyle(
-                                        fontSize: 18.dp,
+                                        fontSize: 18.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: "Alegreya"),
                                   ),
@@ -93,19 +137,21 @@ class _otpscreenState extends State<otpscreen> {
                                 padding: EdgeInsets.symmetric(horizontal: 4.w),
                                 child: Pinput(
                                   length: 4,
+                                  // controller: controller.otpController,
+                                  // focusNode: controller.otpNode,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   defaultPinTheme: PinTheme(
                                       textStyle: TextStyle(
-                                          fontSize: 21.dp,
+                                          fontSize: 21.sp,
                                           fontWeight: FontWeight.w500,
                                           fontFamily: "Alegreya"),
                                       height: 6.h,
                                       width: 6.h,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
-                                              Radius.circular(11.dp)),
+                                              Radius.circular(11.sp)),
                                           color: Colors.white,
                                           border: Border.all(
                                               width: 0.2.h,
@@ -121,42 +167,77 @@ class _otpscreenState extends State<otpscreen> {
                                 children: [
                                   Text("Didn't you receive any code",
                                       style: TextStyle(
-                                          fontSize: 18.dp,
+                                          fontSize: 18.sp,
                                           fontFamily: "Alegreya")),
                                 ],
                               ),
                               SizedBox(
                                 height: 5.h,
                               ),
-                              InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  height: 5.5.h,
-                                  width: 87.w,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(5.w),
-                                    ),
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.topLeft,
-                                      colors: [
-                                        CustomColors.primaryColor,
-                                        Colors.black.withOpacity(0.6),
-                                      ],
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "SUBMIT",
-                                      style: TextStyle(
-                                          fontSize: 17.dp,
-                                          color: Colors.white,
-                                          fontFamily: "Alegreya"),
+
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: 8.w,
+                                  right: 8.w,
+                                ),
+                                child: FadeInUp(
+                                  from: 50,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.offAll(DashboardScreen());
+                                    },
+                                    child: Container(
+                                      height: 5.h,
+                                      width: 50.w,
+                                      child: Center(
+                                        child: Text(
+                                          "Submit",
+                                          style: TextStyle(
+                                              fontSize: 15.sp,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      decoration:
+                                          BoxDecoration(color: Colors.black),
                                     ),
                                   ),
                                 ),
                               ),
+                              //ORL
+                              // Container(
+                              //   margin: EdgeInsets.only(
+                              //     left: 8.w,
+                              //     right: 8.w,
+                              //   ),
+                              //   child: FadeInUp(
+                              //     from: 50,
+                              //     child: Obx(() {
+                              //       return getSecondaryFormButton(() {
+                              //         if (controller.isFormInvalidate.value ==
+                              //             true) {
+                              //           if (widget.isFromSignUp == true) {
+                              //             controller.getLoginOtpApi(
+                              //                 context,
+                              //                 widget.otp.toString(),
+                              //                 widget.mobile.toString());
+                              //           } else {
+                              //             controller.getOtpApi(
+                              //                 context,
+                              //                 widget.otp.toString(),
+                              //                 widget.mobile.toString());
+                              //           }
+                              //         }
+                              //       },
+                              //           isFromCart: true,
+                              //           BottomConstant.buttonLabel,
+                              //           isvalidate:
+                              //               controller.isFormInvalidate.value);
+                              //     }),
+                              //   ),
+                              // ),
+                              // SizedBox(
+                              //   height: 2.0.h,
+                              // ),
                             ],
                           ),
                         ),

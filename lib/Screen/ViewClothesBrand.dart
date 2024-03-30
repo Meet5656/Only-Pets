@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/model/HomeModel..dart/Clothes_Brand/ViewClothesModel.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -41,7 +41,7 @@ class _viewclothesbrandState extends State<viewclothesbrand> {
                     "Clothes Brand",
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 22.dp,
+                        fontSize: 16.sp,
                         fontFamily: "Alegreya"),
                   ),
                 ),

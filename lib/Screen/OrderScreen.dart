@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/OrderDetailsScreen.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -37,7 +37,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             },
                             icon: Icon(
                               Icons.arrow_back,
-                              size: 30.dp,
+                              size: 30.sp,
                             ),
                           ),
                           Padding(
@@ -45,7 +45,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             child: Text(
                               "Orders",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 22.dp,fontFamily: "Alegreya"),
+                                  fontWeight: FontWeight.w600, fontSize: 22.sp,fontFamily: "Alegreya"),
                             ),
                           ),
                         ],
@@ -123,8 +123,8 @@ class _OrderScreenState extends State<OrderScreen> {
                                           children: [
                                             Icon(
                                               Icons.circle,
-                                              size: 25.dp,
-                                              color: CustomColors.maincolor,
+                                              size: 25.sp,
+                                              color: CustomColors.primaryColor,
                                             ),
                                             SizedBox(
                                               width: 0.5.w,
@@ -132,10 +132,10 @@ class _OrderScreenState extends State<OrderScreen> {
                                             Text(
                                               "Delivered",
                                               style: TextStyle( fontFamily: "medium",
-                                                  fontSize: 17.dp,
+                                                  fontSize: 17.sp,
                                                   fontWeight: FontWeight.w500,
                                                   color:
-                                                      CustomColors.maincolor),
+                                                      CustomColors.primaryColor),
                                             )
                                           ],
                                         ),
@@ -147,14 +147,14 @@ class _OrderScreenState extends State<OrderScreen> {
                                             Text(
                                               "Order Id : ",
                                               style: TextStyle( fontFamily: "medium",
-                                                fontSize: 15.dp,
+                                                fontSize: 15.sp,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
                                             Text(
                                               "1C54584C",
                                               style: TextStyle( fontFamily: "medium",
-                                                fontSize: 15.dp,
+                                                fontSize: 15.sp,
                                                 fontWeight: FontWeight.w400,
                                               ),
                                             ),
@@ -164,7 +164,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                           "Product Name",
                                           style: TextStyle( fontFamily: "medium",
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 18.dp),
+                                              fontSize: 18.sp),
                                         ),
                                         SizedBox(
                                           height: 0.5.w,
@@ -182,7 +182,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                   style: TextStyle( fontFamily: "medium",
                                                       fontWeight:
                                                           FontWeight.w600,
-                                                      fontSize: 20.dp),
+                                                      fontSize: 20.sp),
                                                 ),
                                                 Row(
                                                   children: [
@@ -236,7 +236,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     colors: [
                                                       Colors.black
                                                           .withOpacity(0.6),
-                                                      CustomColors.maincolor,
+                                                      CustomColors.primaryColor,
                                                     ],
                                                   ),
                                                 ),
@@ -247,7 +247,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     Text(
                                                       "View Details",
                                                       style: TextStyle( fontFamily: "medium",
-                                                          fontSize: 12.dp,
+                                                          fontSize: 12.sp,
                                                           color: Colors.white,
                                                           fontWeight:
                                                               FontWeight.w600),

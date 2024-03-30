@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:only_pets/model/Onboardingmodel.dart';
 
@@ -91,7 +91,7 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                     contents[i].title,
                                     style: TextStyle(
                                         fontFamily: "Alegreya",
-                                        fontSize: 25.dp,
+                                        fontSize: 20.sp,
                                         // fontWeight: FontWeight.w100,
                                         color: Colors.white),
                                   ),
@@ -105,7 +105,7 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: "Alegreya",
-                                        fontSize: 23.dp,
+                                        fontSize: 15.sp,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -149,9 +149,11 @@ class _onboardingscreenState extends State<onboardingscreen> {
                                   builder: (context) => loginscreen(),
                                 ));
                           },
-                          child: Text(
-                            'Start',
-                            style: TextStyle(color: Colors.white,fontFamily: "Alegreya",fontSize: 12.dp),
+                          child: Center(
+                            child: Text(
+                              'Start',
+                              style: TextStyle(color: Colors.white,fontFamily: "Alegreya",fontSize: 12.sp),
+                            ),
                           ),
                         ),
                       ),

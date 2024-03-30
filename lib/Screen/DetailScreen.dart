@@ -5,7 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/model/DetailScreenSizeModel.dart';
 import 'package:only_pets/model/HomeModel..dart/Treading/ViewTrendingModel.dart';
 import 'package:only_pets/util/Color.dart';
@@ -13,8 +13,9 @@ import 'package:readmore/readmore.dart';
 
 // ignore: must_be_immutable
 class detailscreen extends StatefulWidget {
-  detailscreen({super.key, required this.userdata});
+  detailscreen({super.key, required this.userdata, this.isFromnTrending});
   ViewTrendingModel? userdata;
+  bool? isFromnTrending;
 
   @override
   State<detailscreen> createState() => _detailscreenState();
@@ -100,7 +101,7 @@ class _detailscreenState extends State<detailscreen> {
                           "Detail Screen",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 22.dp,
+                              fontSize: 16.sp,
                               fontFamily: "Alegreya"),
                         ),
                       ),
@@ -195,7 +196,7 @@ class _detailscreenState extends State<detailscreen> {
                               child: Text(
                                 widget.userdata!.Rate,
                                 style: TextStyle(
-                                    fontSize: 19.dp, fontFamily: "medium"),
+                                    fontSize: 19.sp, fontFamily: "medium"),
                               ),
                             ),
                             Padding(
@@ -237,7 +238,7 @@ class _detailscreenState extends State<detailscreen> {
                           child: Text(
                             widget.userdata!.name,
                             style: TextStyle(
-                                fontSize: 20.dp,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: "medium"),
                           ),
@@ -253,7 +254,7 @@ class _detailscreenState extends State<detailscreen> {
                             child: Text(
                               "MRP :",
                               style: TextStyle(
-                                  fontSize: 19.dp,
+                                  fontSize: 19.sp,
                                   fontFamily: "medium",
                                   fontWeight: FontWeight.bold),
                             ),
@@ -265,7 +266,7 @@ class _detailscreenState extends State<detailscreen> {
                                 child: Text(
                                   widget.userdata!.Prise,
                                   style: TextStyle(
-                                      fontSize: 30.dp,
+                                      fontSize: 30.sp,
                                       color: Colors.red,
                                       fontFamily: "Alegreya"),
                                 )),
@@ -285,7 +286,7 @@ class _detailscreenState extends State<detailscreen> {
                           child: Text(
                             "Select Size :",
                             style: TextStyle(
-                                fontSize: 19.dp,
+                                fontSize: 19.sp,
                                 fontFamily: "medium",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -330,9 +331,11 @@ class _detailscreenState extends State<detailscreen> {
                                             height: 1.h,
                                           ),
                                           Text(
+                                            //  widget.userdata!.variants[index].Prises,
+
                                             selectsize[index].size,
                                             style: TextStyle(
-                                                fontSize: 20.dp,
+                                                fontSize: 20.sp,
                                                 fontFamily: "medium"),
                                           ),
                                           SizedBox(
@@ -340,8 +343,9 @@ class _detailscreenState extends State<detailscreen> {
                                           ),
                                           Text(
                                             selectsize[index].prise,
+                                            // widget.userdata!.variants[index].sizes,
                                             style: TextStyle(
-                                                fontSize: 20.dp,
+                                                fontSize: 20.sp,
                                                 color: Colors.red,
                                                 fontFamily: "medium"),
                                           ),
@@ -365,7 +369,7 @@ class _detailscreenState extends State<detailscreen> {
                           child: Text(
                             "Descripitions :",
                             style: TextStyle(
-                                fontSize: 19.dp,
+                                fontSize: 19.sp,
                                 fontFamily: "medium",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -384,17 +388,17 @@ class _detailscreenState extends State<detailscreen> {
                           trimLines: 3,
                           trimMode: TrimMode.Line,
                           lessStyle: TextStyle(
-                              fontSize: 19.dp,
+                              fontSize: 19.sp,
                               fontFamily: "medium",
                               fontWeight: FontWeight.w500,
                               color: Colors.blue),
                           moreStyle: TextStyle(
-                              fontSize: 19.dp,
+                              fontSize: 19.sp,
                               fontFamily: "medium",
                               fontWeight: FontWeight.w500,
                               color: Colors.blue),
                           style: TextStyle(
-                              fontSize: 19.dp,
+                              fontSize: 19.sp,
                               fontFamily: "medium",
                               fontWeight: FontWeight.w500),
                         ),
@@ -445,7 +449,7 @@ class _detailscreenState extends State<detailscreen> {
                             decoration: BoxDecoration(
                                 color: Colors.black12,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(4.dp))),
+                                    BorderRadius.all(Radius.circular(4.sp))),
                             child: Icon(
                               CupertinoIcons.minus,
                             ),
@@ -455,7 +459,7 @@ class _detailscreenState extends State<detailscreen> {
                       Spacer(),
                       Text(
                         "$_counter",
-                        style: TextStyle(fontSize: 20.dp, color: Colors.black),
+                        style: TextStyle(fontSize: 20.sp, color: Colors.black),
                       ),
                       Spacer(),
                       Padding(
@@ -470,7 +474,7 @@ class _detailscreenState extends State<detailscreen> {
                             decoration: BoxDecoration(
                                 color: Colors.lightBlue.shade100,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(4.dp))),
+                                    BorderRadius.all(Radius.circular(4.sp))),
                             child: Icon(
                               CupertinoIcons.add,
                             ),
@@ -496,13 +500,13 @@ class _detailscreenState extends State<detailscreen> {
                           CustomColors.primaryColor,
                         ],
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(5.dp))),
+                      borderRadius: BorderRadius.all(Radius.circular(5.sp))),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "ADD TO CART",
-                        style: TextStyle(color: Colors.white, fontSize: 18.dp),
+                        style: TextStyle(color: Colors.white, fontSize: 18.sp),
                       ),
                       SizedBox(
                         width: 1.5.w,

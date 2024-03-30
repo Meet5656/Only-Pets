@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_gif: ^0.0.4
   lottie: ^2.7.0
-  flutter_sizer: ^1.0.5
   carousel_slider: ^4.2.1
   pinput: ^3.0.1
   get: ^4.6.6
@@ -56,6 +55,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   shared_preferences: ^2.2.1
   sizer: ^2.0.15
+  connectivity_plus: ^5.0.2
 
 dev_dependencies:
   flutter_test:

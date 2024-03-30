@@ -5,17 +5,33 @@ class ViewTrendingModel {
   String Prise;
   String Rate;
   String des;
-  ViewTrendingModel(
-      {required this.image,
-      required this.name,
-      required this.size,
-      required this.Prise,
-      required this.Rate,
-      required this.des});
+  // List<clothessize> variants;
+
+  ViewTrendingModel({
+    required this.image,
+    required this.name,
+    required this.size,
+    required this.Prise,
+    required this.Rate,
+    required this.des,
+    // required this.variants,
+  });
 }
+
+// class clothessize {
+//   String sizes;
+//   String Prises;
+//   clothessize({required this.sizes, required this.Prises});
+// }
 
 List<ViewTrendingModel> viewTrending = [
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "Pet Winter Jacket Leather offers a stylish and warm option for your pet. This leather jacket is specially designed for winter and is designed to protect your pet from cold weather.Leather jackets are made from high-quality materials to ensure comfort and durability. Soft leather provides insulation to keep your pet warm.",
       image: [
@@ -30,6 +46,12 @@ List<ViewTrendingModel> viewTrending = [
       Prise: "₹500",
       Rate: "(4.5)"),
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "Made with soft material, this dog t-shirt is a perfect fit for your Labradors. The pullover design makes it easy-to-wear and gives your dog utmost relaxation. And that's not all, the t-shirt does not hinder regular movement and the adjustable toggle at the neckline ensures a secure fit! The high tummy cut allows for easy pee breaks.",
       image: [
@@ -44,6 +66,12 @@ List<ViewTrendingModel> viewTrending = [
       Prise: "₹750",
       Rate: "(4.1)"),
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "The Large Dog Autumn and Winter Christmas Warm Sweater is a sweater specially designed to keep large dogs warm in the cold autumn and winter seasons. They are usually made from soft, warm materials that provide warmth without causing discomfort to your dog.",
       image: [
@@ -57,6 +85,12 @@ List<ViewTrendingModel> viewTrending = [
       Prise: "₹930",
       Rate: "(4.4)"),
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "Smooth & breathable polyester material. The soft & durable texture suits all seasons of wear. It also can protect them from scratching or other skin issues. Easy to wash and quick-dry, machine & hand washable, not easy to pill and shrink.",
       image: [
@@ -71,6 +105,12 @@ List<ViewTrendingModel> viewTrending = [
       Prise: "₹630",
       Rate: "(4.1)"),
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "Measuring your dog for a perfect fit before buying.Please allow 1-3 cm measurement balance.If any of the measurements are between two sizes, please choose the larger size.",
       image: [
@@ -85,6 +125,12 @@ List<ViewTrendingModel> viewTrending = [
       Prise: "₹250",
       Rate: "(4.0)"),
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "This harness size is not fit on my bunny. I let him wear it just for show product.This harness keep your pet warm in winter!.Comfortable, soft and safe for pet.Great for everyday use.Please check the size chart in product description before your purchase",
       image: [
@@ -100,6 +146,12 @@ List<ViewTrendingModel> viewTrending = [
       Rate: "(3.5)"),
   // 7
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "This coat is appropriate for your dog even if she/he is very large, well muscled or has an unusual body type.The coat has two layers:waterproof and windproof outer fleece lining Other features underbelly covering it fastens at the back and at the shoulders with Velcro which allows room for adjustment reflective safety tape easy to put on",
       image: [
@@ -115,6 +167,12 @@ List<ViewTrendingModel> viewTrending = [
       Rate: "4.5"),
   //8
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "Style meets comfort in our grey Striped Polo Doggie T-shirt. Made from Cotton Pique, this summer staple features horizontal stripes, short ribbed sleeves, a collar in contrasting colour, ribbed hemline and easy buttons for closure.",
       image: [
@@ -131,6 +189,12 @@ List<ViewTrendingModel> viewTrending = [
 
   //9
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "A light t-shirt for the athletic doggie in the family, this is easy to slip on and comfortable to wear. It has been designed specifically for dogs and is careful not to hinder or restrict their natural movements.",
       image: [
@@ -145,6 +209,12 @@ List<ViewTrendingModel> viewTrending = [
       Rate: "4.1"),
   //10
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "Your dog wardrobe needs a summer staple where style meets comfort in the most effortless way. A t-shirt that doesn irritate the skin, is easy to wear and super comfortable to move around in. And guess what? Our solid blue HUFT Polo t-shirt for dogs simply fits the bill! Made with cotton and polyester pique fabric, this polo dog t-shirt features a short ribbed sleeve and hemline, a HUFT logo embroidery and easy buttons for closure so it does not hinder your dog regular movement at all. We also have a collar in a contrasting colour so your furry one is never out of style!",
       image: [
@@ -160,6 +230,12 @@ List<ViewTrendingModel> viewTrending = [
       Rate: "4.1"),
   // 11
   ViewTrendingModel(
+      // variants: [
+      //   clothessize(sizes: 'S', Prises: '₹500'),
+      //   clothessize(sizes: 'M', Prises: '₹400'),
+      //   clothessize(sizes: 'L', Prises: '₹900'),
+      //   clothessize(sizes: 'XL', Prises: '₹1200'),
+      // ],
       des:
           "This raincoat comes in bright yellow, red & blue colour, with a hood that is easily adjustable. The contrasting inner lining makes it very fun and stylish & the cape style design ensures full coverage of the head and body.",
       image: [
@@ -175,6 +251,12 @@ List<ViewTrendingModel> viewTrending = [
       Rate: "5.0"),
   // 12
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         "this pet tuxedo is made of soft material, which is comfortable for your pet to wear, it will allow your dog to move at will without discomfort, light and easy to slip on and off with fine stitches",
     image: [
@@ -193,6 +275,12 @@ List<ViewTrendingModel> viewTrending = [
 // 13
   //NO have any im
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des: "",
     image: ['asset/Trending_View/t-7.jpg'],
     name: "ThunderShirt Sport Dog Anxiety Jacket",
@@ -203,6 +291,12 @@ List<ViewTrendingModel> viewTrending = [
   // 14
   // ==============================================
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des: "",
     image: ['asset/Trending_View/t-8.jpg'],
     name:
@@ -213,6 +307,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
 // 15
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         "This cozy dog shirt are made of flannel fleece fabric, which touch soft and warm; The material is lightweight, moisture-wicking, not easy to fade and durable to apply for a long time; They can keep your furry babies warm and comfortable during the cold weather",
     image: [
@@ -231,6 +331,12 @@ List<ViewTrendingModel> viewTrending = [
   // 16
 
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         "This cozy dog shirt are made of flannel fleece fabric, which touch soft and warm; The material is lightweight, moisture-wicking, not easy to fade and durable to apply for a long time; They can keep your furry babies warm and comfortable during the cold weather",
     image: [
@@ -249,6 +355,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
   // 17
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des: "",
     image: [
       'asset/Trending_View/t-11.jpg',
@@ -265,6 +377,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
   // 18
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         " Machine washable,not deform after washing.Perfect for your pet daily wear, sleeping time, outside walking or traveling.Your pet will be more happy.This cozy dog shirt are made of flannel fleece fabric, which touch soft and warm; The material is lightweight, moisture-wicking, not easy to fade and durable to apply for a long time; They can keep your furry babies warm and comfortable during the cold weather",
     image: [
@@ -282,6 +400,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
   // 19
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         "The light winter shirts are completely designed in-house with our own designs keeping in might the vibrancy of the colors that the autumn season brings for your pets. They are waterproof and extremely comfortable to wear. The unique design makes it easily wearable and easy to remove as well.",
     image: [
@@ -296,6 +420,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
   // 20
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         "My harness material is soft, comfortable, safe and secure.This harness is especially designed for rabbit and small pet",
     image: [
@@ -313,6 +443,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
   // 21
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         "Size Small fits - can fit mini rex, mini lop, dwarf, lion head (but please refer to sizing measurements above Size Medium fits - can fit holland lop,This harness contains an adjustable strap/buckle which is easily to put on/remove. Comfortable and secure for your fur baby to use outside. Item is made high quality and very fashionable!",
     image: [
@@ -329,6 +465,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
   // 22
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         "Winter vest clothing specially designed for small animals, which can wrap pets in all directions and bring warmth. The neck of the clothes has an elastic band, which is convenient and comfortable for pets to put on and take off.",
     image: [
@@ -346,6 +488,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
   // 23
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         " This small pet clothing is made of soft fleece fabric, it is comfortable for small animal to wear and can keep body warm in cold weather.",
     image: [
@@ -363,6 +511,12 @@ List<ViewTrendingModel> viewTrending = [
   ),
   // 24
   ViewTrendingModel(
+    // variants: [
+    //   clothessize(sizes: 'S', Prises: '₹500'),
+    //   clothessize(sizes: 'M', Prises: '₹400'),
+    //   clothessize(sizes: 'L', Prises: '₹900'),
+    //   clothessize(sizes: 'XL', Prises: '₹1200'),
+    // ],
     des:
         "Comes with a leash, helping you easily control your rabbit.Its 2 secure buckles allow you to remove it with ease.Can use it as small pet walking harness or charming outfits for your cute furry friends.Made of cotton cloth fabric, soft texture and ideal both for four season due to breathable and comfortable feature.",
     image: [

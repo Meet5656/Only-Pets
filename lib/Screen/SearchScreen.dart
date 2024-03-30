@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/model/HomeModel..dart/Treading/ViewTrendingModel.dart';
 import 'package:only_pets/model/SearchScreenModel.dart';
@@ -45,7 +45,7 @@ class _SearchscreenState extends State<Searchscreen> {
                       "Search Screen",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 23.dp,
+                          fontSize: 16.sp,
                           fontFamily: "Alegreya"),
                     ),
                   ),
@@ -63,7 +63,7 @@ class _SearchscreenState extends State<Searchscreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(7.w))),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 15.dp, fontFamily: "medium"),
+                    style: TextStyle(fontSize: 14.sp, fontFamily: "medium"),
                     decoration: InputDecoration(
                       suffixIcon: Padding(
                         padding: EdgeInsets.only(right: 2.w),
@@ -72,8 +72,8 @@ class _SearchscreenState extends State<Searchscreen> {
                           size: 6.w,
                         ),
                       ),
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 4.w, horizontal: 6.w),
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 3.5.w, horizontal: 6.w),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(7.w)),
                       ),
@@ -82,7 +82,7 @@ class _SearchscreenState extends State<Searchscreen> {
                       // contentPadding:
                       //     EdgeInsets.symmetric(vertical: 2.h, horizontal: 2.h),
                       hintStyle:
-                          TextStyle(fontSize: 19.dp, fontFamily: "medium"),
+                          TextStyle(fontSize: 14.sp, fontFamily: "medium"),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.w),
                       ),
@@ -103,7 +103,7 @@ class _SearchscreenState extends State<Searchscreen> {
                   scrollDirection: Axis.vertical,
                   itemCount: books.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, childAspectRatio: 5 / 6.9),
+                      crossAxisCount: 2, childAspectRatio: 5 / 7.1),
                   itemBuilder: (context, index) {
                     final book = books[index];
                     return Column(
@@ -126,7 +126,7 @@ class _SearchscreenState extends State<Searchscreen> {
                                   ));
                             },
                             child: Container(
-                              height: 29.5.h,
+                              height: 30.5.h,
                               width: 45.w,
                               decoration: BoxDecoration(
                                 color: Colors.white,
@@ -178,7 +178,7 @@ class _SearchscreenState extends State<Searchscreen> {
                                       style: TextStyle(
                                           fontFamily: "medium",
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 16.dp),
+                                          fontSize: 12.sp),
                                     ),
                                   ),
                                   SizedBox(
@@ -195,7 +195,7 @@ class _SearchscreenState extends State<Searchscreen> {
                                             book.Prise,
                                             style: TextStyle(
                                                 fontFamily: "medium",
-                                                fontSize: 21.dp,
+                                                fontSize: 15.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.red),
                                           ),
@@ -219,7 +219,7 @@ class _SearchscreenState extends State<Searchscreen> {
                                           // Search_Data[index].Rate,
                                           book.Rate,
                                           style: TextStyle(
-                                            fontSize: 18.dp,
+                                            fontSize: 15.sp,
                                             fontFamily: "medium",
                                           ),
                                         ),
@@ -250,16 +250,15 @@ class _SearchscreenState extends State<Searchscreen> {
                                               ),
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(1.w))),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsets.only(top: 1.2.w),
-                                            child: Text(
-                                              textAlign: TextAlign.center,
-                                              "Add Cart",
-                                              style: TextStyle(
-                                                  fontFamily: "medium",
-                                                  fontSize: 16.dp,
-                                                  color: Colors.white),
+                                          child: Center(
+                                            child: Center(
+                                              child: Text(
+                                                "Add Cart",
+                                                style: TextStyle(
+                                                    fontFamily: "medium",
+                                                    fontSize: 12.sp,
+                                                    color: Colors.white),
+                                              ),
                                             ),
                                           ),
                                         ),

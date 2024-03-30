@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/model/HomeModel..dart/Category/ViewCategoryModel.dart';
 import 'package:only_pets/model/HomeModel..dart/ToyesModel/Toyes.dart';
@@ -46,7 +46,7 @@ class _toysscreenState extends State<toysscreen> {
                       "Toys Screen",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 22.dp,
+                        fontSize: 22.sp,
                         fontFamily: "Alegreya",
                       ),
                     ),
@@ -138,7 +138,7 @@ class _toysscreenState extends State<toysscreen> {
                                       toys[index].name,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 14.dp),
+                                          fontSize: 14.sp),
                                     ),
                                   ),
                                   SizedBox(
@@ -153,7 +153,7 @@ class _toysscreenState extends State<toysscreen> {
                                           child: Text(
                                             toys[index].Prise,
                                             style: TextStyle(
-                                                fontSize: 20.dp,
+                                                fontSize: 20.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.red),
                                           ),
@@ -175,7 +175,7 @@ class _toysscreenState extends State<toysscreen> {
                                         padding: EdgeInsets.only(right: 2.w),
                                         child: Text(
                                           toys[index].Rate,
-                                          style: TextStyle(fontSize: 16.dp),
+                                          style: TextStyle(fontSize: 16.sp),
                                         ),
                                       ),
                                     ],
@@ -211,7 +211,7 @@ class _toysscreenState extends State<toysscreen> {
                                               textAlign: TextAlign.center,
                                               "Add Cart",
                                               style: TextStyle(
-                                                  fontSize: 15.dp,
+                                                  fontSize: 15.sp,
                                                   color: Colors.white),
                                             ),
                                           ),

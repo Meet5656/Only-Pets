@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/Success.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -53,7 +53,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       "Payment Screen",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 22.dp,
+                        fontSize: 22.sp,
                         fontFamily: "Alegreya",
                       ),
                     ),
@@ -71,7 +71,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   padding: EdgeInsets.only(left: 6.w),
                   child: Text(
                     "Choose your payment\nmethod",
-                    style: TextStyle(fontSize: 27.dp, fontFamily: "medium"),
+                    style: TextStyle(fontSize: 27.sp, fontFamily: "medium"),
                   ),
                 ),
               ],
@@ -102,7 +102,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         child: Text(
                           PaymentList[index],
                           style: TextStyle(
-                            fontSize: 18.dp,
+                            fontSize: 18.sp,
                             fontFamily: "medium",
                             color: groupValue == index
                                 ? Colors.black
@@ -153,7 +153,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     child: Text(
                       "PAY",
                       style: TextStyle(
-                          fontSize: 18.dp,
+                          fontSize: 18.sp,
                           color: Colors.white,
                           fontFamily: "medium"),
                     ),

@@ -1,20 +1,20 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/ResertPassword.dart';
 import 'package:only_pets/Screen/dashboard.dart';
 
 import '../util/Color.dart';
 
-class signinscreen extends StatefulWidget {
-  const signinscreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<signinscreen> createState() => _signinscreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _signinscreenState extends State<signinscreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final _formkey = GlobalKey<FormState>();
   var _isHidden;
   var _confirmpassword;
@@ -30,7 +30,7 @@ class _signinscreenState extends State<signinscreen> {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: CustomColors.primaryColor,
       body: Form(
         key: _formkey,
@@ -89,7 +89,7 @@ class _signinscreenState extends State<signinscreen> {
                                 child: Text(
                                   "SIGN UP!",
                                   style: TextStyle(
-                                      fontSize: 30.dp, fontFamily: "Alegreya"),
+                                      fontSize: 30.sp, fontFamily: "Alegreya"),
                                 ),
                               ),
                               SizedBox(
@@ -103,7 +103,7 @@ class _signinscreenState extends State<signinscreen> {
                               "Welcome to Only pets get started with us and begin the journey",
                               style: TextStyle(
                                 fontFamily: "Alegreya",
-                                fontSize: 18.dp,
+                                fontSize: 18.sp,
                               ),
                             ),
                           ),
@@ -115,7 +115,7 @@ class _signinscreenState extends State<signinscreen> {
                             child: Container(
                               child: TextFormField(
                                 style: TextStyle(
-                                    fontFamily: "medium", fontSize: 17.dp),
+                                    fontFamily: "medium", fontSize: 17.sp),
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.symmetric(
@@ -150,7 +150,7 @@ class _signinscreenState extends State<signinscreen> {
                             child: Container(
                               child: TextFormField(
                                 style: TextStyle(
-                                    fontFamily: "medium", fontSize: 17.dp),
+                                    fontFamily: "medium", fontSize: 17.sp),
                                 obscureText: _isHidden,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
@@ -190,7 +190,7 @@ class _signinscreenState extends State<signinscreen> {
                             child: Container(
                               child: TextFormField(
                                 style: TextStyle(
-                                    fontFamily: "medium", fontSize: 17.dp),
+                                    fontFamily: "medium", fontSize: 17.sp),
                                 obscureText: _confirmpassword,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
@@ -225,29 +225,29 @@ class _signinscreenState extends State<signinscreen> {
                           SizedBox(
                             height: 2.h,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 6.w),
-                            child: Align(
-                              alignment: Alignment.topRight,
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => resertpassword(),
-                                      ));
-                                },
-                                child: Text(
-                                  "Forget password?",
-                                  style: TextStyle(
-                                      fontSize: 18.dp, fontFamily: "Alegreya"),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
+                          // Padding(
+                          //   padding: EdgeInsets.only(right: 6.w),
+                          //   child: Align(
+                          //     alignment: Alignment.topRight,
+                          //     child: InkWell(
+                          //       onTap: () {
+                          //         Navigator.push(
+                          //             context,
+                          //             MaterialPageRoute(
+                          //               builder: (context) => resertpassword(),
+                          //             ));
+                          //       },
+                          //       child: Text(
+                          //         "Forget password?",
+                          //         style: TextStyle(
+                          //             fontSize: 18.sp, fontFamily: "Alegreya"),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: 5.h,
+                          // ),
                           Padding(
                             padding: EdgeInsets.only(
                               left: 7.w,
@@ -286,7 +286,7 @@ class _signinscreenState extends State<signinscreen> {
                                   child: Text(
                                     "SIGN UP",
                                     style: TextStyle(
-                                        fontSize: 17.dp,
+                                        fontSize: 17.sp,
                                         color: Colors.white,
                                         fontFamily: "Alegreya"),
                                   ),
@@ -303,7 +303,7 @@ class _signinscreenState extends State<signinscreen> {
                               Text(
                                 "have an account?",
                                 style: TextStyle(
-                                    fontSize: 20.dp, fontFamily: "Alegreya"),
+                                    fontSize: 20.sp, fontFamily: "Alegreya"),
                               ),
                               InkWell(
                                 onTap: () {
@@ -312,7 +312,7 @@ class _signinscreenState extends State<signinscreen> {
                                 child: Text(
                                   "Log in",
                                   style: TextStyle(
-                                      fontSize: 20.dp,
+                                      fontSize: 20.sp,
                                       fontFamily: "Alegreya",
                                       color: CustomColors.primaryColor),
                                 ),

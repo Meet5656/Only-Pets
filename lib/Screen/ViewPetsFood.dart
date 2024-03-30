@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/model/HomeModel..dart/Pets_Food/ViewPetsFoodModel.dart';
 import 'package:only_pets/util/Color.dart';
@@ -44,7 +44,7 @@ class _viewpetfoodState extends State<viewpetfood> {
                       "Pets Food",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 22.dp,
+                          fontSize: 16.sp,
                           fontFamily: "Alegreya"),
                     ),
                   ),
@@ -58,6 +58,7 @@ class _viewpetfoodState extends State<viewpetfood> {
               child: FadeInRight(
                 duration: Duration(milliseconds: 1200),
                 child: GridView.builder(
+                  physics: BouncingScrollPhysics(),
                   itemCount: view_food.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, childAspectRatio: 5 / 7.0),
@@ -131,7 +132,7 @@ class _viewpetfoodState extends State<viewpetfood> {
                                       style: TextStyle(
                                           fontFamily: "medium",
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 16.dp),
+                                          fontSize: 12.sp),
                                     ),
                                   ),
                                   SizedBox(
@@ -147,7 +148,7 @@ class _viewpetfoodState extends State<viewpetfood> {
                                             view_food[index].Prise,
                                             style: TextStyle(
                                                 fontFamily: "medium",
-                                                fontSize: 21.dp,
+                                                fontSize: 14.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.red),
                                           ),
@@ -155,7 +156,7 @@ class _viewpetfoodState extends State<viewpetfood> {
                                       ),
                                       Spacer(),
                                       Padding(
-                                        padding: EdgeInsets.only(bottom: 0.1.h),
+                                        padding: EdgeInsets.only(top: 0.5.h),
                                         child: Icon(
                                           CupertinoIcons.star_fill,
                                           size: 4.w,
@@ -170,15 +171,12 @@ class _viewpetfoodState extends State<viewpetfood> {
                                         child: Text(
                                           view_food[index].Rate,
                                           style: TextStyle(
-                                            fontSize: 18.dp,
+                                            fontSize: 14.sp,
                                             fontFamily: "medium",
                                           ),
                                         ),
                                       ),
                                     ],
-                                  ),
-                                  SizedBox(
-                                    height: 1.w,
                                   ),
                                   Row(
                                     mainAxisAlignment:
@@ -203,14 +201,16 @@ class _viewpetfoodState extends State<viewpetfood> {
                                                   Radius.circular(1.w))),
                                           child: Padding(
                                             padding:
-                                                EdgeInsets.only(top: 1.2.w),
-                                            child: Text(
-                                              textAlign: TextAlign.center,
-                                              "Add Cart",
-                                              style: TextStyle(
-                                                  fontFamily: "medium",
-                                                  fontSize: 15.dp,
-                                                  color: Colors.white),
+                                                EdgeInsets.only(top: 0.2.w),
+                                            child: Center(
+                                              child: Text(
+                                              
+                                                "Add Cart",
+                                                style: TextStyle(
+                                                    fontFamily: "medium",
+                                                    fontSize: 13.sp,
+                                                    color: Colors.white),
+                                              ),
                                             ),
                                           ),
                                         ),

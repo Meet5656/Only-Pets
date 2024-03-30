@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/model/CartModel.dart';
 import 'package:only_pets/model/CartPopUpModel.dart';
 import 'package:only_pets/util/Color.dart';
@@ -54,12 +54,12 @@ class _cartscreenState extends State<cartscreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 33.w, top: 1.h),
+                  padding: EdgeInsets.only(left: 29.w, top: 1.h),
                   child: Text(
-                    "My Cart",
+                    "Cart Screen",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 22.dp,
+                      fontSize: 16.sp,
                       fontFamily: "Alegreya",
                     ),
                   ),
@@ -118,21 +118,21 @@ class _cartscreenState extends State<cartscreen> {
                                     Text(
                                       cart[index].name,
                                       style: TextStyle(
-                                          fontSize: 17.dp,
+                                          fontSize: 13.sp,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: "medium"),
                                     ),
                                     Text(
                                       "Size",
                                       style: TextStyle(
-                                          fontSize: 17.dp,
+                                          fontSize: 13.sp,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: "medium"),
                                     ),
                                     Text(
                                       cart[index].prise,
                                       style: TextStyle(
-                                          fontSize: 17.dp,
+                                          fontSize: 13.sp,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: "medium"),
                                     ),
@@ -192,7 +192,7 @@ class _cartscreenState extends State<cartscreen> {
                                         ),
                                         Text(
                                           quantities[index].toString(),
-                                          style: TextStyle(fontSize: 20.dp),
+                                          style: TextStyle(fontSize: 13.sp),
                                         ),
                                         SizedBox(
                                           width: 1.5.w,
@@ -262,104 +262,6 @@ class _cartscreenState extends State<cartscreen> {
                           showDialog(
                               context: context,
                               builder: (context) {
-                                return CupertinoAlertDialog(
-                                  content: Column(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          "Samll acts, big impact",
-                                          style: TextStyle(
-                                              fontSize: 20.dp,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: "mdium"),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          "Your donation matters.",
-                                          style: TextStyle(
-                                              fontSize: 18.dp,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: "Alegreya"),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 3.h,
-                                      ),
-                                      Container(
-                                        height: 6.h,
-                                        child: ListView.builder(
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: popup.length,
-                                          itemBuilder: (context, index) {
-                                            return Padding(
-                                              padding: EdgeInsets.only(
-                                                left: 2.w,
-                                              ),
-                                              child: Container(
-                                                // height: 2.h,
-                                                width: 15.w,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                3.w)),
-                                                    color: Colors.white,
-                                                    border: Border.all(
-                                                        width: 0.2.w,
-                                                        color: Colors.black)),
-                                                child: Center(
-                                                    child: Text(
-                                                        popup[index].donate)),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  actions: <Widget>[
-                                    TextButton(
-                                        onPressed: () {
-                                          //action code for "Yes" button
-                                        },
-                                        child: Text('Yes')),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('Close'),
-                                    )
-                                  ],
-                                );
-                              });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              bottom: 0.5.h, top: 1.h, left: 3.h),
-                          child: Text(
-                            "#Support Only Pets Welfare Amount",
-                            style: TextStyle(
-                                fontSize: 18.dp,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontFamily: "medium"),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 1.h, left: 9.h),
-                        child: InkWell(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
                                 return AlertDialog(
                                   content: Container(
                                     width: 70.w,
@@ -375,10 +277,10 @@ class _cartscreenState extends State<cartscreen> {
                                           child: Text(
                                             "Samll acts, big impact",
                                             style: TextStyle(
-                                                fontSize: 20.dp,
+                                                fontSize: 15.sp,
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.w600,
-                                                fontFamily: "mdium"),
+                                                fontFamily: "medium"),
                                           ),
                                         ),
                                         Align(
@@ -386,7 +288,7 @@ class _cartscreenState extends State<cartscreen> {
                                           child: Text(
                                             "Your donation matters.",
                                             style: TextStyle(
-                                                fontSize: 18.dp,
+                                                fontSize: 13.sp,
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.w400,
                                                 fontFamily: "Alegreya"),
@@ -437,13 +339,122 @@ class _cartscreenState extends State<cartscreen> {
                                         },
                                         child: Text(
                                           "Cancle",
-                                          style: TextStyle(fontSize: 15.dp),
+                                          style: TextStyle(fontSize: 13.sp),
                                         )),
                                     TextButton(
                                         onPressed: () {},
                                         child: Text(
                                           "Ok",
-                                          style: TextStyle(fontSize: 15.dp),
+                                          style: TextStyle(fontSize: 13.sp),
+                                        ))
+                                  ],
+                                );
+                              });
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              bottom: 0.5.h, top: 1.h, left: 3.h),
+                          child: Text(
+                            "#Support Only Pets Welfare Amount",
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontFamily: "medium"),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 1.h, left: 9.h),
+                        child: InkWell(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  content: Container(
+                                    width: 70.w,
+                                    height: 18.h,
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 2.h,
+                                        ),
+                                        Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Text(
+                                            "Samll acts, big impact",
+                                            style: TextStyle(
+                                                fontSize: 15.sp,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily: "medium"),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Text(
+                                            "Your donation matters.",
+                                            style: TextStyle(
+                                                fontSize: 13.sp,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w400,
+                                                fontFamily: "Alegreya"),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 3.h,
+                                        ),
+                                        Container(
+                                          height: 6.h,
+                                          child: ListView.builder(
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: popup.length,
+                                            itemBuilder: (context, index) {
+                                              return Padding(
+                                                padding: EdgeInsets.only(
+                                                  left: 2.w,
+                                                ),
+                                                child: Container(
+                                                  // height: 2.h,
+                                                  width: 15.w,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  3.w)),
+                                                      color: Colors.white,
+                                                      border: Border.all(
+                                                          width: 0.2.w,
+                                                          color: Colors.black)),
+                                                  child: Center(
+                                                      child: Text(
+                                                          popup[index].donate)),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          "Cancle",
+                                          style: TextStyle(fontSize: 13.sp),
+                                        )),
+                                    TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "Ok",
+                                          style: TextStyle(fontSize: 13.sp),
                                         ))
                                   ],
                                 );
@@ -480,7 +491,7 @@ class _cartscreenState extends State<cartscreen> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 3.h,
+                          height: 2.h,
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 4.w, left: 4.w),
@@ -490,12 +501,12 @@ class _cartscreenState extends State<cartscreen> {
                               Text(
                                 "Subtotal",
                                 style: TextStyle(
-                                    fontSize: 22.dp, fontFamily: "medium"),
+                                    fontSize: 17.sp, fontFamily: "medium"),
                               ),
                               Text(
                                 "₹500",
                                 style: TextStyle(
-                                    fontSize: 22.dp, fontFamily: "medium"),
+                                    fontSize: 17.sp, fontFamily: "medium"),
                               ),
                             ],
                           ),
@@ -508,12 +519,12 @@ class _cartscreenState extends State<cartscreen> {
                               Text(
                                 "Shipping fee ",
                                 style: TextStyle(
-                                    fontSize: 22.dp, fontFamily: "medium"),
+                                    fontSize: 17.sp, fontFamily: "medium"),
                               ),
                               Text(
                                 "₹0",
                                 style: TextStyle(
-                                    fontSize: 22.dp, fontFamily: "medium"),
+                                    fontSize: 17.sp, fontFamily: "medium"),
                               ),
                             ],
                           ),
@@ -526,26 +537,28 @@ class _cartscreenState extends State<cartscreen> {
                               Text(
                                 "Welfare Amount",
                                 style: TextStyle(
-                                    fontSize: 22.dp, fontFamily: "medium"),
+                                    fontSize: 17.sp, fontFamily: "medium"),
                               ),
                               SizedBox(
-                                width: 30.w,
+                                width: 20.w,
                               ),
                               Text(
                                 "Remove",
                                 style: TextStyle(
-                                    fontSize: 19.dp, fontFamily: "medium"),
+                                    decoration: TextDecoration.underline,
+                                    fontSize: 15.sp,
+                                    fontFamily: "medium"),
                               ),
                               Text(
                                 "₹0",
                                 style: TextStyle(
-                                    fontSize: 22.dp, fontFamily: "medium"),
+                                    fontSize: 22.sp, fontFamily: "medium"),
                               ),
                             ],
                           ),
                         ),
                         SizedBox(
-                          height: 2.h,
+                          height: 1.h,
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 4.w, left: 4.w),
@@ -555,14 +568,14 @@ class _cartscreenState extends State<cartscreen> {
                               Text(
                                 "SubTotal",
                                 style: TextStyle(
-                                    fontSize: 26.dp,
+                                    fontSize: 20.sp,
                                     fontWeight: FontWeight.w500,
                                     fontFamily: "medium"),
                               ),
                               Text(
                                 "₹500",
                                 style: TextStyle(
-                                    fontSize: 26.dp,
+                                    fontSize: 20.sp,
                                     fontWeight: FontWeight.w500,
                                     fontFamily: "medium"),
                               ),
@@ -570,7 +583,7 @@ class _cartscreenState extends State<cartscreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 2.h,
+                          height: 1.h,
                         ),
                         Container(
                           height: 5.5.h,
@@ -592,7 +605,7 @@ class _cartscreenState extends State<cartscreen> {
                             child: Text(
                               "Confirm",
                               style: TextStyle(
-                                  fontSize: 16.dp, color: Colors.white),
+                                  fontSize: 14.sp, color: Colors.white),
                             ),
                           ),
                         ),

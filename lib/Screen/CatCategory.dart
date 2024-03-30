@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/model/HomeModel..dart/CatsCategoryLIst.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -43,7 +43,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                             },
                             icon: Icon(
                               Icons.arrow_back,
-                              size: 30.dp,
+                              size: 30.sp,
                             ),
                           ),
                           Padding(
@@ -51,7 +51,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                             child: Text(
                               "Cat Category",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 22.dp,fontFamily: "Alegreya"),
+                                  fontWeight: FontWeight.w600, fontSize: 22.sp,fontFamily: "Alegreya"),
                             ),
                           ),
                         ],
@@ -138,7 +138,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                     Text(
                       "Shop by Category",
                       style: TextStyle(
-                          fontSize: 25.dp, fontWeight: FontWeight.w400,fontFamily: "medium"),
+                          fontSize: 25.sp, fontWeight: FontWeight.w400,fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -190,7 +190,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                           datas7[index].title,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 15.dp,
+                                              fontSize: 15.sp,
                                               fontWeight: FontWeight.w500,fontFamily: "medium"),
                                         )
                                       ],
@@ -216,7 +216,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                     Text(
                       "Shop by Life Stage",
                       style:
-                          TextStyle(fontSize: 25.dp, fontWeight: FontWeight.w400,fontFamily: "medium"),
+                          TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w400,fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -271,7 +271,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                         datas8[index].title,
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 16.dp,
+                                            fontSize: 16.sp,
                                             fontWeight: FontWeight.w600,fontFamily: "medium"),
                                       ),
                                     ),
@@ -328,7 +328,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                                       Text(
                                                         data.title,
                                                         style: TextStyle(
-                                                            fontSize: 15.dp,
+                                                            fontSize: 15.sp,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             color:
@@ -353,7 +353,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: TextStyle(
-                                                                fontSize: 10.dp,fontFamily: "medium"),
+                                                                fontSize: 10.sp,fontFamily: "medium"),
                                                           ),
                                                         ),
                                                       )
@@ -430,7 +430,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                     Text(
                       "Shop by Breed",
                       style:
-                          TextStyle(fontSize: 25.dp, fontWeight: FontWeight.w400,fontFamily: "medium"),
+                          TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w400,fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -478,7 +478,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                               ),
                               Text(datas10[index].title,
                                   style: TextStyle(
-                                      fontSize: 13.dp,
+                                      fontSize: 13.sp,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: "medium",)),
                             ],
@@ -498,7 +498,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                     Text(
                       "Shop by brands",
                       style:
-                          TextStyle(fontSize: 25.dp, fontWeight: FontWeight.w400,fontFamily: "medium"),
+                          TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w400,fontFamily: "medium"),
                     ),
                     SizedBox(
                       height: 2.h,
@@ -547,7 +547,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                                             end: Alignment.bottomLeft,
                                             colors: [
                                               Colors.black.withOpacity(0.8),
-                                              CustomColors.maincolor,
+                                              CustomColors.primaryColor,
                                               // CustomColors.maincolor,
                                             ],
                                           ),
@@ -599,7 +599,7 @@ class _CatsCategoryScreenState extends State<CatsCategoryScreen> {
                             "Build your new pet's\nForever home! 🐱",
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                                fontSize: 25.dp,
+                                fontSize: 25.sp,
                                 color: Color(0xffc3c3c3),
                                 fontWeight: FontWeight.w600,fontFamily: "medium"),
                           ),

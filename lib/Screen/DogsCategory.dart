@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/model/HomeModel..dart/DogsCategoryList.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -48,7 +48,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                             },
                             icon: Icon(
                               Icons.arrow_back,
-                              size: 30.dp,
+                              size: 30.sp,
                             ),
                           ),
                           Padding(
@@ -57,7 +57,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                               "Dog Category",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 22.dp,
+                                  fontSize: 22.sp,
                                   fontFamily: "Alegreya"),
                             ),
                           ),
@@ -145,7 +145,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                     Text(
                       "Shop by Category",
                       style: TextStyle(
-                          fontSize: 25.dp,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.w400,
                           fontFamily: "medium"),
                     ),
@@ -199,7 +199,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                           datas2[index].title,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 15.dp,
+                                              fontSize: 15.sp,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: "medium"),
                                         )
@@ -226,7 +226,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                     Text(
                       "Shop by Life Stage",
                       style: TextStyle(
-                          fontSize: 25.dp,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.w400,
                           fontFamily: "medium"),
                     ),
@@ -285,7 +285,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                         datas3[index].title,
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 16.dp,
+                                            fontSize: 16.sp,
                                             fontWeight: FontWeight.w600,
                                             fontFamily: "medium"),
                                       ),
@@ -343,7 +343,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                                       Text(
                                                         data.title,
                                                         style: TextStyle(
-                                                            fontSize: 15.dp,
+                                                            fontSize: 15.sp,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             color: Colors.white,
@@ -369,7 +369,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: TextStyle(
-                                                                fontSize: 10.dp,
+                                                                fontSize: 10.sp,
                                                                 fontFamily:
                                                                     "medium"),
                                                           ),
@@ -448,7 +448,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                     Text(
                       "Shop by Breed",
                       style: TextStyle(
-                          fontSize: 25.dp,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.w400,
                           fontFamily: "medium"),
                     ),
@@ -498,7 +498,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                               ),
                               Text(datas5[index].title,
                                   style: TextStyle(
-                                      fontSize: 13.dp,
+                                      fontSize: 13.sp,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: "medium")),
                             ],
@@ -518,7 +518,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                     Text(
                       "Shop by brands",
                       style: TextStyle(
-                          fontSize: 25.dp,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.w400,
                           fontFamily: "medium"),
                     ),
@@ -569,7 +569,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                                             end: Alignment.bottomLeft,
                                             colors: [
                                               Colors.black.withOpacity(0.8),
-                                              CustomColors.maincolor,
+                                              CustomColors.primaryColor,
                                               // CustomColors.maincolor,
                                             ],
                                           ),
@@ -621,7 +621,7 @@ class _DogsCategoryScreenState extends State<DogsCategoryScreen> {
                             "Find everything your\npet could dream of! 🐶",
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                              fontSize: 30.dp,
+                              fontSize: 30.sp,
                               color: Color(0xffc3c3c3),
                               fontWeight: FontWeight.w600,
                               fontFamily: "medium"

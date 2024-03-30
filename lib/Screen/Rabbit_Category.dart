@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:only_pets/model/HomeModel..dart/RabbitCategoryList.dart';
 import 'package:only_pets/util/Color.dart';
 
@@ -39,7 +39,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                             },
                             icon: Icon(
                               Icons.arrow_back,
-                              size: 30.dp,
+                              size: 30.sp,
                             ),
                           ),
                           Padding(
@@ -48,7 +48,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                               "Rabbit Category",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 22.dp,
+                                  fontSize: 22.sp,
                                   fontFamily: "Alegreya"),
                             ),
                           ),
@@ -136,7 +136,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                     Text(
                       "Shop by Category",
                       style: TextStyle(
-                          fontSize: 25.dp,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.w400,
                           fontFamily: "medium"),
                     ),
@@ -190,7 +190,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                                           datas13[index].title,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 15.dp,
+                                              fontSize: 15.sp,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: "medium"),
                                         )
@@ -277,7 +277,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                                         style: TextStyle(
                                             fontFamily: "medium",
                                             color: Colors.white,
-                                            fontSize: 16.dp,
+                                            fontSize: 16.sp,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
@@ -334,7 +334,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                                                       Text(
                                                         data.title,
                                                         style: TextStyle(fontFamily: "medium",
-                                                            fontSize: 15.dp,
+                                                            fontSize: 15.sp,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             color:
@@ -484,7 +484,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                               ),
                               Text(datas16[index].title,
                                   style: TextStyle(
-                                      fontSize: 13.dp,
+                                      fontSize: 13.sp,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: "medium")),
                             ],
@@ -556,7 +556,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                                             end: Alignment.bottomLeft,
                                             colors: [
                                               Colors.black.withOpacity(0.8),
-                                              CustomColors.maincolor,
+                                              CustomColors.primaryColor,
                                               // CustomColors.maincolor,
                                             ],
                                           ),
@@ -608,7 +608,7 @@ class _RabbitCategoryScreenState extends State<RabbitCategoryScreen> {
                             "Rabbits are tiny and furry animals\npopularly known as bunnies! 🐰",
                             textAlign: TextAlign.start,
                             style: TextStyle(fontFamily: "medium",
-                                fontSize: 23.dp,
+                                fontSize: 23.sp,
                                 color: Color(0xffc3c3c3),
                                 fontWeight: FontWeight.w600),
                           ),

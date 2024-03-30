@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/SplashScreen.dart';
+import 'package:only_pets/controller/Internet_controller.dart';
+import 'package:sizer/sizer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut<InternetController>(() => InternetController());
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         systemNavigationBarColor: Colors.black));
-    return FlutterSizer(builder: (context, orientation, screenType) {
+    return Sizer(builder: (context, orientation, deviceType) {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -28,8 +30,7 @@ class MyApp extends StatelessWidget {
         home: SplashScreen(),
         builder: (context, child) {
           return MediaQuery(
-              data: MediaQuery.of(context)
-                  .copyWith(textScaleFactor: 1.0),
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
               child: child!);
         },
       );
