@@ -17,7 +17,9 @@ import 'package:sizer/sizer.dart';
 
 // ignore: must_be_immutable
 class SavedScreen extends StatefulWidget {
-  SavedScreen( {super.key});
+  SavedScreen({
+    super.key,
+  });
 
   @override
   State<SavedScreen> createState() => _SavedScreenState();
@@ -57,7 +59,7 @@ class _SavedScreenState extends State<SavedScreen>
               getDynamicSizedBox(height: 0.5.h),
               Padding(
                 padding: EdgeInsets.only(
-                  left: 2.5.w,
+                  left: 1.w,
                 ),
                 child: FadeInDown(
                   duration: Duration(milliseconds: 1800),
@@ -66,20 +68,27 @@ class _SavedScreenState extends State<SavedScreen>
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => DashboardScreen(callBack),
+                          //     ));
                         },
                         icon: Icon(
                           Icons.arrow_back,
-                          size: 30.sp,
+                          size: 6.w,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 25.5.w, top: 1.h),
+                        padding: EdgeInsets.only(
+                          left: 23.w,
+                        ),
                         child: Text(
-                          "Saved Screen",
+                          "Favourite Screen",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 22.sp,
+                              fontSize: 16.sp,
                               fontFamily: alegreya),
                         ),
                       ),

@@ -86,6 +86,9 @@ class _CartScreenState extends State<CartScreen> {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 1.h,
+                  ),
                   Expanded(
                       child: FutureBuilder<List<CommonProductList>>(
                     future: UserPreferences().loadCartItems(),
@@ -664,7 +667,7 @@ class _CartScreenState extends State<CartScreen> {
                                     )
                                   ],
                                 ),
-                                textScaler: const TextScaler.linear(1),
+                                // textScaler: const TextScaler.linear(1),
                               ),
                               getDynamicSizedBox(
                                   height:
@@ -694,7 +697,7 @@ class _CartScreenState extends State<CartScreen> {
                                         )
                                       ],
                                     ),
-                                    textScaler: const TextScaler.linear(1),
+                                    // textScaler: const TextScaler.linear(1),
                                   ),
                                   const Spacer(),
                                   cartIncrDcrUi(

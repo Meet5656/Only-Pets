@@ -25,6 +25,7 @@ class ViewTrendingModel {
 // }
 
 List<ViewTrendingModel> viewTrending = [
+  // 1
   ViewTrendingModel(
       // variants: [
       //   clothessize(sizes: 'S', Prises: '₹500'),
@@ -45,6 +46,7 @@ List<ViewTrendingModel> viewTrending = [
       size: "",
       Prise: "₹500",
       Rate: "(4.5)"),
+  // 2
   ViewTrendingModel(
       // variants: [
       //   clothessize(sizes: 'S', Prises: '₹500'),
@@ -65,6 +67,7 @@ List<ViewTrendingModel> viewTrending = [
       size: "",
       Prise: "₹750",
       Rate: "(4.1)"),
+  // 3
   ViewTrendingModel(
       // variants: [
       //   clothessize(sizes: 'S', Prises: '₹500'),
@@ -84,6 +87,7 @@ List<ViewTrendingModel> viewTrending = [
       size: "",
       Prise: "₹930",
       Rate: "(4.4)"),
+  // 4
   ViewTrendingModel(
       // variants: [
       //   clothessize(sizes: 'S', Prises: '₹500'),
@@ -104,6 +108,7 @@ List<ViewTrendingModel> viewTrending = [
       size: "",
       Prise: "₹630",
       Rate: "(4.1)"),
+  // 5
   ViewTrendingModel(
       // variants: [
       //   clothessize(sizes: 'S', Prises: '₹500'),
@@ -124,6 +129,7 @@ List<ViewTrendingModel> viewTrending = [
       size: "",
       Prise: "₹250",
       Rate: "(4.0)"),
+  // 6
   ViewTrendingModel(
       // variants: [
       //   clothessize(sizes: 'S', Prises: '₹500'),

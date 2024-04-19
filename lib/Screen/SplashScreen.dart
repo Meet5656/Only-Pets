@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:only_pets/Screen/BottomNavBar.dart';
-import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:only_pets/config/colors_constant.dart';
 import 'package:sizer/sizer.dart';
 

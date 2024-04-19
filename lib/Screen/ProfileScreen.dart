@@ -13,7 +13,6 @@ import 'package:only_pets/config/toolbar.dart';
 import 'package:only_pets/controller/profile_controller.dart';
 import 'package:only_pets/util/log.dart';
 import 'package:sizer/sizer.dart';
-import 'package:only_pets/Screen/EditProfileScreen.dart';
 import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:only_pets/Screen/OrderScreen.dart';
 
@@ -55,44 +54,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 4.5.w, right: 4.5.w, top: 0.5.h),
+          padding: EdgeInsets.only(
+            left: 4.5.w,
+            right: 4.5.w,
+          ),
           child: Column(
             children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
-                    child: FadeInDown(
-                      duration: Duration(milliseconds: 1800),
-                      child: Container(
-                        height: 4.h,
-                        child: Row(
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              icon: Icon(
-                                Icons.arrow_back,
-                                size: 30.sp,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 25.5.w, top: 1.h),
-                              child: Text(
-                                "Profile",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22.sp,
-                                    fontFamily: "Alegreya"),
-                              ),
-                            ),
-                          ],
-                        ),
+              FadeInDown(
+                duration: Duration(milliseconds: 1200),
+                child: Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Icon(
+                        Icons.arrow_back,
+                        size: 6.w,
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 25.w,
+                      ),
+                      child: Text(
+                        "Profile Screen",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                            fontFamily: "Alegreya"),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 4.h,
@@ -272,7 +266,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Icon(CupertinoIcons.phone_circle_fill,
-                                  size: 30.sp, color: Color(0xffc64d4c)),
+                                  size: 20.sp, color: Color(0xffc64d4c)),
                               SizedBox(
                                 width: 2.w,
                               ),
@@ -281,49 +275,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 style: TextStyle(
                                     fontFamily: "medium",
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 16.sp,
+                                    fontSize: 13.sp,
                                     color: Color(0xffc64d4c)),
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 0.1.w,
-                      indent: 2.w,
-                      endIndent: 2.w,
-                    ),
-                    Container(
-                      height: 7.h,
-                      width: double.infinity,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 2.w),
-                        child: Row(
-                          children: [
-                            Icon(Icons.email,
-                                size: 30.sp, color: Color(0xffc64d4c)),
-                            SizedBox(
-                              width: 2.w,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.w),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'E-Mail',
-                                    style: TextStyle(
-                                        fontFamily: "medium",
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16.sp,
-                                        color: Color(0xffc64d4c)),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
                         ),
                       ),
                     ),
@@ -349,30 +305,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Row(
                             children: [
                               Icon(CupertinoIcons.gift_fill,
-                                  size: 30.sp, color: Color(0xffc64d4c)),
+                                  size: 20.sp, color: Color(0xffc64d4c)),
                               SizedBox(
                                 width: 2.w,
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(2.w),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Orders',
-                                      style: TextStyle(
-                                          fontFamily: "medium",
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16.sp,
-                                          color: Color(0xffc64d4c)),
-                                    ),
-                                  ],
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Orders',
+                                    style: TextStyle(
+                                        fontFamily: "medium",
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13.sp,
+                                        color: Color(0xffc64d4c)),
+                                  ),
+                                ],
                               ),
                               Spacer(),
                               Icon(Icons.arrow_right,
-                                  size: 35.sp, color: Color(0xffc64d4c))
+                                  size: 20.sp, color: Color(0xffc64d4c))
                             ],
                           ),
                         ),
@@ -400,26 +353,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Row(
                             children: [
                               Icon(Icons.logout_outlined,
-                                  size: 30.sp, color: Color(0xffc64d4c)),
+                                  size: 25.sp, color: Color(0xffc64d4c)),
                               SizedBox(
                                 width: 2.w,
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(2.w),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Sign out',
-                                      style: TextStyle(
-                                          fontFamily: "medium",
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16.sp,
-                                          color: Color(0xffc64d4c)),
-                                    ),
-                                  ],
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Sign out',
+                                    style: TextStyle(
+                                        fontFamily: "medium",
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13.sp,
+                                        color: Color(0xffc64d4c)),
+                                  ),
+                                ],
                               ),
                             ],
                           ),

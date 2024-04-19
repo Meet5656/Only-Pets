@@ -15,7 +15,6 @@ import 'package:only_pets/config/font_constant.dart';
 import 'package:only_pets/config/string_constant.dart';
 import 'package:only_pets/config/toolbar.dart';
 import 'package:only_pets/config/widget.dart';
-import 'package:only_pets/model/DetailModel.dart';
 import 'package:only_pets/model/UpdateDashboardModel.dart';
 import 'package:only_pets/preference/UserPreference.dart';
 import 'package:only_pets/util/enum.dart';

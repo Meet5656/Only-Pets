@@ -39,35 +39,34 @@ class _EditProfileScreensState extends State<EditProfileScreens> {
                 Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                      padding: EdgeInsets.only(left: 2.5.w, ),
                       child: FadeInDown(
-                        duration: Duration(milliseconds: 1800),
-                        child: Container(
-                          height: 4.h,
-                          child: Row(
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
+                        duration: Duration(milliseconds: 1200),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 2.w,),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pop();
                                 },
-                                icon: Icon(
+                                child: Icon(
                                   Icons.arrow_back,
-                                  size: 30.sp,
+                                  size: 3.w,
                                 ),
                               ),
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(left: 25.5.w, top: 1.h),
-                                child: Text(
-                                  "Edit Profile",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 22.sp,
-                                      fontFamily: "Alegreya"),
-                                ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 27.5.w, top: 1.h),
+                              child: Text(
+                                "Edit Profile",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16.sp,
+                                    fontFamily: "Alegreya"),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

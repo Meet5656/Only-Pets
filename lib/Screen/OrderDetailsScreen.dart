@@ -25,32 +25,34 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
               Padding(
                 padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
                 child: FadeInDown(
-                  duration: Duration(milliseconds: 1800),
-                  child: Container(
-                    height: 4.h,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
+                  duration: Duration(milliseconds: 1200),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).pop();
                           },
-                          icon: Icon(
+                          child: Icon(
                             Icons.arrow_back,
-                            size: 30.sp,
+                            size: 6.w,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 24.w, top: 1.h),
-                          child: Text(
-                            "Order Details",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 22.sp,
-                                fontFamily: "Alegreya"),
-                          ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 25.w,
                         ),
-                      ],
-                    ),
+                        child: Text(
+                          "Order Detail",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.sp,
+                              fontFamily: "Alegreya"),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -74,10 +76,10 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     style: TextStyle(
                         fontFamily: "medium",
                         fontWeight: FontWeight.w600,
-                        fontSize: 20.sp),
+                        fontSize: 18.sp),
                   ),
                   SizedBox(
-                    height: 1.5.h,
+                    height: 1.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -125,7 +127,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   ),
                   Container(
                     height: 6.h,
-                    width: 65.w,
+                    width: 62.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(3.w),
                       gradient: LinearGradient(
@@ -142,7 +144,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       children: [
                         Icon(
                           Icons.check_circle_rounded,
-                          size: 25.sp,
+                          size: 20.sp,
                           color: Colors.white,
                         ),
                         SizedBox(
@@ -153,7 +155,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           style: TextStyle(
                               fontFamily: "medium",
                               fontWeight: FontWeight.w600,
-                              fontSize: 15.sp,
+                              fontSize: 13.sp,
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -164,7 +166,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           style: TextStyle(
                               fontFamily: "medium",
                               fontWeight: FontWeight.w400,
-                              fontSize: 15.sp,
+                              fontSize: 13.sp,
                               color: Colors.white),
                         ),
                       ],
@@ -174,7 +176,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     height: 2.h,
                   ),
                   Container(
-                    height: 24.h,
+                    height: 25.h,
                     width: 85.w,
                     decoration: BoxDecoration(
                         boxShadow: [
@@ -196,7 +198,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             'Name',
                             style: TextStyle(
                                 fontFamily: "medium",
-                                fontSize: 18.sp,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.black),
                           ),
@@ -219,7 +221,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             'Mobile',
                             style: TextStyle(
                                 fontFamily: "medium",
-                                fontSize: 18.sp,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.black),
                           ),
@@ -242,7 +244,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             'Delivery Address',
                             style: TextStyle(
                                 fontFamily: "medium",
-                                fontSize: 18.sp,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.black),
                           ),
@@ -254,7 +256,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             maxLines: 3,
                             style: TextStyle(
                                 fontFamily: "medium",
-                                fontSize: 13.sp,
+                                fontSize: 11.sp,
                                 fontWeight: FontWeight.w300,
                                 color: Colors.black),
                           ),
@@ -421,7 +423,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             "Total MRP",
                             style: TextStyle(
                                 fontFamily: "medium",
-                                fontSize: 17.sp,
+                                fontSize: 15.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -429,7 +431,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           Text("₹100.00",
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 17.sp,
+                                  fontSize: 15.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500))
                         ],
@@ -443,7 +445,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             "Total MRP",
                             style: TextStyle(
                                 fontFamily: "medium",
-                                fontSize: 17.sp,
+                                fontSize: 15.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -451,7 +453,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           Text("₹20.00",
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 17.sp,
+                                  fontSize: 15.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500))
                         ],
@@ -465,7 +467,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             "Shipping Charge",
                             style: TextStyle(
                                 fontFamily: "medium",
-                                fontSize: 17.sp,
+                                fontSize: 15.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -473,7 +475,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           Text("Free",
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 17.sp,
+                                  fontSize: 15.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500))
                         ],
@@ -488,7 +490,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         endIndent: 1.w,
                       ),
                       SizedBox(
-                        height: 2.h,
+                        height: 1.h,
                       ),
                       Row(
                         children: [
@@ -496,7 +498,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             "Total Amount",
                             style: TextStyle(
                                 fontFamily: "medium",
-                                fontSize: 19.sp,
+                                fontSize: 16.sp,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700),
                           ),
@@ -504,7 +506,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           Text("₹120",
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 19.sp,
+                                  fontSize: 16.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w700))
                         ],

@@ -13,7 +13,6 @@ import 'package:only_pets/util/enum.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/SearchScreen.dart';
-import 'package:only_pets/Screen/ViewCategorys.dart';
 import 'package:only_pets/Screen/ViewClothesBrand.dart';
 import 'package:only_pets/Screen/ViewFoodBrand.dart';
 import 'package:only_pets/Screen/ViewPetsFood.dart';
@@ -24,6 +23,7 @@ import 'package:only_pets/model/HomeModel..dart/Clothes_Brand/ClothesBrandModel.
 import 'package:only_pets/model/HomeModel..dart/Food_Brand/FoodBrand.dart';
 import 'package:only_pets/util/Color.dart';
 
+// ignore: must_be_immutable
 class DashboardScreen extends StatefulWidget {
   DashboardScreen(this.callBack, {super.key});
   Function callBack;
@@ -96,17 +96,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       },
                       child: Icon(
                         CupertinoIcons.search,
-                        size: 6.w,
+                        size: 6.w,``
                       ),
                     ),
                     SizedBox(
                       width: 3.w,
                     ),
-
                     Obx(
                       () {
-                        controller.totalItemsCount.value =
-                            controller.totalItemsCount.value;
                         return GestureDetector(
                           onTap: () {
                             Navigator.push(

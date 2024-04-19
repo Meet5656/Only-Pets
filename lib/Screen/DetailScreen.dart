@@ -298,7 +298,7 @@ class _detailscreenState extends State<detailscreen> {
                           child: Text(
                             widget.userdata.name,
                             style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: "medium"),
                           ),
@@ -314,7 +314,7 @@ class _detailscreenState extends State<detailscreen> {
                             child: Text(
                               "MRP :",
                               style: TextStyle(
-                                  fontSize: 19.sp,
+                                  fontSize: 15.sp,
                                   fontFamily: "medium",
                                   fontWeight: FontWeight.bold),
                             ),
@@ -326,7 +326,7 @@ class _detailscreenState extends State<detailscreen> {
                                 child: Text(
                                   widget.userdata.price,
                                   style: TextStyle(
-                                      fontSize: 30.sp,
+                                      fontSize: 16.sp,
                                       color: Colors.red,
                                       fontFamily: "Alegreya"),
                                 )),
@@ -346,7 +346,7 @@ class _detailscreenState extends State<detailscreen> {
                           child: Text(
                             "Select Size :",
                             style: TextStyle(
-                                fontSize: 19.sp,
+                                fontSize: 15.sp,
                                 fontFamily: "medium",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -392,10 +392,9 @@ class _detailscreenState extends State<detailscreen> {
                                           ),
                                           Text(
                                             //  widget.userdata!.variants[index].Prises,
-
                                             selectsize[index].size,
                                             style: TextStyle(
-                                                fontSize: 20.sp,
+                                                fontSize: 15.sp,
                                                 fontFamily: "medium"),
                                           ),
                                           SizedBox(
@@ -405,7 +404,7 @@ class _detailscreenState extends State<detailscreen> {
                                             selectsize[index].prise,
                                             // widget.userdata!.variants[index].sizes,
                                             style: TextStyle(
-                                                fontSize: 20.sp,
+                                                fontSize: 15.sp,
                                                 color: Colors.red,
                                                 fontFamily: "medium"),
                                           ),
@@ -429,7 +428,7 @@ class _detailscreenState extends State<detailscreen> {
                           child: Text(
                             "Descripitions :",
                             style: TextStyle(
-                                fontSize: 19.sp,
+                                fontSize: 15.sp,
                                 fontFamily: "medium",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -448,17 +447,17 @@ class _detailscreenState extends State<detailscreen> {
                           trimLines: 3,
                           trimMode: TrimMode.Line,
                           lessStyle: TextStyle(
-                              fontSize: 19.sp,
+                              fontSize: 15.sp,
                               fontFamily: "medium",
                               fontWeight: FontWeight.w500,
                               color: Colors.blue),
                           moreStyle: TextStyle(
-                              fontSize: 19.sp,
+                              fontSize: 15.sp,
                               fontFamily: "medium",
                               fontWeight: FontWeight.w500,
                               color: Colors.blue),
                           style: TextStyle(
-                              fontSize: 19.sp,
+                              fontSize: 15.sp,
                               fontFamily: "medium",
                               fontWeight: FontWeight.w500),
                         ),
@@ -519,7 +518,7 @@ class _detailscreenState extends State<detailscreen> {
                       Spacer(),
                       Text(
                         "$_counter",
-                        style: TextStyle(fontSize: 20.sp, color: Colors.black),
+                        style: TextStyle(fontSize: 15.sp, color: Colors.black),
                       ),
                       Spacer(),
                       Padding(

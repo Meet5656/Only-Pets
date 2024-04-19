@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/config/colors_constant.dart';
 import 'package:only_pets/config/font_constant.dart';
-import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
 void showMessage(

@@ -98,13 +98,13 @@ class _toysscreenState extends State<toysscreen> {
                                     padding: EdgeInsets.all(1.w),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  detailscreen(
-                                                      userdata: toys[index]),
-                                            ));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           detailscreen(
+                                        //               userdata: toys[index]),
+                                        //     ));
                                       },
                                       child: Container(
                                         width: double.infinity,
