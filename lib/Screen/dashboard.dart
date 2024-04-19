@@ -96,7 +96,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       },
                       child: Icon(
                         CupertinoIcons.search,
-                        size: 6.w,``
+                        size: 6.w,
                       ),
                     ),
                     SizedBox(

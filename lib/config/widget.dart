@@ -686,11 +686,11 @@ Widget homeCartIncDecUi(
   return Center(
     child: Container(
       margin: EdgeInsets.only(
-          left: isFromPopular == true ? 5.w : 1.w,
-          right: isFromPopular == true ? 5.w : 1.w),
+          left: isFromPopular == true ? 3.w : 1.w,
+          right: isFromPopular == true ? 3.w : 1.w),
       padding: EdgeInsets.only(
-          left: isFromPopular == true ? 2.w : 1.0.w,
-          right: isFromPopular == true ? 2.w : 1.0.w,
+          left: isFromPopular == true ? 3.w : 1.0.w,
+          right: isFromPopular == true ? 3.w : 1.0.w,
           top: 0.2.h,
           bottom: 0.2.h),
       decoration: BoxDecoration(
@@ -719,9 +719,9 @@ Widget homeCartIncDecUi(
               color:  black,
             ),
           ),
-          getDynamicSizedBox(width: isFromPopular == true ? 3.w : 1.w),
+          getDynamicSizedBox(width: isFromPopular == true ? 0.5.w : 1.w),
           getVerticalDivider(),
-          getDynamicSizedBox(width: isFromPopular == true ? 3.w : 1.w),
+          getDynamicSizedBox(width: isFromPopular == true ?  0.5.w : 1.w),
           Text(
             qty.toString(),
             style: TextStyle(
@@ -731,9 +731,9 @@ Widget homeCartIncDecUi(
                   SizerUtil.deviceType == DeviceType.mobile ? 11.sp : 13.sp,
             ),
           ),
-          getDynamicSizedBox(width: isFromPopular == true ? 3.w : 2.w),
+          getDynamicSizedBox(width: isFromPopular == true ? 0.5.w : 2.w),
           getVerticalDivider(),
-          getDynamicSizedBox(width: isFromPopular == true ? 3.w : 2.w),
+          getDynamicSizedBox(width: isFromPopular == true ? 1.w : 2.w),
           GestureDetector(
             onTap: () async {
               increment!();
