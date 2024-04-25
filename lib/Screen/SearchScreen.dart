@@ -11,6 +11,7 @@ import 'package:only_pets/config/widget.dart';
 import 'package:only_pets/controller/SearchScreenController.dart';
 import 'package:only_pets/model/UpdateDashboardModel.dart';
 import 'package:only_pets/util/enum.dart';
+import 'package:only_pets/util/helper.dart';
 import 'package:sizer/sizer.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   getApiCall() async {
-    await Future.delayed(const Duration(seconds: 0)).then((value) {
+    futureDelay(() {
       controller.getSearchList(context, controller.searchCtr.text.toString());
     });
   }
@@ -56,7 +57,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     showBackButton: true, callback: () {
                   Get.back(result: true);
                 }),
-
                 getDynamicSizedBox(height: 1.h),
                 Padding(
                   padding: EdgeInsets.only(right: 5.w, left: 5.w),

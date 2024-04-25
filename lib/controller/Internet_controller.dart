@@ -16,30 +16,12 @@ class InternetController extends GetxController {
   void getNetworkData() async {
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile) {
-      logcat("getNetworkData", 'ConnectivityResult.mobile');
-      // I am connected to a mobile network.
     } else if (connectivityResult == ConnectivityResult.wifi) {
-      logcat("getNetworkData", 'ConnectivityResult.wifi');
-      // I am connected to a wifi network.
     } else if (connectivityResult == ConnectivityResult.ethernet) {
-      logcat("getNetworkData", 'ConnectivityResult.ethernet');
-      // I am connected to a ethernet network.
     } else if (connectivityResult == ConnectivityResult.vpn) {
-      logcat("getNetworkData", 'ConnectivityResult.vpn');
-      // I am connected to a vpn network.
-      // Note for iOS and macOS:
-      // There is no separate network interface type for [vpn].
-      // It returns [other] on any device (also simulator)
     } else if (connectivityResult == ConnectivityResult.bluetooth) {
-      logcat("getNetworkData", 'ConnectivityResult.bluetooth');
-      // I am connected to a bluetooth.
     } else if (connectivityResult == ConnectivityResult.other) {
-      logcat("getNetworkData", 'ConnectivityResult.other');
-      // I am connected to a network which is not in the above mentioned networks.
-    } else if (connectivityResult == ConnectivityResult.none) {
-      logcat("getNetworkData", 'ConnectivityResult.none');
-      // I am not connected to any network.
-    }
+    } else if (connectivityResult == ConnectivityResult.none) {}
   }
 
   //this variable 0 = No Internet, 1 = connected to WIFI ,2 = connected to Mobile Data.
@@ -103,7 +85,6 @@ class InternetController extends GetxController {
         logcat("ConnectivityResult.none", "none");
         break;
       default:
-        logcat("Network Error", "DONEEEEEE");
         Get.snackbar('Network Error', 'Failed to get Network Status');
         break;
     }

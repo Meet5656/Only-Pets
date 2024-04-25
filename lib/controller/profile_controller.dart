@@ -168,4 +168,62 @@ class ProfileController extends GetxController {
       loadingIndicator.hide(context);
     }
   }
+
+  getTabs(
+    String title,
+    IconData? icon,
+    Function onCLick,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        onCLick();
+      },
+      child: Container(
+        height: 7.h,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: Colors.grey[100]!,
+            borderRadius: BorderRadius.all(Radius.circular(7.w))),
+        child: Padding(
+          padding: EdgeInsets.only(left: 2.w),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 2.w),
+                child: Icon(icon, size: 20.sp, color: Color(0xffc64d4c)),
+              ),
+              SizedBox(
+                width: 2.w,
+              ),
+              Text(
+                title,
+                style: TextStyle(
+                    fontFamily: "medium",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13.sp,
+                    color: Colors.black),
+              ),
+              Spacer(),
+              Padding(
+                padding: EdgeInsets.only(right: 2.w),
+                child: Icon(Icons.arrow_forward_ios_rounded,
+                    size: 16.sp, color: Colors.black),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  getDevider() {
+    return Divider(
+      color: black,
+      thickness: 0.1.w,
+      indent: 2.w,
+      endIndent: 2.w,
+    );
+  }
 }

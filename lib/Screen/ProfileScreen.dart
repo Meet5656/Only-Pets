@@ -6,15 +6,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/EditProfile/EditProfileScreen.dart';
+import 'package:only_pets/Screen/LoginScreen.dart';
+import 'package:only_pets/Screen/OrderScreen.dart';
 import 'package:only_pets/config/assets_constant.dart';
 import 'package:only_pets/config/colors_constant.dart';
+import 'package:only_pets/config/font_constant.dart';
 import 'package:only_pets/config/statusbar.dart';
 import 'package:only_pets/config/toolbar.dart';
 import 'package:only_pets/controller/profile_controller.dart';
+import 'package:only_pets/util/helper.dart';
 import 'package:only_pets/util/log.dart';
 import 'package:sizer/sizer.dart';
-import 'package:only_pets/Screen/LoginScreen.dart';
-import 'package:only_pets/Screen/OrderScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -36,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   getUserDataApi() async {
     try {
       if (mounted) {
-        await Future.delayed(const Duration(seconds: 1)).then((value) {
+        futureDelay(() {
           controller.getUserById(context);
         });
       }
@@ -48,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
+      statusBarColor: transparent,
       statusBarIconBrightness: Brightness.dark,
     ));
     return Scaffold(
@@ -92,26 +94,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 4.h,
               ),
               Container(
-                width: double.infinity,
-                height: 12.h,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(3.w),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 4,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
                 child: Padding(
                   padding: EdgeInsets.only(left: 3.w),
                   child: FadeInLeft(child: Obx(
                     () {
                       return controller.userName.value.isNotEmpty
-                          ? Row(
+                          ? Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
@@ -128,21 +116,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         width: 1.5, // Set the border width
                                       ),
                                       borderRadius: const BorderRadius.all(
-                                          Radius.circular(50)),
+                                          Radius.circular(70)),
                                     ),
                                     child: ClipRRect(
                                       borderRadius: const BorderRadius.all(
-                                          Radius.circular(50)),
+                                          Radius.circular(70)),
                                       child: CachedNetworkImage(
                                           fit: BoxFit.cover,
                                           height: SizerUtil.deviceType ==
                                                   DeviceType.mobile
-                                              ? 8.h
-                                              : 7.h,
+                                              ? 12.h
+                                              : 10.h,
                                           width: SizerUtil.deviceType ==
                                                   DeviceType.mobile
-                                              ? 8.h
-                                              : 7.h,
+                                              ? 12.h
+                                              : 10.h,
                                           imageUrl: controller.profilePic.value,
                                           placeholder: (context, url) =>
                                               SizedBox(
@@ -154,7 +142,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         DeviceType.mobile
                                                     ? 8.h
                                                     : 7.h,
-                                                child: const Center(
+                                                child: Center(
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsets.all(8.0),
@@ -190,53 +178,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     style: TextStyle(
                                         fontSize: SizerUtil.deviceType ==
                                                 DeviceType.mobile
-                                            ? 15.sp
-                                            : 13.sp,
+                                            ? 16.sp
+                                            : 14.sp,
                                         color: black,
-                                        fontWeight: FontWeight.w600),
+                                        fontWeight: FontWeight.w500,
+                                        fontFamily: alegreya),
+                                  ),
+                                  Text(
+                                    controller.email.value,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontSize: SizerUtil.deviceType ==
+                                                DeviceType.mobile
+                                            ? 12.sp
+                                            : 10.sp,
+                                        color: black,
+                                        fontWeight: FontWeight.w200,
+                                        fontFamily: alegreya),
                                   ),
                                 ])
                           : Container();
                     },
                   )),
-                  // Row(
-                  //   children: [
-                  //     Stack(
-                  //       children: [
-                  //         Container(
-                  //           height: 8.h,
-                  //           width: 18.w,
-                  //           decoration: BoxDecoration(
-                  //               color: Colors.amber,
-                  //               borderRadius: BorderRadius.circular(13.w)),
-                  //           child: ClipRRect(
-                  //               borderRadius: BorderRadius.circular(13.w),
-                  //               child: Image.asset(
-                  //                 'asset/hand-drawn-paw-prints-background_23-2151132904.jpg',
-                  //                 fit: BoxFit.cover,
-                  //               )),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //     SizedBox(
-                  //       width: 3.w,
-                  //     ),
-                  //     Column(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       crossAxisAlignment: CrossAxisAlignment.start,
-                  //       children: [
-                  //         Text(
-                  //           controller.userName.value.toString() ?? "User Name",
-                  //           style: TextStyle(
-                  //             fontFamily: "medium",
-                  //             fontSize: 23.sp,
-                  //             fontWeight: FontWeight.w600,
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     )
-                  //   ],
-                  // ),
                 ),
               ),
               SizedBox(
@@ -246,142 +210,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(right: 2.w),
                 child: Column(
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(EditProfileScreen(controller.loginData))!
-                            .then((value) {
-                          Statusbar().trasparentStatusbarProfile(false);
-                          if (value == true) {
-                            getUserDataApi();
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 7.h,
-                        width: double.infinity,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 2.w),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Icon(CupertinoIcons.phone_circle_fill,
-                                  size: 20.sp, color: Color(0xffc64d4c)),
-                              SizedBox(
-                                width: 2.w,
-                              ),
-                              Text(
-                                'Edit Profile',
-                                style: TextStyle(
-                                    fontFamily: "medium",
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13.sp,
-                                    color: Color(0xffc64d4c)),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    controller.getTabs(
+                        'Edit Profile', CupertinoIcons.phone_circle_fill, () {
+                      Get.to(EditProfileScreen(controller.loginData))!
+                          .then((value) {
+                        Statusbar().trasparentStatusbarProfile(false);
+                        if (value == true) {
+                          getUserDataApi();
+                        }
+                      });
+                    }),
+                    SizedBox(
+                      height: 1.h,
                     ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 0.1.w,
-                      indent: 2.w,
-                      endIndent: 2.w,
+                    controller.getTabs('Orders', CupertinoIcons.gift_fill, () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => OrderScreen(),
+                          ));
+                    }),
+                    SizedBox(
+                      height: 1.h,
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => OrderScreen(),
-                            ));
-                      },
-                      child: Container(
-                        height: 7.h,
-                        width: double.infinity,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 2.w),
-                          child: Row(
-                            children: [
-                              Icon(CupertinoIcons.gift_fill,
-                                  size: 20.sp, color: Color(0xffc64d4c)),
-                              SizedBox(
-                                width: 2.w,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Orders',
-                                    style: TextStyle(
-                                        fontFamily: "medium",
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 13.sp,
-                                        color: Color(0xffc64d4c)),
-                                  ),
-                                ],
-                              ),
-                              Spacer(),
-                              Icon(Icons.arrow_right,
-                                  size: 20.sp, color: Color(0xffc64d4c))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 0.1.w,
-                      indent: 2.w,
-                      endIndent: 2.w,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => loginscreen(),
-                            ));
-                      },
-                      child: Container(
-                        height: 7.h,
-                        width: double.infinity,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 2.w),
-                          child: Row(
-                            children: [
-                              Icon(Icons.logout_outlined,
-                                  size: 25.sp, color: Color(0xffc64d4c)),
-                              SizedBox(
-                                width: 2.w,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Sign out',
-                                    style: TextStyle(
-                                        fontFamily: "medium",
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 13.sp,
-                                        color: Color(0xffc64d4c)),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 0.1.w,
-                      indent: 2.w,
-                      endIndent: 2.w,
-                    ),
+                    controller.getTabs('Sign out', Icons.logout_outlined, () {
+                      PopupDialogs(context, false);
+                    }),
                   ],
                 ),
               )

@@ -100,8 +100,7 @@ class EditProfileController extends GetxController {
       emailCtr.text = loginData.emailId.toString();
       selectGender.value = loginData.gender!.capitalize.toString();
       profilePic.value = ApiUrl.imageUrl + loginData.profilePic.toString();
-
-      logcat("DATE_BIRTH", loginData.dateOfBirth.toString());
+      logcat("profilePicValue", profilePic.value.toString());
       if (loginData.dateOfBirth.toString() != "null" &&
           loginData.dateOfBirth.toString().trim().isNotEmpty) {
         dobCtr.text = DateFormat(Date.dateFormat)
@@ -113,16 +112,8 @@ class EditProfileController extends GetxController {
         selectedDate = DateTime.parse(formattedDateTime);
       } else {
         selectedDate = DateTime.now();
-        // dobCtr.text = DateFormat(Date.dateFormat)
-        //     .format(DateTime.parse(loginData.dateOfBirth.toString().trim()));
       }
-    } else {
-      // userNamectr.text = "${getUserData!.firstName} ${getUserData!.lastName}";
-      // emailCtr.text = getUserData!.emailId.toString();
-      // dobCtr.text = DateFormat(Date.dateFormat)
-      //     .format(DateTime.parse(getUserData!.dateOfBirth.toString().trim()));
-      // selectGender.value = getUserData!.gender.capitalize.toString();
-      // profilePic.value = APIImageUrl.url + getUserData!.profilePic.toString();
+      update();
     }
     Statusbar().trasparentStatusbarIsNormalScreen();
     update();
@@ -259,7 +250,6 @@ class EditProfileController extends GetxController {
                       fit: BoxFit.cover,
                       width: 30.w,
                       filterQuality: FilterQuality.low,
-                      cacheKey: 'custom_cache_key_${100}x${100}_quality_${200}',
                       imageUrl: profilePic.value,
                       placeholder: (context, url) => Padding(
                             padding: EdgeInsets.all(10.w),

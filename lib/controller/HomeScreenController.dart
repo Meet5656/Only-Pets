@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:marquee/marquee.dart';
+import 'package:only_pets/Screen/CategoryScreen/SubCategoryScreen.dart';
 import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/Screen/dialogs.dart';
 import 'package:only_pets/api_handle/Repository.dart';
@@ -15,6 +16,7 @@ import 'package:only_pets/config/font_constant.dart';
 import 'package:only_pets/config/string_constant.dart';
 import 'package:only_pets/config/toolbar.dart';
 import 'package:only_pets/config/widget.dart';
+import 'package:only_pets/controller/Internet_controller.dart';
 import 'package:only_pets/model/UpdateDashboardModel.dart';
 import 'package:only_pets/preference/UserPreference.dart';
 import 'package:only_pets/util/enum.dart';
@@ -49,6 +51,9 @@ class HomeScreenController extends GetxController {
   RxList<CommonProductList> trendingItemList = <CommonProductList>[].obs;
 
   RxList categoryList = [].obs;
+
+  final InternetController networkManager = Get.find<InternetController>();
+
   @override
   void onInit() {
     searchCtr = TextEditingController();
@@ -57,111 +62,118 @@ class HomeScreenController extends GetxController {
 
   void getHome(context) async {
     state.value = ScreenState.apiLoading;
-    //try {
-    // if (networkManager.connectionType == 0)  {
-    //   showDialogForScreen(
-    //       context, BottomConstant.home, Connection.noConnection,
-    //       callback: () {
-    //     Get.back();
-    //   });
-    //   return;
-    // }
-    var response = await Repository.get({}, ApiUrl.getHome, allowHeader: true);
-    logcat("HOME_RESPONSE::", response.body);
-    if (response.statusCode == 200) {
-      var responseData = jsonDecode(response.body);
-      if (responseData['status'] == 1) {
-        state.value = ScreenState.apiSuccess;
-        message.value = '';
-        homeData = HomeModel.fromJson(responseData);
-        trendingItemList.clear();
-        topItemList.clear();
-        popularItemList.clear();
-        bannerList.clear();
-        categoryList.clear();
-
-        if (homeData!.data.trendList.isNotEmpty) {
-          trendingItemList.addAll(homeData!.data.trendList);
-          update();
-        }
-
-        if (homeData!.data.categoryList.isNotEmpty) {
-          categoryList.addAll(homeData!.data.categoryList);
-          update();
-        }
-        if (homeData!.data.bannerList.isNotEmpty) {
-          bannerList.addAll(homeData!.data.bannerList);
-          update();
-        }
-
-        List<CommonProductList> cartItems =
-            await UserPreferences().loadCartItems();
-
-        for (CommonProductList item in homeData!.data.trendList) {
-          int existingIndex =
-              cartItems.indexWhere((cartItem) => cartItem.id == item.id);
-          if (existingIndex != -1) {
-            item.isInCart!.value = true;
-            item.quantity!.value = cartItems[existingIndex].quantity!.value;
-          } else {
-            item.isInCart!.value = false;
-            item.quantity!.value = 0;
-          }
-        }
-
-        if (homeData!.data.topList.isNotEmpty) {
-          topItemList.addAll(homeData!.data.topList);
-          update();
-        }
-        if (homeData!.data.popularList.isNotEmpty) {
-          popularItemList.addAll(homeData!.data.popularList);
-          update();
-        }
-
-        for (CommonProductList item in homeData!.data.popularList) {
-          int existingIndex =
-              cartItems.indexWhere((cartItem) => cartItem.id == item.id);
-          if (existingIndex != -1) {
-            item.isInCart!.value = true;
-            item.quantity!.value = cartItems[existingIndex].quantity!.value;
-          } else {
-            item.isInCart!.value = false;
-            item.quantity!.value = 0;
-          }
-        }
-        mainOfferrList.clear();
-        offerrList.clear();
-        if (homeData!.data.offerList.isNotEmpty) {
-          mainOfferrList.addAll(homeData!.data.offerList);
-          for (int i = 0; i < homeData!.data.offerList.length; i++) {
-            offerrList.addAll(homeData!.data.offerList[i].url);
-          }
-          update();
-        }
-        logcat("OFFERDATA::", jsonEncode(offerrList));
-      } else {
-        message.value = responseData['message'];
+    try {
+      if (networkManager.connectionType == 0) {
         showDialogForScreen(
-            context, BottomConstant.home, responseData['message'],
-            callback: () {});
+            context, BottomConstant.home, Connection.noConnection,
+            callback: () {
+          Get.back();
+        });
+        return;
       }
-    } else {
+      var response =
+          await Repository.get({}, ApiUrl.getHome, allowHeader: true);
+      logcat("HOME_RESPONSE::", response.body);
+      if (response.statusCode == 200) {
+        var responseData = jsonDecode(response.body);
+        if (responseData['status'] == 1) {
+          state.value = ScreenState.apiSuccess;
+          message.value = '';
+          homeData = HomeModel.fromJson(responseData);
+          trendingItemList.clear();
+          topItemList.clear();
+          popularItemList.clear();
+          bannerList.clear();
+          categoryList.clear();
+
+          if (homeData!.data.trendList.isNotEmpty) {
+            trendingItemList.addAll(homeData!.data.trendList);
+            update();
+          }
+
+          if (homeData!.data.categoryList.isNotEmpty) {
+            categoryList.addAll(homeData!.data.categoryList);
+            update();
+          }
+          if (homeData!.data.bannerList.isNotEmpty) {
+            bannerList.addAll(homeData!.data.bannerList);
+            update();
+          }
+
+          List<CommonProductList> cartItems =
+              await UserPreferences().loadCartItems();
+
+          for (CommonProductList item in homeData!.data.trendList) {
+            int existingIndex =
+                cartItems.indexWhere((cartItem) => cartItem.id == item.id);
+            if (existingIndex != -1) {
+              item.isInCart!.value = true;
+              item.quantity!.value = cartItems[existingIndex].quantity!.value;
+            } else {
+              item.isInCart!.value = false;
+              item.quantity!.value = 0;
+            }
+          }
+
+          if (homeData!.data.topList.isNotEmpty) {
+            topItemList.addAll(homeData!.data.topList);
+            update();
+          }
+          if (homeData!.data.popularList.isNotEmpty) {
+            popularItemList.addAll(homeData!.data.popularList);
+            update();
+          }
+
+          for (CommonProductList item in homeData!.data.popularList) {
+            int existingIndex =
+                cartItems.indexWhere((cartItem) => cartItem.id == item.id);
+            if (existingIndex != -1) {
+              item.isInCart!.value = true;
+              item.quantity!.value = cartItems[existingIndex].quantity!.value;
+            } else {
+              item.isInCart!.value = false;
+              item.quantity!.value = 0;
+            }
+          }
+          mainOfferrList.clear();
+          offerrList.clear();
+          if (homeData!.data.offerList.isNotEmpty) {
+            mainOfferrList.addAll(homeData!.data.offerList);
+            for (int i = 0; i < homeData!.data.offerList.length; i++) {
+              offerrList.addAll(homeData!.data.offerList[i].url);
+            }
+            update();
+          }
+          logcat("OFFERDATA::", jsonEncode(offerrList));
+        } else {
+          message.value = responseData['message'];
+          showDialogForScreen(
+              context, BottomConstant.home, responseData['message'],
+              callback: () {});
+        }
+      } else {
+        state.value = ScreenState.apiError;
+        message.value = 'There is error from the server';
+      }
+    } catch (e) {
+      logcat("Ecxeption", e);
       state.value = ScreenState.apiError;
-      message.value = 'There is error from the server';
+      message.value = "Server Error";
     }
   }
-
-  //    catch (e) {
-  //     logcat("Ecxeption", e);
-  //     state.value = ScreenState.apiError;
-  //     message.value = "Server Error";
-  //   }
-  // }
 
   getCategoryListItem(BuildContext context, CategoryList item) {
     return FadeInUp(
         child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.to(SubCategoryScreen(
+                categoryId: item.id.toString(),
+              ))!
+                  .then((value) {
+                getHome(context);
+                getTotalProductInCart();
+              });
+            },
             child: Container(
                 width: 8.h,
                 margin: EdgeInsets.only(
@@ -687,8 +699,7 @@ class HomeScreenController extends GetxController {
                                             DeviceType.mobile
                                         ? 13.sp
                                         : 10.sp,
-                                    height: 1.2
-                                  ),
+                                    height: 1.2),
                               ),
                             ],
                           ),

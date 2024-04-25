@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -53,7 +54,10 @@ class _detailscreenState extends State<detailscreen> {
 
   @override
   void dispose() {
-    timer?.cancel();
+    if (timer != null) {
+      timer!.cancel();
+      timer = null;
+    }
     controllers.dispose();
     super.dispose();
   }
@@ -73,18 +77,20 @@ class _detailscreenState extends State<detailscreen> {
   }
 
   void startTimer() {
-    // Change page every 3 seconds
-    timer = Timer.periodic(Duration(seconds: 3), (timer) {
-      if (activeindex < widget.userdata.images.length - 1) {
-        activeindex++;
-      } else {
-        activeindex = 0;
-      }
-      controllers.animateToPage(
-        activeindex,
-        duration: Duration(milliseconds: 500),
-        curve: Curves.easeIn,
-      );
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      // Change page every 3 seconds
+      timer = Timer.periodic(Duration(seconds: 3), (timer) {
+        if (activeindex < widget.userdata.images.length - 1) {
+          activeindex++;
+        } else {
+          activeindex = 0;
+        }
+        controllers.animateToPage(
+          activeindex,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeIn,
+        );
+      });
     });
   }
 

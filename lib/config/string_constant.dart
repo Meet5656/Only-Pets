@@ -285,6 +285,7 @@ class DashboardText {
   static const addtoCart = 'Add to Cart';
   static const categoryTitle = 'Category';
   static const trendingTitle = 'Trending';
+  static const petsFoodTitle = 'Pets Food';
   static const populerTitle = 'Popular';
   static const addprescription = 'Add\nPrescription';
   static const viewmedicalhistory = "View Medical\nHistory";
