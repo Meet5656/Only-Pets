@@ -15,6 +15,7 @@ class Bottomnavigatorbar extends StatefulWidget {
 
 class _BottomnavigatorbarState extends State<Bottomnavigatorbar> {
   Color IconColor = Colors.white;
+  
 
   int _selectedIndex = 0;
   var pageOptions = <Widget>[];
