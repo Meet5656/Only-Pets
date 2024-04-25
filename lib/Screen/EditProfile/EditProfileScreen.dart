@@ -29,13 +29,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   void initState() {
-    controller.initDataSet(widget.loginData);
     setState(() {});
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    controller.initDataSet(widget.loginData);
     Statusbar().trasparentStatusbarIsNormalScreen();
     return Scaffold(
       body: SafeArea(

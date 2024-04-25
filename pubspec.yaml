@@ -86,6 +86,7 @@ flutter:
   assets:
     - asset/
     - asset/pngs/
+    - asset/svgs/
     - asset/all pets/
     - asset/Brand_image/
     - asset/Dog_Category_pic/

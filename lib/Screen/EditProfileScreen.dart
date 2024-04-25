@@ -23,7 +23,7 @@ TextEditingController email = TextEditingController();
 
 class _EditProfileScreensState extends State<EditProfileScreens> {
   final double profileHeight = 144;
-  Uint8? _image;
+  Uint8? image;
   File? selectedImage;
 
   @override

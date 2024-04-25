@@ -2,8 +2,12 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:only_pets/config/colors_constant.dart';
 import 'package:only_pets/config/font_constant.dart';
+import 'package:only_pets/config/string_constant.dart';
+import 'package:only_pets/preference/UserPreference.dart';
+import 'package:only_pets/util/log.dart';
 import 'package:sizer/sizer.dart';
 
 // getToolbar(String title, Function onClick, Function cartOnClick, int budget) {
@@ -94,8 +98,7 @@ import 'package:sizer/sizer.dart';
 //   );
 // }
 
-getForgetToolbar(title,
-    {bool showBackButton = true,Function? callback}) {
+getForgetToolbar(title, {bool showBackButton = true, Function? callback}) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -113,7 +116,7 @@ getForgetToolbar(title,
                   title,
                   style: TextStyle(
                       fontFamily: alegreya,
-                      color:  headingTextColor,
+                      color: headingTextColor,
                       fontWeight: FontWeight.bold,
                       fontSize: SizerUtil.deviceType == DeviceType.mobile
                           ? 15.sp
@@ -127,7 +130,10 @@ getForgetToolbar(title,
     ],
   );
 }
-Widget backPressCommon(callback, ) {
+
+Widget backPressCommon(
+  callback,
+) {
   return FadeInDown(
     child: GestureDetector(
       onTap: () {
@@ -144,6 +150,7 @@ Widget backPressCommon(callback, ) {
     ),
   );
 }
+
 homeAppbar(String title, Function onClick, Function cartOnClick, RxInt budget) {
   return Padding(
     padding: EdgeInsets.only(left: 1.w, right: 2.w, top: 0.5.h),
@@ -443,7 +450,10 @@ getDetailToolbar({
 // }
 
 getFilterToolbar(title,
-    {Function? callback, Function? searchClick, bool? isFilter}) {
+    {Function? callback,
+    Function? searchClick,
+    bool? isFilter,
+    required Null Function() filterCallback}) {
   return Stack(
     children: [
       Center(
@@ -1132,82 +1142,82 @@ getDividerForShowDialog() {
 //   );
 // }
 
-// // ignore: non_constant_identifier_names
-// Future<Object?> PopupDialogs(BuildContext context, bool? isFromPayment) {
-//   return showGeneralDialog(
-//       barrierColor: black.withOpacity(0.6),
-//       transitionBuilder: (context, a1, a2, widget) {
-//         final curvedValue = Curves.easeInOut.transform(a1.value);
-//         return Transform.translate(
-//           offset: Offset(0, (1 - curvedValue) * 400),
-//           child: Opacity(
-//               opacity: a1.value,
-//               child: CupertinoAlertDialog(
-//                 title: Text(
-//                   isFromPayment == true ? Payment.title : Logout.title,
-//                   style: TextStyle(
-//                     fontSize: 18,
-//                     color: isDarkMode() ? white : black,
-//                     fontFamily: fontBold,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                 ),
-//                 content: Text(
-//                   isFromPayment == true ? Payment.heading : Logout.heading,
-//                   style: TextStyle(
-//                     fontSize: 13,
-//                     color: isDarkMode() ? white : black,
-//                     fontFamily: fontMedium,
-//                   ),
-//                 ),
-//                 actions: [
-//                   if (isFromPayment != true)
-//                     CupertinoDialogAction(
-//                       onPressed: () {
-//                         Navigator.pop(context);
-//                       },
-//                       isDefaultAction: true,
-//                       isDestructiveAction: true,
-//                       child: Text(Logout.no,
-//                           style: TextStyle(
-//                             fontSize: 15,
-//                             color: isDarkMode() ? white : black,
-//                             fontFamily: fontBold,
-//                             fontWeight: FontWeight.bold,
-//                           )),
-//                     ),
+// ignore: non_constant_identifier_names
+Future<Object?> PopupDialogs(BuildContext context, bool? isFromPayment) {
+  return showGeneralDialog(
+      barrierColor: black.withOpacity(0.6),
+      transitionBuilder: (context, a1, a2, widget) {
+        final curvedValue = Curves.easeInOut.transform(a1.value);
+        return Transform.translate(
+          offset: Offset(0, (1 - curvedValue) * 400),
+          child: Opacity(
+              opacity: a1.value,
+              child: CupertinoAlertDialog(
+                title: Text(
+                  isFromPayment == true ? Payment.title : Logout.title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: black,
+                    fontFamily: fontBold,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                content: Text(
+                  isFromPayment == true ? Payment.heading : Logout.heading,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: black,
+                    fontFamily: fontMedium,
+                  ),
+                ),
+                actions: [
+                  if (isFromPayment != true)
+                    CupertinoDialogAction(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      isDefaultAction: true,
+                      isDestructiveAction: true,
+                      child: Text(Logout.no,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: black,
+                            fontFamily: fontBold,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
 
-//                   CupertinoDialogAction(
-//                     onPressed: () {
-//                       Navigator.pop(context);
-//                       if (isFromPayment != true) {
-//                         UserPreferences().logout();
-//                         Get.offAll(const LoginScreen());
-//                       }
-//                     },
-//                     isDefaultAction: true,
-//                     isDestructiveAction: true,
-//                     child: Text(isFromPayment == true ? Payment.ok : Logout.yes,
-//                         style: TextStyle(
-//                           fontSize: 15,
-//                           color: isDarkMode() ? white : black,
-//                           fontFamily: fontBold,
-//                           fontWeight: FontWeight.bold,
-//                         )),
-//                   ),
-//                   // The "No" button
-//                 ],
-//               )),
-//         );
-//       },
-//       transitionDuration: const Duration(milliseconds: 200),
-//       barrierDismissible: true,
-//       barrierLabel: '',
-//       context: context,
-//       pageBuilder: (context, animation1, animation2) {
-//         return Container();
-//       });
-// }
+                  CupertinoDialogAction(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      if (isFromPayment != true) {
+                        UserPreferences().logout();
+                        Get.offAll(const loginscreen());
+                      }
+                    },
+                    isDefaultAction: true,
+                    isDestructiveAction: true,
+                    child: Text(isFromPayment == true ? Payment.ok : Logout.yes,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: black,
+                          fontFamily: fontBold,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                  // The "No" button
+                ],
+              )),
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
+      context: context,
+      pageBuilder: (context, animation1, animation2) {
+        return Container();
+      });
+}
 
 // getImage(title,
 //     {bool showBackButton = true, bool isForget = true, Function? callback}) {

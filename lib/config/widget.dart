@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:marquee/marquee.dart';
 import 'package:only_pets/config/apicall_constant.dart';
 import 'package:only_pets/config/colors_constant.dart';
 import 'package:only_pets/config/font_constant.dart';
@@ -544,6 +545,87 @@ Widget getAddToCartBtn(title, icon,
 //   );
 // }
 
+getTab(String str, bool isSelected, Function onCLick) {
+  return GestureDetector(
+    onTap: () {
+      onCLick();
+    },
+    child: AnimatedContainer(
+      width: 25.w,
+      duration: const Duration(milliseconds: 300),
+      margin: EdgeInsets.only(
+        top: 1.h,
+        bottom: 1.5.h,
+        left: SizerUtil.deviceType == DeviceType.mobile ? 1.2.w : 1.0.w,
+        right: SizerUtil.deviceType == DeviceType.mobile ? 1.2.w : 1.0.w,
+      ),
+      padding: EdgeInsets.only(
+          top: SizerUtil.deviceType == DeviceType.mobile ? 1.5.h : 1.h,
+          bottom: SizerUtil.deviceType == DeviceType.mobile ? 1.5.h : 1.h,
+          left: 1.2.w,
+          right: 1.2.w),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: isSelected ? primaryColor : white,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 10,
+            spreadRadius: 0.1,
+            color: black.withOpacity(.1),
+          )
+        ],
+        border: Border.all(
+          color: grey, // Border color
+          width: 0.2, // Border width
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Center(
+        child: str.length > 9
+            ? SizedBox(
+                height:
+                    SizerUtil.deviceType == DeviceType.mobile ? 2.2.h : 3.1.h,
+                child: Marquee(
+                  style: TextStyle(
+                    fontFamily: fontBold,
+                    color: isSelected ? white : black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 11.sp,
+                  ),
+                  text: str,
+                  scrollAxis: Axis
+                      .horizontal, // Use Axis.vertical for vertical scrolling
+                  crossAxisAlignment:
+                      CrossAxisAlignment.center, // Adjust as needed
+                  blankSpace: 20.0, // Adjust the space between text repetitions
+                  velocity: 50.0, // Adjust the scrolling speed
+                  pauseAfterRound: const Duration(
+                      seconds: 1), // Time to pause after each scroll
+                  startPadding: 2.0, // Adjust the initial padding
+                  accelerationDuration:
+                      const Duration(seconds: 1), // Duration for acceleration
+                  accelerationCurve: Curves.linear, // Acceleration curve
+                  decelerationDuration: const Duration(
+                      milliseconds: 500), // Duration for deceleration
+                  decelerationCurve: Curves.easeOut, // Deceleration curve
+                ),
+              )
+            : Text(
+                str,
+                maxLines: 1,
+                style: TextStyle(
+                  fontSize: 11.sp,
+                  overflow: TextOverflow.ellipsis,
+                  fontFamily: fontBold,
+                  fontWeight: FontWeight.w700,
+                  color: isSelected ? white : black,
+                ),
+              ),
+      ),
+    ),
+  );
+}
+
 getPinTheme() {
   return PinTheme(
     width: 56,
@@ -598,7 +680,7 @@ Widget getCounterUi() {
             "data.quantity.toString()",
             style: TextStyle(
               //fontFamily: fontBold,
-              color:  black,
+              color: black,
               fontWeight: FontWeight.w600,
               fontSize:
                   SizerUtil.deviceType == DeviceType.mobile ? 12.sp : 13.sp,
@@ -624,7 +706,7 @@ Widget cartIncDecUi({String? qty, Function? increment, Function? decrement}) {
     padding:
         EdgeInsets.only(left: 2.5.w, right: 2.5.w, top: 0.3.h, bottom: 0.3.h),
     decoration: BoxDecoration(
-        color:  darkGrey,
+        color: darkGrey,
         boxShadow: [
           BoxShadow(
               color: grey.withOpacity(0.2),
@@ -655,7 +737,7 @@ Widget cartIncDecUi({String? qty, Function? increment, Function? decrement}) {
         Text(
           qty.toString(),
           style: TextStyle(
-            color:  black,
+            color: black,
             fontWeight: FontWeight.w600,
             fontSize: SizerUtil.deviceType == DeviceType.mobile ? 12.sp : 13.sp,
           ),
@@ -694,7 +776,7 @@ Widget homeCartIncDecUi(
           top: 0.2.h,
           bottom: 0.2.h),
       decoration: BoxDecoration(
-          color:  darkGrey,
+          color: darkGrey,
           boxShadow: [
             BoxShadow(
                 color: grey.withOpacity(0.2),
@@ -716,12 +798,12 @@ Widget homeCartIncDecUi(
             child: Icon(
               Icons.remove,
               size: 3.h,
-              color:  black,
+              color: black,
             ),
           ),
           getDynamicSizedBox(width: isFromPopular == true ? 0.5.w : 1.w),
           getVerticalDivider(),
-          getDynamicSizedBox(width: isFromPopular == true ?  0.5.w : 1.w),
+          getDynamicSizedBox(width: isFromPopular == true ? 0.5.w : 1.w),
           Text(
             qty.toString(),
             style: TextStyle(
@@ -741,7 +823,7 @@ Widget homeCartIncDecUi(
             child: Icon(
               Icons.add,
               size: 3.h,
-              color:  black,
+              color: black,
             ),
           ),
         ],
@@ -762,7 +844,7 @@ Widget cartIncrDcrUi(
         top: 0.4.h,
         bottom: 0.4.h),
     decoration: BoxDecoration(
-        color:  white,
+        color: white,
         boxShadow: [
           BoxShadow(
               color: grey.withOpacity(0.2),
@@ -792,9 +874,7 @@ Widget cartIncrDcrUi(
         Text(
           qty!,
           style: TextStyle(
-              color:  black,
-              fontWeight: FontWeight.w600,
-              fontSize: 12.sp),
+              color: black, fontWeight: FontWeight.w600, fontSize: 12.sp),
         ),
         getDynamicSizedBox(
             width: SizerUtil.deviceType == DeviceType.mobile ? 1.8.w : 2.w),
@@ -828,9 +908,7 @@ Widget noDataFoundWidget({bool? isFromBlog}) {
             Common.datanotfound,
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontFamily: fontMedium,
-                fontSize: 12.sp,
-                color:black),
+                fontFamily: fontMedium, fontSize: 12.sp, color: black),
           ),
         ],
       ),
@@ -853,7 +931,7 @@ Widget homeOfferBanner(String item) {
         color: white,
         boxShadow: [
           BoxShadow(
-              color:grey,
+              color: grey,
               blurRadius: 1.0,
               offset: const Offset(0, 2),
               spreadRadius: 0.5)
@@ -864,26 +942,25 @@ Widget homeOfferBanner(String item) {
     child: ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(2.h)),
       child: CachedNetworkImage(
-          fit: BoxFit.cover,
+        fit: BoxFit.cover,
+        height: 15.h,
+        imageUrl: ApiUrl.imageUrl + item.toString(),
+        placeholder: (context, url) => SizedBox(
           height: 15.h,
-          imageUrl: ApiUrl.imageUrl + item.toString(),
-          placeholder: (context, url) => SizedBox(
-                height: 15.h,
-                child: const Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: CircularProgressIndicator(color: primaryColor),
-                  ),
-                ),
-              ),
-          // errorWidget: (context, url, error) => SvgPicture.asset(
-          //       Asset.productPlaceholder,
-          //       fit: BoxFit.cover,
-          //       // ignore: deprecated_member_use
-          //       color: black,
-          //     )
-              
-              ),
+          child: const Center(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: CircularProgressIndicator(color: primaryColor),
+            ),
+          ),
+        ),
+        // errorWidget: (context, url, error) => SvgPicture.asset(
+        //       Asset.productPlaceholder,
+        //       fit: BoxFit.cover,
+        //       // ignore: deprecated_member_use
+        //       color: black,
+        //     )
+      ),
     ),
 
     //  ClipRRect(
@@ -917,7 +994,7 @@ Widget getBannerLeftRightSwiper(isLeft) {
             decoration: const BoxDecoration(
                 shape: BoxShape.circle, color: lightGreyBlueColor),
             child: Icon(
-              color:  secondaryColor,
+              color: secondaryColor,
               isLeft == true
                   ? Icons.chevron_left_sharp
                   : Icons.chevron_right_sharp,
@@ -1102,7 +1179,7 @@ Widget footerItem(title) {
           textAlign: TextAlign.start,
           style: TextStyle(
             fontSize: 3.sp,
-            color:black,
+            color: black,
             fontFamily: fontBold,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w800,

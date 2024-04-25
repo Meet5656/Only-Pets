@@ -5,18 +5,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:only_pets/Screen/CartScreen/CartScreen.dart';
+import 'package:only_pets/Screen/DetailScreen/DetailScreen.dart';
 import 'package:only_pets/api_handle/apiOtherStates.dart';
 import 'package:only_pets/config/colors_constant.dart';
+import 'package:only_pets/config/string_constant.dart';
 import 'package:only_pets/config/widget.dart';
 import 'package:only_pets/model/UpdateDashboardModel.dart';
 import 'package:only_pets/util/enum.dart';
+import 'package:only_pets/util/helper.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/SearchScreen.dart';
 import 'package:only_pets/Screen/ViewClothesBrand.dart';
 import 'package:only_pets/Screen/ViewFoodBrand.dart';
-import 'package:only_pets/Screen/ViewPetsFood.dart';
-import 'package:only_pets/Screen/ViewTrending.dart';
 import 'package:only_pets/controller/HomeScreenController.dart';
 import 'package:only_pets/model/HomeModel..dart/Banner/HomeBanner.dart';
 import 'package:only_pets/model/HomeModel..dart/Clothes_Brand/ClothesBrandModel.dart';
@@ -35,42 +36,27 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   var controller = Get.put(HomeScreenController());
   int activeindex = 0;
-  //size
   int SizeIndex = 0;
-  //build dot page
   int currentpage = 0;
-  // int currentIndex = 0;
 
   @override
   void initState() {
+    getApiCall();
     super.initState();
-    controller.getHome(context);
-    controller.getTotalProductInCart();
-    //controller.showGuestUserLogin(context);
   }
- @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    // try {
-    //   if (mounted) {
-    //     await Future.delayed(const Duration(seconds: 0)).then((value) {
-    //       if (!DeviceScreenType.isWeb(context)) {
-    //         controller.getHome(context);
-    //       }
-    //     });
-    //   }
-    // } catch (e) {
-    //   logcat("ERROR", e);
-    // }
-    setState(() {});
+
+  getApiCall() {
+    futureDelay(() {
+      controller.getHome(context);
+      controller.getTotalProductInCart();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+        SystemUiOverlayStyle(statusBarColor: transparent));
     return Scaffold(
-      // backgroundColor: ,
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Column(
@@ -224,8 +210,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget apiSuccess(ScreenState state) {
-    if (state == ScreenState.apiSuccess &&
-        controller.homeData != null) {
+    if (state == ScreenState.apiSuccess && controller.homeData != null) {
       return Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -510,10 +495,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         padding: EdgeInsets.only(right: 1.w),
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ViewTrending()));
+                            Get.to(DetailScreen(
+                              title: DashboardText.trendingTitle,
+                              isFromTrending: true,
+                              categoryList: controller.categoryList,
+                            ))!
+                                .then((value) {
+                              controller.getHome(context);
+                              controller.getTotalProductInCart();
+                            });
                           },
                           child: Text(
                             "View all",
@@ -1075,11 +1065,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     padding: EdgeInsets.only(right: 1.w),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => viewpetfood(),
-                            ));
+                        Get.to(DetailScreen(
+                          title: DashboardText.petsFoodTitle,
+                          isFromTrending: false,
+                          categoryList: controller.categoryList,
+                        ))!
+                            .then((value) {
+                          controller.getHome(context);
+                          controller.getTotalProductInCart();
+                        });
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => viewpetfood(),
+                        //     ));
                       },
                       child: Text(
                         "View all",
