@@ -10,7 +10,6 @@ import 'package:only_pets/config/string_constant.dart';
 import 'package:only_pets/model/validation_model.dart';
 import 'package:only_pets/util/enum.dart';
 import 'package:only_pets/util/log.dart';
-import 'internet_controller.dart';
 
 class ResetpassController extends GetxController {
   final resetpasskey = GlobalKey<FormState>();

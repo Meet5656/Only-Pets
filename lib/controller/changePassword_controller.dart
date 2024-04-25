@@ -9,7 +9,6 @@ import 'package:only_pets/model/validation_model.dart';
 import 'package:only_pets/util/enum.dart';
 import 'package:only_pets/util/log.dart';
 import '../api_handle/Repository.dart';
-import 'internet_controller.dart';
 
 class ChangePassController extends GetxController {
   final changePasskey = GlobalKey<FormState>();

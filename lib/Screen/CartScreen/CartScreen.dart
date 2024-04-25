@@ -552,7 +552,7 @@ class _CartScreenState extends State<CartScreen> {
                 width: SizerUtil.width,
                 margin: EdgeInsets.only(right: 2.w, bottom: 2.0.h),
                 padding: EdgeInsets.only(
-                    left: 1.8.w, right: 1.8.w, top: 1.8.w, bottom: 1.8.w),
+                    left: 0.9.w, right: 0.9.w, top: 1.8.w, bottom: 1.8.w),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(1.5.h),
                   border: Border.all(

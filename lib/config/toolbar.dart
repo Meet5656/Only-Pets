@@ -94,6 +94,56 @@ import 'package:sizer/sizer.dart';
 //   );
 // }
 
+getForgetToolbar(title,
+    {bool showBackButton = true,Function? callback}) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      backPressCommon(callback),
+      Expanded(
+        flex: 2,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            FadeInDown(
+              child: Container(
+                margin: EdgeInsets.only(right: showBackButton ? 15.w : 0),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                      fontFamily: alegreya,
+                      color:  headingTextColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: SizerUtil.deviceType == DeviceType.mobile
+                          ? 15.sp
+                          : 15.sp),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+Widget backPressCommon(callback, ) {
+  return FadeInDown(
+    child: GestureDetector(
+      onTap: () {
+        callback();
+      },
+      child: Container(
+          padding: EdgeInsets.only(top: 1.w, left: 5.w),
+          child: Icon(
+            size: 3.h,
+            Icons.arrow_back,
+            // ignore: deprecated_member_use
+            color: black,
+          )),
+    ),
+  );
+}
 homeAppbar(String title, Function onClick, Function cartOnClick, RxInt budget) {
   return Padding(
     padding: EdgeInsets.only(left: 1.w, right: 2.w, top: 0.5.h),

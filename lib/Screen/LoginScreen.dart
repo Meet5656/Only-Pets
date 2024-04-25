@@ -127,7 +127,7 @@ class _loginscreenState extends State<loginscreen> {
                                     node: controller.numberNode,
                                     controller: controller.numberCtr,
                                     hintLabel: LoginConst.number,
-                                    onChanged: (val) {
+                                    onChanged: (val) {    
                                       controller.validatePhone(val);
                                     },
                                     obscuretext: false,

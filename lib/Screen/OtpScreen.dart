@@ -111,7 +111,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                     child: Text(
                                       "Verification Code",
                                       style: TextStyle(
-                                        fontSize: 30.sp,
+                                        fontSize: 23.sp,
                                         fontFamily: "Alegreya",
                                       ),
                                     ),
@@ -126,7 +126,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                   child: Text(
                                     "Type the Verification code\nwe've sent you",
                                     style: TextStyle(
-                                        fontSize: 18.sp,
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: "Alegreya"),
                                   ),

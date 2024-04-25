@@ -350,7 +350,8 @@ class BottomConstant {
 }
 
 class SearchScreenConstant {
-  static const title = 'Search';
+  static const title = 'Search Screen';
+
 }
 
 class IntroScreenConstant {

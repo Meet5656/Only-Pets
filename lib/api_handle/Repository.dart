@@ -28,7 +28,7 @@ class Repository {
   }
 
   static Future<http.Response> post(Map<String, dynamic> body, String endPoint,
-      {bool? allowHeader}) async {
+    {bool? allowHeader}) async {
     logcat("APIURL:::", buildUrl(endPoint));
     String token = await UserPreferences().getToken();
     logcat("TOKEN", token.toString());

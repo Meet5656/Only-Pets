@@ -48,6 +48,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
     controller.getTotalProductInCart();
     //controller.showGuestUserLogin(context);
   }
+ @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    // try {
+    //   if (mounted) {
+    //     await Future.delayed(const Duration(seconds: 0)).then((value) {
+    //       if (!DeviceScreenType.isWeb(context)) {
+    //         controller.getHome(context);
+    //       }
+    //     });
+    //   }
+    // } catch (e) {
+    //   logcat("ERROR", e);
+    // }
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,12 +103,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Spacer(),
                     InkWell(
                       onTap: () {
-                        // showSearch(context: context, delegate: Searchscreen());
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Searchscreen(),
-                            ));
+                        Get.to(SearchScreen());
                       },
                       child: Icon(
                         CupertinoIcons.search,
@@ -106,11 +117,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       () {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CartScreen(),
-                                ));
+                            Get.to(CartScreen());
                           },
                           child: Stack(
                             alignment: Alignment.centerRight,
@@ -217,8 +224,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget apiSuccess(ScreenState state) {
-    // ignore: unrelated_type_equality_checks
-    if (controller.state == ScreenState.apiSuccess &&
+    if (state == ScreenState.apiSuccess &&
         controller.homeData != null) {
       return Column(
           mainAxisAlignment: MainAxisAlignment.start,

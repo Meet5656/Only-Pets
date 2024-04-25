@@ -610,7 +610,7 @@ class HomeScreenController extends GetxController {
                               fit: BoxFit.cover,
                               height: 12.h,
                               imageUrl: ApiUrl.imageUrl + data.images[0],
-                              placeholder: (context, url) => const Center(
+                              placeholder: (context, url) => Center(
                                 child: CircularProgressIndicator(
                                     color: primaryColor),
                               ),
@@ -636,7 +636,7 @@ class HomeScreenController extends GetxController {
                             data.name,
                             TextStyle(
                                 overflow: TextOverflow.ellipsis,
-                                fontFamily: fontSemiBold,
+                                fontFamily: medium,
                                 fontWeight: FontWeight.w500,
                                 color: black,
                                 fontSize:
@@ -653,12 +653,12 @@ class HomeScreenController extends GetxController {
                               getText(
                                 '${IndiaRupeeConstant.inrCode}${data.price}',
                                 TextStyle(
-                                    fontFamily: fontBold,
+                                    fontFamily: medium,
                                     color: primaryColor,
                                     fontSize: SizerUtil.deviceType ==
                                             DeviceType.mobile
-                                        ? 12.sp
-                                        : 7.sp,
+                                        ? 14.sp
+                                        : 8.sp,
                                     height: 1.2),
                               ),
                               const Spacer(),
@@ -681,13 +681,14 @@ class HomeScreenController extends GetxController {
                               getText(
                                 '0.0',
                                 TextStyle(
-                                    fontFamily: fontSemiBold,
+                                    fontFamily: medium,
                                     color: lableColor,
                                     fontSize: SizerUtil.deviceType ==
                                             DeviceType.mobile
-                                        ? 9.sp
-                                        : 7.sp,
-                                    height: 1.2),
+                                        ? 13.sp
+                                        : 10.sp,
+                                    height: 1.2
+                                  ),
                               ),
                             ],
                           ),
