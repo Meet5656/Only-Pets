@@ -1,7 +1,12 @@
+import 'dart:ffi';
+import 'dart:io';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:only_pets/Screen/LoginScreen.dart';
 import 'package:sizer/sizer.dart';
+import 'package:only_pets/Screen/ResertPassword.dart';
 import 'package:only_pets/Screen/dashboard.dart';
 
 import '../util/Color.dart';
@@ -14,16 +19,14 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final double profileHeight = 144;
+  Uint8? _image;
+  File? selectedImage;
   final _formkey = GlobalKey<FormState>();
-  var _isHidden;
-  var _confirmpassword;
-  @override
-  void initState() {
-    _confirmpassword = true;
-    _isHidden = true;
-    super.initState();
-  }
 
+  // male and female
+
+  String _selectedGender = 'Male';
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -50,16 +53,6 @@ class _SignupScreenState extends State<SignupScreen> {
                       "asset/hand-drawn-paw-prints-background_23-2151132904.jpg",
                       fit: BoxFit.cover,
                     ),
-                    // decoration: BoxDecoration(
-                    //     image: DecorationImage(
-                    //         image: AssetImage(
-                    //             "asset/hand-drawn-paw-prints-background_23-2151132904.jpg"),
-                    //         fit: BoxFit.cover)),
-                    // decoration: BoxDecoration(
-                    //     gradient: LinearGradient(
-                    //         colors: [Color(0xffB81736), Color(0xff281537)]
-                    //         ),
-                    //         ),
                   ),
                 ),
               ),
@@ -80,15 +73,70 @@ class _SignupScreenState extends State<SignupScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          SizedBox(
+                            height: 2.h,
+                          ),
                           Row(
-                            // mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Stack(children: [
+                                selectedImage != null
+                                    ? CircleAvatar(
+                                        backgroundColor:
+                                            Color.fromARGB(255, 255, 255, 255),
+                                        radius: profileHeight / 2,
+                                        child: CircleAvatar(
+                                          radius: profileHeight / 2 - 5,
+                                          backgroundImage: Image.file(
+                                            selectedImage!,
+                                            fit: BoxFit.cover,
+                                          ).image,
+                                        ),
+                                      )
+                                    : CircleAvatar(
+                                        backgroundColor:
+                                            Color.fromARGB(255, 255, 255, 255),
+                                        radius: profileHeight / 2,
+                                        child: CircleAvatar(
+                                          radius: profileHeight / 2 - 5,
+                                          backgroundImage: Image.asset(
+                                                  'asset/all pets/avatarman.png')
+                                              .image,
+                                        ),
+                                      ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 23.w, top: 8.5.h),
+                                  child: Container(
+                                      height: 3.h,
+                                      width: 6.5.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffc64d4c),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: IconButton(
+                                          onPressed: () {
+                                            // shwoImagePickerOption(context);
+                                          },
+                                          icon: Center(
+                                            child: Icon(
+                                              Icons.edit,
+                                              size: 3.5.w,
+                                              color: Colors.white,
+                                            ),
+                                          ))),
+                                ),
+                              ]),
+                            ],
+                          ),
+                          Row(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(top: 4.h, left: 7.w),
+                                padding: EdgeInsets.only(top: 2.h, left: 7.w),
                                 child: Text(
                                   "SIGN UP!",
                                   style: TextStyle(
-                                      fontSize: 30.sp, fontFamily: "Alegreya"),
+                                      fontSize: 20.sp, fontFamily: "Alegreya"),
                                 ),
                               ),
                               SizedBox(
@@ -102,19 +150,19 @@ class _SignupScreenState extends State<SignupScreen> {
                               "Welcome to Only pets get started with us and begin the journey",
                               style: TextStyle(
                                 fontFamily: "Alegreya",
-                                fontSize: 18.sp,
+                                fontSize: 15.sp,
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 7.w, right: 6.w),
                             child: Container(
                               child: TextFormField(
                                 style: TextStyle(
-                                    fontFamily: "medium", fontSize: 17.sp),
+                                    fontFamily: "medium", fontSize: 12.sp),
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.symmetric(
@@ -149,8 +197,8 @@ class _SignupScreenState extends State<SignupScreen> {
                             child: Container(
                               child: TextFormField(
                                 style: TextStyle(
-                                    fontFamily: "medium", fontSize: 17.sp),
-                                obscureText: _isHidden,
+                                    fontFamily: "medium", fontSize: 12.sp),
+                                // obscureText: _isHidden,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.symmetric(
@@ -159,17 +207,18 @@ class _SignupScreenState extends State<SignupScreen> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10.w)),
                                   ),
-                                  suffixIcon: IconButton(
-                                    icon: _isHidden
-                                        ? Icon(Icons.visibility)
-                                        : Icon(Icons.visibility_off),
-                                    onPressed: () {
-                                      setState(() {
-                                        _isHidden = !_isHidden;
-                                      });
-                                    },
-                                  ),
-                                  hintText: 'Passsword',
+                                  // suffixIcon: IconButton(
+                                  //   icon: _isHidden
+                                  //       ? Icon(Icons.visibility)
+                                  //       : Icon(Icons.visibility_off),
+                                  //   onPressed: () {
+                                  //     setState(() {
+                                  //       _isHidden = !_isHidden;
+                                  //     }
+                                  //   );
+                                  //   },
+                                  // ),
+                                  hintText: 'Number',
                                 ),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -185,68 +234,43 @@ class _SignupScreenState extends State<SignupScreen> {
                             height: 2.h,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 7.w, right: 6.w),
-                            child: Container(
-                              child: TextFormField(
-                                style: TextStyle(
-                                    fontFamily: "medium", fontSize: 17.sp),
-                                obscureText: _confirmpassword,
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                      vertical: 4.w, horizontal: 5.w),
-                                  border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10.w)),
-                                  ),
-                                  hintText: 'Confirm Password',
-                                  suffixIcon: IconButton(
-                                    icon: _confirmpassword
-                                        ? Icon(Icons.visibility)
-                                        : Icon(Icons.visibility_off),
-                                    onPressed: () {
-                                      setState(() {
-                                        _confirmpassword = !_confirmpassword;
-                                      });
-                                    },
-                                  ),
+                            padding: EdgeInsets.only(left: 6.w),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Radio(
+                                  value: 'Male',
+                                  groupValue: _selectedGender,
+                                  onChanged: (value) {
+                                    _selectedGender == value;
+                                    setState(() {});
+                                  },
                                 ),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return "Enter Password";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                              ),
+                                Text(
+                                  'Male',
+                                  style: TextStyle(
+                                      fontSize: 14.sp, fontFamily: "medium"),
+                                ),
+                                Radio(
+                                  value: 'Female',
+                                  groupValue: _selectedGender,
+                                  onChanged: (value) {
+                                    _selectedGender == value;
+                                    setState(() {});
+                                  },
+                                ),
+                                Text(
+                                  'Female',
+                                  style: TextStyle(
+                                      fontSize: 14.sp, fontFamily: "medium"),
+                                ),
+                              ],
                             ),
                           ),
+
                           SizedBox(
-                            height: 2.h,
+                            height: 4.h,
                           ),
-                          // Padding(
-                          //   padding: EdgeInsets.only(right: 6.w),
-                          //   child: Align(
-                          //     alignment: Alignment.topRight,
-                          //     child: InkWell(
-                          //       onTap: () {
-                          //         Navigator.push(
-                          //             context,
-                          //             MaterialPageRoute(
-                          //               builder: (context) => resertpassword(),
-                          //             ));
-                          //       },
-                          //       child: Text(
-                          //         "Forget password?",
-                          //         style: TextStyle(
-                          //             fontSize: 18.sp, fontFamily: "Alegreya"),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   height: 5.h,
-                          // ),
                           Padding(
                             padding: EdgeInsets.only(
                               left: 7.w,
@@ -261,7 +285,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => DashboardScreen((){}),
+                                        builder: (context) => DashboardScreen(),
                                       ));
                                 }
                               },
@@ -285,7 +309,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   child: Text(
                                     "SIGN UP",
                                     style: TextStyle(
-                                        fontSize: 17.sp,
+                                        fontSize: 13.sp,
                                         color: Colors.white,
                                         fontFamily: "Alegreya"),
                                   ),
@@ -294,7 +318,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -302,16 +326,16 @@ class _SignupScreenState extends State<SignupScreen> {
                               Text(
                                 "have an account?",
                                 style: TextStyle(
-                                    fontSize: 20.sp, fontFamily: "Alegreya"),
+                                    fontSize: 15.sp, fontFamily: "Alegreya"),
                               ),
                               InkWell(
                                 onTap: () {
-                                  Navigator.pop(context);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => loginscreen(),));
                                 },
                                 child: Text(
                                   "Log in",
                                   style: TextStyle(
-                                      fontSize: 20.sp,
+                                      fontSize: 15.sp,
                                       fontFamily: "Alegreya",
                                       color: CustomColors.primaryColor),
                                 ),

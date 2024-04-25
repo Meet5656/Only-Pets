@@ -147,7 +147,7 @@ class CartScreenController extends GetxController {
                                   )
                                 ],
                               ),
-                              textScaler: const TextScaler.linear(1),
+                              // textScaler: const TextScaler.linear(1),
                             ),
                             getDynamicSizedBox(height: 0.5.h),
                             Row(
@@ -174,7 +174,7 @@ class CartScreenController extends GetxController {
                                       )
                                     ],
                                   ),
-                                  textScaler: const TextScaler.linear(1),
+                                  // textScaler: const TextScaler.linear(1),
                                 ),
                                 const Spacer(),
                                 Container(
