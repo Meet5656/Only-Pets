@@ -267,7 +267,6 @@ class _SignupScreenState extends State<SignupScreen> {
                               ],
                             ),
                           ),
-
                           SizedBox(
                             height: 4.h,
                           ),
@@ -285,7 +284,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => DashboardScreen(),
+                                        builder: (context) =>
+                                            DashboardScreen(() {}),
                                       ));
                                 }
                               },
@@ -330,7 +330,11 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => loginscreen(),));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => loginscreen(),
+                                      ));
                                 },
                                 child: Text(
                                   "Log in",

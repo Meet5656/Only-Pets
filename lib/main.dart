@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:only_pets/Screen/LoginScreen.dart';
-import 'package:only_pets/Screen/ProfileScreen.dart';
-import 'package:only_pets/Screen/SignUpScreen.dart';
 import 'package:only_pets/Screen/SplashScreen.dart';
 import 'package:only_pets/config/colors_constant.dart';
 import 'package:only_pets/controller/Internet_controller.dart';
