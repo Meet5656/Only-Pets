@@ -2,7 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
-import 'package:only_pets/Screen/ResertPassword.dart';
 import 'package:only_pets/Screen/dashboard.dart';
 
 import '../util/Color.dart';
@@ -262,7 +261,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => DashboardScreen(),
+                                        builder: (context) => DashboardScreen((){}),
                                       ));
                                 }
                               },
