@@ -2,9 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
-import 'package:only_pets/Screen/EditProfileScreen.dart';
 import 'package:only_pets/util/Color.dart';
 
+// ignore: must_be_immutable
 class checkoutscreen extends StatefulWidget {
   checkoutscreen(
       {this.shipinCharge,
@@ -39,32 +39,34 @@ class _checkoutscreenState extends State<checkoutscreen> {
                   Padding(
                     padding: EdgeInsets.only(top: 0.5.h),
                     child: FadeInDown(
-                      duration: Duration(milliseconds: 1800),
-                      child: Container(
-                        height: 4.h,
-                        child: Row(
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                Navigator.pop(context);
+                      duration: Duration(milliseconds: 1200),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 2.5.w, top: 0.5.h),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).pop();
                               },
-                              icon: Icon(
+                              child: Icon(
                                 Icons.arrow_back,
-                                size: 30.sp,
+                                size: 6.w,
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 29.w, top: 1.h),
-                              child: Text(
-                                "Checkout",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22.sp,
-                                    fontFamily: "Alegreya"),
-                              ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: 25.w,
                             ),
-                          ],
-                        ),
+                            child: Text(
+                              "checkout Screen",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16.sp,
+                                  fontFamily: "Alegreya"),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -93,18 +95,18 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           fontFamily: "medium",
-                                          fontSize: 15.sp,
+                                          fontSize: 10.sp,
                                           fontWeight: FontWeight.w400),
                                     ),
                                     SizedBox(
-                                      height: 1.h,
+                                      height: 1.w,
                                     ),
                                     Container(
                                       width: 44.5.w,
                                       child: TextFormField(
                                         style: TextStyle(
                                           fontFamily: "medium",
-                                          fontSize: 16.sp,
+                                          fontSize: 12.sp,
                                         ),
                                         keyboardType: TextInputType.name,
                                         validator: (value) {
@@ -115,12 +117,13 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                         },
                                         decoration: InputDecoration(
                                           contentPadding: EdgeInsets.symmetric(
-                                              horizontal: 5.w, vertical: 4.w),
+                                              horizontal: 4.w, vertical: 3.w),
                                           border: OutlineInputBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(7.w)),
                                           ),
                                           hintText: 'Frist Name',
+                                          hintStyle: TextStyle(fontSize: 12.sp),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Color(0xffc64d4c),
@@ -144,18 +147,18 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           fontFamily: "medium",
-                                          fontSize: 15.sp,
+                                          fontSize: 10.sp,
                                           fontWeight: FontWeight.w400),
                                     ),
-                                    SizedBox(
-                                      height: 1.h,
+                                      SizedBox(
+                                      height: 1.w,
                                     ),
                                     Container(
                                       width: 44.5.w,
                                       child: TextFormField(
                                         style: TextStyle(
                                           fontFamily: "medium",
-                                          fontSize: 16.sp,
+                                          fontSize: 12.sp,
                                         ),
                                         keyboardType: TextInputType.name,
                                         validator: (value) {
@@ -166,12 +169,13 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                         },
                                         decoration: InputDecoration(
                                           contentPadding: EdgeInsets.symmetric(
-                                              horizontal: 5.w, vertical: 4.w),
+                                              horizontal: 4.w, vertical: 3.w),
                                           border: OutlineInputBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(7.w)),
                                           ),
                                           hintText: 'Last Name',
+                                          hintStyle: TextStyle(fontSize: 12.sp),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Color(0xffc64d4c),
@@ -187,14 +191,14 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               ],
                             ),
                             SizedBox(
-                              height: 3.h,
+                              height: 2.h,
                             ),
                             Text(
                               'Street Address',
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -204,7 +208,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.sp,
+                                  fontSize: 12.sp,
                                 ),
                                 keyboardType: TextInputType.name,
                                 validator: (value) {
@@ -221,6 +225,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                         BorderRadius.all(Radius.circular(7.w)),
                                   ),
                                   hintText: 'Street',
+                                  hintStyle: TextStyle(fontSize: 12.sp),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Color(0xffc64d4c), width: 0.2.h),
@@ -230,14 +235,14 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 3.h,
+                              height: 2.h,
                             ),
                             Text(
                               'Town / City',
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -247,7 +252,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.sp,
+                                  fontSize: 12.sp,
                                 ),
                                 keyboardType: TextInputType.name,
                                 validator: (value) {
@@ -258,12 +263,13 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                 },
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 5.w, vertical: 4.w),
+                                      horizontal: 4.w, vertical: 3.w),
                                   border: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(7.w)),
                                   ),
                                   hintText: 'Town / City',
+                                  hintStyle: TextStyle(fontSize: 12.sp),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Color(0xffc64d4c), width: 0.2.h),
@@ -273,14 +279,14 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 3.h,
+                              height: 2.h,
                             ),
                             Text(
                               'Postcode',
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -290,7 +296,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.sp,
+                                  fontSize: 12.sp,
                                 ),
                                 keyboardType: TextInputType.number,
                                 validator: (value) {
@@ -301,12 +307,13 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                 },
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 5.w, vertical: 4.w),
+                                      horizontal: 4.w, vertical: 3.w),
                                   border: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(7.w)),
                                   ),
                                   hintText: 'Postcode',
+                                  hintStyle: TextStyle(fontSize: 12.sp),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Color(0xffc64d4c), width: 0.2.h),
@@ -316,14 +323,14 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 3.h,
+                              height: 2.h,
                             ),
                             Text(
                               'Phone no',
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -333,7 +340,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.sp,
+                                  fontSize: 12.sp,
                                 ),
                                 maxLengthEnforcement: MaxLengthEnforcement.none,
                                 keyboardType: TextInputType.number,
@@ -348,13 +355,14 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                   return null;
                                 },
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 5.w, vertical: 4.w),
+                                 contentPadding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 3.w),
+											  
                                   border: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(7.w)),
                                   ),
                                   hintText: 'Phone no.',
+                                  hintStyle: TextStyle(fontSize: 12.sp),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Color(0xffc64d4c), width: 0.2.h),
@@ -364,14 +372,14 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 3.h,
+                              height: 2.h,
                             ),
                             Text(
                               'E-Mail',
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 15.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w400),
                             ),
                             SizedBox(
@@ -381,7 +389,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               child: TextFormField(
                                 style: TextStyle(
                                   fontFamily: "medium",
-                                  fontSize: 16.sp,
+                                  fontSize: 12.sp,
                                 ),
                                 keyboardType: TextInputType.emailAddress,
                                 validator: (value) {
@@ -403,6 +411,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                         BorderRadius.all(Radius.circular(7.w)),
                                   ),
                                   hintText: 'E-Mail',
+                                  hintStyle: TextStyle(fontSize: 12.sp),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Color(0xffc64d4c), width: 0.2.h),
@@ -412,7 +421,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 5.h,
+                              height: 3.h,
                             ),
                             InkWell(
                               onTap: () {
@@ -429,7 +438,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                 height: 5.7.h,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular((3.w)),
+                                  borderRadius: BorderRadius.circular((7.w)),
                                   gradient: LinearGradient(
                                     begin: Alignment.topRight,
                                     end: Alignment.bottomLeft,
@@ -445,7 +454,7 @@ class _checkoutscreenState extends State<checkoutscreen> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: "medium",
-                                      fontSize: 22.sp,
+                                      fontSize: 15.sp,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white,
                                     ),
