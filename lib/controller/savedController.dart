@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/Screen/dialogs.dart';
 import 'package:only_pets/Screen/loadingIndicator.dart';
 import 'package:only_pets/api_handle/Repository.dart';
@@ -105,14 +106,14 @@ class SavedScreenController extends GetxController {
   getItemListItem(BuildContext context, CommonProductList? item) {
     return GestureDetector(
       onTap: () {
-        // Get.to(
-        //   ProductDetailScreen(
-        //     SavedScreenText.title,
-        //     data: item,
-        //   ),
-        //   transition: Transition.fadeIn,
-        //   curve: Curves.easeInOut,
-        // );
+        Get.to(detailscreen(
+          userdata: item,
+          isFromnTrending: true,
+          fromFav: true,
+        ))!
+            .then((value) {
+          getFavouriteList(context);
+        });
       },
       child: FadeInUp(
         child: Wrap(

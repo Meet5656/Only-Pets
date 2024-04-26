@@ -1,15 +1,13 @@
 import 'dart:async';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:only_pets/Screen/CartScreen/CartScreen.dart';
 import 'package:only_pets/api_handle/CommonApiStructure.dart';
 import 'package:only_pets/config/apicall_constant.dart';
 import 'package:only_pets/config/assets_constant.dart';
@@ -24,10 +22,11 @@ import 'package:readmore/readmore.dart';
 
 // ignore: must_be_immutable
 class detailscreen extends StatefulWidget {
-  detailscreen({super.key, required this.userdata, this.isFromnTrending});
+  detailscreen(
+      {super.key, required this.userdata, this.isFromnTrending, this.fromFav});
   // ViewTrendingModel? userdata;
   bool? isFromnTrending;
-
+  bool? fromFav;
   CommonProductList userdata;
 
   @override
@@ -49,6 +48,10 @@ class _detailscreenState extends State<detailscreen> {
       controller.getRecentFav(
           context, int.parse(widget.userdata.innerSubcategoryId));
     });
+    controller.getIsProductAddedToFav(
+        widget.fromFav != null && widget.fromFav == true
+            ? widget.userdata.productId.toString()
+            : widget.userdata.id.toString());
     super.initState();
   }
 
@@ -110,7 +113,10 @@ class _detailscreenState extends State<detailscreen> {
                         padding: EdgeInsets.only(left: 2.w, top: 1.h),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).pop();
+                            Get.back(
+                                result:
+                                    controller.isFromFavApiCallSuccess!.value);
+                            //Navigator.of(context).pop();
                           },
                           child: Icon(
                             Icons.arrow_back,
@@ -244,9 +250,15 @@ class _detailscreenState extends State<detailscreen> {
                               onTap: () {
                                 addFavouriteAPI(
                                     context,
-                                    widget.userdata.id.toString(),
-                                    '1',
-                                    ProductDetailScreenConstant.title);
+                                    widget.fromFav != null &&
+                                            widget.fromFav == true
+                                        ? widget.userdata.productId.toString()
+                                        : widget.userdata.id.toString(),
+                                    '1', onClick: (isDone) {
+                                  controller.isFromFavApiCallSuccess!.value =
+                                      isDone;
+                                  setState(() {});
+                                }, ProductDetailScreenConstant.title);
                               },
                               child: Padding(
                                 padding: EdgeInsets.only(left: 47.w),
@@ -254,11 +266,11 @@ class _detailscreenState extends State<detailscreen> {
                                   height: 5.h,
                                   width: 10.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: white,
                                     shape: BoxShape.circle,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.black.withOpacity(0.2),
+                                        color: black.withOpacity(0.2),
                                         spreadRadius: 1,
                                         blurRadius: 3,
                                         // offset: Offset(0, 3),
@@ -425,50 +437,53 @@ class _detailscreenState extends State<detailscreen> {
                         ),
                       ),
                     ),
-                    FadeInLeft(
-                      duration: Duration(milliseconds: 1200),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 3.w),
-                          child: Text(
-                            "Descripitions :",
-                            style: TextStyle(
-                                fontSize: 15.sp,
-                                fontFamily: "medium",
-                                fontWeight: FontWeight.bold),
+                    if (widget.userdata.description.isNotEmpty)
+                      FadeInLeft(
+                        duration: Duration(milliseconds: 1200),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 3.w),
+                            child: Text(
+                              "Descripitions :",
+                              style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontFamily: "medium",
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 2.w,
-                    ),
-                    FadeInLeft(
-                      duration: Duration(milliseconds: 1200),
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 3.w),
-                        child: ReadMoreText(
-                          widget.userdata.description,
-                          trimLines: 3,
-                          trimMode: TrimMode.Line,
-                          lessStyle: TextStyle(
-                              fontSize: 15.sp,
-                              fontFamily: "medium",
-                              fontWeight: FontWeight.w500,
-                              color: Colors.blue),
-                          moreStyle: TextStyle(
-                              fontSize: 15.sp,
-                              fontFamily: "medium",
-                              fontWeight: FontWeight.w500,
-                              color: Colors.blue),
-                          style: TextStyle(
-                              fontSize: 15.sp,
-                              fontFamily: "medium",
-                              fontWeight: FontWeight.w500),
+                    if (widget.userdata.description.isNotEmpty)
+                      SizedBox(
+                        height: 2.w,
+                      ),
+                    if (widget.userdata.description.isNotEmpty)
+                      FadeInLeft(
+                        duration: Duration(milliseconds: 1200),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 3.w),
+                          child: ReadMoreText(
+                            widget.userdata.description,
+                            trimLines: 3,
+                            trimMode: TrimMode.Line,
+                            lessStyle: TextStyle(
+                                fontSize: 15.sp,
+                                fontFamily: "medium",
+                                fontWeight: FontWeight.w500,
+                                color: Colors.blue),
+                            moreStyle: TextStyle(
+                                fontSize: 15.sp,
+                                fontFamily: "medium",
+                                fontWeight: FontWeight.w500,
+                                color: Colors.blue),
+                            style: TextStyle(
+                                fontSize: 15.sp,
+                                fontFamily: "medium",
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -550,38 +565,43 @@ class _detailscreenState extends State<detailscreen> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 7.w),
-                child: Container(
-                  height: 6.h,
-                  width: 24.h,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          // Colors.brown.shade300,
-                          Colors.black.withOpacity(0.6),
-                          CustomColors.primaryColor,
-                        ],
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(5.sp))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "ADD TO CART",
-                        style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                      ),
-                      SizedBox(
-                        width: 1.5.w,
-                      ),
-                      Icon(
-                        CupertinoIcons.bag,
-                        size: 5.w,
-                        color: Colors.white,
-                      )
-                    ],
+              GestureDetector(
+                onTap: () {
+                  Get.to(CartScreen());
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(left: 7.w),
+                  child: Container(
+                    height: 6.h,
+                    width: 24.h,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            black.withOpacity(0.6),
+                            CustomColors.primaryColor,
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(5.sp))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "ADD TO CART",
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 18.sp),
+                        ),
+                        SizedBox(
+                          width: 1.5.w,
+                        ),
+                        Icon(
+                          CupertinoIcons.bag,
+                          size: 5.w,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

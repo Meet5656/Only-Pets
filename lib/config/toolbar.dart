@@ -1,8 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/LoginScreen.dart';
+import 'package:only_pets/config/assets_constant.dart';
 import 'package:only_pets/config/colors_constant.dart';
 import 'package:only_pets/config/font_constant.dart';
 import 'package:only_pets/config/string_constant.dart';
@@ -128,6 +130,65 @@ getForgetToolbar(title, {bool showBackButton = true, Function? callback}) {
         ),
       ),
     ],
+  );
+}
+
+getOrderToolbar(title, Function onClick, {bool? isLoginDone}) {
+  return Row(
+    children: [
+      backPressCommon(onClick),
+      orderBackPress(() {
+        if (title == OrderScreenConstant.title) {
+          Get.back(result: isLoginDone);
+        } else {
+          Get.back();
+        }
+      }),
+      Expanded(
+        flex: 2,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            FadeInDown(
+              child: Container(
+                margin: EdgeInsets.only(right: 10.w),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                      fontFamily: fontBold,
+                      color: headingTextColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: SizerUtil.deviceType == DeviceType.mobile
+                          ? 18.sp
+                          : 16.sp),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+Widget orderBackPress(callback) {
+  return FadeInDown(
+    child: GestureDetector(
+      onTap: () {
+        callback();
+      },
+      child: Container(
+          padding: EdgeInsets.only(
+            left: 5.w,
+          ),
+          child: SvgPicture.asset(
+            Asset.arrowBack,
+            // ignore: deprecated_member_use
+            color: black,
+            height: 4.h,
+          )),
+    ),
   );
 }
 

@@ -6,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:only_pets/Screen/DetailScreen.dart';
 import 'package:only_pets/Screen/dialogs.dart';
 import 'package:only_pets/Screen/loadingIndicator.dart';
 import 'package:only_pets/api_handle/Repository.dart';
@@ -226,11 +227,10 @@ class ProductScreenController extends GetxController {
               child: GestureDetector(
                 onTap: () {
                   logcat('Treanding', 'DONE');
-
-                  // Get.to(ProductDetailScreen(
-                  //   DashboardText.trendingTitle,
-                  //   data: data,
-                  // ));
+                  Get.to(detailscreen(
+                    userdata: data,
+                    isFromnTrending: true,
+                  ));
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(

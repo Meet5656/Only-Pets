@@ -1,10 +1,12 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:only_pets/Screen/ProfileScreen.dart';
 import 'package:only_pets/Screen/SavedScreen/SavedScreen.dart';
 import 'package:only_pets/Screen/ViewCategorys.dart';
 import 'package:only_pets/Screen/dashboard.dart';
+import 'package:only_pets/controller/HomeScreenController.dart';
 
 class Bottomnavigatorbar extends StatefulWidget {
   const Bottomnavigatorbar({super.key});
@@ -14,24 +16,19 @@ class Bottomnavigatorbar extends StatefulWidget {
 }
 
 class _BottomnavigatorbarState extends State<Bottomnavigatorbar> {
-  Color IconColor = Colors.white;
+  var controller = Get.put(HomeScreenController());
 
   int _selectedIndex = 0;
   var pageOptions = <Widget>[];
-
-  // final List<Widget> _pages = [
-  //   DashboardScreen(),
-  //   ViewCategorys(),
-  //   SavedScreen(callback),
-  //   ProfileScreen(),
-  // ];
 
   @override
   void initState() {
     setState(() {
       pageOptions = [
         DashboardScreen(callback),
-        ViewCategorys(),
+        ViewCategorys(
+          categoryList: controller.categoryList,
+        ),
         SavedScreen(),
         ProfileScreen(),
       ];

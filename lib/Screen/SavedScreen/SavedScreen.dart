@@ -12,7 +12,6 @@ import 'package:only_pets/controller/savedController.dart';
 import 'package:only_pets/model/UpdateDashboardModel.dart';
 import 'package:only_pets/preference/UserPreference.dart';
 import 'package:only_pets/util/enum.dart';
-import 'package:only_pets/util/log.dart';
 import 'package:sizer/sizer.dart';
 
 // ignore: must_be_immutable
@@ -38,7 +37,6 @@ class _SavedScreenState extends State<SavedScreen>
 
   apiCall() async {
     isGuest = await UserPreferences().getGuestUser();
-    logcat("isGUESTUSER", isGuest.toString());
     if (isGuest != true) {
       // ignore: use_build_context_synchronously
       controller.getFavouriteList(context);
@@ -62,37 +60,16 @@ class _SavedScreenState extends State<SavedScreen>
                   left: 1.w,
                 ),
                 child: FadeInDown(
-                  duration: Duration(milliseconds: 1800),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          // Navigator.pop(context);
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => DashboardScreen(callBack),
-                          //     ));
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 6.w,
-                        ),
+                  duration: Duration(milliseconds: 1200),
+                  child: Center(
+                    child: Text(
+                      "Favourite Screen",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.sp,
+                        fontFamily: "Alegreya",
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 23.w,
-                        ),
-                        child: Text(
-                          "Favourite Screen",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16.sp,
-                              fontFamily: alegreya),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
@@ -223,8 +200,7 @@ class _SavedScreenState extends State<SavedScreen>
   }
 
   Widget apiSuccess(ScreenState state) {
-    // ignore: unrelated_type_equality_checks
-    if (controller.state == ScreenState.apiSuccess &&
+    if (state == ScreenState.apiSuccess &&
         controller.favouriteFilterList.isNotEmpty) {
       return MasonryGridView.count(
         physics: const BouncingScrollPhysics(),

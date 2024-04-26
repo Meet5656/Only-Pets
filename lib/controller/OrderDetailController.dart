@@ -1,0 +1,577 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:only_pets/Screen/DetailScreen.dart';
+import 'package:only_pets/config/apicall_constant.dart';
+import 'package:only_pets/config/assets_constant.dart';
+import 'package:only_pets/config/colors_constant.dart';
+import 'package:only_pets/config/font_constant.dart';
+import 'package:only_pets/config/string_constant.dart';
+import 'package:only_pets/config/toolbar.dart';
+import 'package:only_pets/controller/Internet_controller.dart';
+import 'package:only_pets/model/OrderModel.dart';
+import 'package:only_pets/model/UpdateDashboardModel.dart';
+import 'package:only_pets/model/homeModel.dart';
+import 'package:only_pets/util/enum.dart';
+import 'package:only_pets/util/log.dart';
+import 'package:sizer/sizer.dart';
+
+class OrderDetailScreenController extends GetxController {
+  RxInt currentTreeView = 2.obs;
+  RxBool isLiked = true.obs;
+  RxBool isTreeModeVertical = true.obs;
+  RxBool accessToDrawer = false.obs;
+  Rx<ScreenState> state = ScreenState.apiLoading.obs;
+  RxString message = "".obs;
+  final InternetController etworkManager = Get.find<InternetController>();
+  late TabController tabController;
+  var currentPage = 0;
+  RxList orderDetailList = [].obs;
+  RxString finalProductCost = "".obs;
+  String? userName;
+
+  setOrderTotalAmount(OrderData? data) {
+    //totalAmount.value = data!.totalAmount + data.shipingCharge + data.discount;
+    // Convert string variables to double
+    try {
+      // double totalAmountValue = double.tryParse(data!.totalAmount) ?? 0.0;
+      // double shippingChargeValue = double.tryParse(data.shipingCharge) ?? 0.0;
+      // double discountValue = double.tryParse(data.discount) ?? 0.0;
+      // double result = totalAmountValue + discountValue + shippingChargeValue;
+      // productCost.value = result.toString();
+      // for (OrderDetail item in data.orderDetails) {
+      //   double itemPrice = double.parse(item.qty) * item.price;
+      //   productCost.value += itemPrice.toString();
+      //   update();
+      // }
+      double productCost = 0.0; // Initialize productCost as a double
+      for (CommonProductList item in data!.orderDetails) {
+        double itemPrice = double.parse(item.qty) * int.parse(item.price);
+        productCost += itemPrice; // Accumulate the numeric value
+        update();
+      }
+      // Format productCost to have two decimal places
+      finalProductCost.value = productCost.toStringAsFixed(2);
+
+      if (data.name != 'null' && data.name.isNotEmpty) {
+        if (data.isOffice == 0) {
+          userName = "${data.name} [HOME]";
+        } else {
+          userName = "${data.name} [WORK]";
+        }
+      } else {
+        userName = "";
+      }
+    } catch (e) {
+      logcat("ERROR", e.toString());
+    }
+  }
+
+  void hideKeyboard(context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+
+  Widget getText(title, TextStyle? style) {
+    return Padding(
+      padding: EdgeInsets.only(left: 0.5.w, right: 0.5.w),
+      child: Text(
+        title,
+        style: style,
+      ),
+    );
+  }
+
+  Widget getTitleText(text, {isMainTitle}) {
+    return Container(
+      margin: EdgeInsets.only(left: 5.w, right: 5.w),
+      child: FadeInUp(
+        child: Text(text,
+            style: TextStyle(
+              color: black,
+              fontFamily: fontBold,
+              fontWeight: FontWeight.w800,
+              fontSize: isMainTitle == true
+                  ? SizerUtil.deviceType == DeviceType.mobile
+                      ? 18.sp
+                      : 15.sp
+                  : 14.sp,
+            )),
+      ),
+    );
+  }
+
+  Widget getLableTexts(text, {isMainTitle}) {
+    return Container(
+      margin: EdgeInsets.only(left: 2.w, right: 2.w),
+      child: FadeInUp(
+        child: Text(text,
+            style: TextStyle(
+              color: black,
+              fontFamily: fontBold,
+              fontWeight: FontWeight.w800,
+              fontSize: isMainTitle == true
+                  ? SizerUtil.deviceType == DeviceType.mobile
+                      ? 18.sp
+                      : 15.sp
+                  : 14.sp,
+            )),
+      ),
+    );
+  }
+
+  Widget getColorText(title, {bool? isReviews}) {
+    return FadeInUp(
+      child: Text(title,
+          style: TextStyle(
+            //fontFamily: fontBold,
+            fontWeight: FontWeight.w600,
+            color: isReviews == true ? primaryColor : Colors.green,
+            fontSize: SizerUtil.deviceType == DeviceType.mobile ? 10.sp : 7.sp,
+          )),
+    );
+  }
+
+  Widget getCommonText(title, {bool? isAddress, bool? isName}) {
+    return Container(
+      margin: EdgeInsets.only(
+          left: isAddress == true ? 3.w : 5.w,
+          right: isAddress == true ? 3.w : 5.w),
+      child: FadeInUp(
+        child: Text(
+          title,
+          style: TextStyle(
+            fontFamily: isName == true ? fontExtraBold : fontBold,
+            color: black,
+            fontSize: SizerUtil.deviceType == DeviceType.mobile ? 10.sp : 7.sp,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget getLableText(title, desc, {bool? isTotal}) {
+    return FadeInUp(
+      child: Row(
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontFamily: fontBold,
+              color: black,
+              fontWeight: isTotal == true ? FontWeight.w900 : FontWeight.w300,
+              fontSize: SizerUtil.deviceType == DeviceType.mobile
+                  ? isTotal == true
+                      ? 12.sp
+                      : 11.sp
+                  : 13.sp,
+            ),
+          ),
+          const Spacer(),
+          Text(
+            desc,
+            style: TextStyle(
+              fontFamily: fontBold,
+              color: black,
+              fontWeight: isTotal == true ? FontWeight.w900 : FontWeight.w300,
+              fontSize: isTotal == true ? 12.sp : 11.sp,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget getListItem(CommonProductList data) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(detailscreen(
+          userdata: data,
+        ));
+      },
+      child: FadeInUp(
+        child: Container(
+          width: SizerUtil.width,
+          margin: EdgeInsets.only(right: 2.w, bottom: 2.0.h),
+          padding: EdgeInsets.only(
+            right: 2.w,
+            top: SizerUtil.deviceType == DeviceType.mobile ? 2.w : 1.h,
+            left: 2.w,
+            bottom: SizerUtil.deviceType == DeviceType.mobile ? 2.w : 1.h,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(1.5.h),
+            color: white,
+            boxShadow: [
+              BoxShadow(
+                  color: grey.withOpacity(0.5),
+                  blurRadius: 3.0,
+                  offset: const Offset(0, 3),
+                  spreadRadius: 0.5)
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(
+              SizerUtil.deviceType == DeviceType.mobile ? 1.5.w : 2.2.w,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FadeInDown(
+                  child: Container(
+                    padding: const EdgeInsets.all(0.5),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: grey,
+                        width: 0.6,
+                      ),
+                      color: white,
+                      borderRadius: BorderRadius.circular(
+                          SizerUtil.deviceType == DeviceType.mobile
+                              ? 3.w
+                              : 2.2.w),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          SizerUtil.deviceType == DeviceType.mobile
+                              ? 3.w
+                              : 2.2.w),
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: ApiUrl.imageUrl + data.images[0].toString(),
+                        height: SizerUtil.deviceType == DeviceType.mobile
+                            ? 11.h
+                            : 11.h,
+                        width: SizerUtil.deviceType == DeviceType.mobile
+                            ? 11.h
+                            : 11.h,
+                        placeholder: (context, url) => const Center(
+                          child: CircularProgressIndicator(color: primaryColor),
+                        ),
+                        errorWidget: (context, url, error) => Image.asset(
+                          Asset.productPlaceholder,
+                          height: SizerUtil.deviceType == DeviceType.mobile
+                              ? 11.h
+                              : 11.h,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                getDynamicSizedBox(
+                    width:
+                        SizerUtil.deviceType == DeviceType.mobile ? 3.w : 2.w),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        data.name,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontFamily: fontBold,
+                          fontWeight: FontWeight.w800,
+                          color: black,
+                          fontSize: SizerUtil.deviceType == DeviceType.mobile
+                              ? 11.sp
+                              : 10.sp,
+                        ),
+                      ),
+                      getDynamicSizedBox(
+                          height: SizerUtil.deviceType == DeviceType.mobile
+                              ? 0.5.h
+                              : 0.0),
+                      RichText(
+                        overflow: TextOverflow.clip,
+                        textAlign: TextAlign.center,
+                        softWrap: true,
+                        text: TextSpan(
+                          text: '${IndiaRupeeConstant.inrCode}${data.price} | ',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontFamily: fontRegular,
+                            fontWeight: FontWeight.w500,
+                            fontSize: SizerUtil.deviceType == DeviceType.mobile
+                                ? 11.sp
+                                : 10.sp,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: data.tags,
+                              style: TextStyle(
+                                fontFamily: fontBold,
+                                color: black,
+                                fontSize:
+                                    SizerUtil.deviceType == DeviceType.mobile
+                                        ? 12.sp
+                                        : 11.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        textScaler: const TextScaler.linear(1),
+                      ),
+                      getDynamicSizedBox(
+                          height: SizerUtil.deviceType == DeviceType.mobile
+                              ? 0.5.h
+                              : 0.0),
+                      RichText(
+                        overflow: TextOverflow.clip,
+                        textAlign: TextAlign.center,
+                        softWrap: true,
+                        text: TextSpan(
+                          text: 'Quantity : ',
+                          style: TextStyle(
+                            color: lableColor,
+                            fontWeight: FontWeight.w800,
+                            fontSize: SizerUtil.deviceType == DeviceType.mobile
+                                ? 11.sp
+                                : 10.sp,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: data.qty.toString(),
+                              style: TextStyle(
+                                color: black,
+                                fontFamily: fontBold,
+                                fontSize:
+                                    SizerUtil.deviceType == DeviceType.mobile
+                                        ? 13.sp
+                                        : 11.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        textScaler: const TextScaler.linear(1),
+                      ),
+                      getDynamicSizedBox(height: 1.h),
+                      //getDivider(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  getOrderDetailItemList(OrderDetail data) {
+    return FadeInUp(
+      child: GestureDetector(
+        onTap: () {},
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(
+              SizerUtil.deviceType == DeviceType.mobile ? 4.w : 2.2.w),
+          child: Container(
+              width: 45.w,
+              margin: EdgeInsets.only(bottom: 1.h, left: 1.w, right: 2.w),
+              padding: EdgeInsets.only(
+                  left: 1.2.w, right: 1.2.w, top: 1.2.w, bottom: 1.h),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: grey, // Border color
+                  width: 0.5, // Border width
+                ),
+                color: white,
+                borderRadius: BorderRadius.circular(
+                    SizerUtil.deviceType == DeviceType.mobile ? 4.w : 2.2.w),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              SizerUtil.deviceType == DeviceType.mobile
+                                  ? 3.5.w
+                                  : 2.5.w),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                              SizerUtil.deviceType == DeviceType.mobile
+                                  ? 3.5.w
+                                  : 2.5.w),
+                          child: CachedNetworkImage(
+                            fit: BoxFit.cover,
+                            height: 15.h,
+                            imageUrl:
+                                ApiUrl.imageUrl + data.images[0].toString(),
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(
+                                  color: primaryColor),
+                            ),
+                            errorWidget: (context, url, error) => Image.asset(
+                              Asset.placeholder,
+                              height: 9.h,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 3.w,
+                        top: 1.0.h,
+                        child: GestureDetector(
+                          onTap: () {
+                            // data.isSelected.value =
+                            //     !data.isSelected.value;
+                            update();
+                          },
+                          child: Icon(
+                            Icons.favorite_border,
+                            size: 3.h,
+                            color: primaryColor,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 1.0.h,
+                  ),
+                  getText(
+                    data.name,
+                    TextStyle(
+                        overflow: TextOverflow.ellipsis,
+                        fontFamily: fontSemiBold,
+                        fontWeight: FontWeight.w500,
+                        color: black,
+                        fontSize: SizerUtil.deviceType == DeviceType.mobile
+                            ? 10.sp
+                            : 8.sp,
+                        height: 1.2),
+                  ),
+                  getDynamicSizedBox(
+                    height: 0.5.h,
+                  ),
+                  getText(
+                    '${IndiaRupeeConstant.inrCode}${data.price}',
+                    TextStyle(
+                        fontFamily: fontBold,
+                        color: primaryColor,
+                        fontSize: SizerUtil.deviceType == DeviceType.mobile
+                            ? 10.sp
+                            : 7.sp,
+                        height: 1.2),
+                  ),
+                  getDynamicSizedBox(
+                    height: 0.5.h,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: RatingBar.builder(
+                          initialRating: 3.5,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemSize: 3.5.w,
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: Colors.orange,
+                          ),
+                          onRatingUpdate: (rating) {
+                            logcat("RATING", rating);
+                          },
+                        ),
+                      ),
+                      getText(
+                        "35 Reviews",
+                        TextStyle(
+                            fontFamily: fontSemiBold,
+                            color: lableColor,
+                            fontSize: SizerUtil.deviceType == DeviceType.mobile
+                                ? 9.sp
+                                : 7.sp,
+                            height: 1.2),
+                      ),
+                    ],
+                  ),
+                ],
+              )),
+        ),
+      ),
+    );
+  }
+
+  getGiftListItem(OrderItem data) {
+    return FadeInUp(
+      child: Wrap(
+        children: [
+          Container(
+              width: SizerUtil.width,
+              margin: EdgeInsets.only(right: 2.w, bottom: 2.0.h),
+              padding: EdgeInsets.only(right: 2.w, top: 2.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(1.h),
+              ),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(
+                      SizerUtil.deviceType == DeviceType.mobile ? 1.w : 2.2.w),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      FadeInDown(
+                        child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(12)),
+                          child: Image.asset(
+                            data.icone!,
+                            height: 20.h,
+                            width: 18.h,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      getDynamicSizedBox(width: 3.w),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text('Write on Card',
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  color: lableColor,
+                                  fontFamily: fontMedium,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 12.sp,
+                                )),
+                            getDynamicSizedBox(height: 1.5.h),
+                            Text('Julie, hope you have a happy 27th Love ya..!',
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  fontFamily: fontMedium,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 12.sp,
+                                )),
+                            getDynamicSizedBox(height: 1.h),
+                          ],
+                        ),
+                      )
+                    ],
+                  ))),
+        ],
+      ),
+    );
+  }
+}

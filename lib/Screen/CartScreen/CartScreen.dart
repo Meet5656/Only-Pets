@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/BottomNavBar.dart';
-import 'package:only_pets/Screen/CheckoutScreen.dart';
+import 'package:only_pets/Screen/DeliveryScreen/AddressScreen.dart';
 import 'package:only_pets/Screen/formButton.dart';
 import 'package:only_pets/config/apicall_constant.dart';
 import 'package:only_pets/config/assets_constant.dart';
@@ -501,7 +501,7 @@ class _CartScreenState extends State<CartScreen> {
                                                   return getSecondaryFormButton(
                                                       isFromCart: true,
                                                       () async {
-                                                    Get.to(checkoutscreen(
+                                                    Get.to(AddressScreen(
                                                       totaAmount: controller
                                                           .finalProductPrice
                                                           .value
@@ -513,6 +513,18 @@ class _CartScreenState extends State<CartScreen> {
                                                           .deliveryPrice.value
                                                           .toString(),
                                                     ));
+                                                    // Get.to(checkoutscreen(
+                                                    //   totaAmount: controller
+                                                    //       .finalProductPrice
+                                                    //       .value
+                                                    //       .toString(),
+                                                    //   discount: controller
+                                                    //       .discountPrice.value
+                                                    //       .toString(),
+                                                    //   shipinCharge: controller
+                                                    //       .deliveryPrice.value
+                                                    //       .toString(),
+                                                    // ));
                                                   }, Button.checkOut,
                                                       isvalidate: true,
                                                       isEnable: controller

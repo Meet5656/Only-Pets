@@ -17,6 +17,7 @@ import 'package:only_pets/util/log.dart';
 void addFavouriteAPI(context, String productId, String type, String screenName,
     {bool? isFromList,
     CommonProductList? item,
+    Function? onClick,
     RxList? favouriteFilterList}) async {
   var loadingIndicator = LoadingProgressDialog();
   loadingIndicator.show(context, '');
@@ -37,6 +38,7 @@ void addFavouriteAPI(context, String productId, String type, String screenName,
     var data = jsonDecode(response.body);
     logcat("tag", data);
     if (response.statusCode == 200) {
+      onClick!(true);
       if (data['status'] == 1) {
         if (isFromList != null && isFromList == true) {
           for (CommonProductList mo in favouriteFilterList!) {

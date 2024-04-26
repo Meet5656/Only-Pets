@@ -1,0 +1,315 @@
+import 'dart:convert';
+import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:only_pets/Screen/OrderScreen/OrderDetailScreen.dart';
+import 'package:only_pets/Screen/dialogs.dart';
+import 'package:only_pets/Screen/loadingIndicator.dart';
+import 'package:only_pets/api_handle/Repository.dart';
+import 'package:only_pets/config/apicall_constant.dart';
+import 'package:only_pets/config/assets_constant.dart';
+import 'package:only_pets/config/colors_constant.dart';
+import 'package:only_pets/config/font_constant.dart';
+import 'package:only_pets/config/statusbar.dart';
+import 'package:only_pets/config/string_constant.dart';
+import 'package:only_pets/config/toolbar.dart';
+import 'package:only_pets/controller/Internet_controller.dart';
+import 'package:only_pets/model/OrderModel.dart';
+import 'package:only_pets/preference/UserPreference.dart';
+import 'package:only_pets/util/enum.dart';
+import 'package:only_pets/util/helper.dart';
+import 'package:only_pets/util/log.dart';
+import 'package:sizer/sizer.dart';
+
+class OrderScreenController extends GetxController {
+  RxInt currentTreeView = 2.obs;
+  RxBool isLiked = true.obs;
+  RxBool isTreeModeVertical = true.obs;
+  RxBool accessToDrawer = false.obs;
+  Rx<ScreenState> state = ScreenState.apiLoading.obs;
+  RxString message = "".obs;
+  RxBool isLoading = false.obs;
+  final InternetController networkManager = Get.find<InternetController>();
+  late TabController tabController;
+  var currentPage = 0;
+  RxBool? isGuest = true.obs;
+  RxBool? isLoginDone = false.obs;
+
+  void hideKeyboard(context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+
+  getIsLoginDone(bool? isLogesUser) {
+    isLoginDone!.value = isLogesUser!;
+    update();
+  }
+
+  apiCall(BuildContext context) async {
+    isGuest!.value = await UserPreferences().getGuestUser();
+    futureDelay(() {
+      getOrderList(context, 0, true, isRefress: true);
+    });
+    update();
+  }
+
+  Widget getText(title, TextStyle? style) {
+    return Padding(
+      padding: EdgeInsets.only(left: 0.5.w, right: 0.5.w),
+      child: Text(
+        title,
+        style: style,
+      ),
+    );
+  }
+
+  RxList orderList = [].obs;
+  RxString nextPageURL = "".obs;
+
+  void getOrderList(
+    context,
+    currentPage,
+    bool hideloading, {
+    bool? isRefress,
+  }) async {
+    var loadingIndicator = LoadingProgressDialog();
+
+    if (hideloading == true) {
+      state.value = ScreenState.apiLoading;
+    } else {
+      loadingIndicator.show(context, '');
+      isLoading.value = true;
+      update();
+    }
+
+    try {
+      if (networkManager.connectionType == 0) {
+        if (hideloading != true) {
+          loadingIndicator.hide(
+            context,
+          );
+        }
+        showDialogForScreen(
+            context, OrderScreenConstant.title, Connection.noConnection,
+            callback: () {
+          Get.back();
+        });
+        return;
+      }
+      var pageURL = '${ApiUrl.getOrderList}?page=$currentPage';
+      logcat("URL", pageURL.toString());
+      var response = await Repository.post({}, pageURL, allowHeader: true);
+      if (hideloading != true) {
+        loadingIndicator.hide(
+          context,
+        );
+      }
+      Statusbar().trasparentStatusbarIsNormalScreen();
+      // loadingIndicator.hide(context);
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        if (data['status'] == 1) {
+          var responseData = OrderModel.fromJson(data);
+          state.value = ScreenState.apiSuccess;
+          message.value = '';
+          isLoading.value = false;
+          update();
+          if (isRefress == true) {
+            orderList.clear();
+          }
+          if (responseData.data.data.isNotEmpty) {
+            orderList.addAll(responseData.data.data);
+            orderList.refresh();
+          }
+          if (responseData.data.nextPageUrl != 'null' &&
+              responseData.data.nextPageUrl != null) {
+            nextPageURL.value = responseData.data.nextPageUrl.toString();
+            update();
+          } else {
+            nextPageURL.value = "";
+            update();
+          }
+          if (isRefress == true) {
+            return;
+          } else {
+            currentPage++;
+          }
+          update();
+        } else {
+          isLoading.value = false;
+          message.value = data['message'];
+          state.value = ScreenState.apiError;
+          showDialogForScreen(
+              context, OrderScreenConstant.title, data['message'].toString(),
+              callback: () {});
+        }
+      } else {
+        state.value = ScreenState.noDataFound;
+        isLoading.value = false;
+        message.value = APIResponseHandleText.emptylist;
+      }
+    } catch (e) {
+      if (hideloading != true) {
+        loadingIndicator.hide(
+          context,
+        );
+      }
+      isLoading.value = false;
+      state.value = ScreenState.apiError;
+      message.value = ServerError.servererror;
+    }
+  }
+
+  Widget getOrderListItem(BuildContext context, OrderData data, int index) {
+    return FadeInUp(
+      child: GestureDetector(
+        onTap: () {
+          Get.to(OrderDetailScreen(
+            data: data,
+          ));
+        },
+        child: Container(
+          margin: EdgeInsets.only(top: 1.h, left: 4.w, right: 4.w, bottom: 1.h),
+          padding:
+              EdgeInsets.only(top: 1.h, left: 2.w, right: 2.w, bottom: 1.h),
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.all(Radius.circular(
+                SizerUtil.deviceType == DeviceType.mobile ? 10 : 16)),
+            boxShadow: [
+              BoxShadow(
+                  color: grey.withOpacity(0.5),
+                  blurRadius: 3.0,
+                  offset: const Offset(0, 3),
+                  spreadRadius: 0.5)
+            ],
+          ),
+          child: Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                  right: 3.w,
+                ),
+                padding: const EdgeInsets.all(0.5),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: grey, // Border color
+                    width: 0.6, // Border width
+                  ),
+                  color: white,
+                  borderRadius: BorderRadius.circular(
+                      SizerUtil.deviceType == DeviceType.mobile
+                          ? 3.5.w
+                          : 2.5.w),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(
+                      SizerUtil.deviceType == DeviceType.mobile
+                          ? 3.5.w
+                          : 2.5.w),
+                  child: CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    height: 12.h,
+                    width: 12.h,
+                    imageUrl: ApiUrl.imageUrl +
+                        data.orderDetails[0].images[0].toString(),
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(color: primaryColor),
+                    ),
+                    errorWidget: (context, url, error) => Image.asset(
+                      Asset.productPlaceholder,
+                      height: 12.h,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: const BoxDecoration(
+                              color: Colors.green, shape: BoxShape.circle),
+                        ),
+                        getDynamicSizedBox(width: 1.w),
+                        Text(
+                          OrderScreenConstant.delivered,
+                          style: TextStyle(
+                            fontSize: SizerUtil.deviceType == DeviceType.mobile
+                                ? 10.sp
+                                : 8.sp,
+                            fontFamily: fontSemiBold,
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
+                    ),
+                    getDynamicSizedBox(height: 0.5.h),
+                    Text(
+                      ("${OrderScreenConstant.orderId} ${data.orderId}"),
+                      style: TextStyle(
+                          fontSize: SizerUtil.deviceType == DeviceType.mobile
+                              ? 13.sp
+                              : 7.sp,
+                          fontFamily: fontBold,
+                          fontWeight: FontWeight.w700,
+                          color: black),
+                    ),
+                    getDynamicSizedBox(height: 0.5.h),
+                    Text(
+                      ('${OrderScreenConstant.orderDate} ${getFormateDate(data.dateOfOrder.toString())}'),
+                      style: TextStyle(
+                          fontSize: SizerUtil.deviceType == DeviceType.mobile
+                              ? 10.sp
+                              : 7.sp,
+                          fontFamily: fontRegular,
+                          color: lableColor),
+                    ),
+                    getDynamicSizedBox(height: 0.5.h),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          ('${IndiaRupeeConstant.inrCode}${formatPrice(double.parse(data.totalAmount.toString()))}'),
+                          style: TextStyle(
+                              fontSize:
+                                  SizerUtil.deviceType == DeviceType.mobile
+                                      ? 12.sp
+                                      : 10.sp,
+                              fontFamily: fontExtraBold,
+                              color: black),
+                        ),
+                        const Spacer(),
+                        Text(
+                          OrderScreenConstant.viewDetails,
+                          style: TextStyle(
+                              fontSize:
+                                  SizerUtil.deviceType == DeviceType.mobile
+                                      ? 10.sp
+                                      : 8.sp,
+                              decoration: TextDecoration.underline,
+                              decorationColor: black,
+                              fontFamily: fontExtraBold,
+                              color: black),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

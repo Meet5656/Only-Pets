@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:marquee/marquee.dart';
+import 'package:only_pets/Screen/BottomNavBar.dart';
 import 'package:only_pets/config/apicall_constant.dart';
 import 'package:only_pets/config/colors_constant.dart';
 import 'package:only_pets/config/font_constant.dart';
@@ -1159,6 +1160,58 @@ Widget headerDivider() {
 //     ),
 //   );
 // }
+
+getEmptyListUi(bool? isFromSaved, {bool? isGuestUser, Function? onClick}) {
+  return Center(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+            isGuestUser == true
+                ? isFromSaved == true
+                    ? SavedScreenText.informLoginFromFavText
+                    : SavedScreenText.informLoginFromOrderText
+                : isFromSaved == true
+                    ? SavedScreenText.emptyList
+                    : OrderScreenConstant.emptyList,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: fontMedium, fontSize: 12.sp, color: black)),
+        SizedBox(height: 1.h),
+        FadeInUp(
+          from: 30,
+          child: ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(black)),
+            onPressed: () {
+              if (isGuestUser == true) {
+                onClick!();
+              } else {
+                Get.to(Bottomnavigatorbar());
+                //Get.to(const CategoryScreen())!.then((value) {});
+              }
+
+              // if (isFromSaved == true) {
+              //   Get.to(const CategoryScreen())!.then((value) {});
+              // } else {
+              //   Get.to(DetailScreen())!.then((value) {});
+              // }
+            },
+            child: Text(
+                isGuestUser == true
+                    ? LoginConst.buttonLabel
+                    : SavedScreenText.exoploreCategory,
+                // isFromSaved == true
+                //     ? SavedScreenText.exoploreCategory
+                //     : OrderScreenConstant.exoploreProduct,
+                style: TextStyle(
+                    fontFamily: fontMedium, fontSize: 12.sp, color: white)),
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
 Widget footerItem(title) {
   return Padding(

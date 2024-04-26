@@ -1,14 +1,22 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:only_pets/Screen/CategoryScreen/SubCategoryScreen.dart';
+import 'package:only_pets/config/apicall_constant.dart';
+import 'package:only_pets/config/assets_constant.dart';
+import 'package:only_pets/config/colors_constant.dart';
+import 'package:only_pets/config/font_constant.dart';
+import 'package:only_pets/config/widget.dart';
+import 'package:only_pets/model/UpdateDashboardModel.dart';
 import 'package:sizer/sizer.dart';
-import 'package:marquee/marquee.dart';
-import 'package:only_pets/model/HomeModel..dart/Category/ViewCategoryModel.dart';
 
+// ignore: must_be_immutable
 class ViewCategorys extends StatefulWidget {
-  const ViewCategorys({super.key});
+  ViewCategorys({super.key, this.categoryList});
 
+  RxList<dynamic>? categoryList;
   @override
   State<ViewCategorys> createState() => _ViewCategorysState();
 }
@@ -26,118 +34,138 @@ class _ViewCategorysState extends State<ViewCategorys> {
           children: [
             FadeInDown(
               duration: Duration(milliseconds: 1200),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 2.w, top: 1.h),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: 6.w,
-                      ),
-                    ),
+              child: Center(
+                child: Text(
+                  "Category Screen",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    fontFamily: "Alegreya",
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 25.w, top: 1.h),
-                    child: Text(
-                      "Category Screen",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        fontFamily: "Alegreya",
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
             SizedBox(
               height: 1.h,
             ),
-            FadeInRight(
-              duration: Duration(
-                milliseconds: 1200,
-              ),
+            Expanded(
               child: FadeInRight(
-                child: Expanded(
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: viewCategorys.length,
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3),
-                    itemBuilder: (context, index) {
-                      final categoryName = viewCategorys[index].name;
-                      final bool isLongText = categoryName.length > 15;
-                      return Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 3.w, right: 2.w),
-                            child: Container(
-                              height: 11.h,
-                              width: 24.w,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.w)),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      blurRadius: 0.3.w,
-                                      // spreadRadius: 0.1.w
-                                    ),
-                                  ]),
-                              child: Padding(
-                                padding: EdgeInsets.all(0.5.w),
-                                child: CircleAvatar(
-                                  // radius: 8.w,s
-                                  backgroundColor: Colors.white,
-                                  backgroundImage: AssetImage(
-                                    viewCategorys[index].image,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          isLongText
-                              ? Container(
-                                  height: 3.h,
-                                  child: Marquee(
-                                    text: categoryName,
-                                    // scrollAxis: Axis.horizontal,
-                                    // crossAxisAlignment: CrossAxisAlignment.start,
-                                    blankSpace: 10.0,
-                                    // velocity: 100.0,
-                                    pauseAfterRound: Duration(milliseconds: 1),
-                                    showFadingOnlyWhenScrolling: true,
-                                    fadingEdgeStartFraction: 0.1,
-                                    fadingEdgeEndFraction: 0.1,
-                                    style: TextStyle(
-                                        fontSize: 15.sp,
-                                        fontFamily: "Alegreya",
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                )
-                              : Text(
-                                  categoryName,
-                                  style: TextStyle(
-                                      fontSize: 15.sp,
-                                      fontFamily: "medium",
-                                      fontWeight: FontWeight.w600),
-                                ),
-                        ],
-                      );
-                    },
-                  ),
+                duration: Duration(
+                  milliseconds: 1200,
                 ),
+                child: FadeInRight(child: apiSuccess()),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget apiSuccess() {
+    if (widget.categoryList!.isNotEmpty) {
+      return GridView.builder(
+        shrinkWrap: true,
+        padding: EdgeInsets.only(left: 4.w, right: 4.w),
+        itemCount: widget.categoryList!.length,
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemBuilder: (context, index) {
+          CategoryList item = widget.categoryList![index];
+          return getCategoryListItem(context, item);
+        },
+      );
+    } else {
+      return noDataFoundWidget();
+    }
+  }
+
+  getCategoryListItem(BuildContext context, CategoryList item) {
+    return Wrap(
+      children: [
+        FadeInUp(
+          child: GestureDetector(
+            onTap: () {
+              Get.to(SubCategoryScreen(
+                categoryId: item.id.toString(),
+              ));
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  SizerUtil.deviceType == DeviceType.mobile ? 4.w : 2.2.w),
+              child: Container(
+                  width: 40.w,
+                  child: Stack(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(
+                            left: 1.2.w,
+                            right: 1.2.w,
+                            top: 0.8.h,
+                            bottom: 0.8.h),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 10.h,
+                              width: 10.h,
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: grey, // Border color
+                                  width: 0.5, // Border width
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                    SizerUtil.deviceType == DeviceType.mobile
+                                        ? 20.w
+                                        : 15.w),
+                              ),
+                              child: ClipOval(
+                                child: CachedNetworkImage(
+                                  fit: BoxFit.cover,
+                                  imageUrl: ApiUrl.imageUrl + item.thumbnailUrl,
+                                  placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator(
+                                        color: primaryColor),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      Image.asset(
+                                    Asset.placeholder,
+                                    height: 9.h,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 1.0.h,
+                            ),
+                            Text(
+                              item.name,
+                              style: TextStyle(
+                                  fontFamily: fontSemiBold,
+                                  fontWeight: FontWeight.w500,
+                                  color: black,
+                                  fontSize:
+                                      SizerUtil.deviceType == DeviceType.mobile
+                                          ? 12.sp
+                                          : 7.sp,
+                                  height: 1.2),
+                            ),
+                            SizedBox(
+                              height: 0.2.h,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

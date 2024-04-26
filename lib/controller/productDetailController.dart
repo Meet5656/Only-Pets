@@ -33,6 +33,7 @@ class ProductDetailScreenController extends GetxController {
   RxList<Map<String, dynamic>> cartItems = <Map<String, dynamic>>[].obs;
   RxBool? isGuest = true.obs;
   RxBool? isLiked = true.obs;
+  RxBool? isFromFavApiCallSuccess = false.obs;
 
   getGuestUser() async {
     isGuest!.value = await UserPreferences().getGuestUser();

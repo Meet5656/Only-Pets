@@ -163,15 +163,14 @@ void showDropdownMessage(
                         : 15.sp),
               ),
             ),
-            // insetPadding: EdgeInsets.symmetric(
-            //     vertical:
-            //         SizerUtil.deviceType == DeviceType.mobile ? 10.h : 20.h,
-            //     horizontal:
-            //         SizerUtil.deviceType == DeviceType.mobile ? 4.h : 7.h),
-            insetPadding: EdgeInsets.symmetric(
-              vertical: insetPaddingVertical,
-              horizontal: 9.h,
-            ),
+            insetPadding: SizerUtil.deviceType == DeviceType.mobile
+                ? EdgeInsets.symmetric(
+                    horizontal: 5.h,
+                  )
+                : EdgeInsets.symmetric(
+                    vertical: insetPaddingVertical,
+                    horizontal: 9.h,
+                  ),
             contentPadding: EdgeInsets.only(
               left: SizerUtil.deviceType == DeviceType.mobile ? 6.7.w : 6.w,
               top: 0.5.h,

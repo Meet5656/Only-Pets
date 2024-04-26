@@ -174,6 +174,7 @@ class OrderScreenConstant {
   static const orderId = "Order Id:";
   static const orderDate = "Order Date:";
   static const viewDetails = "View Details";
+  static const emptyList = "You have no orders yet.";
 }
 
 class ProductScreenConstant {
@@ -303,6 +304,11 @@ class LoginDialogText {
 
 class SavedScreenText {
   static const title = 'Saved';
+  static const emptyList = 'You haven\'t added any favorite items yet.';
+  static const exoploreCategory = 'Explore Categories';
+  static const informLoginFromFavText =
+      'Please login to add items to favorites';
+  static const informLoginFromOrderText = 'Please login to view your orders';
 }
 
 class AddFamilyMemberText {
@@ -352,7 +358,6 @@ class BottomConstant {
 
 class SearchScreenConstant {
   static const title = 'Search Screen';
-
 }
 
 class IntroScreenConstant {
@@ -477,6 +482,12 @@ class AlertDialogList {
   static const city = 'City List';
   static const state = 'State List';
   static const emptylist = 'List is Empty';
+  static const photo = 'Photo';
+  static const selectPhotoFrom = 'Select Photo From';
+  static const camera = 'Camera';
+  static const gallery = 'Gallery';
+  static const writeYourReviewTitle = 'Write your review';
+  static const sharePhotoTitle = 'Share photo';
 }
 
 class APIResponseHandleText {

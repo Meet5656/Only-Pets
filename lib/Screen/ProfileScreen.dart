@@ -6,8 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:only_pets/Screen/EditProfile/EditProfileScreen.dart';
-import 'package:only_pets/Screen/LoginScreen.dart';
-import 'package:only_pets/Screen/OrderScreen.dart';
+import 'package:only_pets/Screen/OrderScreen/OrderScreen.dart';
 import 'package:only_pets/config/assets_constant.dart';
 import 'package:only_pets/config/colors_constant.dart';
 import 'package:only_pets/config/font_constant.dart';
@@ -64,30 +63,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               FadeInDown(
                 duration: Duration(milliseconds: 1200),
-                child: Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: 6.w,
-                      ),
+                child: Center(
+                  child: Text(
+                    "Profile Screen",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                      fontFamily: "Alegreya",
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 25.w,
-                      ),
-                      child: Text(
-                        "Profile Screen",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            fontFamily: "Alegreya"),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
               SizedBox(

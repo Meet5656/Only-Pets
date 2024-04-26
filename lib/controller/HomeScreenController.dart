@@ -174,7 +174,8 @@ class HomeScreenController extends GetxController {
                 getTotalProductInCart();
               });
             },
-            child: Container(
+            child:
+             Container(
                 width: 8.h,
                 margin: EdgeInsets.only(
                     right:
@@ -186,10 +187,9 @@ class HomeScreenController extends GetxController {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: white,
-                          //color: Colors.grey[300],
                           border: Border.all(
-                            color: grey, // Border color
-                            width: 0.5, // Border width
+                            color: grey,
+                            width: 0.5,
                           ),
                         ),
                         child: Container(
@@ -267,6 +267,7 @@ class HomeScreenController extends GetxController {
                               ),
                             )
                     ]))));
+  
   }
 
   getTotalProductInCart() async {
